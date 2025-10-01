@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/cursor.min.css">
     <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
-    <title>OvO</title>
+    <title> | OvO</title>
     <meta name="author" content="你猜不到的" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -42,7 +42,9 @@
 
 
 
-<script src="/js/lib/home.js"></script>
+
+
+
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -152,40 +154,11 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/miku.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>OvO</h1>
-                <h3>还在学习中......</h3>
-                <h5></h5>
-            </div>
-        </span>
+            <div class="article">
+    <div>
+        <h1></h1>
     </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2025/10/02/misc%E5%8F%96%E8%AF%81/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
+    <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
@@ -195,154 +168,58 @@
         
         
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="Misc方向任务取证部分"><a href="#Misc方向任务取证部分" class="headerlink" title="Misc方向任务取证部分"></a>Misc方向任务取证部分</h1><p>我有点没招了……菜菜的还是做不出来，那就写个做一半的思路吧后面看能做出来再写。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/10/02/misc%E5%8F%96%E8%AF%81/" class="go-post">阅读全文</a>
-</div>
+    
+    <div class="content" v-pre>
+        <h1 id="Misc方向任务取证部分"><a href="#Misc方向任务取证部分" class="headerlink" title="Misc方向任务取证部分"></a>Misc方向任务取证部分</h1><p>我有点没招了……菜菜的还是做不出来，那就写个做一半的思路吧后面看能做出来再写。</p>
+<span id="more"></span> 
 
-<div class="post">
-    <a href="/2025/10/01/web/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/10/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="Web方向任务"><a href="#Web方向任务" class="headerlink" title="Web方向任务"></a>Web方向任务</h1><p>还记不太熟练 给自己贴一个markdown的语法表：<a target="_blank" rel="noopener" href="https://www.markdown.cn/docs/cheat-sheet">markdown中文</a></p>
-<p><del>其实我不是很知道这篇博客该怎么写，感觉写得有点乱乱的</del></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/10/01/web/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/09/16/second/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/9/16
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="基础任务相关的一些"><a href="#基础任务相关的一些" class="headerlink" title="基础任务相关的一些"></a>基础任务相关的一些</h3><blockquote>
-<p>1 观看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JkzGYuEGo/?vd_source=bbdaef564df94fc8991902ba22c6761b">计算机教育中缺失的学期</a>中前四集</p>
-<p>2 登录<a target="_blank" rel="noopener" href="https://chatgpt.com/">chatGPT</a>，询问一个有关于网络安全比赛的知识</p>
-<p>4 安装虚拟机</p>
-<p>5 学会用vscode</p>
+<p>先看下题目</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/1.png"></p>
+<p>解压文件后拿到了一个文件是1.dmp，还有一个是G.E01，这里我还是去恶补了一下相关的知识（知道的太少了orz），然后知道接下来从1.dmp文件中找到密钥解开E01文件。</p>
+<p>然后用vol先看一下镜像系统知道是Win7SPx64。<br><img src="https://github.com/ncbdd0/images/raw/main/qz/2.png"></p>
+<p>找密钥嘛，所以知道系统后我先扫描了一下电脑中的文件然后提取出来。</p>
+<p>提取出来后再看了一下大概密钥可能在的地方（txt、BitLocker相关）：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/3.png"></p>
+<p>那个BitLockerWizard去查了一下发现是用来加密的，应该没什么用，于是提取了一下那些txt文件还有zip文件。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/4.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/17.png"></p>
+<p>下面那个zip文件是用来内存提取的就没管，上面那个打开之后发现压缩前才1KB，应该不是要找的东西。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/18.png"></p>
+<p>再看一下提取出来的txt文件：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/5.png"></p>
+<p>嗯？？？</p>
+<p>还有这两个文件，去查和翻译了一下好像还是和密钥没有关系，于是放弃了。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/6.png"><br><img src="https://github.com/ncbdd0/images/raw/main/qz/7.png"></p>
+<p>后面想到再去查了一下浏览器使用情况：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/14.png"><br><img src="https://github.com/ncbdd0/images/raw/main/qz/15.png"></p>
+<p>然后在提取出来的2044和2664中找好像还是没有密钥相关的。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/16.png"></p>
+<p>话说这个是不是也是奇安信的小彩蛋:D（尽找些没用的东西）：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/8.png"></p>
+<p>然后还查看了一下进程和剪切板，好像还是没有和密钥相关的，放弃叻。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/9.png"></p>
+<p>然后去问了一下ai，去下载了一个叫做bitlocker的插件，得到了这个：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/10.png"></p>
+<p>恢复密钥是48位和这个对不上，然后我继续问了一下ai，ai告诉我这个：</p>
+<blockquote>
+<p>Address：内存中存储这些密钥的地址<br><br>    Cipher：使用的加密算法（这里是带扩散器的 AES-128 位加密）<br><br>    FVEK：全卷加密密钥（Full Volume Encryption Key），用于实际加密磁盘数据<br><br>    TWEAK Key：调整密钥，用于增强加密安全性</p>
 </blockquote>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/09/16/second/" class="go-post">阅读全文</a>
-</div>
+<p>接下来告诉我要先将G.E01转换为raw格式，然后用FVEK解密并挂载分区再查找flag。</p>
+<p>这里我已经将E01文件转换成raw文件，查了很多相关的资料感觉后面应该是按照ai说的那个思路来，但我卡在解密这里了……</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/11.png"></p>
+<p>看了一下导出的文件应该是没有损坏的，后面解密也许得换个工具，于是打算先放一下去做其他的题目，然后再回来接着做（其实可能是现在脑子有点宕机了orz）</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/12.png"><br><img src="https://github.com/ncbdd0/images/raw/main/qz/13.png"></p>
+<p>写到这里之后突然有啥新思路，在文件中找到了一个叫做PASSWD.LOG的。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/19.png"></p>
+<p>但是整了半天用vol2一直提取不出来，vol3一直在报错，于是打算先放放，后面重装一下vol3再来试试。</p>
 
-<div class="post">
-    <a href="/2025/09/16/My%20first%20blog/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/9/16
-        </span>
-        
-        
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="My-first-blog"><a href="#My-first-blog" class="headerlink" title="My first blog"></a>My first blog</h1><p><em>第一篇博客，献给搭博客的经历^_^</em></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/09/16/My%20first%20blog/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
     
-    <span class="current">1</span>
     
     
     
     
-</div>
-
-    </div>
     
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/kkk.png" alt="avatar" />
-        </div>
-        <div class="name">你猜不到的</div>
-        <div class="description">
-            <p>世界和平</p>
-
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://github.com/ncbdd0/ncbdd0.github.io">github</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
-
-    </div>
     
 </div>
 
@@ -381,6 +258,12 @@
         
     </div>
     <script src="/js/main.js"></script>
+    
+    
+
+
+
+
     
 </body>
 </html>
