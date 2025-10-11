@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title> | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/10/1
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="Web方向任务"><a href="#Web方向任务" class="headerlink" title="Web方向任务"></a>Web方向任务</h1><p>还记不太熟练 给自己贴一个markdown的语法表：<a target="_blank" rel="noopener" href="https://www.markdown.cn/docs/cheat-sheet">markdown中文</a></p>
+<p><del>其实我不是很知道这篇博客该怎么写，感觉写得有点乱乱的</del></p>
+<span id="more"></span>
+
+<h3 id="任务一：了解基础的⼏种请求⽅式、请求-响应头、状态码（200-301-302-404-500）与简单抓包。"><a href="#任务一：了解基础的⼏种请求⽅式、请求-响应头、状态码（200-301-302-404-500）与简单抓包。" class="headerlink" title="任务一：了解基础的⼏种请求⽅式、请求&#x2F;响应头、状态码（200&#x2F;301&#x2F;302&#x2F;404&#x2F;500）与简单抓包。"></a>任务一：了解基础的⼏种请求⽅式、请求&#x2F;响应头、状态码（200&#x2F;301&#x2F;302&#x2F;404&#x2F;500）与简单抓包。</h3><p>贴一个http学习链接：<a target="_blank" rel="noopener" href="https://www.runoob.com/http/http-tutorial.html">http教程</a></p>
+<p>基础的几种请求方式有GET,POST,PUT,DELETE,OPTIONS,HEAD,TRACE,CONNECT。平时接触比较多的是前四个。</p>
+<blockquote>
+<p>GET：获取资源。<br><br>    POST：提交数据。<br><br>    PUT：更新资源。<br><br>    DELETE：删除资源。<br><br>    HEAD：与 GET 类似，但不获取资源的内容，只获取响应头信息。<br></p>
+</blockquote>
+<p><strong>请求头（客户端发送给服务器）：</strong></p>
+<p>1.包含了客户端环境信息、请求体的大小（如果有）、客户端支持的压缩类型等。</p>
+<p>2.常见的请求头包括Host、User-Agent、Accept、Accept-Encoding、Content-Length等。</p>
+<p><strong>响应头（服务器返回给客户端）：</strong></p>
+<p>1.包含了服务器环境信息、响应体的大小、服务器支持的压缩类型等。</p>
+<p>2.常见的响应头包括Content-Type、Content-Length、Server、Set-Cookie等。</p>
+<p><strong>状态码：</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>状态码英文名称</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功。一般用于GET与POST请求</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td>永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td>临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置”您所请求的资源无法找到”的个性页面</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>服务器内部错误，无法完成请求</td>
+</tr>
+</tbody></table>
+<p>然后分析一下这个流量包：</p>
+<blockquote>
+<p>POST &#x2F;api&#x2F;graphs&#x2F;fulltext-search?haha&#x3D;123 HTTP&#x2F;1.1<br><br>    Host: localhost<br><br>    Cookie: xxx&#x3D;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br><br>    User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML,like Gecko) Chrome&#x2F;140.0.0.0 Safari&#x2F;537.36 Edg&#x2F;140.0.0.0<br><br>    Sec-Ch-Ua: “Chromium”;v&#x3D;”140”, “Not&#x3D;A?Brand”;v&#x3D;”24”, “Microsoft Edge”;v&#x3D;”140”<br><br>    Sec-Ch-Ua-Mobile: ?0<br><br>    Accept: text&#x2F;html<br><br>    Referer: <a target="_blank" rel="noopener" href="https://osgraph.com/">https://osgraph.com/</a><br><br>    Accept-Encoding: gzip, deflate, br<br><br>    Accept-Language: zh-CN,zh;q&#x3D;0.9,en;q&#x3D;0.8,en-GB;q&#x3D;0.7,en-US;q&#x3D;0.6<br><br>    Connection: close<br><br>    Content-Type: application&#x2F;x-www-form-urlencoded<br><br>    Content-Length: 26<br><br>    indexName&#x3D;github&amp;keyword&#x3D;1<br></p>
+</blockquote>
+<p><del>其实学得很一般只能大概对着菜鸟教程看一下</del></p>
+<p>第一行是请求行信息：</p>
+<blockquote>
+<p>方法：POST<br><br>    请求URL：&#x2F;api&#x2F;graphs&#x2F;fulltext-search<br><br>    HTTP版本：HTTP&#x2F;1.1<br></p>
+</blockquote>
+<p>从Host到Content-Length是请求头信息：</p>
+<blockquote>
+<p>Host：请求的主机是本地服务器<br><br>    User-Agent: 显示客户端是 Microsoft Edge 140 浏览器，Windows 10 系统<br><br>    Referer: 请求来自<a target="_blank" rel="noopener" href="https://osgraph.com/">https://osgraph.com/</a><br><br>    Content-Type: 表明请求体是 application&#x2F;x-www-form-urlencoded 格式<br></p>
+</blockquote>
+<p>最后一行是请求头，大概就是用在github上用POST方法搜索关键字为1的内容。</p>
+<h3 id="任务二：语⾔基础"><a href="#任务二：语⾔基础" class="headerlink" title="任务二：语⾔基础"></a>任务二：语⾔基础</h3><p>也贴一下php的学习教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-tutorial.html">菜鸟教程</a></p>
+<p>php的学习我还看了两个网课，感觉不戳，下面代码能大概看懂一点，也贴一下：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R24y1r71C/?spm_id_from=333.1387.upload.video_card.click&vd_source=0ae6a4697d8e0f1772f2d930bdfa19df">PHP反序列化漏洞学习</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tG4y1c7Vb/?spm_id_from=333.1387.upload.video_card.click&vd_source=0ae6a4697d8e0f1772f2d930bdfa19df">PHP命令执行</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c34y1h7So/?spm_id_from=333.1387.upload.video_card.click&vd_source=0ae6a4697d8e0f1772f2d930bdfa19df">sql注入</a></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-3.png"></p>
+<p><strong>db.php:</strong><br><img src="https://github.com/ncbdd0/images/raw/main/web-4.png"><br>db.php大概就是先创建了一个名为test的数据库，然后在数据库里创造了一个名为users的表，再users这张表里创造了三个字段：id、username、password，然后再在users这张表里插入一条用户名为alice，密码为12345；另一条用户名为bob，密码是abcde的内容。</p>
+<p><strong>html:</strong></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-1.png"></p>
+<p>这里也贴一个简单的html入门，其实我感觉和markdown语法是很像的（）：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BT4y1W7Aw/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=0ae6a4697d8e0f1772f2d930bdfa19df">3小时前端入门教程（HTML+CSS+JS）</a></p>
+<p>上面那段代码大概就是写了一个简单的登录表单和文件上传表单，贴一下呈现出来的效果。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-2.png"></p>
+<h3 id="任务三：迎接第⼀个漏洞，sql注⼊"><a href="#任务三：迎接第⼀个漏洞，sql注⼊" class="headerlink" title="任务三：迎接第⼀个漏洞，sql注⼊"></a>任务三：迎接第⼀个漏洞，sql注⼊</h3><p>这里贴一下自己学sql注入的时候看的一些网课：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c34y1h7So/?spm_id_from=333.1387.upload.video_card.click&vd_source=0ae6a4697d8e0f1772f2d930bdfa19df">SQL注入由简入精</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12a4113722/?spm_id_from=333.1387.favlist.content.click&vd_source=0ae6a4697d8e0f1772f2d930bdfa19df">【sql注入系列精品课程】从入门到精通的sql注入教程（附练手sql靶场及讲解）&#x2F;网络安全&#x2F;渗透测试&#x2F;信息安全&#x2F;</a></p>
+<p>sqli-labs靶场的安装我是用docker安装的，教程跟的这个：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42780280/article/details/143103834?sharetype=blogdetail&shareId=143103834&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">【sqli-labs靶场安装以及刷题记录-docker -  CSDN App】</a></p>
+<p>再贴一下一些学习sql注入的时候看过的博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_68522070/article/details/149464995?sharetype=blogdetail&shareId=149464995&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">【100条常用SQL语句 -  CSDN App】</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43863218/article/details/120624852">基础SQL查询语句20道练习题（MySql）(基础版入门)</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_68416970/article/details/138974168?sharetype=blogdetail&shareId=138974168&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">【SQLMAP的下载安装和使用(Windows) -  CSDN App】</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_79218813/article/details/135090595?utm_source=miniapp_weixin">SQL 注入总结（详细）</a></p>
+<p>学长说要配合源码学习，遂找了一个带有源码的过关解析:D<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73812072/article/details/144111958?sharetype=blogdetail&shareId=144111958&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">【sqli-labs过关解析(附带源码分析) -  CSDN App】</a></p>
+<p><strong>Less-1:</strong></p>
+<p>第一步：判断是数字型注入还是字符型注入</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-3.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-4.png"></p>
+<p>这里判断出来是字符型注入。</p>
+<p>第二步：判断列数</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-5.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-6.png"></p>
+<p>这里判断出来列数为3。</p>
+<p>第三步：联合注入</p>
+<p>这里我之前不太了解为什么要标-1，后面去问了一下人工智能，贴一下人工智能的回答吧：</p>
+<blockquote>
+<p>在 UNION 联合查询中，UNION 会将前后两个 SELECT 语句的结果合并。如果前面的 SELECT 语句能查询到有效数据，那么 UNION 后的结果会优先显示前面查询的结果，后面 UNION 部分的结果可能就无法显示出来（或者说会被前面的结果 “覆盖”，不容易被观察到）。</p>
+</blockquote>
+<blockquote>
+<p>而使用 -1 ，假设数据库中没有 id&#x3D;-1 的记录，那么前面的 SELECT 语句就会返回空结果。这样，UNION 后面 select 1,2,3 的结果就能够完整地显示出来，方便我们判断注入点、字段位置等信息。<br>简单来说，用 -1 是为了 “清空” 前面查询的有效结果，让 UNION 后面我们构造的查询结果能清晰呈现，便于后续的 SQL 注入操作分析。</p>
+</blockquote>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-7.png"></p>
+<p>第四步：爆库名</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-8.png"></p>
+<p>第五步：爆表名</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-9.png"></p>
+<p>第六步：爆字段名</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-10.png"></p>
+<p>第七步：爆内容</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-11.png"></p>
+<p><strong>Less-5:</strong></p>
+<p>首先敲一个id&#x3D;1，通过没有回显和报错内容判断是报错注入<br><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-12.png"><br><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-13.png"></p>
+<p>这里贴一个之前看的报错注入的博客，因为我有时会记不住语法orz<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73756016/article/details/133862183?sharetype=blogdetail&shareId=133862183&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">【sql注入—报错注入 -  CSDN App】</a></p>
+<p>判断完是报错注入后通过extravalue()进行注入，在括号里面写得其实和前面差不多就不贴图了。</p>
+<p><strong>Less-11:</strong></p>
+<p>url敲了后没有反应于是用bp抓包POST注入</p>
+<p>这里通过报错内容判断是单引号闭合：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-14.png"></p>
+<p>然后把包发送到重放器，爆列数是2：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-15.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/web-less1/web-16.png"></p>
+<p>后面的跟前面差不多，在uname那边改就好，就不写了TT</p>
+<p><del>因为我用docker搭建的具体路径我不知道在哪Less7就不写了</del></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
