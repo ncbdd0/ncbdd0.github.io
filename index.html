@@ -181,40 +181,19 @@
         
 
 <div class="post">
-    <a href="/2025/10/15/%E5%8F%96%E8%AF%81%E9%99%84%E5%8A%A0%E9%A2%98/">
-        <h2 class="post-title"></h2>
+    <a href="/2025/10/14/%E5%8F%96%E8%AF%81%E9%99%84%E5%8A%A0%E9%A2%98/">
+        <h2 class="post-title">取证附加题</h2>
     </a>
     <div class="category-and-date">
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/10/15
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
         </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="取证附加题"><a href="#取证附加题" class="headerlink" title="取证附加题"></a>取证附加题</h1><p>一个美亚真题持续复现ing。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/10/15/%E5%8F%96%E8%AF%81%E9%99%84%E5%8A%A0%E9%A2%98/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/10/14/%EF%BC%9FCTF2025/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
         
         <span class="date">
             <span class="icon">
@@ -228,7 +207,55 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="CTF2025-Misc和取证方向"><a href="#CTF2025-Misc和取证方向" class="headerlink" title="?CTF2025 Misc和取证方向"></a>?CTF2025 Misc和取证方向</h1><p>应该暂时搁置了最近在做取证相关的练习题orz</p>
+            <p>一个美亚真题持续复现ing。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%8F%96%E8%AF%81/" style="color: #00bcd4">取证</a>
+        </span>
+        
+    </div>
+    <a href="/2025/10/14/%E5%8F%96%E8%AF%81%E9%99%84%E5%8A%A0%E9%A2%98/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/10/13/%EF%BC%9FCTF2025/">
+        <h2 class="post-title">?CTF2025 Misc和取证方向</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/10/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>应该暂时搁置了最近在做取证相关的练习题orz</p>
 <p>等过几天再传上来吧（其实也没做几题）</p>
 
             
@@ -236,17 +263,35 @@
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
         
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/wp/" style="color: #00a596">wp</a>
+        </span>
         
     </div>
-    <a href="/2025/10/14/%EF%BC%9FCTF2025/" class="go-post">阅读全文</a>
+    <a href="/2025/10/13/%EF%BC%9FCTF2025/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
     <a href="/2025/10/06/misc%E6%96%B9%E5%90%91%E4%BB%BB%E5%8A%A1/">
-        <h2 class="post-title"></h2>
+        <h2 class="post-title">MISC方向任务</h2>
     </a>
     <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
         
         <span class="date">
             <span class="icon">
@@ -260,13 +305,178 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="MISC方向任务"><a href="#MISC方向任务" class="headerlink" title="MISC方向任务"></a>MISC方向任务</h1>
+            <span id="more"></span> 
+
+<h2 id="1-取证入门"><a href="#1-取证入门" class="headerlink" title="1.取证入门"></a>1.取证入门</h2><p>先贴个题目：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/1.png"></p>
+<p>这里不知道bitlocker是什么就去查了下资料，然后因为不知道为什么给了两个文件也去问了下ai ：），ai告诉我要先从1.dmp中获取恢复密钥然后解锁E01文件中的bitlocker分区。</p>
+<p>用diskgenius挂载1.dmp文件恢复一下：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/2.png"></p>
+<p>那个pass.txt和新建文本文档打开没什么东西，然后就继续往下找，后面是在桌面找到了这个：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/3.png"></p>
+<p>打开找到密钥，还有个txt文件顺便看了一下。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/4.png"></p>
+<p>嗯？？？</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/5.png"></p>
+<p>挂载E01文件之后输入恢复密钥得到四个文件：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/6.png"></p>
+<p>这里新建文本文档.txt那个文件太大老卡打不开，于是看那个pass.txt，打开发现是一个字典。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/7.png"></p>
+<p>然后打开docx文件和ppt文件都加了密，应该就是用来解开这两个的了。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/8.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/9.png"></p>
+<p>然后先获取一下ppt文件的哈希值。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/10.png"></p>
+<p>然后用字典爆破。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/11.png"></p>
+<p>得到密码后打开文件就是flag。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/12.png"></p>
+<p>顺便也把那个docx文件解一下：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/13.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qz/14.png"></p>
+<p>好吧:D</p>
+<h2 id="2-Misc入门学习"><a href="#2-Misc入门学习" class="headerlink" title="2.Misc入门学习"></a>2.Misc入门学习</h2><p>贴一下题目：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/1.png"><br>第一题给了一串字符串：XDAXFAAFFGFDAXGGFGFDDGGFAF，刚拿到的时候没什么头绪，因为看着不像之前遇到过的加密方式（我太菜了orz），还猜测了一下是不是恺撒密码，但看着也牛头不对马嘴的，再用新下的软件试一试后还是没啥头绪。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/4.png"></p>
+<p>然后我去喂了一下ai：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/2.png"><br><img src="https://github.com/ncbdd0/images/raw/main/misc/3.png"></p>
+<p>涉及到我的知识盲区了orz，火速给自己去找个博客恶补一下：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangjinjin180/article/details/149357896?sharetype=blogdetail&shareId=149357896&sharerefer=APP&sharesource=2401_87851833&sharefrom=qq">古典密码之棋盘密码(ADFGVX,ADFGX,Polybius)</a></p>
+<p>总之解密出来就是：</p>
+<p><strong>WELCOME TO MISC</strong></p>
+<p>然后就是压缩包里剩下的题：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/5.png"></p>
+<p>看了一下，应该分别对应的是图片隐写、lsb隐写、流量分析和压缩包解密。</p>
+<p>这里我先做了一下lsb隐写的那题。</p>
+<p>打开压缩包得到一张图片：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/6.png"></p>
+<p>题目提示是lsb，那就打开stegsolve查看，可以看到在这三个上面有一条黑线。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/7.png"><br><img src="https://github.com/ncbdd0/images/raw/main/misc/8.png"><br><img src="https://github.com/ncbdd0/images/raw/main/misc/9.png"></p>
+<p>提取出来，得到一张QR码：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/10.png"><br><img src="https://github.com/ncbdd0/images/raw/main/misc/11.png"></p>
+<p>扫描得到flag（这个是flag吧虽然不是flag{}）:（</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/12.png"></p>
+<p>然后做了一下伪加密那题，首先打开压缩包是一个加密文档：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/13.png"></p>
+<p>题目说是伪加密，那就按伪加密的方法来，把全局加密和全局方式位标记改为0000。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/14.png"></p>
+<p>改完后保存打开就是flag叻:D（虽然又不是flag{}有点在想是不是找错了）</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/15.png"></p>
+<p>然后做一下这个1.zip，首先打开压缩包是一个加密的图片和压缩包：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/16.png"></p>
+<p>用010打开符合伪加密的格式，改一下两个地方0000。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/17.png"></p>
+<p>然后更改后1.png没加密了压缩包还需要，这里我把1.png拿出去了用010单独看这个压缩包。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/20.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/18.png"></p>
+<p>两个地方0100依旧符合伪加密的格式，继续改成0000后打开。</p>
+<p>这个图片应该就是后面用到，是这张：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/21.png"></p>
+<p>然后打开2.zip发现是一个加密的图片和加密的txt文档，看着像明文攻击，两张图片长得一样CRC32值也一样。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/19.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/22.png"></p>
+<p>然后静静等待明文攻击结束……</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/23.png"></p>
+<p>这里已经爆破完了，一张图片和一个文档。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/24.png"></p>
+<p>然后打开flag.txt得到文档。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/25.png"></p>
+<p>还有一道流量分析题，这个流量包不是很大，我就差不多感觉可疑的地方都看了一下，其中有几个像这样的图片，但是看着都和flag没什么关系。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/26.png"></p>
+<p>顺便搜了一下OICQ协议是什么……原来是QQ啊，然后我先是搜了一下在分组字节流搜了一下{，没找到flag{}，然后大概分析了一下这个流量包（其实看不太懂orz），感觉大概是登录了一下网站然后发了一条邮件，其中再搜了一下和flag有关的是这些：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/27.png"><br><img src="https://github.com/ncbdd0/images/raw/main/misc/29.png"></p>
+<p>再看了一下也没有类似冰蝎哥斯拉之类的特征，于是我就把上面的password当flag了 <del>（也可能是实在没招了TT）</del></p>
+<p>然后这里贴一个ctfwiki的网址：<a target="_blank" rel="noopener" href="https://ctf-wiki.org/">ctf-wiki</a></p>
+<p>这里我用docker部署了一下用起来没那么卡:D，也码一下这个指令吧。</p>
+<p><code>docker run -d --name=ctf-wiki -p 4100:80 ctfwiki/ctf-wiki</code></p>
+<p><del>例题还挺多的先试试取证附加题后再来复现吧（bushi）</del></p>
+<p>回来了，原来申请完了还要等待审核通过，那继续做例题了:D</p>
+<p>这里打开题库分别有这些：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/30.png"></p>
+<h3 id="1-压缩包解密"><a href="#1-压缩包解密" class="headerlink" title="1.压缩包解密"></a>1.压缩包解密</h3><h4 id="2015广州强网杯-爆破？"><a href="#2015广州强网杯-爆破？" class="headerlink" title="2015广州强网杯-爆破？"></a>2015广州强网杯-爆破？</h4><p>得到一个压缩包，解压之后又是一个压缩包和一个txt文件。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/31.png"></p>
+<p>文件打开是……千万不要给选手看到。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/32.png"></p>
+<p>打开压缩包文件，又是一个加密的同样的txt文件，那个answer文件夹里是加密的key.txt。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/33.png"></p>
+<p>两个一样的文件，对比一下CRC32，确定是明文爆破。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/34.png"><br><img src="https://github.com/ncbdd0/images/raw/main/misc/35.png"></p>
+<p>等待爆破完之后打开key.txt就得到flag了。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/36.png"></p>
+<h4 id="2017-ISCC-Basic08"><a href="#2017-ISCC-Basic08" class="headerlink" title="2017-ISCC-Basic08"></a>2017-ISCC-Basic08</h4><p>拿到一个压缩包，打开是一个加密的文件夹。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/37.png"></p>
+<p>用010打开后不符合伪加密格式，于是用azpr爆破一下。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/38.png"></p>
+<p>打开后是一串base64，解密得到flag。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/39.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/40.png"></p>
+<h3 id="2-音频隐写"><a href="#2-音频隐写" class="headerlink" title="2.音频隐写"></a>2.音频隐写</h3><h4 id="ISCC-2017-Disco"><a href="#ISCC-2017-Disco" class="headerlink" title="ISCC-2017-Disco"></a>ISCC-2017-Disco</h4><p>给自己码一个Audacity的基础使用：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_66346698/article/details/132653130?sharetype=blogdetail&shareId=132653130&sharerefer=APP&sharesource=2401_87851833&sharefrom=qq">Audacity基本使用操作（一只鱼er~）</a></p>
+<p>上来就是一个音频文件，拖进Audacity听了一下后是一段disco，先放大一下波形图，在开头部分有一段竖线，再放大看就是一段有规律的片段。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/41.png"></p>
+<p>上面的点为1，下面的为0，得到一串二进制：110011011011001100001110011111110111010111011000010101110101010110011011101011101110110111011110011111101，用工具解密，得到flag。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/42.png"></p>
+<h4 id="SharifCTF2014-Hear-with-your-Eyes"><a href="#SharifCTF2014-Hear-with-your-Eyes" class="headerlink" title="SharifCTF2014-Hear with your Eyes"></a>SharifCTF2014-Hear with your Eyes</h4><p>用Audacity打开先看波形图没什么异常，换一下频谱图得到flag。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/43.png"></p>
+<h3 id="3-编码分析"><a href="#3-编码分析" class="headerlink" title="3.编码分析"></a>3.编码分析</h3><h4 id="JarvisOj-Basic-字符串"><a href="#JarvisOj-Basic-字符串" class="headerlink" title="JarvisOj-Basic-.-字符串"></a>JarvisOj-Basic-.-字符串</h4><p>首先看题目要求：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/44.png"></p>
+<p>这里学到了一个新的网站：<a target="_blank" rel="noopener" href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx">摩尔斯电码转换器</a>，输入即可得到flag</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/45.png"></p>
+<h4 id="base64-stego"><a href="#base64-stego" class="headerlink" title="base64-stego"></a>base64-stego</h4><p>打开是一个data.txt，里面是一长串base64：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/46.png"></p>
+<p>用puzzlesolve打开秒解（额</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/47.png"></p>
+<h4 id="2018-DEFCON-Quals-ghettohackers-Throwback"><a href="#2018-DEFCON-Quals-ghettohackers-Throwback" class="headerlink" title="2018-DEFCON-Quals-ghettohackers-Throwback"></a>2018-DEFCON-Quals-ghettohackers-Throwback</h4><p>题目给了一串字符串：<br>Anyo!e!howouldsacrificepo!icyforexecu!!onspeedthink!securityisacomm!ditytop!urintoasy!tem!</p>
+<p>这里先想到的是把感叹号的地方补充上变成：“Anyone who would sacrifice policy for execution speed thinks security is a commodity to pour into a system”</p>
+<p>但是补充的字母拼不成flag，就以感叹号为分界，以字母数量当做字母顺序，得出：dark logic</p>
+<p>看了一下应该就是flag。</p>
+<h3 id="4-图片隐写"><a href="#4-图片隐写" class="headerlink" title="4.图片隐写"></a>4.图片隐写</h3><h4 id="hctf2016-pic-again"><a href="#hctf2016-pic-again" class="headerlink" title="hctf2016-pic-again"></a>hctf2016-pic-again</h4><p>首先打开是一张图片。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/48.png"></p>
+<p>用010看了一下没什么奇怪的地方，就用stegsolve看看有没有隐写，然后在红绿蓝0上能看到有一条明显的横线：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/49.png"></p>
+<p>导出是一个压缩包。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/50.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/51.png"></p>
+<p>解压用010打开能找到flag。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/52.png"></p>
+<h4 id="炫酷的战队logo"><a href="#炫酷的战队logo" class="headerlink" title="炫酷的战队logo"></a>炫酷的战队logo</h4><p>打开是一张图片但是啥都没显示。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/53.png"></p>
+<p>用010打开看一下，发现文件头没了，补全文件头。</p>
+<p>这里贴一个链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_52450702/article/details/124767308?spm=1001.2014.3001.5506">bmp、jpg、gif、png格式</a></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/54.png"></p>
+<p>然后补全之后就是一张logo，用010打开看不出啥，就用zsteg扫一下。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/55.png"></p>
+<p>藏了一张png在里面。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/56.png"></p>
+<p>把png图片导出后显示加载失败，用010打开不太知道怎么办，直接丢进之前下的工具里宽高一把梭了:D</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/57.png"></p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/58.png"></p>
+<p>打开就是flag。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/59.png"></p>
+<h3 id="5-综合"><a href="#5-综合" class="headerlink" title="5.综合"></a>5.综合</h3><h4 id="jarvisoj-basic-Help"><a href="#jarvisoj-basic-Help" class="headerlink" title="jarvisoj-basic-Help!!"></a>jarvisoj-basic-Help!!</h4><p>首先拿到一个压缩包，里面是一个docx文档，打开是一张图片。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/60.png"></p>
+<p>先想到的是图片隐写，但是010 隐写 宽高CRC爆破后还是没什么思路，于是回来继续看这个文档。</p>
+<p>binwalk一下这个文档，发现很多zip文件，于是把后缀改成zip后继续看。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/61.png"></p>
+<p>里面是这些，网页打开都没什么东西，后面是在一个文件夹里找到了一张图片。</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/62.png"></p>
+<p>好吧:D</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/misc/63.png"></p>
+<p>不知道为什么我的钉钉一直没收到取证大师审核通过的消息，不知道是不是因为我表格写的有点潦草……例题还有一些，后面会继续复现ww</p>
+
             
         </div>
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
         
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%96%B9%E5%90%91%E4%BB%BB%E5%8A%A1/" style="color: #00a596">方向任务</a>
+        </span>
         
     </div>
     <a href="/2025/10/06/misc%E6%96%B9%E5%90%91%E4%BB%BB%E5%8A%A1/" class="go-post">阅读全文</a>
@@ -274,9 +484,18 @@
 
 <div class="post">
     <a href="/2025/10/01/web/">
-        <h2 class="post-title"></h2>
+        <h2 class="post-title">Web方向任务</h2>
     </a>
     <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
         
         <span class="date">
             <span class="icon">
@@ -290,14 +509,23 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="Web方向任务"><a href="#Web方向任务" class="headerlink" title="Web方向任务"></a>Web方向任务</h1><p>还记不太熟练 给自己贴一个markdown的语法表：<a target="_blank" rel="noopener" href="https://www.markdown.cn/docs/cheat-sheet">markdown中文</a></p>
+            <p>还记不太熟练 给自己贴一个markdown的语法表：<a target="_blank" rel="noopener" href="https://www.markdown.cn/docs/cheat-sheet">markdown中文</a></p>
 <p><del>其实我不是很知道这篇博客该怎么写，感觉写得有点乱乱的</del></p>
             
         </div>
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
         
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%96%B9%E5%90%91%E4%BB%BB%E5%8A%A1/" style="color: #03a9f4">方向任务</a>
+        </span>
         
     </div>
     <a href="/2025/10/01/web/" class="go-post">阅读全文</a>
@@ -305,9 +533,18 @@
 
 <div class="post">
     <a href="/2025/09/16/second/">
-        <h2 class="post-title"></h2>
+        <h2 class="post-title">基础任务相关的一些</h2>
     </a>
     <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
         
         <span class="date">
             <span class="icon">
@@ -321,7 +558,7 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="基础任务相关的一些"><a href="#基础任务相关的一些" class="headerlink" title="基础任务相关的一些"></a>基础任务相关的一些</h3><blockquote>
+            <blockquote>
 <p>1 观看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JkzGYuEGo/?vd_source=bbdaef564df94fc8991902ba22c6761b">计算机教育中缺失的学期</a>中前四集</p>
 <p>2 登录<a target="_blank" rel="noopener" href="https://chatgpt.com/">chatGPT</a>，询问一个有关于网络安全比赛的知识</p>
 <p>4 安装虚拟机</p>
@@ -332,7 +569,16 @@
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
         
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%96%B9%E5%90%91%E4%BB%BB%E5%8A%A1/" style="color: #03a9f4">方向任务</a>
+        </span>
         
     </div>
     <a href="/2025/09/16/second/" class="go-post">阅读全文</a>
@@ -340,9 +586,18 @@
 
 <div class="post">
     <a href="/2025/09/16/My%20first%20blog/">
-        <h2 class="post-title"></h2>
+        <h2 class="post-title">My first blog</h2>
     </a>
     <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E5%85%B6%E4%BB%96/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                其他
+            </a>
+        </span>
         
         <span class="date">
             <span class="icon">
@@ -356,13 +611,22 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="My-first-blog"><a href="#My-first-blog" class="headerlink" title="My first blog"></a>My first blog</h1><p><em>第一篇博客，献给搭博客的经历^_^</em></p>
+            <p><em>第一篇博客，献给搭博客的经历^_^</em></p>
             
         </div>
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
         
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="color: #00a596">博客</a>
+        </span>
         
     </div>
     <a href="/2025/09/16/My%20first%20blog/" class="go-post">阅读全文</a>
