@@ -194,8 +194,45 @@
     </div>
     
     <div class="content" v-pre>
-        <p>应该暂时搁置了最近在做取证相关的练习题orz</p>
-<p>等过几天再传上来吧（其实也没做几题）</p>
+        <p>其实并没做几题（）后面就开始练取证了。</p>
+<span id="more"></span>
+
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="Week1-布豪有黑客-一"><a href="#Week1-布豪有黑客-一" class="headerlink" title="[Week1] 布豪有黑客(一)"></a>[Week1] 布豪有黑客(一)</h3><p>先贴一下题目：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/1.png"></p>
+<p>打开是一个流量包，就先把流量包拖进之前下的工具里看看有没有关于flag的信息：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/2.png"></p>
+<p>知道有一个压缩包了，虽然打开发现这个流量包不是很大直接就能看到（）</p>
+<p>先看到接收了一个password.txt和flag.zip。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/3.png"><br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/4.png"></p>
+<p>压缩包里有一个flag.txt，用密码解开就是flag了。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/5.png"></p>
+<h3 id="Week1-文化木的侦探委托-一"><a href="#Week1-文化木的侦探委托-一" class="headerlink" title="[Week1] 文化木的侦探委托(一)"></a>[Week1] 文化木的侦探委托(一)</h3><p>题目：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/6.png"></p>
+<p>图片隐写，打开010先粗略搜了一下没有flag，然后宽高一把梭。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/7.png"><br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/8.png"></p>
+<p>打开能发现提示信息：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/9.png"></p>
+<p>用stegsolve提取，能看到flag。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/10.png"></p>
+<h3 id="Week1-《关于我穿越到CTF的异世界这档事-序》"><a href="#Week1-《关于我穿越到CTF的异世界这档事-序》" class="headerlink" title="[Week1] 《关于我穿越到CTF的异世界这档事:序》"></a>[Week1] 《关于我穿越到CTF的异世界这档事:序》</h3><p>题目：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/15.png"></p>
+<p>压缩包打开拿到两个txt文件。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/16.png"><br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/17.png"></p>
+<p>上面那个用puzzlesolve先跑一下，拿到一个?CTFmisc。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/18.png"></p>
+<p>这里其实刚开始还没思路，后面那串看着就不是base64&#x2F;32，后来统计了一下字符串频率发现只有九个字符，正好是?CTFmisc&#x3D;。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/19.png"></p>
+<p>加上后面那个文档名称是base8，联想到八进制，前面那个?CTFmisc应该就是顺序表了，于是用?对应000，C对应001替换过去。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/20.png"></p>
+<p><del>其实这里气死我了，用notepad替换的时候忘记匹配大小写了把小写c也转换成001了差点以为又搞错了（）</del></p>
+<p>总之把二进制再转换一下，得到一串明显是flag的base编码，拿到flag。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/21.png"></p>
+<h3 id="Week1-俱乐部之旅-1-邀请函"><a href="#Week1-俱乐部之旅-1-邀请函" class="headerlink" title="[Week1] 俱乐部之旅(1) - 邀请函"></a>[Week1] 俱乐部之旅(1) - 邀请函</h3><p>贴题目：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/31.png"></p>
+<p><del>这里也是第一次接触掩码爆破（），刚开始以为是明文害我搞了好久</del></p>
+<p>打开压缩包能看到提示信息：c5im????。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/32.png"></p>
+<p>打开azpr选择掩码爆破得到密码。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/33.png"></p>
+<p>docx文件打开显示有错误，改后缀为zip解压，在一个文件夹里找到一串十六进制。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/34.png"></p>
+<p>这里我是先用工具转换成2进制，再用二进制转换成八进制。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/35.png"><br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/36.png"></p>
+<p>得到flag后半部分，然后另一个文件夹里找到一个网页里面有一串二进制编码，由提示能知道转成七进制。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/37.png"></p>
+<p>拼接得到flag。</p>
+<p>音频隐写那题我就拿到了key{deepsound}，但不知道为什么我的deepsound把音频拖进去没有隐写内容……于是放弃叻。</p>
+<p>week2一题没做 <del>（其实做了也不一定会吧）</del> 等后面有时间来复现吧。</p>
+<h2 id="取证"><a href="#取证" class="headerlink" title="取证"></a>取证</h2><h3 id="Week1-取证第一次"><a href="#Week1-取证第一次" class="headerlink" title="[Week1] 取证第一次"></a>[Week1] 取证第一次</h3><p>贴题：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/22.png"></p>
+<p>打开是一个vmdk文件，用diskgenius打开。</p>
+<p>题目说在日志里找，所以在日志里很快就能找到flag。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/23.png"><br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/24.png"></p>
+<h3 id="Week2-你也喜欢win7吗"><a href="#Week2-你也喜欢win7吗" class="headerlink" title="[Week2] 你也喜欢win7吗"></a>[Week2] 你也喜欢win7吗</h3><p>贴题：<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/25.png"></p>
+<p>打开是一个raw文件，用vol先获取版本号，获取版本号之后先filescan看看有什么文件，在桌面有一个flag.zip和hint.txt。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/26.png"></p>
+<p>flag.zip是加密的，hint.txt里说明密码在画图软件里。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/27.png"><br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/28.png"></p>
+<p>熟悉的关于半年前新生赛的回忆涌上心头：）</p>
+<p>查看一下mspaint的PID号然后dump下来<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/29.png"></p>
+<p>然后把后缀改成data，用GIMP打开就可以看到密码了。<br><img src="https://github.com/ncbdd0/images/raw/main/ctf2025/30.png"></p>
+<p>但是这里这个密码我看不懂……谁懂一下临门一脚的感觉真的好气啊，可能是我理解有问题，不知道这个z是|z|还是1z1……还有m后面那个b……不过还是写一下wp证明我差不多要拿到flag了:D</p>
 
     </div>
     
