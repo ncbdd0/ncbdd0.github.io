@@ -194,7 +194,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="color: #00a596">
+                <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="color: #03a9f4">
                     博客
                 </a>
             </span>
@@ -217,13 +217,13 @@
 <p>偏偏那时候还处于一个特别菜鸡的状态orz，不会去csdn或者其他什么地方搜报错的地方该怎么解决，大二知道该怎么去利用这些平台解决问题后，先是把hexo.cmd的路径加到了系统变量中——但是我失败了！然后换了个方法，git里面输入指令——但我还是失败了！</p>
 <p>查了一篇又一篇然后终于发现将安装hexo时的指令<strong>“hexo init”</strong>改成<strong>“npx hexo init”</strong>就好了<del>虽然我至今不知道是为什么</del> 同理将其他的什么<strong>“hexo g”</strong>或者<strong>“hexo s”</strong>前面全加上<strong>npx</strong>就好了。</p>
 <p>然后就是换主题……改语言……配置SSH key还有连接到github上。在连接到github上的时候在这里卡了一下:</p>
-<pre><code>`deploy:
+<pre><code class="yaml">deploy:
 
       type: git
 
       repo: 刚获取的ssh地址
 
-      branch: main`
+      branch: main
 </code></pre>
 <p>不过在这里卡住的原因非常的愚蠢，因为我忘记加空格和缩进了╮(￣▽￣””)╭ <del>我才不会说因为这种愚蠢的错误我卡了十几分钟</del></p>
 <p>改完再运行<strong>“hexo d”</strong>就相当顺利啦，然后就是非常快乐地改名字头像简介，浅浅贴一个配置这个主题的教程<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53517370/article/details/128911597?sharetype=blogdetail&shareId=128911597&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">Hexo配置主题Particlex保姆级教程 -  CSDN App</a></p>
