@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>c语言代码学习 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>c语言代码学习</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/11/2
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%A3%E7%A0%81/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                代码
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="color: #00bcd4">
+                    c语言
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>今天很菜很菜很菜的代码练习，单纯记录一下，后面几天就要专注练取证了orz。</p>
+<span id="more"></span>
+
+<h4 id="1-【题目描述】试编写一个摆花函数void-flower-char-f-N-int-n-，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1"><a href="#1-【题目描述】试编写一个摆花函数void-flower-char-f-N-int-n-，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1" class="headerlink" title="1.【题目描述】试编写一个摆花函数void flower(char f[][N],int n)，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1&lt;&#x3D;N&lt;&#x3D;99，N为奇数），请你编程输出花所排成正方形图案（用大写字母代表花）。我们把图案的中心称为第1圈，中心向外依次是第2圈、第3圈……。中心是字母A，第2圈是字母B，第3圈是字母C，……，第26圈是字母Z，第27圈又是字母A，第28圈又是字母B，……Z，A，B……。在main函数中，输入n，调用flower函数后，输出图案，提醒：输出时每个字母前有一个空格。"></a>1.【题目描述】试编写一个摆花函数void flower(char f[][N],int n)，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1&lt;&#x3D;N&lt;&#x3D;99，N为奇数），请你编程输出花所排成正方形图案（用大写字母代表花）。我们把图案的中心称为第1圈，中心向外依次是第2圈、第3圈……。中心是字母A，第2圈是字母B，第3圈是字母C，……，第26圈是字母Z，第27圈又是字母A，第28圈又是字母B，……Z，A，B……。在main函数中，输入n，调用flower函数后，输出图案，提醒：输出时每个字母前有一个空格。</h4><pre><code class="yaml">例如： 
+输入：15 
+则输出以下图案（输出时每个字母前留一个空格）： 
+ H H H H H H H H H H H H H H H 
+ H G G G G G G G G G G G G G H 
+ H G F F F F F F F F F F F G H 
+ H G F E E E E E E E E E F G H 
+ H G F E D D D D D D D E F G H 
+ H G F E D C C C C C D E F G H 
+ H G F E D C B B B C D E F G H 
+ H G F E D C B A B C D E F G H 
+ H G F E D C B B B C D E F G H 
+ H G F E D C C C C C D E F G H 
+ H G F E D D D D D D D E F G H 
+ H G F E E E E E E E E E F G H 
+ H G F F F F F F F F F F F G H 
+ H G G G G G G G G G G G G G H 
+ H H H H H H H H H H H H H H H 
+</code></pre>
+<p>以前大鼠作业里的一题，翻出来练习了，虽然和去年写的不一样来着hhh。</p>
+<p>代码：</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+void flower(int n)&#123;
+    char a[n][n];
+    for(int i = 0;i &lt; n; i++)&#123;
+        for(int j = 0;j &lt; n;j++)
+        a[i][j] = &#39;A&#39;;
+    &#125;
+    int m = n / 2;//中心 
+    int j = 3,i;
+    int s_num = 1, s_zimu = 1;//计数器
+    for(i = 0;i &lt;= m;i++)&#123;
+        if(i == 0)
+        a[m][m] = &#39;A&#39;;
+        else&#123;
+        for(int num = 0;num &lt; j-2;num++)&#123;
+        a[m - s_num + num + 1][m + s_num] = &#39;A&#39;+ s_zimu;
+        a[m - s_num + num + 1][m - s_num] = &#39;A&#39;+ s_zimu;
+        &#125;
+        for(int num = 0;num &lt; j;num++)&#123;
+            a[m + s_num][m - s_num + num] = &#39;A&#39; + s_zimu;
+            a[m - s_num][m - s_num + num] = &#39;A&#39; + s_zimu;
+        &#125;
+        j += 2;
+        s_num += 1;
+        s_zimu += 1;
+        &#125;
+    &#125; 
+    for(int i = 0;i &lt; n;i++)
+    &#123;
+        for(int j = 0;j &lt; n;j++)
+        printf(&quot;%c&quot;,a[i][j]);
+        printf(&quot;\n&quot;);
+    &#125;
+&#125;
+int main()&#123;
+    printf(&quot;请输入花的边数：&quot;);
+    int n;//正方形边数
+    scanf(&quot;%d&quot;,&amp;n);
+    flower(n);
+    return 0;
+&#125;
+</code></pre>
+<h4 id="2-【题目描述】有n个学生，每个学生的数据包括姓名（10个字符）、出生日期（年-月-日），编写程序，功能是在main函数中输入n个学生信息，调用void-sort-struct-student-stu-int-n-函数（按姓名从小到大排序）排序以后仍在main-中输出排序后的n个学生信息。输出时姓名和出生日期间用一个空格隔开，出生日期的输入输出格式为：yyyy-mm-dd。"><a href="#2-【题目描述】有n个学生，每个学生的数据包括姓名（10个字符）、出生日期（年-月-日），编写程序，功能是在main函数中输入n个学生信息，调用void-sort-struct-student-stu-int-n-函数（按姓名从小到大排序）排序以后仍在main-中输出排序后的n个学生信息。输出时姓名和出生日期间用一个空格隔开，出生日期的输入输出格式为：yyyy-mm-dd。" class="headerlink" title="2.【题目描述】有n个学生，每个学生的数据包括姓名（10个字符）、出生日期（年-月-日），编写程序，功能是在main函数中输入n个学生信息，调用void sort(struct student stu[],int n)函数（按姓名从小到大排序）排序以后仍在main()中输出排序后的n个学生信息。输出时姓名和出生日期间用一个空格隔开，出生日期的输入输出格式为：yyyy-mm-dd。"></a>2.【题目描述】有n个学生，每个学生的数据包括姓名（10个字符）、出生日期（年-月-日），编写程序，功能是在main函数中输入n个学生信息，调用void sort(struct student stu[],int n)函数（按姓名从小到大排序）排序以后仍在main()中输出排序后的n个学生信息。输出时姓名和出生日期间用一个空格隔开，出生日期的输入输出格式为：yyyy-mm-dd。</h4><p>例如：</p>
+<p>输入：<br>2 </p>
+<p>zhangsan </p>
+<p>2004-2-10 </p>
+<p>lisi </p>
+<p>2003-11-20</p>
+<p>输出：</p>
+<p>lisi 2003-11-20 </p>
+<p>zhangsan 2004-2-10</p>
+<p>依旧是大鼠过去的作业，练习练习。</p>
+<p>代码：</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+struct student&#123;
+    char name[100];
+    char birthday[100];
+&#125;;
+void sort(struct student stu[],int n)&#123;
+    char t[100];
+    int i , j;
+    for(i = 0;i &lt; n-1;i++)&#123;
+        for(j = 0;j &lt; n-i-1;j++)&#123;
+            if(strcmp(stu[j].name,stu[j+1].name)&gt;0)&#123;
+                struct student temp;
+                temp = stu[j];
+                stu[j] = stu[j+1];
+                stu[j+1] = temp;
+            &#125;
+        &#125;
+    &#125;
+    for(i = 0;i &lt; n;i++)&#123;
+    printf(&quot;%s %s&quot;,stu[i].name,stu[i].birthday);
+    printf(&quot;\n&quot;);
+&#125;
+&#125;
+int main()&#123;
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    struct student stu[100];
+    for(int i = 0;i &lt; n;i++)
+    scanf(&quot;%s%s&quot;,&amp;stu[i].name,&amp;stu[i].birthday);
+    sort(stu,n);
+    return 0;
+&#125;
+</code></pre>
+<h4 id="3-【题目描述】编程实现十进制和九进制之间的转换。"><a href="#3-【题目描述】编程实现十进制和九进制之间的转换。" class="headerlink" title="3.【题目描述】编程实现十进制和九进制之间的转换。"></a>3.【题目描述】编程实现十进制和九进制之间的转换。</h4><p>输入格式：</p>
+<p>两个整数X和Y，第一个整数X是十进制的10或9，代表后一个数是X进制整数，一个空格之后是另一个X进制的正整数Y（整数大小不超过int型数据的表示范围）。</p>
+<p>输出格式：</p>
+<p>如果输入的X是10，请你将Y转换成9进制输出；</p>
+<p>如果输入的X是9，请你将Y转换成10进制输出。</p>
+<p>如果输入的X不是10或9，或者输入的整数Y不是X进制整数（整数中出现非X进制字符），输出：“DATA ERROR!” （符号为英文符号，DATA和ERROR之间有1个空格，全部为大写字母，字符串最后保留英文符号”!”，请按照样例输出，不要加额外字符）。</p>
+<p>输入样例1：</p>
+<p>10 10000</p>
+<p>输出样例1：</p>
+<p>14641</p>
+<p>输入样例2：</p>
+<p>9 123456789</p>
+<p>输出样例2：</p>
+<p>DATA ERROR!</p>
+<p>代码：</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+void turn_ten(char a[])&#123;//九进制转十进制 
+    int i = 1,sum = 0;
+    for(;a[i]!=&#39;\0&#39;;i++);//几位数 
+    for(int j = 0;j &lt; i;j++)
+        sum += (a[j]-&#39;0&#39;)*pow(9,i-j-1);
+    printf(&quot;转成十进制后的数为：%d&quot;,sum);
+&#125;
+void turn_nine(char a[])&#123;//十进制转九进制 
+    int i = 1,sum = 0,j;
+    for(;a[i]!=&#39;\0&#39;;i++);//几位数
+    for(j = 0;j &lt; i;j++)
+        sum += (a[j]-&#39;0&#39;)*pow(10,i-j-1);//转整数
+    int b[100];
+    for(j = 0;sum != sum / 9;j++)&#123;
+        b[j] = sum % 9;
+        sum /= 9;
+    &#125; 
+    for(j = 0;b[j]!=&#39;\0&#39;;j++)
+    printf(&quot;%d&quot;,b[j]);
+&#125;
+int main()&#123;
+    int num1 , num2;
+    scanf(&quot;%d&quot;,&amp;num1);//进制数 
+    char a[100];
+    scanf(&quot;%s&quot;,&amp;a);
+    if((num1 != 10 &amp;&amp; num1 != 9))&#123;//非九或十进制 
+    printf(&quot;DATA ERROR!&quot;);
+    return 0;
+    &#125;
+    if(num1 == 9)&#123;
+    for(int i = 0;a[i]!=&#39;\0&#39;;i++)&#123;
+        if(a[i] == num1)&#123;
+        printf(&quot;DATA ERROR!&quot;);
+        return 0;
+    &#125;
+    &#125;
+    turn_ten(a);
+&#125;
+    else
+    turn_nine(a);
+    return 0;
+&#125; 
+</code></pre>
+<h4 id="4-任务描述："><a href="#4-任务描述：" class="headerlink" title="4.任务描述："></a>4.任务描述：</h4><p>斗地主扑克游戏中可以一手出的牌型有很多，比如王炸（双王）、炸(4张相同点数)、四带二、三带一、三张、连对、顺子、单张等。</p>
+<p>已知大小王牌以外的牌点数可定义为2至14点，分别表示扑克牌2、3、4、5、6、7、8、9、10、J、Q、K、A的点数。</p>
+<p>假设你手中的扑克牌最多有4张，且没有大小王牌，则能一手出完的牌型(最多4张牌)定义如下：</p>
+<blockquote>
+<p>(1)一张(One card)：只有1张牌。<br><br>(2)一对(Pair)：2张相同点数的牌，例如：9 9。<br><br>(3)三张(Three cards)：3张相同点数的牌，例如：12 12 12。<br><br>(4)炸弹(Bomb)：4张相同点数的牌，例如：3 3 3 3。<br><br>(5)三带一(Three and one)：共4张牌，有3张牌点数相同，例如：6 6 8 6。<br><br>(6)二连对(Two pairs)：共4张牌，有2个对子，对子点数可相邻，例如：8 8 7 7。</p>
+</blockquote>
+<p>输入格式：</p>
+<p>在一行中包含最少1个整数，最多4个整数，整数间由一个空格分隔。代表你手中扑克牌的点数，且不分花色。</p>
+<p>输出格式：</p>
+<p>如果你手中的扑克牌可以构成一手牌，则输出牌型名称(英文)，否则输出：Not a hand of cards。</p>
+<p>输入输出样例：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>输入样例</th>
+<th>输出样例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>5</td>
+<td>One card</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5 14</td>
+<td>Not a hand of cards</td>
+</tr>
+<tr>
+<td>3</td>
+<td>13 13 13</td>
+<td>Three cards</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5 6 7</td>
+<td>Not a hand of cards</td>
+</tr>
+</tbody></table>
+<p>代码（写的超级渣）：</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+int four_card(int a[],int i)&#123;
+    int j , m , max = 1;
+    int temp1,temp2;
+    //判断炸弹和三带一 
+    for(j = 0;j &lt; i;j++)&#123;
+        int count = 1;
+        for(m = j+1;m &lt; i;m++)&#123;
+            if(a[j] == a[m])
+                count += 1;
+        &#125;
+        if(max &lt; count)
+        max = count;
+    &#125;
+    if(max == 3 || max == 4)
+    return 1;
+    //判断二连对
+    for(j = 1;j &lt; i;j++)&#123;
+        if(a[0] == a[j])&#123;
+            temp1 = a[0];//记录和第一张牌相同的牌的数值 
+            for(m = 1;m &lt; 4;m++)&#123;
+                if(m == j)
+                continue;
+                else&#123;
+                    if(a[m] == temp1+1 || a[m] == temp1-1)&#123;
+                        temp2 = a[m];
+                        for(int n = 1;n &lt; 4;n++)&#123;
+                            if(n == m || n == j)
+                            continue;
+                            else&#123;
+                                if(a[n] == temp2)
+                                return 1;
+                            &#125;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;	
+        &#125;
+    &#125;
+    return 0;
+&#125;
+void judge(int i,int a[])&#123;
+    int j = 0,flag = 0;
+    if(i == 1)
+    printf(&quot;One card&quot;);
+    else if(i == 2)
+    &#123;
+        if(a[j]!=a[j+1])
+        printf(&quot;Not a hand of cards&quot;);
+        else
+        printf(&quot;Two cards&quot;);
+    &#125;
+    else if(i == 3)&#123;
+        if(a[j] == a[j+1] &amp;&amp; a[j] == a[j+2] &amp;&amp; a[j+1] == a[j+2])
+        printf(&quot;Three cards&quot;);
+        else
+        printf(&quot;Not a hand of cards&quot;);
+    &#125;
+    else&#123;
+    flag = four_card(a,i);
+    if(flag == 1)
+    printf(&quot;Four card&quot;);
+    else
+    printf(&quot;Not a hand of cards&quot;);
+&#125;
+&#125;
+int main()&#123;
+    int a[100];
+    char s;
+    int i = 0;
+    while(1)&#123;
+        scanf(&quot;%d&quot;,&amp;a[i]);
+        i += 1;//牌数 
+        s = getchar();
+        if(s == &#39;\n&#39;)
+        break;
+    &#125;
+    judge(i,a);
+    return 0;
+&#125; 
+</code></pre>
+<p>传上来后准备去校园跑了，也许后面有时间会来完善完善。<del>（又一个flag是吧</del></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
