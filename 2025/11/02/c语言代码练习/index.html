@@ -194,7 +194,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="color: #03a9f4">
+                <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="color: #ffa2c4">
                     c语言
                 </a>
             </span>
@@ -207,8 +207,8 @@
         <p>今天很菜很菜很菜的代码练习，单纯记录一下，后面几天就要专注练取证了orz。</p>
 <span id="more"></span>
 
-<p><strong>1.【题目描述】试编写一个摆花函数void flower(char f[][N],int n)，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1&lt;&#x3D;N&lt;&#x3D;99，N为奇数），请你编程输出花所排成正方形图案（用大写字母代表花）。我们把图案的中心称为第1圈，中心向外依次是第2圈、第3圈……。中心是字母A，第2圈是字母B，第3圈是字母C，……，第26圈是字母Z，第27圈又是字母A，第28圈又是字母B，……Z，A，B……。在main函数中，输入n，调用flower函数后，输出图案，提醒：输出时每个字母前有一个空格。</strong></p>
-<pre><code class="yaml">例如： 
+<p><strong>1.试编写一个摆花函数void flower(char f[][N],int n)，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1&lt;&#x3D;N&lt;&#x3D;99，N为奇数），请你编程输出花所排成正方形图案（用大写字母代表花）。我们把图案的中心称为第1圈，中心向外依次是第2圈、第3圈……。中心是字母A，第2圈是字母B，第3圈是字母C，……，第26圈是字母Z，第27圈又是字母A，第28圈又是字母B，……Z，A，B……。在main函数中，输入n，调用flower函数后，输出图案，提醒：输出时每个字母前有一个空格。</strong></p>
+<pre><code class="yaml">例如：
 输入：15 
 则输出以下图案（输出时每个字母前留一个空格）： 
  H H H H H H H H H H H H H H H 
@@ -272,7 +272,7 @@ int main()&#123;
     return 0;
 &#125;
 </code></pre>
-<p><strong>2.【题目描述】有n个学生，每个学生的数据包括姓名（10个字符）、出生日期（年-月-日），编写程序，功能是在main函数中输入n个学生信息，调用void sort(struct student stu[],int n)函数（按姓名从小到大排序）排序以后仍在main()中输出排序后的n个学生信息。输出时姓名和出生日期间用一个空格隔开，出生日期的输入输出格式为：yyyy-mm-dd。</strong></p>
+<p><strong>2.有n个学生，每个学生的数据包括姓名（10个字符）、出生日期（年-月-日），编写程序，功能是在main函数中输入n个学生信息，调用void sort(struct student stu[],int n)函数（按姓名从小到大排序）排序以后仍在main()中输出排序后的n个学生信息。输出时姓名和出生日期间用一个空格隔开，出生日期的输入输出格式为：yyyy-mm-dd。</strong></p>
 <p>例如：</p>
 <p>输入：<br>2 </p>
 <p>zhangsan </p>
@@ -318,7 +318,7 @@ int main()&#123;
     return 0;
 &#125;
 </code></pre>
-<p><strong>3.【题目描述】编程实现十进制和九进制之间的转换。</strong></p>
+<p><strong>3.编程实现十进制和九进制之间的转换。</strong></p>
 <p>输入格式：</p>
 <p>两个整数X和Y，第一个整数X是十进制的10或9，代表后一个数是X进制整数，一个空格之后是另一个X进制的正整数Y（整数大小不超过int型数据的表示范围）。</p>
 <p>输出格式：</p>
@@ -510,7 +510,7 @@ int main()&#123;
 <p>输出格式：</p>
 <p>有若干行，每行为一个账号，包括：账号，修改后的密码（之间用单个空格分隔）。</p>
 <p>如果没有小华的账号，则输出empty。</p>
-<pre><code class="yaml">输入样例1：
+<pre><code class="bash">输入样例1：
 13612348765
 5
 helloKitty iLoveCats 13612348765
@@ -634,6 +634,168 @@ int main()&#123;
         &#125;
     &#125;
     for(j = 0;j &lt; i;j++)
+    printf(&quot;%c&quot;,a[j]);
+    return 0;
+&#125; 
+</code></pre>
+<p><strong>7.牛牛(1)</strong></p>
+<p>“牛牛”是一种简单却又非常有意思的棋牌游戏，又称“斗牛”。最早起源于我国广东、广西和湖南三省。牛牛游戏采用一副扑克牌其中的52张(除去大小王)。每位玩家拿到5张牌，根据游戏规则进行排列组合，依次进行大小比较从而决定胜负。</p>
+<p>牌型比较：牛牛&gt;牛9&gt;牛8&gt;牛7&gt;牛6&gt;牛5&gt;牛4&gt;牛3&gt;牛2&gt;牛1&gt;无牛。</p>
+<p>牌型规则：由于每个地方有不同的玩法，所以这里介绍的牛牛游戏的规则是大概规则。</p>
+<p>1．A为1点，J、Q、K都为10点，其他按牌面数字点数计算。</p>
+<p>2．任意3张牌之和为10的整数倍数，称为有牛。如果另外2张牌之和也为10的整数倍数，称为“牛牛”，如果另外2张牌之和不是10的倍数，则根据这2张牌之和的个位数称为“牛几”。例如（4，6，Q，9，9）牌型为牛8、（4，6，Q，9，A）牌型为牛牛。</p>
+<p>3．任意3张牌之和都不能为10的倍数，则判定该副牌无牛，例如（7，8，A，4。J）。</p>
+<p>输入格式:</p>
+<p>输入包括多组数据，每组数据在单独一行中包括5张扑克牌数据，每张扑克牌为2、3、4、5、6、7、8、9、10、J、Q、K、A之一，每两张牌之间有一个空格。</p>
+<p>输出格式:</p>
+<p>输出该组牌最大牌型的牌型名称，例如：牛牛输出：DOUBLE BULL，牛8输出BULL 8，无牛输出:NO BULL。</p>
+<pre><code class="bash">输入样例:
+A A A K K
+5 6 9 A Q
+3 3 3 3 4
+4 6 Q 9 9
+4 6 Q 9 A
+7 8 A 4 J
+
+输出样例:
+
+NO BULL
+BULL 1
+BULL 6
+BULL 8
+DOUBLE BULL
+NO BULL
+
+输入样例:
+2 2 2 2 6
+3 3 3 4 4
+
+输出样例:
+BULL 4
+BULL 7
+</code></pre>
+<p>这道题卡了我好久……主要是卡在那个输入函数还有判断函数，之前没有接触过连续输入多行输入然后两个回车结束的条件（还是做的题不够多orz。还有在任意三张牌之和那里忘记清零总和了，无牛一直输出有牛：（。</p>
+<p>代码：</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int input(char a[100][5])&#123;//输入牌组 
+    int huiche = 0;//回车计数，输入两个连续回车结束输入 
+    int j = 0;//计数器 
+    int i = 0;
+    char c;
+    while(1)&#123;
+        c = getchar();
+        if(c == &#39;\n&#39;)&#123;
+            huiche += 1;
+            if(huiche == 2)
+            break;
+        &#125;
+        else
+        huiche = 0;
+        if(c != &#39; &#39; &amp;&amp; c != &#39;\n&#39;)&#123;
+            a[i][j] = c;
+            j += 1;
+        &#125;
+        if(j == 5)&#123;
+            j = 0;
+            i += 1;
+        &#125;
+    &#125; 
+    return i;
+&#125;
+void turn_num(char a[100][5],int i)&#123;//转换为点数 
+    for(int m = 0;m &lt; i;m++)&#123;
+        for(int n = 0;n &lt; 5;n++)&#123;
+            if(a[m][n] == &#39;A&#39;)
+            a[m][n] = 1 + &#39;0&#39;;
+            else if(a[m][n] &gt;= &#39;2&#39; &amp;&amp; a[m][n] &lt;= &#39;9&#39;)
+            continue;
+            else
+            a[m][n] = 10 + &#39;0&#39;;	
+        &#125;
+    &#125;
+&#125;
+void judge(char a[100][5],int i)&#123;//判断函数
+    char b[100][100];//输出字符数组 
+    for(int j = 0;j &lt; i;j++)&#123;//一组一组牌判断 
+        int sum1 = 0,flag = 0,sum2 = 0;
+        for(int num1 = 0;num1 &lt; 3;num1++)&#123;
+            for(int num2 = num1 + 1;num2 &lt; 4;num2++)&#123;
+                for(int num3 = num2 + 1;num3 &lt; 5;num3++)&#123;
+                    sum1 = 0;
+                    sum1 += a[j][num1] + a[j][num2] + a[j][num3] - &#39;0&#39;*3;
+                    if(sum1 % 10 == 0)&#123;//有牛 
+                        for(int count = 0;count &lt; 5;count++)&#123;
+                            if(count == num1 || count == num2 || count == num3)
+                            continue;
+                            else
+                            sum2 += a[j][count] - &#39;0&#39;;//第二个牛 
+                        &#125;
+                        flag = 1; //找到牛
+                        break; 
+                    &#125;
+                &#125;
+                if(flag == 1)
+                break;
+            &#125;
+            if(flag == 1)
+            break;
+        &#125;
+        if(flag == 0)
+        strcpy(b[j],&quot;NO BULL&quot;);
+        else&#123;
+            if(sum2 % 10 == 0)
+            strcpy(b[j],&quot;DOUBLE BULL&quot;);
+            else&#123;
+                strcpy(b[j],&quot;BULL &quot;);
+                b[j][5] = (sum2 % 10) + &#39;0&#39;; 
+            &#125;
+        &#125; 
+    &#125;
+    for(int j = 0;j &lt; i;j++)&#123;
+    printf(&quot;%s&quot;,b[j]);
+    printf(&quot;\n&quot;);
+    &#125;
+&#125;
+int main()&#123;
+    char a[100][5];
+    int i;//i为多少组牌 
+    i = input(a);//输入函数 
+    turn_num(a,i);//转换数值 
+    judge(a,i);//判断函数 
+    return 0;
+&#125; 
+</code></pre>
+<p><strong>8.有一组均由字符A<del>Z和a</del>z组成的字符串,其中要求将字符串中各字符按如下要求进行转换：A&lt;-&gt;z、B&lt;-&gt;y、C&lt;-&gt;x、…… 、X&lt;-&gt;c、Y&lt;-&gt;b、Z&lt;-&gt;a</strong></p>
+<p>输入：</p>
+<p>第一行输入字符串(长度&lt;&#x3D;10000）</p>
+<p>输出：</p>
+<p>输出转换之后的字符串。</p>
+<p>样例输入：</p>
+<p>Algorithm</p>
+<p>样例输出：</p>
+<p>zOTLIRGSN</p>
+<p>样例输入：</p>
+<p>Hello</p>
+<p>样例输出：</p>
+<p>sVOOL</p>
+<p>这题相对简单一点，有种在写恺撒密码的感jio。</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+void turn(char a[10000],int n)&#123;
+    for(int i = 0;i &lt; n;i++)&#123;
+        if(a[i] &gt;= &#39;A&#39; &amp;&amp; a[i] &lt;= &#39;Z&#39;)//大写转小写 
+        a[i] = 26 - (a[i] - &#39;A&#39; + 1) + &#39;a&#39;;
+        else
+        a[i] = 26 - (a[i] - &#39;a&#39; + 1) + &#39;A&#39;; 
+    &#125;
+&#125;
+int main()&#123;
+    char a[10000];
+    scanf(&quot;%s&quot;,a);
+    int i;
+    for(i = 0;a[i]!=&#39;\0&#39;;i++);//记录字符串长度
+    turn(a,i);
+    for(int j = 0;j &lt; i;j++)
     printf(&quot;%c&quot;,a[j]);
     return 0;
 &#125; 
