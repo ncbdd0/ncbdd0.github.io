@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/cursor.min.css">
     <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
-    <title>基础任务相关的一些 | OvO</title>
+    <title>极客大挑战2025wp | OvO</title>
     <meta name="author" content="你猜不到的" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -166,14 +166,14 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>基础任务相关的一些</h1>
+        <h1>极客大挑战2025wp</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/9/16
+            2025/11/23
         </span>
         
         <span class="category">
@@ -194,8 +194,8 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E6%96%B9%E5%90%91%E4%BB%BB%E5%8A%A1/" style="color: #ff7d73">
-                    方向任务
+                <a href="/tags/misc-wp/" style="color: #ff7d73">
+                    -misc -wp
                 </a>
             </span>
             
@@ -204,20 +204,52 @@
     </div>
     
     <div class="content" v-pre>
-        <blockquote>
-<p>1 观看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JkzGYuEGo/?vd_source=bbdaef564df94fc8991902ba22c6761b">计算机教育中缺失的学期</a>中前四集</p>
-<p>2 登录<a target="_blank" rel="noopener" href="https://chatgpt.com/">chatGPT</a>，询问一个有关于网络安全比赛的知识</p>
-<p>4 安装虚拟机</p>
-<p>5 学会用vscode</p>
-</blockquote>
+        <p>复活一下……上个月因为练取证其实基本没做几题，不过其实我也很多都不会orz。</p>
 <span id="more"></span> 
 
-<p>第一个任务还是略显感慨的，当时大一刚进来什么都不懂，甚至不知道什么是虚拟机，是后面研究ctf入门的时候才知道的orz。</p>
-<p>第二个非常感谢我的老哥让我有免费蹭他小火箭翻墙的能力啊，在这里贴一下问ai的截图：<br><img src="https://github.com/ncbdd0/images/raw/main/blog2-1.png"></p>
-<p>第三个是搭博客，写在前一篇博客里了就不再赘述了kkk。</p>
-<p>第四个是安装ubuntu，其实去年就已经下载了一个kali了，这里我的ubuntu还在下载，贴一下跟的教程链接<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_52799373/article/details/139055794?sharetype=blogdetail&shareId=139055794&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">【VMware虚拟机安装Ubuntu教程(超详细) -  CSDN App】</a>总体跟着我是没有报过什么错的，就是刚开始安装的是24版的，在启动的时候报了个错<strong>“SMBus Host Controller not enabled”</strong>，想了想干脆换成22版的装了，就没再报错了，就是这里我的Ubuntu还在下载hhh<br><img src="https://github.com/ncbdd0/images/raw/main/blog-2.png"></p>
-<p>第五个用vscode，其实平时就在用vscode写代码了hhh，所以过程也是比较顺利的TvT,<del>远程连接linux我用tabby连接了就不用vscode再连一下了(哦不或许其实只是懒)</del><br>最后贴一下学长给的代码运行出来的结果吧！<br><img src="https://github.com/ncbdd0/images/raw/main/blog2-3.png"></p>
-<p><strong>Welcome to fafu!!!</strong></p>
+<h4 id="1-HTTP"><a href="#1-HTTP" class="headerlink" title="1.HTTP"></a>1.HTTP</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/1.png"></p>
+<p>打开是一个流量包，流量包不是很大划一下就能翻完，直接过滤了一下http流。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/2.png"></p>
+<p>可以看到有三段类似base64编码的字符串，直接提取了base64解码，得到flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/3.png"></p>
+<h4 id="2-🗃️🗃️"><a href="#2-🗃️🗃️" class="headerlink" title="2.🗃️🗃️"></a>2.🗃️🗃️</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/4.png"></p>
+<p>下载附件一张图片，属性里有经纬度。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/5.png"><br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/6.png"></p>
+<p>很简单粗暴地把经纬度信息扔给ai。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/7.png"></p>
+<p>得到flag。</p>
+<h4 id="3-Bite-off-picture"><a href="#3-Bite-off-picture" class="headerlink" title="3.Bite off picture"></a>3.Bite off picture</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/8.png"></p>
+<p>下载附件是一个加密的压缩包，根据题目提示直接用010打开。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/9.png"></p>
+<p>结尾有一串倒序base64编码，解码一下然后打开压缩包。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/10.png"><br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/11.png"></p>
+<p>得到一张图片。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/12.png"></p>
+<p>png隐写直觉宽高一把梭，拿到flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/13.png"></p>
+<h4 id="4-Blockchain-SignIn"><a href="#4-Blockchain-SignIn" class="headerlink" title="4.Blockchain SignIn"></a>4.Blockchain SignIn</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/14.png"></p>
+<p>这个和虚拟货币有关的misc题我是第一次做（不包含做取证的时候），刚开始特别懵逼（），不过这题属于很简单的了只是简单编码。</p>
+<p>根据地址查找交易信息。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/15.png"></p>
+<p>下面那个查看更多信息点开有一串hex编码。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/16.png"></p>
+<p>解码得到flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/17.png"></p>
+<h4 id="5-Dream"><a href="#5-Dream" class="headerlink" title="5.Dream"></a>5.Dream</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/18.png"></p>
+<p>依旧根据地址查看交易信息，在contact这里有一串编码。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/19.png"></p>
+<p>依旧解码得到flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/20.png"></p>
+<h4 id="6-hidden"><a href="#6-hidden" class="headerlink" title="6.hidden"></a>6.hidden</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/21.png"></p>
+<p>word的本质是zip，直接打开word可以看到报错，于是把后缀改成zip打开。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/22.png"><br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/23.png"></p>
+<p>在document.xml这个文件里先找到第一段flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/24.png"></p>
+<p>在doc这个文件夹下分别有第二第三段flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/25.png"></p>
+<p>那个txt文件打开一串base64编码解码就是flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/26.png"><br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/27.png"></p>
+<p>另一个flag3.jpg打开显示无法预览，binwalk和exiftool都没发现什么可疑信息，后来用010打开缺了文件头，补上jpg文件头：FF D8 FF。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/28.png"></p>
+<p>得到最后一段flag。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/29.png"></p>
+<p><del>其实这题我做的时候还找到一个image1.png研究了好久（），没想到那个只是张普通的图片没有任何卵用。</del></p>
+<p>顺便贴一个010的使用：<a target="_blank" rel="noopener" href="https://blog.csdn.net/NS_ice/article/details/132398846?sharetype=blogdetail&shareId=132398846&sharerefer=APP&sharesource=2401_87851833&sharefrom=link">010editor的安装与基本操作 -  CSDN App</a></p>
+<h4 id="7-gift"><a href="#7-gift" class="headerlink" title="7.gift"></a>7.gift</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/30.png"></p>
+<p><del>什么题目描述听不懂思密达。</del></p>
+<p>下载附件是一个文件没有后缀，用010打开可以知道是压缩包，后缀改成zip打开。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/31.png"></p>
+<p>打开是一个加密压缩包，用010打开在文件尾找到base64编码，解码得到密码。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/32.png"><br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/33.png"></p>
+<p>解压是一张miku。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/34.png"></p>
+<p>这里卡了我很久，010、binwalk、zsteg、stegsolve都试了一遍没结果orz，然后最近下了随波逐流在图片工具栏找到了隐形水印工具，正好和图片名称对上了，于是就梭出来了。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/35.png"></p>
+<h4 id="8-4ak5ra"><a href="#8-4ak5ra" class="headerlink" title="8.4ak5ra"></a>8.4ak5ra</h4><p><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/36.png"></p>
+<p>首先下载附件解压是一张图片和一个txt文件，结合题目lsb隐写可以判断应该藏了一张图片。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/37.png"></p>
+<p>binwalk一下，有压缩包信息。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/38.png"></p>
+<p>分解出来，是另一张图片。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/39.png"><br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/40.png"></p>
+<p>binwalk没有什么，用zsteg看看有没有隐写信息。<br><img src="https://github.com/ncbdd0/images/raw/main/jkdtz/41.png"></p>
+<p>拿到flag。</p>
+<p>其实基本只做了easy的题目orz，还有一道全程都是ai梭出来的就不贴了。感觉我到现在还是只有隐写稍微可以一点，其实本来还想做点web但是要期末考就……懒了<del>（其实也不会做对吧）</del></p>
+<p>等期末考完再去nssctf好好刷题吧！<del>其实又是画大饼</del></p>
 
     </div>
     

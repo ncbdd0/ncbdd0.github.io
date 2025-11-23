@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/cursor.min.css">
     <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
-    <title>c语言代码学习 | OvO</title>
+    <title>c语言代码练习 | OvO</title>
     <meta name="author" content="你猜不到的" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -166,14 +166,14 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>c语言代码学习</h1>
+        <h1>c语言代码练习</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/11/2
+            2025/11/23
         </span>
         
         <span class="category">
@@ -194,7 +194,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="color: #00a596">
+                <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="color: #03a9f4">
                     c语言
                 </a>
             </span>
@@ -204,7 +204,7 @@
     </div>
     
     <div class="content" v-pre>
-        <p>今天很菜很菜很菜的代码练习，单纯记录一下，后面几天就要专注练取证了orz。</p>
+        <p>不知道为什么之前那个博客打不开了，于是就重传了一下，都是很菜的c代码练习。</p>
 <span id="more"></span>
 
 <p><strong>1.试编写一个摆花函数void flower(char f[][N],int n)，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1&lt;&#x3D;N&lt;&#x3D;99，N为奇数），请你编程输出花所排成正方形图案（用大写字母代表花）。我们把图案的中心称为第1圈，中心向外依次是第2圈、第3圈……。中心是字母A，第2圈是字母B，第3圈是字母C，……，第26圈是字母Z，第27圈又是字母A，第28圈又是字母B，……Z，A，B……。在main函数中，输入n，调用flower函数后，输出图案，提醒：输出时每个字母前有一个空格。</strong></p>
@@ -353,7 +353,8 @@ void turn_nine(char a[])&#123;//十进制转九进制
         b[j] = sum % 9;
         sum /= 9;
     &#125; 
-    for(j = 0;b[j]!=&#39;\0&#39;;j++)
+    --j;
+    for(;j &gt;= 0;j--)
     printf(&quot;%d&quot;,b[j]);
 &#125;
 int main()&#123;
@@ -365,7 +366,7 @@ int main()&#123;
     printf(&quot;DATA ERROR!&quot;);
     return 0;
     &#125;
-    if(num1 == 9)&#123;
+    if(num1 == &#39;9&#39;)&#123;
     for(int i = 0;a[i]!=&#39;\0&#39;;i++)&#123;
         if(a[i] == num1)&#123;
         printf(&quot;DATA ERROR!&quot;);
