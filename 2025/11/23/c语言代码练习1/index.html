@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/cursor.min.css">
     <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
-    <title>c语言练习 | OvO</title>
+    <title>c语言代码练习1 | OvO</title>
     <meta name="author" content="你猜不到的" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -166,7 +166,7 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>c语言练习</h1>
+        <h1>c语言代码练习1</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -194,7 +194,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="color: #ffa2c4">
+                <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="color: #ff7d73">
                     c语言
                 </a>
             </span>
@@ -204,7 +204,7 @@
     </div>
     
     <div class="content" v-pre>
-        <p>不知道为什么之前那个博客打不开了，于是就重传了一下，都是很菜的c代码练习。</p>
+        <p>很菜的c代码练习。</p>
 <span id="more"></span>
 
 <p><strong>1.试编写一个摆花函数void flower(char f[][N],int n)，函数的功能描述：同学们弄来了不多于26种花，每种花有多盆。为使有限的鲜花摆放得更美观，同学们决定把花摆成正方形图案，现在告诉你正方形的边长N（每盆花的直径为一个单位长，1&lt;&#x3D;N&lt;&#x3D;99，N为奇数），请你编程输出花所排成正方形图案（用大写字母代表花）。我们把图案的中心称为第1圈，中心向外依次是第2圈、第3圈……。中心是字母A，第2圈是字母B，第3圈是字母C，……，第26圈是字母Z，第27圈又是字母A，第28圈又是字母B，……Z，A，B……。在main函数中，输入n，调用flower函数后，输出图案，提醒：输出时每个字母前有一个空格。</strong></p>
@@ -533,7 +533,6 @@ whoAmi fEB.29$
 输出样例2：
 empty
 </code></pre>
-<p>做的时候很愚蠢地犯了scanf(“%s”)格式还有把num打成n的错误……</p>
 <p>代码：</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
@@ -585,61 +584,7 @@ int main()&#123;//主函数
      return 0;
 &#125; 
 </code></pre>
-<p><strong>6.输入一个字符串s（长度不超过1000）表示网址，网址以cn或者com结尾，现在需要你将网址中除了www与域名（cn或者com）以外的部分，以分隔符点（.）为单位，每段单独反转。比如网址s &#x3D; “<a target="_blank" rel="noopener" href="http://www.baidu.zhidao.com/">www.baidu.zhidao.com</a>“ 反转后的结果为”<a target="_blank" rel="noopener" href="http://www.udiab.oadihz.com".请输出反转之后的结果.(网址除了末尾不会出现包含cn或者com的字母)/">www.udiab.oadihz.com&quot;.请输出反转之后的结果。(网址除了末尾不会出现包含cn或者com的字母)</a></strong></p>
-<p>输入格式：</p>
-<p>输入一个字符串，字符串长度不超过1000</p>
-<p>输出格式：</p>
-<p>分段反转之后的结果</p>
-<p>输入样例1：</p>
-<p><a target="_blank" rel="noopener" href="http://www.baidu.zhidao.com/">www.baidu.zhidao.com</a></p>
-<p>输入样例2：</p>
-<p><a target="_blank" rel="noopener" href="http://www.com/">www.com</a></p>
-<p>输出样例1：</p>
-<p><a target="_blank" rel="noopener" href="http://www.udiab.oadihz.com/">www.udiab.oadihz.com</a></p>
-<p>输出样例2：</p>
-<p><a target="_blank" rel="noopener" href="http://www.com/">www.com</a></p>
-<p>这里做的时候刚开始索引少加了m……</p>
-<p>代码：</p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-void reverse(char a[1000],int m,int n)&#123;
-    int i;
-    char temp;
-    if((n-m) % 2 == 0)&#123;
-        for(i = m+1;i &lt; (m+n)/2;i++)&#123;
-            temp = a[i];
-            a[i] = a[n-i+m];
-            a[n-i+m] = temp;
-        &#125;
-    &#125; 
-    else&#123;
-        for(i = m+1;i &lt;= (m+n)/2;i++)&#123;
-            temp = a[i];
-            a[i] = a[n-i+m];
-            a[n-i+m] = temp;
-        &#125;
-    &#125;
-&#125;
-int main()&#123;
-    char a[1000];
-    scanf(&quot;%s&quot;,a);
-    int i,j;
-    for(i = 0;a[i]!=&#39;\0&#39;;i++);//i为网址长度
-    int m , n;//m第一个标点位置,n最后一个标点位置
-    for(m = 0;a[m]!=&#39;.&#39;;m++);
-    for(n = i;a[n]!=&#39;.&#39;;n--);
-    int k = m;//k为第一个标点位置 
-    for(j = m+1;j &lt;= n;j++)&#123;
-        if(a[j] == &#39;.&#39;)&#123;
-        reverse(a,k,j);
-        k = j;//更新k的位置 
-        &#125;
-    &#125;
-    for(j = 0;j &lt; i;j++)
-    printf(&quot;%c&quot;,a[j]);
-    return 0;
-&#125; 
-</code></pre>
-<p><strong>7.牛牛(1)</strong></p>
+<p><strong>7.牛牛</strong></p>
 <p>“牛牛”是一种简单却又非常有意思的棋牌游戏，又称“斗牛”。最早起源于我国广东、广西和湖南三省。牛牛游戏采用一副扑克牌其中的52张(除去大小王)。每位玩家拿到5张牌，根据游戏规则进行排列组合，依次进行大小比较从而决定胜负。</p>
 <p>牌型比较：牛牛&gt;牛9&gt;牛8&gt;牛7&gt;牛6&gt;牛5&gt;牛4&gt;牛3&gt;牛2&gt;牛1&gt;无牛。</p>
 <p>牌型规则：由于每个地方有不同的玩法，所以这里介绍的牛牛游戏的规则是大概规则。</p>
@@ -657,9 +602,7 @@ A A A K K
 4 6 Q 9 9
 4 6 Q 9 A
 7 8 A 4 J
-
 输出样例:
-
 NO BULL
 BULL 1
 BULL 6
@@ -670,12 +613,10 @@ NO BULL
 输入样例:
 2 2 2 2 6
 3 3 3 4 4
-
 输出样例:
 BULL 4
 BULL 7
 </code></pre>
-<p>这道题卡了我好久……主要是卡在那个输入函数还有判断函数，之前没有接触过连续输入多行输入然后两个回车结束的条件（还是做的题不够多orz。还有在任意三张牌之和那里忘记清零总和了，无牛一直输出有牛：（。</p>
 <p>代码：</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
@@ -767,7 +708,8 @@ int main()&#123;
     return 0;
 &#125; 
 </code></pre>
-<p><strong>8.有一组均由字符A<del>Z和a</del>z组成的字符串,其中要求将字符串中各字符按如下要求进行转换：A&lt;-&gt;z、B&lt;-&gt;y、C&lt;-&gt;x、…… 、X&lt;-&gt;c、Y&lt;-&gt;b、Z&lt;-&gt;a</strong></p>
+<p><strong>8.有一组均由字符A<del>Z和a</del>z组成的字符串,其中要求将字符串中各字符按如下要求进行转换：</strong></p>
+<p>A&lt;-&gt;z、B&lt;-&gt;y、C&lt;-&gt;x、…… 、X&lt;-&gt;c、Y&lt;-&gt;b、Z&lt;-&gt;a</p>
 <p>输入：</p>
 <p>第一行输入字符串(长度&lt;&#x3D;10000）</p>
 <p>输出：</p>
@@ -780,7 +722,7 @@ int main()&#123;
 <p>Hello</p>
 <p>样例输出：</p>
 <p>sVOOL</p>
-<p>这题相对简单一点，有种在写恺撒密码的感jio。</p>
+<p>代码：</p>
 <pre><code class="c">#include &lt;stdio.h&gt;
 void turn(char a[10000],int n)&#123;
     for(int i = 0;i &lt; n;i++)&#123;
