@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>python代码学习2 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>python代码学习2</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/12/7
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%A3%E7%A0%81/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                代码
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #ffa2c4">
+                    python
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>这个用来放在力扣的刷题记录吧，正在从简单题开始做，后面还会继续更新。前段时间一直在学c语言真是把语法忘得一干二净了……</p>
+<span id="more"></span>
+
+<h5 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h5><p>给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值target的那两个整数，并返回它们的数组下标。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [2,7,11,15], target &#x3D; 9</p>
+<p>输出：[0,1]</p>
+<p>示例 2：</p>
+<p>输入：nums &#x3D; [3,2,4], target &#x3D; 6</p>
+<p>输出：[1,2]</p>
+<p>示例 3：</p>
+<p>输入：nums &#x3D; [3,3], target &#x3D; 6</p>
+<p>输出：[0,1]</p>
+<p><del>刚开始还不知道不用自己编写主函数给我一顿爆红……</del></p>
+<p>代码:</p>
+<pre><code class="python">class Solution(object):
+    def twoSum(self, nums, target):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        &quot;&quot;&quot;
+        for i in range(len(nums)):
+            res = target - nums[i]
+            if res in nums[i+1:]:
+                return i ,nums[i+1:].index(res)+i+1
+</code></pre>
+<p>思路：通过计算看下一个要找的数字是否存在然后利用index()返回索引。</p>
+<h5 id="2-罗马数字转整数"><a href="#2-罗马数字转整数" class="headerlink" title="2.罗马数字转整数"></a>2.罗马数字转整数</h5><p>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I</td>
+<td>1</td>
+</tr>
+<tr>
+<td>V</td>
+<td>5</td>
+</tr>
+<tr>
+<td>X</td>
+<td>10</td>
+</tr>
+<tr>
+<td>L</td>
+<td>50</td>
+</tr>
+<tr>
+<td>C</td>
+<td>100</td>
+</tr>
+<tr>
+<td>D</td>
+<td>500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p>例如，罗马数字2写做II，即为两个并列的1。12写做XII，即为X+II。27写做XXVII, 即为XX+V+II 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如4不写做IIII，而是IV。数字1在数字 5的左边，所表示的数等于大数5减小数1得到的数值4。同样地，数字9表示为IX。这个特殊的规则只适用于以下六种情况：</p>
+<ul>
+<li>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。</li>
+<li>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 </li>
+<li>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。</li>
+</ul>
+<p>给定一个罗马数字，将其转换成整数。</p>
+<p>示例 1:</p>
+<p>输入: s &#x3D; “III”</p>
+<p>输出: 3</p>
+<p>示例 2:</p>
+<p>输入: s &#x3D; “IV”</p>
+<p>输出: 4</p>
+<p>示例 3:</p>
+<p>输入: s &#x3D; “MCMXCIV”</p>
+<p>输出: 1994</p>
+<p>解释: M &#x3D; 1000, CM &#x3D; 900, XC &#x3D; 90, IV &#x3D; 4.</p>
+<p>代码：<br>1.初版菜鸟版</p>
+<pre><code class="python">class Solution(object):
+    def romanToInt(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: int
+        &quot;&quot;&quot;
+        nums = list(s)
+        sum,j = 0,0
+        while j &lt; len(nums): 
+            if nums[j] == &#39;I&#39;:
+                if j + 1 &lt; len(nums) and nums[j+1] == &#39;V&#39;:
+                    sum += 4
+                    j += 1
+                elif j + 1 &lt; len(nums) and nums[j+1] == &#39;X&#39;:
+                    sum += 9
+                    j += 1
+                else:
+                    sum += 1
+            elif nums[j] == &#39;V&#39;:
+                sum += 5
+            elif nums[j] == &#39;X&#39;:
+                if j + 1 &lt; len(nums) and nums[j+1] == &#39;L&#39;:
+                    sum += 40
+                    j += 1
+                elif j + 1 &lt; len(nums) and nums[j+1] == &#39;C&#39;:
+                    sum += 90
+                    j += 1
+                else:
+                    sum += 10
+            elif nums[j] == &#39;L&#39;:
+                sum += 50
+            elif nums[j] == &#39;C&#39;:
+                if j + 1 &lt; len(nums) and nums[j+1] == &#39;D&#39;:
+                    sum += 400
+                    j += 1
+                elif j + 1 &lt; len(nums) and nums[j+1] == &#39;M&#39;:
+                    sum += 900
+                    j += 1
+                else:
+                    sum += 100
+            elif nums[j] == &#39;D&#39;:
+                sum += 500
+            elif nums[j] == &#39;M&#39;:
+                sum += 1000
+            else:
+                continue
+            j += 1
+        return sum               
+</code></pre>
+<p>这个做的真没什么逻辑，就是根据题目描述简单地用了while循环和if分支，敲了几十行我自己看着都头大。</p>
+<p>2.优化版</p>
+<pre><code class="python">class Solution(object):
+    def romanToInt(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: int
+        &quot;&quot;&quot;
+        nums = list(s)
+        hashmap = &#123;&quot;I&quot; : 1 , &quot;V&quot; : 5 , &quot;X&quot; : 10 , &quot;L&quot; : 50 , &quot;C&quot; : 100 , &quot;D&quot; : 500 , &quot;M&quot;: 1000&#125;
+        sum , i = 0 , 0
+        while i &lt; len(nums):
+            if i+1 &lt; len(nums) and nums[i]+nums[i+1] in [&#39;IV&#39;,&#39;IX&#39;,&#39;XL&#39;,&#39;XC&#39;,&#39;CD&#39;,&#39;CM&#39;]:
+                sum += hashmap[nums[i+1]] - hashmap[nums[i]]
+                i += 1
+            else:
+                sum += hashmap[nums[i]]
+            i += 1
+        return sum 
+</code></pre>
+<p>在看了一些佬的解析后引入了字典，虽然就提速了1ms(bushi，但是更好理解代码量也相对少点hhh。</p>
+<p>思路：遍历字符串后通过哈希图根据键查找对应的值，遇到特殊规则的时候注意再多跳一格。</p>
+<h5 id="3-最长公共前缀"><a href="#3-最长公共前缀" class="headerlink" title="3.最长公共前缀"></a>3.最长公共前缀</h5><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串 “”。</p>
+<p>示例 1：</p>
+<p>输入：strs &#x3D; [“flower”,”flow”,”flight”]</p>
+<p>输出：”fl”</p>
+<p>示例 2：</p>
+<p>输入：strs &#x3D; [“dog”,”racecar”,”car”]</p>
+<p>输出：””</p>
+<p>代码：</p>
+<pre><code class="python">class Solution(object):
+    def longestCommonPrefix(self, strs):
+        &quot;&quot;&quot;
+        :type strs: List[str]
+        :rtype: str
+        &quot;&quot;&quot;
+        i , k= 1 , 0
+        same = []
+        num = list(strs[0])
+        if len(strs) == 1:
+            return strs[0]
+        while i &lt; len(strs):
+            current_k = 0
+            num_str = list(strs[i])
+            if len(num_str) &gt; len(num):
+                length = len(num)
+            else:
+                length = len(num_str)
+            for j in range(length):
+                if num_str[j] == num[j]:
+                    current_k = j+1
+                else:
+                    break
+            if i == 1:
+                k = current_k
+            else:
+                k = min(current_k,k)
+            i += 1
+        if k == 0:
+            return &quot;&quot;
+        else:
+            for i in range(k):
+                same.append(num[i])
+            result = &#39;&#39;.join(same)
+            return result
+</code></pre>
+<p>脑子总是在犯蠢，做的时候越界问题卡了我一会orz。</p>
+<p>思路：把后面的字符串跟第一个字符串进行对比，然后不断更新最小的公共前缀数，还要注意排除一下只有一个数组中字符串的情况。</p>
+<h5 id="4-有效的括号"><a href="#4-有效的括号" class="headerlink" title="4.有效的括号"></a>4.有效的括号</h5><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ul>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+<li>每个右括号都有一个对应的相同类型的左括号。</li>
+</ul>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “()[]{}”</p>
+<p>输出：true</p>
+<p>示例 2：</p>
+<p>输入：s &#x3D; “([])”</p>
+<p>输出：true</p>
+<p>示例 3：</p>
+<p>输入：s &#x3D; “([)]”</p>
+<p>输出：false</p>
+<p>代码：</p>
+<pre><code class="python">class Solution(object):
+    def isValid(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: bool
+        &quot;&quot;&quot;
+        strs = list(s)
+        stack = []
+        pairs = &#123;&#39;)&#39; : &#39;(&#39; , &#39;]&#39; : &#39;[&#39; , &#39;&#125;&#39; : &#39;&#123;&#39;&#125;
+        for i in range(len(strs)):
+            if strs[i] in pairs.values():
+                stack.append(strs[i])
+            elif strs[i] in pairs.keys():
+                if not stack or stack[-1] != pairs[strs[i]]:
+                    return False
+                else:
+                    stack.pop()
+            else:
+                return False
+        return not stack
+</code></pre>
+<p>这题按正确的顺序闭合那块没做出来最后问ai了orz，用的是栈的方法。</p>
+<p>思路：先把左括号压入栈，然后查找到的右括号看是否与栈顶匹配（从内到外的第一个左括号即要求正确的顺序闭合规则），如匹配则把对应的左括号弹出，最后栈空则为有效括号字符串。</p>
+<h5 id="5-合并两个有序链表"><a href="#5-合并两个有序链表" class="headerlink" title="5.合并两个有序链表"></a>5.合并两个有序链表</h5><p>将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<p>示例 1：</p>
+<p>输入：l1 &#x3D; [1,2,4], l2 &#x3D; [1,3,4]</p>
+<p>输出：[1,1,2,3,4,4]</p>
+<p>示例 2：</p>
+<p>输入：l1 &#x3D; [], l2 &#x3D; [0]</p>
+<p>输出：[0]</p>
+<p>代码：</p>
+<pre><code class="python"># Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def mergeTwoLists(self, list1, list2):
+        &quot;&quot;&quot;
+        :type list1: Optional[ListNode]
+        :type list2: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        &quot;&quot;&quot;
+        dummy = ListNode(0)#创建头结点
+        current = dummy
+        while list1 and list2:
+            if list1.val &lt;= list2.val:
+                current.next = list1
+                list1 = list1.next
+            else:
+                current.next = list2
+                list2 = list2.next
+            current = current.next
+        current.next = list1 if list1 else list2
+        return dummy.next
+</code></pre>
+<p>这题我刚开始做的时候直接当列表做的，后面问了ai才发现list1和list2是链表节点不能直接当成列表orz。</p>
+<p>思路：先创建一个头结点然后将list1和list2指向的元素进行比较，按升序连接指针后返回。</p>
+<p>这里学到了一个三目运算符知识点：<code>x = a if condition else b</code></p>
+<p>等价于：</p>
+<pre><code class="python">if condition:
+    x = a
+else:
+    x = b
+</code></pre>
+<h5 id="6-删除有序数组中的重复项"><a href="#6-删除有序数组中的重复项" class="headerlink" title="6.删除有序数组中的重复项"></a>6.删除有序数组中的重复项</h5><p>给你一个 非严格递增排列的数组nums，请你原地删除重复出现的元素，使每个元素只出现一次，返回删除后数组的新长度。元素的相对顺序应该保持一致。然后返回nums中唯一元素的个数。</p>
+<p>考虑 nums 的唯一元素的数量为k。去重后，返回唯一元素的数量k。</p>
+<p>nums的前k个元素应包含排序后的唯一数字。下标k-1之后的剩余元素可以忽略。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [0,0,1,1,1,2,2,3,3,4]</p>
+<p>输出：5, nums &#x3D; [0,1,2,3,4,<em>,</em>,<em>,</em>,_]</p>
+<p>解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。</p>
+<p>代码：</p>
+<pre><code class="python">class Solution(object):
+    def removeDuplicates(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        k = 0
+        for i in range(1, len(nums)):
+            if nums[i] != nums[k]:
+                k += 1
+                nums[k] = nums[i]
+        return k + 1
+</code></pre>
+<p>一个简单的双指针应用，平时双指针用的比较少就记录一下。</p>
+<p>思路：设立一个慢指针k和快指针i，k指向最后一个不重复元素的位置，当i找到新的不重复元素后让k后移。</p>
+<h5 id="7-找出字符串中第一个匹配项的下标"><a href="#7-找出字符串中第一个匹配项的下标" class="headerlink" title="7.找出字符串中第一个匹配项的下标"></a>7.找出字符串中第一个匹配项的下标</h5><p>给你两个字符串haystack和needle，请你在haystack字符串中找出needle字符串的第一个匹配项的下标（下标从0开始。如果needle不是haystack的一部分，则返回-1 。</p>
+<p>示例 1：</p>
+<p>输入：haystack &#x3D; “sadbutsad”, needle &#x3D; “sad”</p>
+<p>输出：0</p>
+<p>示例 2：</p>
+<p>输入：haystack &#x3D; “leetcode”, needle &#x3D; “leeto”</p>
+<p>输出：-1</p>
+<p>代码：</p>
+<p>自己做的菜鸡版：</p>
+<pre><code class="python">class Solution(object):
+    def strStr(self, haystack, needle):
+        &quot;&quot;&quot;
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        &quot;&quot;&quot;
+        if len(needle) &gt; len(haystack):
+            return -1
+        elif len(needle) == len(haystack):
+            if needle == haystack:
+                return 0
+            else:
+                return -1
+        else:
+            if len(needle) == 1:
+                for i in range(len(haystack)):
+                    if needle == haystack[i]:
+                        return i
+                return -1
+            else:
+                for i in range(len(haystack)-len(needle)+1):
+                    if haystack[i:i+len(needle)] == needle:
+                        return i
+                return -1
+</code></pre>
+<p>我这个比较简单粗暴，就是直接把haystack中查找是否存在needle连续的字符串然后排除一些特殊情况。</p>
+<p>师傅的简单版：</p>
+<pre><code class="python">class Solution(object):
+    def strStr(self, haystack, needle):
+        &quot;&quot;&quot;
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        &quot;&quot;&quot;
+        nums = []
+        index = 0 
+        for i in haystack.split(needle):
+            nums.append(i)
+        if len(nums) == 1:
+            return -1
+        elif nums[0] == &quot;&quot;:
+            return 0
+        else:
+            return len(nums[0])
+</code></pre>
+<p>思路：通过split()在haystack中去除needle字符串，如果取出后的数组长度为1则说明不存在（因为不存在split会返回一个原字符串），如果第一个字符为空则在开头，若在中间存在则下标就是被去除后的长度。</p>
+<p>应该……应该后面还会更新，虽然我每个博客都这么说:D。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
