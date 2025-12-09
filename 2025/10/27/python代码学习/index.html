@@ -194,7 +194,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #03a9f4">
+                <a href="/tags/python/" style="color: #00a596">
                     python
                 </a>
             </span>
@@ -633,6 +633,510 @@ def main():
             print(&quot;第&#123;&#125;个人的手牌是:&#123;&#125;&quot;.format(i+1,num[i]))
             
 main()
+</code></pre>
+<h3 id="3-文件里存储了几个”正数”的混合运算题目，将运算结果算好后写入到文件："><a href="#3-文件里存储了几个”正数”的混合运算题目，将运算结果算好后写入到文件：" class="headerlink" title="3.文件里存储了几个”正数”的混合运算题目，将运算结果算好后写入到文件："></a>3.文件里存储了几个”正数”的混合运算题目，将运算结果算好后写入到文件：</h3><p>初始文件Compu.txt如下：</p>
+<p>10+20*5&#x2F;2-5</p>
+<p>36&#x2F;12+33&#x2F;2</p>
+<p>处理后Compu.txt文件如下：</p>
+<p>10+20*5&#x2F;2-5&#x3D;55</p>
+<p>36&#x2F;12+33&#x2F;2&#x3D;19</p>
+<p>提示：用eval快速实现</p>
+<p>代码：</p>
+<pre><code class="python">if __name__ == &#39;__main__&#39;:
+    with open(&quot;D://Compu.txt&quot;,&quot;r&quot;) as f:
+        lines = f.readlines()
+    new_line = []
+    for line in lines:
+        if line:
+            result = eval(line)
+            new_line.append(f&quot;&#123;line.strip()&#125; = &#123;result&#125;&quot;)
+    with open(&quot;D://Compu.txt&quot;,&quot;w&quot;) as f:
+        for line in new_line:
+            f.write(line + &quot;\n&quot;)
+</code></pre>
+<h3 id="4-用数据“福建、广东、浙江”实现以下操作"><a href="#4-用数据“福建、广东、浙江”实现以下操作" class="headerlink" title="4.用数据“福建、广东、浙江”实现以下操作:"></a>4.用数据“福建、广东、浙江”实现以下操作:</h3><h4 id="1-创建一个元组"><a href="#1-创建一个元组" class="headerlink" title="1.创建一个元组"></a>1.创建一个元组</h4><ol>
+<li><p>   逐个打印输出所有元素；</p>
+</li>
+<li><p>   增加：江苏、山东。</p>
+</li>
+<li><p>   定义函数：tuple_query(TPL，XXX)，其中:TPL是个元组，XXX是字符串；查找“江苏”，如果找到则输出：OK，没找到则输出”不存在“。</p>
+</li>
+<li><p>   打印输出第 2-4的元素</p>
+</li>
+<li><p>   统计元素个数。</p>
+</li>
+</ol>
+<p>代码：</p>
+<pre><code class="python">def tuple_query(TPL,str):
+    for char in TPL:
+        if char == &quot;江苏&quot;:
+            return True
+    return False
+
+if __name__ == &quot;__main__&quot;:
+    TPL = (&quot;福建&quot;,&quot;广东&quot;,&quot;浙江&quot;)
+    new_TPL = TPL + (&quot;江苏&quot;,&quot;山东&quot;,)
+    if tuple_query(new_TPL,&quot;江苏&quot;):
+        print(&quot;OK&quot;)
+    else:
+        print(&quot;不存在&quot;)
+    for i in range(1,4):
+        print(new_TPL[i],end = &#39; &#39;)
+    print(len(new_TPL))
+</code></pre>
+<h4 id="2-创建一个列表"><a href="#2-创建一个列表" class="headerlink" title="2.创建一个列表"></a>2.创建一个列表</h4><p>创建列表 province_lst: </p>
+<ol>
+<li><p>   逐个打印输出所有元素；</p>
+</li>
+<li><p>   增加：江苏、山东。</p>
+</li>
+<li><p>   定义函数：list_query(LST，XXX)，其中:LST是个列表，XXX是字符串； 查找“江苏”，如果找到则输出：OK，没找到则输出”不存在“。</p>
+</li>
+<li><p>   打印输出中第 2-4的元素</p>
+</li>
+<li><p>   统计元素个数。</p>
+</li>
+</ol>
+<p>代码：</p>
+<pre><code class="python">def list_query(LST,str):
+    for char in LST:
+        if char == &#39;江苏&#39;:
+            return True
+    return False
+
+if __name__ == &#39;__main__&#39;:
+    province_lst = [&#39;福建&#39;,&#39;广东&#39;,&#39;浙江&#39;]
+    for char in province_lst:
+        print(char,end = &#39; &#39;)
+    province_lst.append(&#39;江苏&#39;)
+    province_lst.append(&#39;山东&#39;)
+    if list_query(province_lst,&#39;江苏&#39;):
+        print(&quot;OK&quot;)
+    else:
+        print(&quot;不存在&quot;)
+    for i in range(1,4):
+        print(province_lst[i],end = &#39; &#39;)
+    print(len(province_lst))
+</code></pre>
+<h4 id="3-创建一个字典"><a href="#3-创建一个字典" class="headerlink" title="3.创建一个字典"></a>3.创建一个字典</h4><p>用数据“福建:福州、广东:广州、浙江:杭州”：创建一个字典</p>
+<ol>
+<li><p>   逐个打印输出所有的key；</p>
+</li>
+<li><p>   逐个打印输出所有的value；</p>
+</li>
+<li><p>   增加：江苏:南京、山东:济南。</p>
+</li>
+<li><p>   定义函数：dict_query_key(DCT，XXX)，其中:DCT是个字典，XXX是字符串；查找“江苏”的省会，如果在输出对应的省会，如果不在则输出“未找到”。</p>
+</li>
+<li><p>   定义函数：dict_query_value(DCT，XXX)，其中:DCT是个字典，XXX是字符串；查找某个省会城市，如“南京”的省份，如果在输出对应的省份，如果不在则输出“未找到”</p>
+</li>
+<li><p>   统计元素个数</p>
+</li>
+</ol>
+<p>代码：</p>
+<pre><code class="python">def dict_query_key(DCT,str):
+    for char in DCT.keys():
+        if char == str:
+            return DCT[char]
+    return &quot;未找到&quot;
+
+def dict_query_value(DCT,str):
+    for key,value in DCT.items():
+        if value == str:
+            return key
+    return &quot;未找到&quot;
+
+if __name__ == &#39;__main__&#39;:
+    dict = &#123;&#39;福建&#39;:&#39;福州&#39;,&#39;广东&#39;:&#39;广州&#39;,&#39;浙江&#39;:&#39;杭州&#39;&#125;
+    for key in dict.keys():
+        print(key,end = &#39; &#39;)
+    print(&quot;\n&quot;)
+    for value in dict.values():
+        print(value,end = &#39; &#39;)
+    print(&quot;\n&quot;)
+    dict[&#39;江苏&#39;] = &#39;南京&#39;
+    dict[&#39;山东&#39;] = &#39;济南&#39;
+    print(dict_query_key(dict,&#39;江苏&#39;))
+    print(dict_query_value(dict,&#39;南京&#39;))
+    print(len(dict))
+</code></pre>
+<h3 id="5-文件操作"><a href="#5-文件操作" class="headerlink" title="5.文件操作"></a>5.文件操作</h3><p>这个是黄老师的示例代码，也贴上来存个档kkk。</p>
+<p>代码：</p>
+<pre><code class="python">import os
+import csv
+import json
+from datetime import datetime
+
+def basic_text_operations():
+    &quot;&quot;&quot;基础文本文件操作&quot;&quot;&quot;
+    print(&quot;\n=== 文本文件操作演示 ===&quot;)
+
+    # 写入文件
+    with open(&#39;example.txt&#39;, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
+        f.write(&quot;第一行文本\n&quot;)
+        f.write(&quot;第二行文本\n&quot;)
+        print(&quot;已写入example.txt文件&quot;)
+
+    # 读取整个文件-read()
+    with open(&#39;example.txt&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+        content = f.read()
+        print(&quot;\n读取整个文件内容:&quot;)
+        print(content)
+    
+# 读取整个文件-readlines()
+    with open(&#39;example.txt&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+        lines = f.readlines()
+        print(&quot;\nreadlines读取整个文件内容:&quot;)
+    for line in lines:
+       print(line.strip())    
+
+    # 逐行读取
+    with open(&#39;example.txt&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+        print(&quot;\n逐行读取内容:&quot;)
+        for line in f:
+            print(line.strip())
+
+
+def csv_operations():
+    &quot;&quot;&quot;CSV文件操作&quot;&quot;&quot;
+    print(&quot;\n=== CSV文件操作演示 ===&quot;)
+
+    # 写入CSV文件
+    data = [
+        [&#39;姓名&#39;, &#39;年龄&#39;, &#39;成绩&#39;],
+        [&#39;张三&#39;, 20, 85.5],
+        [&#39;李四&#39;, 21, 92.3],
+        [&#39;王五&#39;, 19, 78.9]
+    ]
+
+    with open(&#39;students.csv&#39;, &#39;w&#39;, encoding=&#39;utf-8&#39;, newline=&#39;&#39;) as f:
+        writer = csv.writer(f)
+        writer.writerows(data)
+        print(&quot;已写入students.csv文件&quot;)
+
+    # 读取CSV文件
+    with open(&#39;students.csv&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+        reader = csv.reader(f)
+        print(&quot;\nCSV文件内容:&quot;)
+        for row in reader:
+            print(row)
+
+
+def json_operations():
+    &quot;&quot;&quot;JSON文件操作&quot;&quot;&quot;
+    print(&quot;\n=== JSON文件操作演示 ===&quot;)
+
+    # 写入JSON文件
+    student_data = &#123;
+        &quot;students&quot;: [
+            &#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;courses&quot;: [&quot;数学&quot;, &quot;物理&quot;]&#125;,
+            &#123;&quot;name&quot;: &quot;李四&quot;, &quot;age&quot;: 21, &quot;courses&quot;: [&quot;化学&quot;, &quot;生物&quot;]&#125;
+        ],
+        &quot;class&quot;: &quot;计算机科学&quot;,
+        &quot;year&quot;: 2023
+    &#125;
+
+    with open(&#39;data.json&#39;, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
+        json.dump(student_data, f, indent=4, ensure_ascii=False)
+        print(&quot;已写入data.json文件&quot;)
+
+    # 读取JSON文件
+    with open(&#39;data.json&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+        loaded_data = json.load(f)
+        print(&quot;\nJSON文件内容:&quot;)
+        print(json.dumps(loaded_data, indent=4, ensure_ascii=False))
+
+
+def file_management():
+    &quot;&quot;&quot;文件管理操作&quot;&quot;&quot;
+    print(&quot;\n=== 文件管理演示 ===&quot;)
+
+    # 检查文件是否存在
+    if os.path.exists(&#39;example.txt&#39;):
+        print(&quot;example.txt文件存在&quot;)
+
+        # 获取文件信息
+        file_stat = os.stat(&#39;example.txt&#39;)
+        print(f&quot;文件大小: &#123;file_stat.st_size&#125;字节&quot;)
+        print(f&quot;最后修改时间: &#123;datetime.fromtimestamp(file_stat.st_mtime)&#125;&quot;)
+
+        # 文件重命名
+        os.rename(&#39;example.txt&#39;, &#39;renamed_example.txt&#39;)
+        print(&quot;文件已重命名为renamed_example.txt&quot;)
+
+        # 删除文件
+        os.remove(&#39;renamed_example.txt&#39;)
+        print(&quot;已删除renamed_example.txt文件&quot;)
+
+
+def handle_exceptions():  # 异常处理演示    
+    print(&quot;\n=== 异常处理演示 ===&quot;)
+    try:
+        with open(&#39;nonexistent.txt&#39;, &#39;r&#39;) as f:
+            content = f.read()
+    except FileNotFoundError:
+        print(&quot;错误：文件不存在&quot;)
+    except PermissionError:
+        print(&quot;错误：没有文件访问权限&quot;)
+    except Exception as e:
+        print(f&quot;发生未知错误: &#123;str(e)&#125;&quot;)
+    else:
+        print(&quot;文件读取成功&quot;)
+    finally:
+        print(&quot;异常处理演示结束&quot;)
+
+
+if __name__ == &#39;__main__&#39;:
+    basic_text_operations()
+    csv_operations()
+    json_operations()
+    file_management()
+    handle_exceptions()
+</code></pre>
+<h3 id="6-学生信息管理系统"><a href="#6-学生信息管理系统" class="headerlink" title="6.学生信息管理系统"></a>6.学生信息管理系统</h3><p>使用组合数据类型实现一个学生信息管理系统</p>
+<p>要求：实现一个学生信息管理系统，使用字典和列表等组合数据类型存储学生信息和成绩，并实现以下功能：</p>
+<ol>
+<li><p>   添加学生信息：包括姓名、年龄、性别、学号和成绩等；</p>
+</li>
+<li><p>   查询学生信息：根据学生姓名或学号查询学生信息；</p>
+</li>
+<li><p>   修改学生信息：根据学生姓名或学号修改学生信息；</p>
+</li>
+<li><p>   删除学生信息：根据学生姓名或学号删除学生信息；</p>
+</li>
+<li><p>   显示所有学生信息：按照学生学号排序，列出所有学生的信息；</p>
+</li>
+<li><p>   统计学生成绩：给出平均分最高的前3名学生信息，给出各科成绩的平均分和中位数。</p>
+</li>
+</ol>
+<p>要求：以上1-6的功能都用函数来实现。</p>
+<pre><code class="bash">数据基本结构如下：
+&#123;学号1：&#123;姓名：XXX，年龄：XXX，性别：XXX，成绩：[XX,XX,XX]&#125;，
+学号2：&#123;姓名：XXX，年龄：XXX，性别：XXX，成绩：[XX,XX,XX]&#125;，
+学号3：&#123;姓名：XXX，年龄：XXX，性别：XXX，成绩：[XX,XX,XX]&#125;，
+学号4：&#123;姓名：XXX，年龄：XXX，性别：XXX，成绩：[XX,XX,XX]&#125;,
+学号5：&#123;姓名：XXX，年龄：XXX，性别：XXX，成绩：[XX,XX,XX]&#125; ]
+其中：成绩的存储按顺序为 [高数成绩，线代成绩，英语成绩]
+如：
+3501214:&#123;姓名：张三，年龄：20，性别：女，成绩：[98,77,65]&#125;
+</code></pre>
+<p>代码：</p>
+<pre><code class="python">import time
+
+student = &#123;
+    &#39;2400702&#39;: &#123;&#39;姓名&#39;: &#39;陈三&#39;, &#39;年龄&#39;: 19, &#39;性别&#39;: &#39;女&#39;, &#39;成绩&#39;: [98, 77, 65]&#125;,
+    &#39;2401214&#39;: &#123;&#39;姓名&#39;: &#39;刘四&#39;, &#39;年龄&#39;: 19, &#39;性别&#39;: &#39;女&#39;, &#39;成绩&#39;: [85, 90, 78]&#125;,
+    &#39;2400818&#39;: &#123;&#39;姓名&#39;: &#39;林五&#39;, &#39;年龄&#39;: 19, &#39;性别&#39;: &#39;女&#39;, &#39;成绩&#39;: [92, 88, 76]&#125;
+&#125;
+
+def add_info():#添加学生信息
+
+    student_id = input(&quot;请输入学号:&quot;)
+    name = input(&quot;请输入姓名:&quot;)
+    age = int(input(&quot;请输入年龄:&quot;))
+    sex = input(&quot;请输入性别:&quot;)
+    print(&quot;请用空格分割依次输入高数、线代、英语成绩:&quot;)
+    score1 , score2 , score3 = map(int,input().split())
+    score = [score1 , score2 , score3]
+    student[student_id] = &#123;
+        &#39;姓名&#39; : name,
+        &#39;年龄&#39; : age,
+        &#39;性别&#39; : sex,
+        &#39;成绩&#39; : score
+    &#125;
+
+def search_info():#查询学生信息
+
+    choice = input(&quot;按姓名搜索输入1，按学号搜索输入2:&quot;)
+    while True:
+        if choice == &#39;1&#39;:
+            info = input(&quot;请输入姓名:&quot;)
+            break
+        elif choice == &#39;2&#39;:
+            info = input(&quot;请输入学号:&quot;)
+            break
+        else:
+            print(&quot;输入错误清重试&quot;)
+    if choice == &#39;1&#39;:
+        for key1 , value1 in student.items():
+            for value2 in value1.values():
+                if value2 == info:
+                    print(f&quot;&#123;key1&#125;:&#123;student[key1]&#125;&quot;)
+                    return True
+        return False
+    else:
+        for key , value in student.items():
+            if key == info:
+                print(f&quot;&#123;key&#125;:&#123;student[key]&#125;&quot;)
+                return True
+        return False
+
+def change_student():#修改学生信息
+
+    choice = input(&quot;按姓名搜索输入1，按学号搜索输入2:&quot;)
+    while True:
+        if choice == &#39;1&#39;:
+            info = input(&quot;请输入姓名:&quot;)
+            break
+        elif choice == &#39;2&#39;:
+            info = input(&quot;请输入学号:&quot;)
+            break
+        else:
+            print(&quot;输入错误清重试&quot;)
+    if choice == &#39;1&#39;:
+        for key1 , value1 in student.items():
+            for value2 in value1.values():
+                if value2 == info:
+                    new_id = input(&quot;请输入新学号：&quot;)
+                    new_age = input(&quot;请输入新年龄：&quot;)
+                    new_sex = input(&quot;请输入新性别：&quot;)
+                    new_score1 = input(&quot;请输入新高数成绩：&quot;)
+                    new_score2 = input(&quot;请输入新线代成绩：&quot;)
+                    new_score3 = input(&quot;请输入新英语成绩:&quot;)
+                    new_score = [new_score1 , new_score2 , new_score3]
+                    student[key1] = student[new_id]
+                    student[new_id] = &#123;
+                        &#39;姓名&#39; : info ,
+                        &#39;年龄&#39; : new_age , 
+                        &#39;性别&#39; : new_sex , 
+                        &#39;成绩&#39; : new_score
+                    &#125;
+                    return True
+        return False
+    else:
+        for key , value in student.items():
+            if key == info:
+                new_name = input(&quot;请输入新姓名：&quot;)
+                new_age = input(&quot;请输入新年龄：&quot;)
+                new_sex = input(&quot;请输入新性别：&quot;)
+                new_score1 = input(&quot;请输入新高数成绩：&quot;)
+                new_score2 = input(&quot;请输入新线代成绩：&quot;)
+                new_score3 = input(&quot;请输入新英语成绩:&quot;)
+                new_score = [new_score1 , new_score2 , new_score3]
+                student.pop(info)
+                student[info] = &#123;
+                    &#39;姓名&#39; : new_name ,
+                    &#39;年龄&#39; : new_age , 
+                    &#39;性别&#39; : new_sex , 
+                    &#39;成绩&#39; : new_score
+                &#125;  
+                return True
+        return False 
+
+def del_student():#删除学生信息
+
+    choice = input(&quot;按姓名搜索输入1，按学号搜索输入2:&quot;)
+    while True:
+        if choice == &#39;1&#39;:
+            info = input(&quot;请输入姓名:&quot;)
+            break
+        elif choice == &#39;2&#39;:
+            info = input(&quot;请输入学号:&quot;)
+            break
+        else:
+            print(&quot;输入错误清重试&quot;)
+    if choice == &#39;1&#39;:
+        for key1 , value1 in student.items():
+            for value2 in value1.values():
+                if value2 == info:
+                    student.pop(key1)
+                    return True
+        return False
+    else:
+        for key , value in student.items():
+            if key == info:
+                student.pop(key)
+                return True
+        return False        
+
+def show_student():#显示所有学生信息
+
+    sort_key = sorted(student.keys())
+    for id in sort_key:
+        print(f&quot;&#123;id&#125;:&#123;student[id]&#125;&quot;)
+
+def unit_student():#统计学生成绩
+    sort_items = sorted(student.items() , 
+                        key = lambda x:sum(x[1][&#39;成绩&#39;])/len(x[1][&#39;成绩&#39;]) ,
+                        reverse = True)
+    sort_items = dict(sort_items)
+    i = 0
+    for key in sort_items.keys():
+        if i &lt; 3:
+            print(f&quot;&#123;key&#125;:&#123;sort_items[key]&#125;&quot;)
+        else:
+            break
+        i += 1
+    score1 = []
+    score2 = []
+    score3 = []
+    for key1 , value1 in student.items():
+        score1.append(value1[&#39;成绩&#39;][0])
+        score2.append(value1[&#39;成绩&#39;][1])
+        score3.append(value1[&#39;成绩&#39;][2])
+    mid_score = []
+    sorted_lists = list(map(sorted, [score1, score2, score3]))
+    score1 , score2 , score3 = sorted_lists
+    if len(score1) % 2 == 0:
+        for i in range(len(score1)):
+            mid = (score1[len(score1)//2] + score1[(len(score1)//2)-1]) / 2
+            mid_score.append(mid)
+            mid = (score2[len(score1)//2] + score2[(len(score1)//2)-1]) / 2
+            mid_score.append(mid)
+            mid = (score3[len(score1)//2] + score3[(len(score1)//2)-1]) / 2
+            mid_score.append(mid)
+    else:
+        for i in range(len(score1)):
+            mid_score.append(score1[len(score1)//2])
+            mid_score.append(score2[len(score1)//2])
+            mid_score.append(score3[len(score1)//2])
+
+    print(f&quot;高数成绩平均分和中位数为：&#123;sum(score1)/len(score1)&#125;、&#123;mid_score[0]&#125;&quot;)
+    print(f&quot;线代成绩平均分和中位数为：&#123;sum(score2)/len(score1)&#125;、&#123;mid_score[1]&#125;&quot;)
+    print(f&quot;英语成绩平均分和中位数为：&#123;sum(score3)/len(score1)&#125;、&#123;mid_score[2]&#125;&quot;)
+
+if __name__ == &#39;__main__&#39;:
+    print(&quot;===学生信息管理系统===&quot;)
+    print(&quot;正在初始化系统信息......&quot;)
+    time.sleep(1)
+    print(&quot;1.添加学生信息&quot;)
+    print(&quot;2.查询学生信息&quot;)
+    print(&quot;3.修改学生信息&quot;)
+    print(&quot;4.删除学生信息&quot;)
+    print(&quot;5.显示所有学生信息&quot;)
+    print(&quot;6.统计学生成绩&quot;)
+    print(&quot;0.退出程序&quot;)
+    while True:
+        choice = input(&quot;请选择功能：&quot;)
+        if choice == &#39;1&#39;:
+            time.sleep(1)
+            add_info()
+        elif choice == &#39;2&#39;:
+            if not search_info():
+                print(&quot;该学生信息不存在&quot;)
+        elif choice == &#39;3&#39;:
+            if change_student():
+                time.sleep(1)
+                print(&quot;修改成功!&quot;)
+            else:
+                print(&quot;未查到该学生信息&quot;)
+        elif choice == &#39;4&#39;:
+            if del_student():
+                time.sleep(1)
+                print(&quot;删除成功!&quot;)
+            else:
+                print(&quot;未查到该学生信息&quot;)
+        elif choice == &#39;5&#39;:
+            time.sleep(1)
+            show_student()
+        elif choice == &#39;6&#39;:
+            time.sleep(1)
+            unit_student()
+        elif choice == &#39;0&#39;:
+            print(&quot;再见!&quot;)
+            break
+        else:
+            print(&quot;输入错误请重试&quot;)
 </code></pre>
 <p>所有的代码基本上都还有很多bug和不完善的地方，后面再来完善吧（其实是因为cpu有点被干烧了头脑有点晕晕的TT</p>
 <p>哦对说起来我还要找个时候解决一下博客本地图片上传的问题唉•́‸ก</p>
