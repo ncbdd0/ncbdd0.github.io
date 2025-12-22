@@ -1,0 +1,2057 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>python期末复习 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>python期末复习</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/12/14
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%A3%E7%A0%81/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                代码
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #03a9f4">
+                    python
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>其实不知道该怎么复习所以给自己写了个博客（）</p>
+<span id="more"></span>
+
+<h4 id="1-基本数据类型"><a href="#1-基本数据类型" class="headerlink" title="1.基本数据类型"></a>1.基本数据类型</h4><p><strong>1.数据类型：</strong></p>
+<ul>
+<li>整数(int): 10 , -5 , 0</li>
+<li>浮点数(float): 3.14 , -2.5 , 1.0</li>
+<li>复数(complex): 3 + 4j</li>
+<li>布尔值(bool): True、False</li>
+</ul>
+<p><strong>2.序列类型：</strong></p>
+<ul>
+<li>字符串(str): “Hello”</li>
+<li>列表(list) - 可变序列: [1,2,3,4]</li>
+<li>元组(tuple) - 不可变序列: (1,2,3,”a”)</li>
+</ul>
+<p><strong>3.集合类型：</strong></p>
+<ul>
+<li>集合(set) - 无序、不重复: {1,2,3}</li>
+</ul>
+<p>set可变元素不可变。</p>
+<p><strong>4.映射类型：</strong></p>
+<ul>
+<li>字典 - 键值对: {“name”:”Alex”}</li>
+</ul>
+<p><strong>5.特点总结：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>可变性</th>
+<th>有序性</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>不可变</td>
+<td>-</td>
+<td>10</td>
+</tr>
+<tr>
+<td>float</td>
+<td>不可变</td>
+<td>-</td>
+<td>3.14</td>
+</tr>
+<tr>
+<td>str</td>
+<td>不可变</td>
+<td>有序</td>
+<td>“hello”</td>
+</tr>
+<tr>
+<td>list</td>
+<td>可变</td>
+<td>有序</td>
+<td>[1,2,3]</td>
+</tr>
+<tr>
+<td>tuple</td>
+<td>不可变</td>
+<td>有序</td>
+<td>(1,2,3)</td>
+</tr>
+<tr>
+<td>set</td>
+<td>可变</td>
+<td>无序</td>
+<td>{1,2,3}</td>
+</tr>
+<tr>
+<td>dict</td>
+<td>可变</td>
+<td>有序</td>
+<td>{“a”:1}</td>
+</tr>
+</tbody></table>
+<p>PS:是否具有有序性即能否通过索引访问。</p>
+<h4 id="2-list、tuple、set、dict的增删查改遍历知识点："><a href="#2-list、tuple、set、dict的增删查改遍历知识点：" class="headerlink" title="2.list、tuple、set、dict的增删查改遍历知识点："></a>2.list、tuple、set、dict的增删查改遍历知识点：</h4><h5 id="1-列表-可变有序序列："><a href="#1-列表-可变有序序列：" class="headerlink" title="1.列表 - 可变有序序列："></a>1.列表 - 可变有序序列：</h5><p>1.创建列表</p>
+<pre><code class="python"># 多种创建方式
+lst1 = [1, 2, 3, 4, 5]              # 直接创建
+lst2 = list(&quot;hello&quot;)               # [&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;]
+lst3 = list(range(5))              # [0, 1, 2, 3, 4]
+lst4 = [i*2 for i in range(5)]     # 列表推导式 [0, 2, 4, 6, 8]
+lst5 = []                          # 空列表
+</code></pre>
+<p>2.增加元素</p>
+<pre><code class="python">lst = [1, 2, 3]
+
+# 末尾添加
+lst.append(4)           # [1, 2, 3, 4]
+lst.append([5, 6])      # [1, 2, 3, 4, [5, 6]]
+
+# 指定位置插入
+lst.insert(1, 99)       # [1, 99, 2, 3, 4, [5, 6]]
+
+# 合并列表
+lst.extend([7, 8])      # [1, 99, 2, 3, 4, [5, 6], 7, 8]
+lst += [9, 10]          # 等价于 extend
+</code></pre>
+<p>3.删除元素</p>
+<pre><code class="python">lst = [1, 2, 3, 2, 4, 5, 2]
+
+# 按值删除（第一个匹配的）
+lst.remove(2)           # [1, 3, 2, 4, 5, 2]
+
+# 按索引删除
+del lst[1]              # [1, 2, 4, 5, 2]
+popped = lst.pop()      # 删除末尾，返回 2
+popped2 = lst.pop(0)    # 删除索引0，返回 1
+
+# 清空列表
+lst.clear()             # []
+</code></pre>
+<p>4.查找元素</p>
+<pre><code class="python">lst = [10, 20, 30, 20, 40]
+
+# 索引访问
+print(lst[0])           # 10
+print(lst[-1])          # 40（倒数第一个）
+
+# 查找索引
+print(lst.index(20))    # 1（第一个出现的）
+print(lst.index(20, 2)) # 3（从索引2开始找）
+
+# 检查存在
+print(30 in lst)        # True
+print(50 in lst)        # False
+
+# 统计次数
+print(lst.count(20))    # 2
+</code></pre>
+<p>5.修改元素</p>
+<pre><code class="python">lst = [1, 2, 3, 4, 5]
+
+# 直接赋值
+lst[0] = 100            # [100, 2, 3, 4, 5]
+
+# 切片修改
+lst[1:3] = [200, 300]   # [100, 200, 300, 4, 5]
+lst[1:3] = [999]        # [100, 999, 4, 5]（减少元素）
+</code></pre>
+<p>6.遍历列表</p>
+<pre><code class="python">lst = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+# 方法1：直接遍历元素
+for item in lst:
+    print(item)
+
+# 方法2：遍历索引和元素
+for index, value in enumerate(lst):
+    print(f&quot;索引&#123;index&#125;: &#123;value&#125;&quot;)
+
+# 方法3：while循环
+i = 0
+while i &lt; len(lst):
+    print(lst[i])
+    i += 1
+
+# 方法4：列表推导式
+squares = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]
+</code></pre>
+<p>7.常用方法</p>
+<pre><code class="python">lst = [3, 1, 4, 1, 5, 9]
+
+# 排序
+lst.sort()              # 原地排序 [1, 1, 3, 4, 5, 9]
+sorted_lst = sorted(lst) # 返回新列表
+
+# 反转
+lst.reverse()           # [9, 5, 4, 3, 1, 1]
+reversed_lst = lst[::-1]
+</code></pre>
+<h5 id="2-元组-不可变有序序列："><a href="#2-元组-不可变有序序列：" class="headerlink" title="2.元组 - 不可变有序序列："></a>2.元组 - 不可变有序序列：</h5><p>1.创建元组</p>
+<pre><code class="python">tup1 = (1, 2, 3, 4, 5)            # 标准创建
+tup2 = 1, 2, 3                    # 括号可省略（逗号是关键）
+tup3 = tuple([1, 2, 3])           # 从列表转换
+tup4 = (10,)                      # 单个元素的元组（必须有逗号）
+tup5 = ()                         # 空元组
+tup6 = tuple(&quot;hello&quot;)             # (&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;)
+</code></pre>
+<p>2.访问元素（不能修改）</p>
+<pre><code class="python">tup = (10, 20, 30, 40, 50)
+
+# 索引访问
+print(tup[0])           # 10
+print(tup[-1])          # 50
+
+# 切片（返回新元组）
+print(tup[1:3])         # (20, 30)
+print(tup[:3])          # (10, 20, 30)
+
+# 查找
+print(30 in tup)        # True
+print(tup.index(20))    # 1
+print(tup.count(10))    # 1
+
+# 不能修改！
+# tup[0] = 100          # TypeError
+# tup.append(60)        # AttributeError
+</code></pre>
+<p>3.遍历元组</p>
+<pre><code class="python">tup = (&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;)
+
+# 直接遍历
+for fruit in tup:
+    print(fruit)
+
+# 遍历索引和值
+for i, fruit in enumerate(tup):
+    print(f&quot;&#123;i&#125;: &#123;fruit&#125;&quot;)
+
+# 元组推导式（实际返回生成器）
+tup_gen = (x*2 for x in range(5))
+result = tuple(tup_gen)  # (0, 2, 4, 6, 8)
+</code></pre>
+<p>4.元组优势</p>
+<pre><code class="python"># 1. 作为字典键
+locations = &#123;
+    (35.6895, 139.6917): &quot;Tokyo&quot;,
+    (40.7128, -74.0060): &quot;New York&quot;
+&#125;
+
+# 2. 函数参数和返回值
+def min_max(numbers):
+    return min(numbers), max(numbers)
+
+# 3. 保护数据不被修改
+CONSTANTS = (3.14159, 2.71828, 9.8)
+</code></pre>
+<h5 id="3-集合-可变无序不重复"><a href="#3-集合-可变无序不重复" class="headerlink" title="3.集合 - 可变无序不重复"></a>3.集合 - 可变无序不重复</h5><p>1.创建集合</p>
+<pre><code class="python">set1 = &#123;1, 2, 3, 4, 5&#125;            # 直接创建
+set2 = set([1, 2, 2, 3, 3])       # 从列表创建，去重 &#123;1, 2, 3&#125;
+set3 = set(&quot;hello&quot;)               # &#123;&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;o&#39;&#125;
+set4 = set()                      # 空集合（不能用 &#123;&#125;，那是字典）
+set5 = &#123;i for i in range(5)&#125;      # 集合推导式 &#123;0, 1, 2, 3, 4&#125;
+</code></pre>
+<p>2.增加元素</p>
+<pre><code class="python">s = &#123;1, 2, 3&#125;
+
+# 添加单个元素
+s.add(4)               # &#123;1, 2, 3, 4&#125;
+s.add(2)               # 已存在，不变
+
+# 添加多个元素
+s.update([5, 6, 7])    # &#123;1, 2, 3, 4, 5, 6, 7&#125;
+s.update(&#123;8, 9&#125;)       # 可以添加其他可迭代对象
+</code></pre>
+<p>3.删除元素</p>
+<pre><code class="python">s = &#123;1, 2, 3, 4, 5, 6&#125;
+
+# 删除指定元素
+s.remove(3)            # &#123;1, 2, 4, 5, 6&#125;
+# s.remove(10)         # KeyError（元素不存在）
+
+s.discard(2)           # &#123;1, 4, 5, 6&#125;
+s.discard(10)          # 不报错
+
+# 随机删除
+popped = s.pop()       # 随机删除一个并返回
+
+# 清空
+s.clear()              # set()
+</code></pre>
+<p>4.查找和检查</p>
+<pre><code class="python">s = &#123;10, 20, 30, 40&#125;
+
+# 检查存在
+print(20 in s)         # True
+print(50 in s)         # False
+
+# 集合长度
+print(len(s))          # 4
+
+# 集合运算（返回新集合）
+s2 = &#123;30, 40, 50, 60&#125;
+
+# 交集
+print(s &amp; s2)          # &#123;30, 40&#125;
+print(s.intersection(s2))
+
+# 并集
+print(s | s2)          # &#123;10, 20, 30, 40, 50, 60&#125;
+print(s.union(s2))
+
+# 差集
+print(s - s2)          # &#123;10, 20&#125;
+print(s.difference(s2))
+
+# 对称差集（只在一个集合中）
+print(s ^ s2)          # &#123;10, 20, 50, 60&#125;
+print(s.symmetric_difference(s2))
+</code></pre>
+<p>5.遍历集合</p>
+<pre><code class="python">s = &#123;&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;, &#39;date&#39;&#125;
+
+# 直接遍历（顺序不确定）
+for fruit in s:
+    print(fruit)
+
+# 转换为列表排序后遍历
+for fruit in sorted(s):
+    print(fruit)       # 按字母顺序
+
+# 集合推导式
+squares = &#123;x**2 for x in range(5)&#125;  # &#123;0, 1, 4, 9, 16&#125;
+</code></pre>
+<h5 id="4-字典-可变键值对映射"><a href="#4-字典-可变键值对映射" class="headerlink" title="4.字典 - 可变键值对映射"></a>4.字典 - 可变键值对映射</h5><p>1.创建字典</p>
+<pre><code class="python"># 多种创建方式
+dict1 = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25, &quot;city&quot;: &quot;Beijing&quot;&#125;
+dict2 = dict(name=&quot;Bob&quot;, age=30)          # 关键字参数
+dict3 = dict([(&quot;name&quot;, &quot;Charlie&quot;), (&quot;age&quot;, 35)])  # 可迭代对象
+dict4 = dict(zip([&quot;name&quot;, &quot;age&quot;], [&quot;David&quot;, 40])) # zip函数
+dict5 = &#123;x: x**2 for x in range(5)&#125;       # 字典推导式 &#123;0:0, 1:1, 2:4, 3:9, 4:16&#125;
+dict6 = &#123;&#125;                                # 空字典
+</code></pre>
+<p>2.增加&#x2F;修改元素</p>
+<pre><code class="python">d = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125;
+
+# 添加/修改
+d[&quot;city&quot;] = &quot;Beijing&quot;        # 添加新键
+d[&quot;age&quot;] = 26                # 修改值
+d[&quot;phone&quot;] = &quot;123-4567&quot;      # 添加新键
+
+# 批量更新
+d.update(&#123;&quot;email&quot;: &quot;alice@example.com&quot;, &quot;age&quot;: 27&#125;)
+# setdefault: 键不存在时设置，存在时不变
+d.setdefault(&quot;country&quot;, &quot;China&quot;)
+d.setdefault(&quot;name&quot;, &quot;Bob&quot;)  # 不会修改，name已存在
+</code></pre>
+<p>3.删除元素</p>
+<pre><code class="python">d = &#123;&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3, &quot;d&quot;: 4&#125;
+
+# del语句
+del d[&quot;b&quot;]                   # 删除键&#39;b&#39;
+
+# pop方法
+value = d.pop(&quot;c&quot;)           # 删除并返回值 3
+value = d.pop(&quot;e&quot;, &quot;默认值&quot;)  # 键不存在返回默认值
+
+# popitem（Python 3.7+ 删除最后插入的）
+key, value = d.popitem()     # 删除并返回 (&#39;d&#39;, 4)
+
+# 清空字典
+d.clear()                    # &#123;&#125;
+</code></pre>
+<p>4.查找元素</p>
+<pre><code class="python">d = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25, &quot;city&quot;: &quot;Beijing&quot;&#125;
+
+# 直接访问
+print(d[&quot;name&quot;])             # Alice
+# print(d[&quot;email&quot;])          # KeyError（键不存在）
+
+# get方法（安全访问）
+print(d.get(&quot;name&quot;))         # Alice
+print(d.get(&quot;email&quot;))        # None
+print(d.get(&quot;email&quot;, &quot;默认&quot;)) # &quot;默认&quot;
+
+# 检查键是否存在
+print(&quot;name&quot; in d)           # True
+print(&quot;email&quot; not in d)      # True
+
+# 获取所有键、值、键值对
+keys = d.keys()              # dict_keys([&#39;name&#39;, &#39;age&#39;, &#39;city&#39;])
+values = d.values()          # dict_values([&#39;Alice&#39;, 25, &#39;Beijing&#39;])
+items = d.items()            # dict_items([(&#39;name&#39;, &#39;Alice&#39;), ...])
+</code></pre>
+<p>5.遍历元素</p>
+<pre><code class="python">d = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25, &quot;city&quot;: &quot;Beijing&quot;&#125;
+
+# 方法1：遍历键
+for key in d:
+    print(key, d[key])
+
+# 方法2：遍历键值对
+for key, value in d.items():
+    print(f&quot;&#123;key&#125;: &#123;value&#125;&quot;)
+
+# 方法3：只遍历值
+for value in d.values():
+    print(value)
+
+# 方法4：遍历键（明确）
+for key in d.keys():
+    print(key)
+
+# 字典推导式
+squared = &#123;x: x**2 for x in range(5)&#125;  # &#123;0:0, 1:1, 2:4, 3:9, 4:16&#125;
+</code></pre>
+<h5 id="5-对比总结"><a href="#5-对比总结" class="headerlink" title="5.对比总结"></a>5.对比总结</h5><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>list</th>
+<th>tuple</th>
+<th>set</th>
+<th>dict</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>可变性</td>
+<td>可变</td>
+<td>不可变</td>
+<td>可变</td>
+<td>可变</td>
+</tr>
+<tr>
+<td>有序性</td>
+<td>有序</td>
+<td>有序</td>
+<td>无序</td>
+<td>有序</td>
+</tr>
+<tr>
+<td>元素重复</td>
+<td>允许</td>
+<td>允许</td>
+<td>不允许</td>
+<td>键不允许重复</td>
+</tr>
+<tr>
+<td>索引访问</td>
+<td>支持</td>
+<td>支持</td>
+<td>不支持</td>
+<td>通过键访问</td>
+</tr>
+<tr>
+<td>创建方式</td>
+<td>[]或list()</td>
+<td>()或tuple()</td>
+<td>{}或set()</td>
+<td>{}或dict()</td>
+</tr>
+<tr>
+<td>典型用途</td>
+<td>有序数据集合</td>
+<td>不可变数据、记录</td>
+<td>去重、集合运算</td>
+<td>键值映射、查找表</td>
+</tr>
+</tbody></table>
+<h4 id="2-控制结构"><a href="#2-控制结构" class="headerlink" title="2. 控制结构"></a>2. 控制结构</h4><h5 id="1-if-elif结构："><a href="#1-if-elif结构：" class="headerlink" title="1.if-elif结构："></a>1.if-elif结构：</h5><p>比较简单不做记录</p>
+<h5 id="2-for-else结构："><a href="#2-for-else结构：" class="headerlink" title="2.for-else结构："></a>2.for-else结构：</h5><p>1.基础语法</p>
+<pre><code class="python"># for-else 结构
+for item in iterable:
+    # 循环体代码
+    if condition:
+        break  # 提前退出循环
+else:
+    # 循环正常结束时执行（没有break）
+    # 这里的 else 不是和 if 配对，而是和 for 配对！
+</code></pre>
+<p>2.简单示例</p>
+<pre><code class="python"># 情况1：循环正常结束（执行else）
+fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]
+
+for fruit in fruits:
+    if fruit == &quot;grape&quot;:
+        print(&quot;找到葡萄了！&quot;)
+        break
+else:
+    print(&quot;没有找到葡萄&quot;)  # 会执行
+
+# 情况2：循环被break中断（不执行else）
+for fruit in fruits:
+    if fruit == &quot;banana&quot;:
+        print(&quot;找到香蕉了！&quot;)
+        break
+else:
+    print(&quot;没有找到香蕉&quot;)  # 不会执行
+    
+# 空列表 - else 会执行
+empty_list = []
+
+for item in empty_list:
+    print(&quot;这不会执行&quot;)
+    break
+else:
+    print(&quot;循环体根本没执行，但else执行了！&quot;)
+# 输出：循环体根本没执行，但else执行了！
+</code></pre>
+<h5 id="3-while-else结构："><a href="#3-while-else结构：" class="headerlink" title="3.while-else结构："></a>3.while-else结构：</h5><pre><code class="python"># 猜数字游戏
+import random
+
+secret_number = random.randint(1, 10)
+max_attempts = 3
+attempt = 0
+
+print(&quot;猜数字游戏（1-10），你有3次机会&quot;)
+
+while attempt &lt; max_attempts:
+    attempt += 1
+    guess = int(input(f&quot;第&#123;attempt&#125;次猜: &quot;))
+    
+    if guess == secret_number:
+        print(f&quot;恭喜！猜对了！数字是 &#123;secret_number&#125;&quot;)
+        break
+    elif guess &lt; secret_number:
+        print(&quot;太小了&quot;)
+    else:
+        print(&quot;太大了&quot;)
+else:
+    print(f&quot;游戏结束！数字是 &#123;secret_number&#125;&quot;)
+</code></pre>
+<h5 id="4-常见误区："><a href="#4-常见误区：" class="headerlink" title="4.常见误区："></a>4.常见误区：</h5><p>1.误区：else 总是执行</p>
+<pre><code class="python"># 错误理解：以为 else 总是执行
+numbers = [1, 2, 3]
+
+for num in numbers:
+    print(num)
+    # 没有 break
+else:
+    print(&quot;循环结束&quot;)  # 这会执行
+
+# 但有 break 时就不执行
+for num in numbers:
+    if num == 2:
+        break
+    print(num)
+else:
+    print(&quot;循环结束&quot;)  # 不会执行！
+</code></pre>
+<p>2.误区：把else当成 if 的</p>
+<pre><code class="python"># 错误：缩进错误
+for i in range(3):
+    if i == 1:
+        print(&quot;i等于1&quot;)
+else:  # 这个 else 属于 for，不是 if！
+    print(&quot;这会在循环结束后执行&quot;)
+
+# 正确：if-else 在循环内
+for i in range(3):
+    if i == 1:
+        print(&quot;i等于1&quot;)
+    else:  # 这个 else 属于 if
+        print(f&quot;i不等于1，i=&#123;i&#125;&quot;)
+</code></pre>
+<p>3.continue不影响else</p>
+<pre><code class="python"># continue 不会阻止 else 执行
+for i in range(5):
+    if i % 2 == 0:
+        continue  # 跳过偶数
+    print(f&quot;奇数: &#123;i&#125;&quot;)
+else:
+    print(&quot;循环结束，else 执行了！&quot;)  # 会执行
+# continue 不是 break，循环正常结束
+</code></pre>
+<h5 id="4-总结："><a href="#4-总结：" class="headerlink" title="4.总结："></a>4.总结：</h5><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>执行时机</td>
+<td>循环正常结束(没有break)时执行</td>
+</tr>
+<tr>
+<td>空循环</td>
+<td>也会执行else</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>不影响else执行</td>
+</tr>
+<tr>
+<td>嵌套循环</td>
+<td>只受当前循环的break影响</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td>查找元素、验证条件、清理工作</td>
+</tr>
+</tbody></table>
+<h4 id="3-函数"><a href="#3-函数" class="headerlink" title="3.函数"></a>3.函数</h4><h5 id="1-函数基础"><a href="#1-函数基础" class="headerlink" title="1.函数基础"></a>1.函数基础</h5><p>1.函数定义和调用</p>
+<pre><code class="python"># 定义函数
+def greet(name):
+    &quot;&quot;&quot;问候函数，文档字符串&quot;&quot;&quot;
+    return f&quot;Hello, &#123;name&#125;!&quot;
+
+# 调用函数
+result = greet(&quot;Alice&quot;)  # 位置参数调用
+print(result)  # Hello, Alice!
+
+# 带默认值的参数
+def power(base, exponent=2):
+    &quot;&quot;&quot;计算幂次方，默认平方&quot;&quot;&quot;
+    return base ** exponent
+
+print(power(3))      # 9 (3的平方)
+print(power(3, 3))   # 27 (3的立方)
+</code></pre>
+<p>2.返回多个值</p>
+<pre><code class="python"># 实际上返回的是元组
+def get_min_max(numbers):
+    &quot;&quot;&quot;返回最小值和最大值&quot;&quot;&quot;
+    return min(numbers), max(numbers)
+
+# 接收返回值
+min_val, max_val = get_min_max([3, 1, 4, 1, 5, 9])
+print(f&quot;最小值: &#123;min_val&#125;, 最大值: &#123;max_val&#125;&quot;)  # 1, 9
+
+# 也可以用一个变量接收元组
+result = get_min_max([3, 1, 4])
+print(result)  # (1, 4)
+print(type(result))  # &lt;class &#39;tuple&#39;&gt;
+</code></pre>
+<h5 id="2-参数传递方式"><a href="#2-参数传递方式" class="headerlink" title="2.参数传递方式"></a>2.参数传递方式</h5><p>1.位置参数</p>
+<pre><code class="python"># 必须按顺序提供参数
+def describe_pet(animal_type, pet_name):
+    &quot;&quot;&quot;显示宠物信息&quot;&quot;&quot;
+    print(f&quot;I have a &#123;animal_type&#125; named &#123;pet_name&#125;.&quot;)
+
+describe_pet(&quot;dog&quot;, &quot;Buddy&quot;)    # 正确：按顺序
+describe_pet(&quot;Buddy&quot;, &quot;dog&quot;)    # 错误：顺序错了！
+</code></pre>
+<p>2.关键字参数</p>
+<pre><code class="python"># 明确指定参数名，顺序不重要
+def describe_pet(animal_type, pet_name):
+    print(f&quot;I have a &#123;animal_type&#125; named &#123;pet_name&#125;.&quot;)
+
+# 关键字参数调用
+describe_pet(pet_name=&quot;Buddy&quot;, animal_type=&quot;dog&quot;)  # 正确
+describe_pet(animal_type=&quot;cat&quot;, pet_name=&quot;Whiskers&quot;)
+
+# 混合使用（位置参数必须在关键字参数之前）
+describe_pet(&quot;rabbit&quot;, pet_name=&quot;Fluffy&quot;)  # 正确
+# describe_pet(pet_name=&quot;Snowball&quot;, &quot;hamster&quot;)  # 错误！
+</code></pre>
+<h5 id="3-可变长参数"><a href="#3-可变长参数" class="headerlink" title="3.可变长参数"></a>3.可变长参数</h5><p>1.args - 可变位置参数*</p>
+<pre><code class="python"># 收集任意数量的位置参数为元组
+def make_pizza(*toppings):
+    &quot;&quot;&quot;制作披萨，接受任意数量的配料&quot;&quot;&quot;
+    print(&quot;Making a pizza with the following toppings:&quot;)
+    for topping in toppings:
+        print(f&quot;- &#123;topping&#125;&quot;)
+
+make_pizza(&quot;mushrooms&quot;)
+make_pizza(&quot;mushrooms&quot;, &quot;green peppers&quot;, &quot;extra cheese&quot;)
+
+# args 可以是其他名字，但约定用 args
+def calculate_sum(*numbers):
+    &quot;&quot;&quot;计算任意数量的数字之和&quot;&quot;&quot;
+    return sum(numbers)
+
+print(calculate_sum(1, 2, 3))      # 6
+print(calculate_sum(1, 2, 3, 4, 5))  # 15
+</code></pre>
+<p>2.kwargs - 可变关键字参数</p>
+<pre><code class="python"># 收集任意数量的关键字参数为字典
+def build_profile(**user_info):
+    &quot;&quot;&quot;构建用户档案&quot;&quot;&quot;
+    profile = &#123;&#125;
+    for key, value in user_info.items():
+        profile[key] = value
+    return profile
+
+user = build_profile(name=&quot;Alice&quot;, age=25, city=&quot;Beijing&quot;)
+print(user)  # &#123;&#39;name&#39;: &#39;Alice&#39;, &#39;age&#39;: 25, &#39;city&#39;: &#39;Beijing&#39;&#125;
+
+# 复杂示例
+def create_order(order_id, **order_details):
+    &quot;&quot;&quot;创建订单&quot;&quot;&quot;
+    order = &#123;&quot;order_id&quot;: order_id&#125;
+    order.update(order_details)
+    return order
+
+order = create_order(1001, product=&quot;Laptop&quot;, quantity=1, price=999.99)
+print(order)
+</code></pre>
+<h5 id="4-参数顺序规则"><a href="#4-参数顺序规则" class="headerlink" title="4.参数顺序规则"></a>4.参数顺序规则</h5><pre><code class="python"># 标准顺序：位置参数 -&gt; *args -&gt; 关键字参数 -&gt; **kwargs
+def standard_order(name, *args, age=None, **kwargs):
+    print(f&quot;name: &#123;name&#125;&quot;)
+    print(f&quot;args: &#123;args&#125;&quot;)
+    print(f&quot;age: &#123;age&#125;&quot;)
+    print(f&quot;kwargs: &#123;kwargs&#125;&quot;)
+
+standard_order(&quot;Alice&quot;, &quot;arg1&quot;, &quot;arg2&quot;, age=25, city=&quot;Beijing&quot;, country=&quot;China&quot;)
+</code></pre>
+<h5 id="5-函数的返回值"><a href="#5-函数的返回值" class="headerlink" title="5.函数的返回值"></a>5.函数的返回值</h5><p>1.隐式返回 None</p>
+<pre><code class="python"># 没有return语句或只有return的函数返回None
+def no_return():
+    print(&quot;这个函数没有返回值&quot;)
+    
+result = no_return()
+print(result)  # None
+
+def only_return():
+    return  # 等价于 return None
+
+result = only_return()
+print(result)  # None
+</code></pre>
+<p>2.返回复杂数据结构</p>
+<pre><code class="python"># 返回列表
+def get_even_numbers(limit):
+    &quot;&quot;&quot;返回指定范围内的偶数&quot;&quot;&quot;
+    return [i for i in range(limit) if i % 2 == 0]
+
+print(get_even_numbers(10))  # [0, 2, 4, 6, 8]
+
+# 返回字典
+def create_user(username, email):
+    &quot;&quot;&quot;创建用户字典&quot;&quot;&quot;
+    return &#123;
+        &quot;username&quot;: username,
+        &quot;email&quot;: email,
+        &quot;is_active&quot;: True,
+        &quot;created_at&quot;: &quot;2024-01-01&quot;
+    &#125;
+
+user = create_user(&quot;alice&quot;, &quot;alice@example.com&quot;)
+print(user)
+
+# 返回函数（高阶函数）
+def multiplier(factor):
+    &quot;&quot;&quot;返回一个乘以因子的函数&quot;&quot;&quot;
+    def multiply(x):
+        return x * factor
+    return multiply
+
+double = multiplier(2)
+triple = multiplier(3)
+print(double(5))  # 10
+print(triple(5))  # 15
+</code></pre>
+<h4 id="4-文件"><a href="#4-文件" class="headerlink" title="4.文件"></a>4.文件</h4><h5 id="1-文件打开和关闭"><a href="#1-文件打开和关闭" class="headerlink" title="1.文件打开和关闭"></a>1.文件打开和关闭</h5><p>1.基本文件打开和关闭</p>
+<pre><code class="python"># 方法1：传统方式（需要显式关闭）
+file = open(&#39;example.txt&#39;, &#39;r&#39;)  # 打开文件
+content = file.read()            # 读取内容
+file.close()                     # 必须关闭文件！
+
+# 方法2：使用 with 语句（推荐！）
+with open(&#39;example.txt&#39;, &#39;r&#39;) as file:
+    content = file.read()
+# 文件会自动关闭，即使发生异常也会关闭
+</code></pre>
+<p>2.文件打开模式</p>
+<pre><code class="python"># 基本模式
+&quot;&quot;&quot;
+r:  只读（默认），文件必须存在
+w:  只写，会覆盖原文件，文件不存在则创建
+a:  追加，文件不存在则创建
+x:  独占创建，文件必须不存在
+b:  二进制模式，如 &#39;rb&#39;, &#39;wb&#39;
+t:  文本模式（默认），如 &#39;rt&#39;, &#39;wt&#39;
++： 读写模式，如 &#39;r+&#39;, &#39;w+&#39;, &#39;a+&#39;
+&quot;&quot;&quot;
+</code></pre>
+<p>3.打开模式示例</p>
+<pre><code class="python"># 不同模式的行为
+# 写入文件（会覆盖）
+with open(&#39;test.txt&#39;, &#39;w&#39;) as f:
+    f.write(&quot;第一行\n&quot;)
+    f.write(&quot;第二行\n&quot;)
+
+# 追加内容
+with open(&#39;test.txt&#39;, &#39;a&#39;) as f:
+    f.write(&quot;第三行（追加）\n&quot;)
+
+# 读写模式
+with open(&#39;test.txt&#39;, &#39;r+&#39;) as f:
+    content = f.read()
+    f.write(&quot;新内容\n&quot;)
+
+# 二进制模式（处理图片、音频等）
+with open(&#39;image.jpg&#39;, &#39;rb&#39;) as f:
+    image_data = f.read()
+
+# 文本模式指定编码
+with open(&#39;file.txt&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+    content = f.read()
+</code></pre>
+<h5 id="2-文件读取方法"><a href="#2-文件读取方法" class="headerlink" title="2.文件读取方法"></a>2.文件读取方法</h5><p>1.read(size) - 读取指定字节数</p>
+<pre><code class="python"># 创建测试文件
+with open(&#39;test_read.txt&#39;, &#39;w&#39;) as f:
+    f.write(&quot;0123456789&quot; * 10)  # 100个字符
+
+# 读取指定字节数
+with open(&#39;test_read.txt&#39;, &#39;r&#39;) as f:
+    # 读取前10个字符
+    chunk1 = f.read(10)
+    print(f&quot;第一次读取10字节: &#123;chunk1&#125;&quot;)  # 0123456789
+    
+    # 再读取20个字符
+    chunk2 = f.read(20)
+    print(f&quot;第二次读取20字节: &#123;chunk2&#125;&quot;)  # 01234567890123456789
+    
+    # 继续读取，不指定大小则读取剩余所有
+    rest = f.read()
+    print(f&quot;剩余长度: &#123;len(rest)&#125;&quot;)  # 70个字符
+
+# 读取大文件的推荐方式
+def read_large_file(filename, chunk_size=1024):
+    &quot;&quot;&quot;分块读取大文件&quot;&quot;&quot;
+    with open(filename, &#39;r&#39;) as f:
+        while True:
+            chunk = f.read(chunk_size)
+            if not chunk:  # 读取到文件末尾
+                break
+            # 处理每一块数据
+            yield chunk
+
+# 使用示例
+for chunk in read_large_file(&#39;large_file.txt&#39;, 1024):
+    process_chunk(chunk)
+</code></pre>
+<p>2.readline() - 逐行读取</p>
+<pre><code class="python"># 创建多行文件
+with open(&#39;multiline.txt&#39;, &#39;w&#39;) as f:
+    for i in range(5):
+        f.write(f&quot;这是第&#123;i+1&#125;行\n&quot;)
+
+# 逐行读取
+with open(&#39;multiline.txt&#39;, &#39;r&#39;) as f:
+    line1 = f.readline()
+    print(f&quot;第1行: &#123;line1.strip()&#125;&quot;)  # 这是第1行
+    
+    line2 = f.readline()
+    print(f&quot;第2行: &#123;line2.strip()&#125;&quot;)  # 这是第2行
+    
+    # 继续读取剩余行
+    while True:
+        line = f.readline()
+        if not line:  # 空字符串表示文件结束
+            break
+        print(f&quot;继续读取: &#123;line.strip()&#125;&quot;)
+
+# 使用 readline 读取整个文件
+def read_file_line_by_line(filename):
+    &quot;&quot;&quot;逐行读取整个文件&quot;&quot;&quot;
+    with open(filename, &#39;r&#39;) as f:
+        line_number = 1
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            print(f&quot;行 &#123;line_number&#125;: &#123;line.strip()&#125;&quot;)
+            line_number += 1
+</code></pre>
+<p>3.readlines() - 读取所有行到列表</p>
+<pre><code class="python"># 读取所有行
+with open(&#39;multiline.txt&#39;, &#39;r&#39;) as f:
+    all_lines = f.readlines()
+    print(f&quot;总行数: &#123;len(all_lines)&#125;&quot;)
+    
+    for i, line in enumerate(all_lines, 1):
+        print(f&quot;行&#123;i&#125;: &#123;line.strip()&#125;&quot;)
+
+# 带换行符
+print(&quot;带换行符的列表:&quot;)
+for line in all_lines:
+    print(repr(line))  # 显示换行符
+
+# 去除每行的换行符
+lines_without_newline = [line.strip() for line in all_lines]
+print(f&quot;去除换行符: &#123;lines_without_newline&#125;&quot;)
+
+# 大文件注意：readlines() 会一次性加载所有内容到内存
+def read_large_file_safe(filename):
+    &quot;&quot;&quot;安全读取大文件的行&quot;&quot;&quot;
+    with open(filename, &#39;r&#39;) as f:
+        for line in f:  # 推荐：直接遍历文件对象
+            yield line.strip()
+
+# 使用生成器逐行处理
+for line in read_large_file_safe(&#39;large_file.txt&#39;):
+    process_line(line)
+</code></pre>
+<h5 id="3-文件指针操作"><a href="#3-文件指针操作" class="headerlink" title="3.文件指针操作"></a>3.文件指针操作</h5><p>1.seek() 方法基础</p>
+<pre><code class="python"># seek(offset, whence) 参数说明：
+# offset: 偏移量
+# whence: 参考位置（0:文件开头，1:当前位置，2:文件末尾）
+
+# 创建测试文件
+with open(&#39;seek_test.txt&#39;, &#39;w&#39;) as f:
+    f.write(&quot;0123456789\n&quot;)
+    f.write(&quot;abcdefghij\n&quot;)
+    f.write(&quot;ABCDEFGHIJ\n&quot;)
+
+# 使用 seek 移动文件指针
+with open(&#39;seek_test.txt&#39;, &#39;r&#39;) as f:
+    # 从开头读取5个字符
+    print(f&quot;初始位置: &#123;f.tell()&#125;&quot;)  # 0
+    data1 = f.read(5)
+    print(f&quot;读取5字节后: &#123;data1&#125;&quot;)  # 01234
+    print(f&quot;当前位置: &#123;f.tell()&#125;&quot;)   # 5
+    
+    # 移动到开头
+    f.seek(0)
+    print(f&quot;seek(0)后位置: &#123;f.tell()&#125;&quot;)  # 0
+    
+    # 移动到第10个字节
+    f.seek(10)
+    print(f&quot;seek(10)后读取: &#123;f.read(5)&#125;&quot;)  # 5678a
+    
+    # 相对当前位置移动
+    f.seek(5, 1)  # 从当前位置向后移动5
+    print(f&quot;从当前位置+5后: &#123;f.read(5)&#125;&quot;)  # cdefg
+    
+    # 从文件末尾移动（通常用于二进制文件）
+    f.seek(-10, 2)  # 从末尾向前10个字节
+    print(f&quot;从末尾-10读取: &#123;f.read()&#125;&quot;)  # ABCDEFGHIJ
+</code></pre>
+<p>2.tell() - 获取当前位置</p>
+<pre><code class="python">with open(&#39;test.txt&#39;, &#39;r&#39;) as f:
+    print(f&quot;初始位置: &#123;f.tell()&#125;&quot;)
+    
+    f.read(10)
+    print(f&quot;读取10字节后位置: &#123;f.tell()&#125;&quot;)
+    
+    f.seek(5)
+    print(f&quot;seek(5)后位置: &#123;f.tell()&#125;&quot;)
+    
+    f.read(5)
+    print(f&quot;再读5字节后位置: &#123;f.tell()&#125;&quot;)
+</code></pre>
+<h4 id="5-面向对象"><a href="#5-面向对象" class="headerlink" title="5.面向对象"></a>5.面向对象</h4><h5 id="1-类和对象基础"><a href="#1-类和对象基础" class="headerlink" title="1.类和对象基础"></a>1.类和对象基础</h5><p>1.类定义和对象创建</p>
+<pre><code class="python"># 定义一个简单的类
+class Dog:
+    &quot;&quot;&quot;狗类&quot;&quot;&quot;
+    pass  # 空类，用pass占位
+
+# 创建对象（实例化）
+my_dog = Dog()  # 创建Dog类的实例
+print(type(my_dog))  # &lt;class &#39;__main__.Dog&#39;&gt;
+print(isinstance(my_dog, Dog))  # True
+</code></pre>
+<p>2.类属性 vs 实例属性</p>
+<pre><code class="python">
+class Dog:
+    # 类属性（所有实例共享）
+    species = &quot;Canis familiaris&quot;
+    
+    def __init__(self, name, age):
+        # 实例属性（每个实例独有）
+        self.name = name
+        self.age = age
+
+# 创建实例
+dog1 = Dog(&quot;Buddy&quot;, 3)
+dog2 = Dog(&quot;Max&quot;, 5)
+
+print(dog1.name, dog1.age)  # Buddy 3
+print(dog2.name, dog2.age)  # Max 5
+
+# 类属性访问
+print(dog1.species)  # Canis familiaris
+print(Dog.species)   # Canis familiaris
+
+# 修改类属性会影响所有实例
+Dog.species = &quot;Canis lupus&quot;
+print(dog1.species)  # Canis lupus
+print(dog2.species)  # Canis lupus
+
+# 修改实例属性只影响该实例
+dog1.age = 4
+print(dog1.age)  # 4
+print(dog2.age)  # 5 不变
+</code></pre>
+<h5 id="2-方法详解"><a href="#2-方法详解" class="headerlink" title="2.方法详解"></a>2.方法详解</h5><p>1.实例方法</p>
+<pre><code class="python">class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    # 实例方法：第一个参数是self
+    def bark(self):
+        return f&quot;&#123;self.name&#125; says: Woof!&quot;
+    
+    def get_info(self):
+        return f&quot;&#123;self.name&#125; is &#123;self.age&#125; years old&quot;
+
+# 使用
+dog = Dog(&quot;Buddy&quot;, 3)
+print(dog.bark())      # Buddy says: Woof!
+print(dog.get_info())  # Buddy is 3 years old
+</code></pre>
+<p>2.类方法</p>
+<pre><code class="python">class Dog:
+    species = &quot;Canis familiaris&quot;
+    total_dogs = 0  # 记录创建的狗的数量
+    
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Dog.total_dogs += 1
+    
+    # 类方法：第一个参数是cls，用@classmethod装饰
+    @classmethod
+    def get_total_dogs(cls):
+        return cls.total_dogs
+    
+    @classmethod
+    def change_species(cls, new_species):
+        cls.species = new_species
+    
+    @classmethod
+    def create_from_birth_year(cls, name, birth_year):
+        &quot;&quot;&quot;替代构造函数，根据出生年份创建&quot;&quot;&quot;
+        from datetime import datetime
+        current_year = datetime.now().year
+        age = current_year - birth_year
+        return cls(name, age)
+
+# 使用类方法
+print(Dog.get_total_dogs())  # 0
+
+dog1 = Dog(&quot;Buddy&quot;, 3)
+dog2 = Dog(&quot;Max&quot;, 5)
+
+print(Dog.get_total_dogs())  # 2
+
+# 修改类属性
+Dog.change_species(&quot;Canis lupus&quot;)
+print(dog1.species)  # Canis lupus
+
+# 使用类方法作为替代构造函数
+dog3 = Dog.create_from_birth_year(&quot;Charlie&quot;, 2020)
+print(f&quot;&#123;dog3.name&#125; is &#123;dog3.age&#125; years old&quot;)
+</code></pre>
+<p>3.静态方法</p>
+<pre><code class="python">class Calculator:
+    @staticmethod
+    def add(x, y):
+        &quot;&quot;&quot;静态方法：与类相关但不依赖类或实例&quot;&quot;&quot;
+        return x + y
+    
+    @staticmethod
+    def multiply(x, y):
+        return x * y
+
+# 使用静态方法（无需创建实例）
+print(Calculator.add(10, 5))      # 15
+print(Calculator.multiply(10, 5)) # 50
+
+# 也可以用实例调用
+calc = Calculator()
+print(calc.add(3, 4))  # 7
+</code></pre>
+<h4 id="6-random库"><a href="#6-random库" class="headerlink" title="6.random库"></a>6.random库</h4><h5 id="1-基础随机数生成"><a href="#1-基础随机数生成" class="headerlink" title="1.基础随机数生成"></a>1.基础随机数生成</h5><p>1.设置随机种子</p>
+<pre><code class="python">import random
+
+# 设置随机种子（确保结果可重复）
+random.seed(42)  # 可以是任何整数
+print(random.random())  # 0.6394267984578837
+print(random.random())  # 0.025010755222666936
+
+# 再次设置相同种子，会得到相同序列
+random.seed(42)
+print(random.random())  # 同样是0.6394267984578837
+</code></pre>
+<p>2.基础随机函数</p>
+<pre><code class="python"># 生成0到1之间的随机浮点数
+print(random.random())          # 0.3745401188473625
+print(random.random())          # 不同的随机数
+
+# 生成指定范围的随机浮点数
+print(random.uniform(1, 10))    # 1到10之间的随机浮点数
+print(random.uniform(-5, 5))    # -5到5之间的随机浮点数
+
+# 生成随机整数
+print(random.randint(1, 10))    # 1到10之间的随机整数（包含10）
+print(random.randint(-5, 5))    # -5到5之间的随机整数
+</code></pre>
+<h5 id="2-序列相关操作"><a href="#2-序列相关操作" class="headerlink" title="2.序列相关操作"></a>2.序列相关操作</h5><p>1.从序列中随机选择</p>
+<pre><code class="python">fruits = [&#39;apple&#39;, &#39;banana&#39;, &#39;orange&#39;, &#39;grape&#39;, &#39;kiwi&#39;]
+
+# 随机选择一个元素
+print(random.choice(fruits))      # 随机选择一个水果
+
+# 随机选择多个元素（不重复）
+print(random.sample(fruits, 2))   # 随机选择2个不同的水果
+print(random.sample(fruits, 3))   # 随机选择3个不同的水果
+# print(random.sample(fruits, 10)) # 错误：不能超过序列长度
+
+# 随机选择多个元素（可重复）
+choices = [random.choice(fruits) for _ in range(5)]
+print(&quot;随机选择5次（可重复）:&quot;, choices)
+
+# 使用choices函数（Python 3.6+）
+print(random.choices(fruits, k=3))  # 随机选择3个（可重复）
+</code></pre>
+<p>2.打乱序列顺序</p>
+<pre><code class="python"># 创建有序列表
+numbers = list(range(1, 11))
+print(&quot;原始列表:&quot;, numbers)
+
+# 打乱列表（原地修改）
+random.shuffle(numbers)
+print(&quot;打乱后:&quot;, numbers)
+
+# 如果不希望修改原列表
+numbers = list(range(1, 11))
+shuffled = random.sample(numbers, len(numbers))
+print(&quot;原列表:&quot;, numbers)
+print(&quot;新打乱列表:&quot;, shuffled)
+</code></pre>
+<p>3.带权重的随机选择</p>
+<pre><code class="python"># 权重随机选择
+fruits = [&#39;apple&#39;, &#39;banana&#39;, &#39;orange&#39;]
+weights = [10, 1, 5]  # apple:10, banana:1, orange:5
+
+# 按权重随机选择
+choices = random.choices(fruits, weights=weights, k=10)
+print(&quot;10次权重选择:&quot;, choices)
+
+# 计算频率
+from collections import Counter
+freq = Counter(choices)
+print(&quot;选择频率:&quot;, freq)
+
+# 累积权重（更高效）
+cum_weights = [10, 11, 16]  # 累积权重
+choices2 = random.choices(fruits, cum_weights=cum_weights, k=1000)
+freq2 = Counter(choices2)
+print(&quot;\n1000次选择频率:&quot;, freq2)
+</code></pre>
+<p>4.总结</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+<th>示例</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>random.seed(a&#x3D;None)</td>
+<td>初始化随机数生成器</td>
+<td>random.seed(42)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>random.random()</td>
+<td>生成 [0.0, 1.0) 之间的随机浮点数</td>
+<td>random.random()</td>
+<td>0.374540…</td>
+</tr>
+<tr>
+<td>random.uniform(a, b)</td>
+<td>生成 [a, b] 之间的随机浮点数</td>
+<td>random.uniform(1, 10)</td>
+<td>5.678</td>
+</tr>
+<tr>
+<td>random.randint(a, b)</td>
+<td>生成 [a, b] 之间的随机整数</td>
+<td>random.randint(1, 100)</td>
+<td>42</td>
+</tr>
+<tr>
+<td>random.choice(seq)</td>
+<td>从序列中随机选择一个元素</td>
+<td>random.choice([‘a’,’b’,’c’])</td>
+<td>‘b’</td>
+</tr>
+<tr>
+<td>random.choices(population, k&#x3D;1)</td>
+<td>从序列中随机选择k个元素（可重复）</td>
+<td>random.choices([1,2,3], k&#x3D;2)</td>
+<td>[3, 1]</td>
+</tr>
+<tr>
+<td>random.sample(population, k)</td>
+<td>从序列中随机选择k个元素（不重复）</td>
+<td>random.sample([1,2,3,4], 2)</td>
+<td>[3, 4]</td>
+</tr>
+<tr>
+<td>random.shuffle(seq)</td>
+<td>将序列顺序随机打乱（原地修改）</td>
+<td>random.shuffle([1,2,3])</td>
+<td>[2, 3, 1]</td>
+</tr>
+</tbody></table>
+<h4 id="7-Numpy和Pandas"><a href="#7-Numpy和Pandas" class="headerlink" title="7.Numpy和Pandas"></a>7.Numpy和Pandas</h4><h5 id="1-NumPy基础代码示例"><a href="#1-NumPy基础代码示例" class="headerlink" title="1.NumPy基础代码示例"></a>1.NumPy基础代码示例</h5><p>1.创建数组</p>
+<pre><code class="python">import numpy as np
+
+# 创建一维数组
+arr1 = np.array([1, 2, 3, 4, 5])
+print(&quot;一维数组:&quot;, arr1)
+
+# 创建二维数组
+arr2 = np.array([[1, 2, 3], [4, 5, 6]])
+print(&quot;二维数组:\n&quot;, arr2)
+
+# 特殊数组创建
+zeros = np.zeros((3, 4))        # 3x4的全0数组
+ones = np.ones((2, 3))          # 2x3的全1数组
+full = np.full((2, 2), 7)       # 2x2的全7数组
+eye = np.eye(3)                 # 3x3单位矩阵
+arange = np.arange(0, 10, 2)    # 0到10，步长2
+linspace = np.linspace(0, 1, 5) # 0到1之间5个均匀分布的数
+
+print(&quot;全0数组:\n&quot;, zeros)
+print(&quot;等差数列:&quot;, linspace)
+</code></pre>
+<p>2.数组基本操作</p>
+<pre><code class="python"># 数组形状和类型
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(&quot;形状:&quot;, arr.shape)      # (2, 3)
+print(&quot;维度:&quot;, arr.ndim)       # 2
+print(&quot;大小:&quot;, arr.size)       # 6
+print(&quot;数据类型:&quot;, arr.dtype)  # int64
+
+# 改变形状
+reshaped = arr.reshape(3, 2)
+print(&quot;改变形状:\n&quot;, reshaped)
+
+# 转置
+transposed = arr.T
+print(&quot;转置:\n&quot;, transposed)
+
+# 展平
+flattened = arr.flatten()
+print(&quot;展平:&quot;, flattened)
+</code></pre>
+<p>3.数组索引和切片</p>
+<pre><code class="python">arr = np.array([[1, 2, 3, 4], 
+                [5, 6, 7, 8], 
+                [9, 10, 11, 12]])
+
+# 基础索引
+print(&quot;第一行:&quot;, arr[0])          # [1 2 3 4]
+print(&quot;第一个元素:&quot;, arr[0, 0])    # 1
+
+# 切片
+print(&quot;前两行:&quot;, arr[:2])          # [[1 2 3 4] [5 6 7 8]]
+print(&quot;第二列:&quot;, arr[:, 1])        # [2 6 10]
+print(&quot;子数组:\n&quot;, arr[1:3, 1:3]) # [[6 7] [10 11]]
+
+# 布尔索引
+mask = arr &gt; 5
+print(&quot;大于5的元素:&quot;, arr[mask])   # [6 7 8 9 10 11 12]
+
+# 花式索引
+print(&quot;选择特定行:&quot;, arr[[0, 2]])  # [[1 2 3 4] [9 10 11 12]]
+</code></pre>
+<p>4.数学运算</p>
+<pre><code class="python">a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+# 算术运算
+print(&quot;加法:&quot;, a + b)        # [5 7 9]
+print(&quot;乘法:&quot;, a * b)        # [4 10 18]
+print(&quot;平方:&quot;, a ** 2)       # [1 4 9]
+print(&quot;点积:&quot;, np.dot(a, b)) # 32
+
+# 聚合函数
+arr = np.array([[1, 2], [3, 4], [5, 6]])
+print(&quot;总和:&quot;, np.sum(arr))          # 21
+print(&quot;每列和:&quot;, np.sum(arr, axis=0)) # [9 12]
+print(&quot;每行和:&quot;, np.sum(arr, axis=1)) # [3 7 11]
+print(&quot;均值:&quot;, np.mean(arr))         # 3.5
+print(&quot;最大值:&quot;, np.max(arr))        # 6
+print(&quot;最小值:&quot;, np.min(arr))        # 1
+print(&quot;标准差:&quot;, np.std(arr))        # 1.707...
+</code></pre>
+<p>5.广播机制</p>
+<pre><code class="python"># 数组与标量的广播
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(&quot;数组 + 标量:\n&quot;, arr + 10)
+
+# 不同形状数组的广播
+a = np.array([[1, 2, 3], [4, 5, 6]])  # 2x3
+b = np.array([10, 20, 30])            # 3
+
+print(&quot;广播相加:\n&quot;, a + b)  # b被广播到2x3
+# 结果：[[11 22 33] [14 25 36]]
+
+# 更多广播示例
+row = np.array([1, 2, 3]).reshape(1, 3)  # 1x3
+col = np.array([10, 20]).reshape(2, 1)   # 2x1
+print(&quot;行广播:\n&quot;, row + col)
+</code></pre>
+<h5 id="2-Pandas基础代码示例"><a href="#2-Pandas基础代码示例" class="headerlink" title="2.Pandas基础代码示例"></a>2.Pandas基础代码示例</h5><p>1.Series创建和操作</p>
+<pre><code class="python">import pandas as pd
+import numpy as np
+
+# 创建Series
+s1 = pd.Series([1, 3, 5, 7, 9])
+print(&quot;默认索引Series:\n&quot;, s1)
+
+# 自定义索引
+s2 = pd.Series([10, 20, 30, 40], index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])
+print(&quot;自定义索引Series:\n&quot;, s2)
+
+# 从字典创建
+s3 = pd.Series(&#123;&#39;北京&#39;: 2154, &#39;上海&#39;: 2428, &#39;广州&#39;: 1530&#125;)
+print(&quot;从字典创建:\n&quot;, s3)
+
+# Series基本操作
+print(&quot;值:&quot;, s2.values)        # [10 20 30 40]
+print(&quot;索引:&quot;, s2.index)       # Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])
+print(&quot;大小:&quot;, s2.size)        # 4
+print(&quot;前两个:&quot;, s2.head(2))   # a:10, b:20
+print(&quot;后两个:&quot;, s2.tail(2))   # c:30, d:40
+</code></pre>
+<p>2.DataFrame创建</p>
+<pre><code class="python"># 从字典创建
+data = &#123;
+    &#39;姓名&#39;: [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;, &#39;赵六&#39;],
+    &#39;年龄&#39;: [25, 30, 35, 28],
+    &#39;城市&#39;: [&#39;北京&#39;, &#39;上海&#39;, &#39;广州&#39;, &#39;深圳&#39;],
+    &#39;工资&#39;: [15000, 20000, 18000, 22000]
+&#125;
+df = pd.DataFrame(data)
+print(&quot;DataFrame:\n&quot;, df)
+
+# 从列表创建
+data_list = [
+    [&#39;苹果&#39;, 5.5, 100],
+    [&#39;香蕉&#39;, 3.2, 150],
+    [&#39;橙子&#39;, 4.8, 80]
+]
+df2 = pd.DataFrame(data_list, columns=[&#39;水果&#39;, &#39;价格&#39;, &#39;库存&#39;])
+print(&quot;从列表创建:\n&quot;, df2)
+
+# 从NumPy数组创建
+arr = np.random.randn(4, 3)
+df3 = pd.DataFrame(arr, columns=[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;], index=[&#39;2021&#39;, &#39;2022&#39;, &#39;2023&#39;, &#39;2024&#39;])
+print(&quot;从NumPy创建:\n&quot;, df3)
+</code></pre>
+<p>3.DataFrame基本操作</p>
+<pre><code class="python"># 查看数据
+print(&quot;前3行:\n&quot;, df.head(3))
+print(&quot;后2行:\n&quot;, df.tail(2))
+print(&quot;形状:&quot;, df.shape)      # (4, 4)
+print(&quot;列名:&quot;, df.columns)    # [&#39;姓名&#39;, &#39;年龄&#39;, &#39;城市&#39;, &#39;工资&#39;]
+print(&quot;索引:&quot;, df.index)      # RangeIndex(start=0, stop=4, step=1)
+
+# 选择数据
+print(&quot;选择列:\n&quot;, df[&#39;姓名&#39;])       # 单列
+print(&quot;选择多列:\n&quot;, df[[&#39;姓名&#39;, &#39;工资&#39;]])  # 多列
+
+# 使用loc和iloc
+print(&quot;按标签选择:\n&quot;, df.loc[0])                 # 第一行
+print(&quot;按标签选择多行:\n&quot;, df.loc[[0, 2]])         # 第1、3行
+print(&quot;按位置选择:\n&quot;, df.iloc[1])                # 第二行
+print(&quot;选择特定位置:\n&quot;, df.loc[0, &#39;年龄&#39;])         # 25
+
+# 条件选择
+print(&quot;年龄大于28:\n&quot;, df[df[&#39;年龄&#39;] &gt; 28])
+print(&quot;北京的数据:\n&quot;, df[df[&#39;城市&#39;] == &#39;北京&#39;])
+</code></pre>
+<p>一些补充知识点：</p>
+<p><strong>1.保留字</strong></p>
+<table>
+<thead>
+<tr>
+<th>and</th>
+<th>elif</th>
+<th>import</th>
+<th>raise</th>
+<th>global</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>as</td>
+<td>else</td>
+<td>in</td>
+<td>return</td>
+<td>nonlocal</td>
+</tr>
+<tr>
+<td>assert</td>
+<td>except</td>
+<td>is</td>
+<td>try</td>
+<td>True</td>
+</tr>
+<tr>
+<td>break</td>
+<td>finally</td>
+<td>lambda</td>
+<td>while	False</td>
+<td></td>
+</tr>
+<tr>
+<td>class</td>
+<td>for</td>
+<td>not</td>
+<td>with</td>
+<td>None</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>from</td>
+<td>or</td>
+<td>yield</td>
+<td>async</td>
+</tr>
+<tr>
+<td>def</td>
+<td>if</td>
+<td>pass</td>
+<td>del</td>
+<td>await</td>
+</tr>
+</tbody></table>
+<p><strong>2.数值计算函数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abs(x)</td>
+<td>绝对值，x的绝对值</td>
+</tr>
+<tr>
+<td>abs(-10.01)</td>
+<td>结果为 10.01</td>
+</tr>
+<tr>
+<td>divmod(x,y)</td>
+<td>商余，(x&#x2F;&#x2F;y, x%y)，同时输出商和余数</td>
+</tr>
+<tr>
+<td>divmod(10, 3)</td>
+<td>结果为 (3, 1)</td>
+</tr>
+<tr>
+<td>pow(x, y[, z])</td>
+<td>幂余，(x**y)%z，[..]表示参数z可省略</td>
+</tr>
+<tr>
+<td>pow(3, pow(3, 99), 10000)</td>
+<td>结果为 4587</td>
+</tr>
+</tbody></table>
+<p><strong>3.字符串处理函数</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>len(x)</td>
+<td>长度，返回字符串x的长度</td>
+</tr>
+<tr>
+<td>len(“一二三456”)</td>
+<td>结果为 6</td>
+</tr>
+<tr>
+<td>str(x)</td>
+<td>任意类型x所对应的字符串形式</td>
+</tr>
+<tr>
+<td>str(1.23)</td>
+<td>结果为”1.23”</td>
+</tr>
+<tr>
+<td>hex(x) 或 oct(x)</td>
+<td>整数x的十六进制或八进制小写形式字符串</td>
+</tr>
+<tr>
+<td>hex(425)</td>
+<td>结果为”0x1a9”</td>
+</tr>
+<tr>
+<td>oct(425)</td>
+<td>结果为”0o651”</td>
+</tr>
+<tr>
+<td>chr(u)</td>
+<td>u为Unicode编码，返回其对应的字符</td>
+</tr>
+<tr>
+<td>ord(x)</td>
+<td>x为字符，返回其对应的Unicode编码</td>
+</tr>
+</tbody></table>
+<p><strong>4.字符串方法总结</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>split()</td>
+<td>分割字符串</td>
+<td>“a,b,c”.split(“,”)</td>
+</tr>
+<tr>
+<td>join()</td>
+<td>连接字符串</td>
+<td>“,”.join([‘a’,’b’,’c’])</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>替换子串</td>
+<td>“hello”.replace(“l”,”x”)</td>
+</tr>
+<tr>
+<td>strip()</td>
+<td>去除空白</td>
+<td>“ hi “.strip()</td>
+</tr>
+<tr>
+<td>find()</td>
+<td>查找子串</td>
+<td>“hello”.find(“e”)</td>
+</tr>
+<tr>
+<td>startswith()</td>
+<td>检查开头</td>
+<td>“hello”.startswith(“he”)</td>
+</tr>
+<tr>
+<td>endswith()</td>
+<td>检查结尾</td>
+<td>“hello”.endswith(“lo”)</td>
+</tr>
+<tr>
+<td>upper()</td>
+<td>转大写</td>
+<td>“hello”.upper()</td>
+</tr>
+<tr>
+<td>lower()</td>
+<td>转小写</td>
+<td>“HELLO”.lower()</td>
+</tr>
+</tbody></table>
+<p><strong>5.字符串操作符</strong></p>
+<pre><code class="python">s1 = &quot;Hello&quot;
+s2 = &quot;World&quot;
+
+# 1. 拼接：+
+result = s1 + &quot; &quot; + s2
+print(f&quot;拼接: &#39;&#123;s1&#125;&#39; + &#39; &#39; + &#39;&#123;s2&#125;&#39; = &#39;&#123;result&#125;&#39;&quot;)  # Hello World
+
+# 2. 重复：*
+repeated = s1 * 3
+print(f&quot;重复: &#39;&#123;s1&#125;&#39; * 3 = &#39;&#123;repeated&#125;&#39;&quot;)  # HelloHelloHello
+
+# 3. 成员检查：in, not in
+print(f&quot;&#39;ell&#39; in &#39;&#123;s1&#125;&#39;: &#123;&#39;ell&#39; in s1&#125;&quot;)        # True
+print(f&quot;&#39;xyz&#39; not in &#39;&#123;s1&#125;&#39;: &#123;&#39;xyz&#39; not in s1&#125;&quot;) # True
+
+# 4. 索引：[]
+print(f&quot;索引: s1[1] = &#39;&#123;s1[1]&#125;&#39;&quot;)              # e
+print(f&quot;负索引: s1[-1] = &#39;&#123;s1[-1]&#125;&#39;&quot;)          # o
+
+# 5. 切片：[start:stop:step]
+s = &quot;PythonProgramming&quot;
+print(f&quot;切片 [0:6]: &#39;&#123;s[0:6]&#125;&#39;&quot;)               # Python
+print(f&quot;切片 [6:]: &#39;&#123;s[6:]&#125;&#39;&quot;)                 # Programming
+print(f&quot;切片 [::2]: &#39;&#123;s[::2]&#125;&#39;&quot;)               # Pto rgamn
+print(f&quot;切片 [::-1]: &#39;&#123;s[::-1]&#125;&#39;&quot;)             # gnimmargorPnohtyP（反转）
+
+# 传统格式化（C风格）
+name = &quot;Alice&quot;
+age = 25
+height = 1.65
+
+# %s: 字符串, %d: 整数, %f: 浮点数
+print(&quot;姓名: %s, 年龄: %d, 身高: %.2f米&quot; % (name, age, height))
+
+# 宽度和对齐
+print(&quot;姓名: %10s&quot; % name)        # 右对齐，宽度10
+print(&quot;年龄: %-10d岁&quot; % age)      # 左对齐，宽度10
+
+# 多种格式化方式
+print(&quot;百分比: %.1f%%&quot; % 87.5)           # 87.5%
+print(&quot;八进制: %o, 十六进制: %x&quot; % (255, 255))  # 377, ff
+print(&quot;科学计数法: %e&quot; % 123456789)      # 1.234568e+08
+</code></pre>
+<p><strong>6..format() 格式化</strong></p>
+<p>1.基础格式化</p>
+<pre><code class="python"># 位置参数
+print(&quot;位置参数: &#123;0&#125; &#123;1&#125; &#123;0&#125;&quot;.format(&quot;Python&quot;, &quot;Java&quot;))
+
+# 关键字参数
+print(&quot;关键字参数: &#123;name&#125; is &#123;age&#125; years old&quot;.format(name=&quot;Alice&quot;, age=25))
+
+# 混合使用
+print(&quot;混合: &#123;0&#125; and &#123;other&#125;&quot;.format(&quot;Python&quot;, other=&quot;Java&quot;))
+
+# 数字格式化
+print(&quot;整数: &#123;0:d&#125;&quot;.format(42))
+print(&quot;浮点数: &#123;0:.2f&#125;&quot;.format(3.14159))
+print(&quot;百分比: &#123;0:.1%&#125;&quot;.format(0.875))  # 87.5%
+print(&quot;科学计数法: &#123;0:.2e&#125;&quot;.format(123456789))  # 1.23e+08
+</code></pre>
+<p>2.对齐和填充</p>
+<pre><code class="python"># 对齐方式
+text = &quot;Python&quot;
+print(&quot;居中对齐: &#123;0:^20&#125;&quot;.format(text))
+print(&quot;左对齐: &#123;0:&lt;20&#125;&quot;.format(text))
+print(&quot;右对齐: &#123;0:&gt;20&#125;&quot;.format(text))
+
+# 填充字符
+print(&quot;居中填充: &#123;0:*^20&#125;&quot;.format(text))  # *******Python*******
+print(&quot;左填充: &#123;0:-&lt;20&#125;&quot;.format(text))   # Python--------------
+print(&quot;右填充: &#123;0:.&gt;20&#125;&quot;.format(text))   # ..............Python
+
+# 数字对齐
+numbers = [123, 4567, 89, 123456]
+for num in numbers:
+    print(&quot;数字: &#123;0:&gt;10,d&#125;&quot;.format(num))
+</code></pre>
+<p>3.格式化示例</p>
+<pre><code class="python"># 表格格式化
+data = [
+    (&quot;Alice&quot;, 25, 85000.50),
+    (&quot;Bob&quot;, 30, 95000.75),
+    (&quot;Charlie&quot;, 28, 78000.25),
+]
+
+print(&quot;&#123;:&lt;10&#125; &#123;:&gt;5&#125; &#123;:&gt;12&#125;&quot;.format(&quot;姓名&quot;, &quot;年龄&quot;, &quot;工资&quot;))
+print(&quot;-&quot; * 30)
+
+for name, age, salary in data:
+    print(&quot;&#123;:&lt;10&#125; &#123;:&gt;5&#125; &#123;:&gt;12,.2f&#125;&quot;.format(name, age, salary))
+
+# 复杂格式化
+value = 12345.6789
+print(&quot;默认: &#123;0&#125;&quot;.format(value))
+print(&quot;两位小数: &#123;0:.2f&#125;&quot;.format(value))
+print(&quot;千分位: &#123;0:,.2f&#125;&quot;.format(value))
+print(&quot;百分比: &#123;0:.2%&#125;&quot;.format(value/10000))
+print(&quot;科学计数法: &#123;0:.3e&#125;&quot;.format(value))
+
+# 进制转换
+num = 255
+print(&quot;十进制: &#123;0:d&#125;&quot;.format(num))
+print(&quot;二进制: &#123;0:b&#125;&quot;.format(num))
+print(&quot;八进制: &#123;0:o&#125;&quot;.format(num))
+print(&quot;十六进制: &#123;0:x&#125;&quot;.format(num))
+print(&quot;十六进制(大写): &#123;0:X&#125;&quot;.format(num))
+</code></pre>
+<p><strong>7.time库</strong></p>
+<p>1.示例</p>
+<pre><code class="python"># 时间戳转字符串
+timestamp = time.time()
+print(f&quot;时间戳: &#123;timestamp&#125;&quot;)
+
+# 转可读字符串
+readable = time.ctime(timestamp)
+print(f&quot;可读格式: &#123;readable&#125;&quot;)
+
+# 转格式化字符串
+local = time.localtime(timestamp)
+formatted = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, local)
+print(f&quot;格式化: &#123;formatted&#125;&quot;)
+
+# 字符串转时间戳
+date_str = &quot;2024-01-15 14:30:00&quot;
+time_tuple = time.strptime(date_str, &quot;%Y-%m-%d %H:%M:%S&quot;)
+timestamp_from_str = time.mktime(time_tuple)
+print(f&quot;字符串转时间戳: &#123;date_str&#125; -&gt; &#123;timestamp_from_str&#125;&quot;)
+
+# 验证转换
+print(f&quot;验证: &#123;time.ctime(timestamp_from_str)&#125;&quot;)
+</code></pre>
+<p>2.总结</p>
+<table>
+<thead>
+<tr>
+<th>time()</th>
+<th>当前时间戳</th>
+<th>time.time()</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sleep()</td>
+<td>暂停执行</td>
+<td>time.sleep(1)</td>
+</tr>
+<tr>
+<td>localtime()</td>
+<td>本地时间</td>
+<td>time.localtime()</td>
+</tr>
+<tr>
+<td>gmtime()</td>
+<td>UTC时间</td>
+<td>time.gmtime()</td>
+</tr>
+<tr>
+<td>strftime()</td>
+<td>时间格式化</td>
+<td>time.strftime(“%Y-%m-%d”)</td>
+</tr>
+<tr>
+<td>strptime()</td>
+<td>时间解析</td>
+<td>time.strptime(“2024-01-01”, “%Y-%m-%d”)</td>
+</tr>
+<tr>
+<td>ctime()</td>
+<td>可读时间</td>
+<td>time.ctime()</td>
+</tr>
+<tr>
+<td>perf_counter()	高精度计时</td>
+<td>time.perf_counter()</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>8.程序异常处理</strong></p>
+<pre><code class="python">try:
+    # 尝试执行的代码
+    num = int(input(&quot;请输入一个数字: &quot;))
+    result = 100 / num
+    print(f&quot;结果是: &#123;result&#125;&quot;)
+    
+except ValueError:
+    # 处理值错误
+    print(&quot;错误：请输入有效的数字！&quot;)
+    
+except ZeroDivisionError:
+    # 处理除零错误
+    print(&quot;错误：不能除以零！&quot;)
+    
+except Exception as e:
+    # 处理其他所有异常
+    print(f&quot;发生未知错误: &#123;e&#125;&quot;)
+    
+else:
+    # 如果没有异常发生
+    print(&quot;计算成功！&quot;)
+    
+finally:
+    # 无论是否发生异常都会执行
+    print(&quot;程序执行结束&quot;)
+</code></pre>
+<p><strong>9.lambda函数</strong></p>
+<p>1.基本语法和定义</p>
+<pre><code class="python"># 基本语法：
+# lambda 参数: 表达式
+
+# 普通函数 vs lambda函数
+# 1. 普通函数
+def add_regular(x, y):
+    return x + y
+
+# 2. lambda函数
+add_lambda = lambda x, y: x + y
+
+print(f&quot;普通函数: add_regular(3, 5) = &#123;add_regular(3, 5)&#125;&quot;)   # 8
+print(f&quot;lambda函数: add_lambda(3, 5) = &#123;add_lambda(3, 5)&#125;&quot;)   # 8
+
+# 匿名使用（不赋值给变量）
+result = (lambda x, y: x * y)(4, 5)
+print(f&quot;直接调用: (lambda x, y: x*y)(4,5) = &#123;result&#125;&quot;)  # 20
+</code></pre>
+<p>2.示例</p>
+<pre><code class="python"># map() - 映射
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x ** 2, numbers))
+print(f&quot;map平方: &#123;squared&#125;&quot;)  # [1, 4, 9, 16, 25]
+
+# filter() - 过滤
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(f&quot;filter偶数: &#123;even_numbers&#125;&quot;)  # [2, 4]
+
+# reduce() - 累积（需要导入）
+from functools import reduce
+product = reduce(lambda x, y: x * y, numbers)
+print(f&quot;reduce乘积: &#123;product&#125;&quot;)  # 120
+
+# sorted() - 排序
+students = [
+    &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;score&quot;: 85&#125;,
+    &#123;&quot;name&quot;: &quot;Bob&quot;, &quot;score&quot;: 92&#125;,
+    &#123;&quot;name&quot;: &quot;Charlie&quot;, &quot;score&quot;: 78&#125;
+]
+
+# 按分数排序
+sorted_by_score = sorted(students, key=lambda s: s[&quot;score&quot;])
+print(&quot;按分数排序:&quot;)
+for student in sorted_by_score:
+    print(f&quot;  &#123;student[&#39;name&#39;]&#125;: &#123;student[&#39;score&#39;]&#125;&quot;)
+
+# 按名字长度排序
+sorted_by_name_length = sorted(students, key=lambda s: len(s[&quot;name&quot;]))
+print(&quot;按名字长度排序:&quot;)
+for student in sorted_by_name_length:
+    print(f&quot;  &#123;student[&#39;name&#39;]&#125;: &#123;len(student[&#39;name&#39;])&#125;个字符&quot;)
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
