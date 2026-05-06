@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>2022美亚杯个人赛复现 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>2022美亚杯个人赛复现</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/10/19
+        </span>
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8F%96%E8%AF%81/" style="color: #ffa2c4">
+                    取证
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/wp/" style="color: #ff7d73">
+                    wp
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>终于可以删了这165G的资源:D</p>
+<p>在最后再复盘了一点这几天做21和22年资格赛或许学到的东西（？</p>
+<span id="more"></span>
+<p>先在前面感谢一下师傅们的wp（滑跪：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63563528/article/details/132266278?sharetype=blogdetail&amp;shareId=132266278&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=qq">【取证】2022美亚杯资格赛个人赛</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42744595/article/details/127973633">2022美亚杯第八届中国电子数据取证大赛-个人赛write up详解</a></p>
+<p>这里先用取证大师挂载容器。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/1.png"></p>
+<p>对照文档把文件挨个导出来。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/2.png"></p>
+<p>说实话，这里在软件的使用我卡了挺久的，这里王晓琳的压缩包解压出来是个文件夹要用到手机取证工具，可是我没有……晕。看了一眼师傅们的wp又都是用的火眼还有盘古做题，因为没有资源和渠道我就下了个美亚手机大师凑合做了……有很多题做不了（也有可能是我不会用。但其他的软件都要再申请审核花上一段时间），研究怎么导入也花了我一点时间唉。</p>
+<p>二编：关于数据库文件在看了学长的PDF文档后开辟新路用爱思助手提取数据库文件，虽然有很多还是找不到，但有些题也是能做了（）</p>
+<h4 id="王晓琳手机的imei号是什么以阿拉伯数字回答">1.王晓琳手机的‘IMEI’号是什么？（以阿拉伯数字回答）</h4>
+<p>先用手机大师取证完王晓琳的结果如下。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/3.png"></p>
+<p>在基本信息这里能看到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/4.png"></p>
+<h4 id="王晓琳的手机安装了什么即时通讯软件多选">2.王晓琳的手机安装了什么即时通讯软件？（多选）</h4>
+<h5 id="awhatsapp">A:WhatsApp</h5>
+<h5 id="bline">B:LINE</h5>
+<h5 id="cwechat">C:Wechat</h5>
+<h5 id="dsignal">D:Signal</h5>
+<h5 id="eqq">E:QQ</h5>
+<p>这里我在左栏的即时通讯能看到选AC，但是答案选ACD，我晕。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/5.png"></p>
+<h4 id="王晓琳于什么日子和时间曾经通过即时通讯软件发出一个pdf档案">3.王晓琳于什么日子和时间曾经通过即时通讯软件发出一个‘PDF’档案？</h4>
+<h5 id="a2022-10-01-173953">A:2022-10-01 17:39:53</h5>
+<h5 id="b2022-09-30-183028">B:2022-09-30 18:30:28</h5>
+<h5 id="c2022-10-01-163022">C:2022-10-01 16:30:22</h5>
+<h5 id="d2022-09-30-173953">D:2022-09-30 17:39:53</h5>
+<p>这里直接全局搜索PDF文档，看到时间选D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/6.png"></p>
+<h4 id="承上题这个pdf档案的md5哈希值是什么">4.承上题，这个‘PDF’档案的MD5哈希值是什么？</h4>
+<p>接上题，把PDF文档导出来后用cmd检验一下,代码如下:</p>
+<p><code>certutil -hashfile filename MD5</code> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/7.png"></p>
+<h4 id="王晓琳将这个pdf档案发给哪一个用户而该用户的手机号码是什么">5.王晓琳将这个‘PDF’档案发给哪一个用户，而该用户的手机号码是什么？</h4>
+<p>接上图，在左边有手机号码。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/8.png"></p>
+<h4 id="王晓琳发出这个pdf档案的原因是什么多选">6.王晓琳发出这个‘PDF’档案的原因是什么（多选）</h4>
+<h5 id="a分享档案内容">A:分享档案内容</h5>
+<h5 id="b错误发出">B:错误发出</h5>
+<h5 id="c无法开启">C:无法开启</h5>
+<h5 id="d寻求协助">D:寻求协助</h5>
+<p>这个根据电话号码在即时通讯那里找到对应的用户然后看聊天记录，可以知道对方是同事并且是因为无法开启而寻求协助。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/9.png"></p>
+<h4 id="承上题分析王晓琳与上述用户的对话他们的关系是什么多选">7.承上题，分析王晓琳与上述用户的对话，他们的关系是什么？（多选）</h4>
+<h5 id="a师生">A:师生</h5>
+<h5 id="b家人">B:家人</h5>
+<h5 id="c同事">C:同事</h5>
+<h5 id="d客户">D:客户</h5>
+<p>这里接上题，是同事。</p>
+<h4 id="王晓琳于何时要求上述用户删除一行照片">8.王晓琳于何时要求上述用户删除一行照片？</h4>
+<h5 id="a2022-09-28">A:2022-09-28</h5>
+<h5 id="b2022-09-30">B:2022-09-30</h5>
+<h5 id="c2022-10-03">C:2022-10-03</h5>
+<h5 id="d2022-10-06">D:2022-10-06</h5>
+<p>上述用户，聊天记录往下滑，能看到对面在2022-10-03拿照片威胁王晓琳要钱。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/10.png"></p>
+<h4 id="承上题该用户向王晓琳提出什么要求以删除这张照片">9.承上题，该用户向王晓琳提出什么要求以删除这张照片？</h4>
+<h5 id="a毒品">A:毒品</h5>
+<h5 id="b性服务">B:性服务</h5>
+<h5 id="c加密货币">C:加密货币</h5>
+<h5 id="d金钱">D:金钱</h5>
+<p>接上题，选D。</p>
+<h4 id="王晓琳的手机里有什么电子书籍">10.王晓琳的手机里有什么电子书籍？</h4>
+<h5 id="a红楼梦">A:红楼梦</h5>
+<h5 id="b水浒传">B:水浒传</h5>
+<h5 id="c西游记">C:西游记</h5>
+<h5 id="d三国演义">D:三国演义</h5>
+<p>这里之前用手机大师没办法搜出来，搜了一个book大概知道是用ibook看的书，去爱思里面导出ibook的数据库。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/81.png"> 导出数据库后，我是手动挨个翻的文件夹（），在最后一栏找到了三国演义。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/82.png"></p>
+<h4 id="王晓琳在这本电子书籍里最后对哪段文字加入了重点标示效果">11.王晓琳在这本电子书籍里最后对哪段文字加入了重点标示效果?</h4>
+<h5 id="a.-卿有何妙计">A. 卿有何妙计</h5>
+<h5 id="b.-宝玉已是三杯过去了">B. 宝玉已是三杯过去了</h5>
+<h5 id="c.-武松那日早饭罢">C. 武松那日早饭罢</h5>
+<h5 id="d.-就除他做个强马温罢">D. 就除他做个强马温罢</h5>
+<p>这里我找了很多数据库文件都找不到有关书签的内容，无奈放弃了。</p>
+<h4 id="王晓琳的手机里有一个-mtr-mobile-港的手机程序mobile-app-检视其数据库database-的数据王晓琳于2022年10月11日-2204-时将一行程加入书签bookmark这段行程的起点及终点站包括">12.王晓琳的手机里有一个 MTR Mobile (港)的手机程序(Mobile App)。 检视其数据库(Database) 的数据，王晓琳于2022年10月11日 22:04 时将一行程加入书签(Bookmark)，这段行程的起点及终点站包括?</h4>
+<h5 id="a.-尖沙咀">A. 尖沙咀</h5>
+<h5 id="b.-红硒">B. 红硒</h5>
+<h5 id="c.-康城">C. 康城</h5>
+<h5 id="d.-青衣">D. 青衣</h5>
+<h5 id="e.-沙田">E. 沙田</h5>
+<p>这里我在取证大师里能找到有关mtr的信息，但是不知道为什么我在文件里找了很久都没找到mtr的数据库（） <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/85.png"></p>
+<h4 id="王晓琳于2022年10月2日使用她的手机拍摄了多少张的照片">13.王晓琳于2022年10月2日使用她的手机拍摄了多少张的照片?</h4>
+<p>贴图，用时间轴排序加减算一下能看到是90张。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/11.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/12.png"></p>
+<h4 id="检视王晓琳的手机照片她于2022年10月2日到过什么地方">14.检视王晓琳的手机照片，她于2022年10月2日到过什么地方?</h4>
+<h5 id="a.-大潭郊游径">A. 大潭郊游径</h5>
+<h5 id="b.-城门畔塘径">B. 城门畔塘径</h5>
+<h5 id="c.-大榄麦理浩径">C. 大榄麦理浩径</h5>
+<h5 id="d.-京士柏卫理径">D. 京士柏卫理径</h5>
+<p>把十月二号的缩略图打开康康，其中一张图片显示是B。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/13.png"></p>
+<h4 id="李大辉使用的是一台lg-v10的手机它的型号是什么">15.李大辉使用的是一台LG V10的手机，它的型号是什么?</h4>
+<h5 id="a.-lgh960c">A. LGH960C</h5>
+<h5 id="b.-lgh961n">B. LGH961N</h5>
+<h5 id="c.-lgh960h">C. LGH960H</h5>
+<h5 id="d.-lgh961c">D. LGH961C</h5>
+<h5 id="e.-lgh961d">E. LGH961D</h5>
+<p><em>从这里开始切换到李大辉的手机。</em></p>
+<p>这里李大辉压缩包解压出来是个bin镜像文件，于是我就可以用取证大师做叻:D <del>（虽然还是有些题做不了）</del>我这里用手机大师取证效果不如取证大师，于是就用后者了。</p>
+<p>基本信息里能看到型号。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/14.png"></p>
+<h4 id="李大辉的手机最常搜索的类别category-是什么">16.李大辉的手机最常搜索的类别(Category) 是什么?</h4>
+<h5 id="a.-护肤品">A. 护肤品</h5>
+<h5 id="b.-旅游">B. 旅游</h5>
+<h5 id="c.-运动">C. 运动</h5>
+<h5 id="d.-学校">D. 学校</h5>
+<p>蚌埠住了，这里看了一眼师傅们的wp用的软件可以看到浏览器信息，我的不管是手机大师还是取证大师都不能TT，遗憾退场了。</p>
+<h4 id="李大辉最近光顾了一家美丰快运公司这快递件的单号是什么不要输入符号及空白以阿拉伯数字回答">17.李大辉最近光顾了一家美丰快运公司，这快递件的单号是什么?(不要输入符号及空白，以阿拉伯数字回答)</h4>
+<p>这里依旧没办法查看文件，我还试着切了下x-ways康康能不能做，依旧无法选中orz。</p>
+<h4 id="李大辉收到的电邮中有一个钓鱼链结phishing-link这个链结的地址是什么">18.李大辉收到的电邮中有一个钓鱼链结(Phishing Link)，这个链结的地址是什么?</h4>
+<h5 id="a.-以下皆非">A. 以下皆非</h5>
+<h5 id="b.-httpsbit.ly3yearco">B. https://bit.ly/3yeARcO</h5>
+<h5 id="c.-httpsbit.ly5vm12">C. https://bit.ly/5vM12</h5>
+<h5 id="d.-httpbit.lyhell0">D. http://bit.ly/Hell0</h5>
+<p>这里学到了查看数据库文件的方法:D，搜索邮箱数据库文件后用navicat打开。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/15.png"></p>
+<p>在messages里查看收到的邮件，看到钓鱼链接。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/18.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/16.png"></p>
+<h4 id="承上题这封电邮是从哪个电邮地址寄出的">19.承上题，这封电邮是从哪个电邮地址寄出的?</h4>
+<h5 id="a.-以上皆非">A. 以上皆非</h5>
+<h5 id="b.-cavinchow456yahoo.com">B. Cavinchow456@yahoo.com</h5>
+<h5 id="c.-2020chanchanhotmail.com">C. 2020ChanChan@hotmail.com</h5>
+<h5 id="d.-30624700peterproton.me">D. 30624700Peter@proton.me</h5>
+<p>发送地址往右划能看到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/17.png"></p>
+<h4 id="承上题寄出这封电邮的ip地址是">20.承上题，寄出这封电邮的IP地址是?</h4>
+<h5 id="a.-以下皆非-1">A. 以下皆非</h5>
+<h5 id="b.-65.54.185.39">B. 65.54.185.39</h5>
+<h5 id="c.-10.13.105.56">C. 10.13.105.56</h5>
+<h5 id="d.-58.152.110.218">D. 58.152.110.218</h5>
+<p>这里左划右移没看到ip地址，于是看了wp，思路：<strong>在数据库里发现电邮寄送地址是“mail.google.com”，可以ping一下看ip。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/19.png"></p>
+<h4 id="李大辉手机有一个orderxlsx-的档案被加密了解密钥匙是什么">21.李大辉手机有一个orderxlsx 的档案被加密了，解密钥匙是什么?</h4>
+<h5 id="a.-2022-nov">A. 2022 Nov!</h5>
+<h5 id="b.-20221101">B. 20221101</h5>
+<h5 id="c.-nov2022">C. Nov2022!</h5>
+<h5 id="d.-pssword">D. P@sswOrd!</h5>
+<p>先找到了xlsx文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/20.png"></p>
+<p>这里还慌了一下，因为21年的题有关于密码的题很多都是在备忘录里的，我取证出来的结果没有备忘录，幸好这个兄弟他的密码在照片里orz。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/22.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/21.png"></p>
+<h4 id="香港的街道上每一枝街灯都有编号分析李大辉手机里的程序kmb-1933哪一枝街灯在经度-latitude-22.4160270000纬度longitude-114.2139450000-附近它的编号是什么以大写英及阿拉伯数字回答">22.香港的街道上每一枝街灯都有编号。分析李大辉手机里的程序KMB 1933，哪一枝街灯在经度 Latitude) 22.4160270000，纬度(Longitude) 114.2139450000 附近，它的编号是什么?(以大写英及阿拉伯数字回答)</h4>
+<p>这里找到KMB的数据库文件然后导出。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/23.png"></p>
+<p>又晕了，这里我找到在这个经纬度附近的和答案不一样，去看了一眼师傅们的wp师傅们数据库文件里有那个经纬度我这里没有TT，但是主要学的是一个思路就这样吧（摆烂。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/24.png"></p>
+<h4 id="李大辉的手机里有一张由该手机拍的照片照片的元资料metadata-曾被修改这张照片的档案名是什么以大写英文及数字回答不用回答副档名">23.李大辉的手机里有一张由该手机拍的照片，照片的元资料(Metadata) 曾被修改，这张照片的档案名是什么?(以大写英文及数字回答，不用回答副档名)</h4>
+<p>还记得21年的美亚真题能看元数据文件（），我取证大师和手机大师都试着看了一下，也就0922的那张图片修改时间和拍摄时间不一样了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/25.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/26.png"></p>
+<h4 id="分析李大辉的手机里的资料他在哪一间公司工作">24.分析李大辉的手机里的资料，他在哪一间公司工作?</h4>
+<h5 id="a.-美丽好化妆品公司">A. 美丽好化妆品公司</h5>
+<h5 id="b.-步步高贸易公司">B. 步步高贸易公司</h5>
+<h5 id="c.-盛大国际有限公司">C. 盛大国际有限公司</h5>
+<h5 id="d.-永恒化妆品公司">D. 永恒化妆品公司</h5>
+<p>在文件这里能找到有关于李大辉个人信息的文件然后导出。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/27.png"></p>
+<p>能看到选A。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/28.png"></p>
+<h4 id="林浚熙曾经以手机登录google账户的验证码是什么不要输入符号以大写英文及阿拉伯数字回答">25.林浚熙曾经以手机登录Google账户的验证码是什么?(不要输入符号，以大写英文及阿拉伯数字回答)</h4>
+<p><em>从这里开始切到林俊熙的iphone</em></p>
+<p><del>又又又是文件夹要用手机大师了</del></p>
+<p>有关于验证码那就在短信里找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/29.png"></p>
+<h4 id="林浚熙手机的-whatsapp号码是什么号码s.whatsapp.net-以阿拉伯数字回答">26.林浚熙手机的 WhatsApp号码是什么?(号码)<span class="citation" data-cites="s.whatsapp.net">@s.whatsapp.net</span>? (以阿拉伯数字回答)</h4>
+<p>在Whatsapp这里就能看： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/30.png"></p>
+<h4 id="通过分析林浚熙手机的照片判断他在何处偷拍王晓琳">27.通过分析林浚熙手机的照片，判断他在何处偷拍王晓琳?</h4>
+<h5 id="a.-交通工具">A. 交通工具</h5>
+<h5 id="b.-郊野公园">B. 郊野公园</h5>
+<h5 id="c.-游泳池">C. 游泳池</h5>
+<h5 id="d.-酒店房间">D. 酒店房间</h5>
+<p>最后一张在王晓琳的手机里看到过，通过这三张可以判断应该是在酒店。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/31.png"></p>
+<h4 id="林浚熙曾经删掉自己拍摄的照片这张照片的档案名filename-是什么不要输入以大写英文及阿拉伯数字回答如cat10.jpg需回答cat10jpg">28.林浚熙曾经删掉自己拍摄的照片，这张照片的档案名(Filename) 是什么?(不要输入，以大写英文及阿拉伯数字回答。如Cat10.jpg，需回答CAT10JPG)</h4>
+<p>直接看最近删除就可以。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/32.png"></p>
+<h4 id="王晓琳曾经发送一个pdf档案予林浚熙这个档案的文件签名file-signature-是什么以十六进制数字答首八位数值如foa1c5e1">29.王晓琳曾经发送一个PDF档案予林浚熙，这个档案的文件签名(File Signature) 是什么?(以十六进制数字答首八位数值，如FOA1C5E1)</h4>
+<p>很狼狈地又涉及到了我的知识盲区……贴一下文件签名的知识点: <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/40.png"></p>
+<p>大概意思就是文件签名就是文件头（misc手反省，然后找到PDF文件导出，用010查看文件头就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/33.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/34.png"></p>
+<h4 id="承上题该pdf档案内包含一位曾经被害的受害者资料分析林俊熙手机的数据这位受害者的英文名字是什么不要输入符号及空白以大写英文回答">30.承上题，该PDF档案内包含一位曾经被害的受害者资料。分析林俊熙手机的数据，这位受害者的英文名字是什么?(不要输入符号及空白，以大写英文回答)</h4>
+<p>好吧，这里刚开始我又是不会做，然后去看了wp，这种和文件头有关的题目我居然第一时间没反应过来（敲打。</p>
+<p>因为这个PDF打开的时候显示文件损坏，查一下文件头发现是xls文件，把后缀改成xls后打开： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/35.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/37.png"></p>
+<p>有一大串名字（）只能去手机里继续看了。</p>
+<p>在聊天记录里由里面有个受害者李大辉应该可以判断这些就是受害者名单，最后一位在xls的名单里。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/36.png"></p>
+<h4 id="分析林浚熙手机上的数据他在2022年10月17日计划去什么地方">31.分析林浚熙手机上的数据，他在2022年10月17日计划去什么地方?</h4>
+<h5 id="a.-以上皆非-1">A. 以上皆非</h5>
+<h5 id="b.-荃湾站">B. 荃湾站</h5>
+<h5 id="c.-沙田站">C. 沙田站</h5>
+<h5 id="d.-国际金融中心二期">D. 国际金融中心二期</h5>
+<p>这里我的软件没办法分析有关位置出行的软件，也试着找了一下有没有数据库可以查，但是以失败告终了（）</p>
+<h4 id="承上题上述行程的结束时间是如答案为-10159需回答-160159">32.承上题，上述行程的结束时间是?(如答案为 1:01:59，需回答 160159)</h4>
+<p>依旧跳：（</p>
+<h4 id="于林浚熙的手机里在2022年9月1日-或以后哪一张照片是由其他手机拍摄的而它的档案名是什么不要输入以大写英文及阿拉伯数字回答如-cat10.jpg需回答cat10jpg">33.于林浚熙的手机里，在2022年9月1日 或以后，哪一张照片是由其他手机拍摄的，而它的档案名是什么?(不要输入，以大写英文及阿拉伯数字回答。如 Cat10.jpg，需回答CAT10JPG)</h4>
+<p>这里查看照片信息： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/38.png"></p>
+<p>我晕，怎么那么多不是本机拍摄，跳！</p>
+<h4 id="根据照片的数据库photos.sqlite资料哪一个栏目标题column-header-可以显示这张照片的接收方式">34.根据照片的数据库Photos.sqlite资料，哪一个栏目标题(Column Header) 可以显示这张照片的接收方式?</h4>
+<h5 id="a.-zreceivemethodidentifier">A. ZRECEIVEMETHODIDENTIFIER</h5>
+<h5 id="b.-zimportedfromsourceidentifier">B. ZIMPORTEDFROMSOURCEIDENTIFIER</h5>
+<h5 id="c.-zimportedbybundleidentifier">C. ZIMPORTEDBYBUNDLEIDENTIFIER</h5>
+<h5 id="d.-zreceivedfromidentifier">D. ZRECEIVEDFROMIDENTIFIER</h5>
+<p>这里用爱思导出了数据库资料，导出之后依旧挨个查看（额很浪费时间的做法 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/86.png"></p>
+<p>可以看到在C选项这里可以显示。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/87.png"></p>
+<h4 id="承上题这张照片通过什么方式接收">35. 承上题，这张照片通过什么方式接收?</h4>
+<h5 id="a.-网页下载">A. 网页下载</h5>
+<h5 id="b.-蓝牙传送">B. 蓝牙传送</h5>
+<h5 id="c.-以上皆非">C. 以上皆非</h5>
+<h5 id="d.-whatsapp软件传送">D. WhatsApp软件传送</h5>
+<h5 id="e.-signal软件传送">E. Signal软件传送</h5>
+<p>这里因为我没有找到照片，所以依旧无法选中orz。</p>
+<h4 id="承上题这张照片原本的档案名original-filename-是什么不要输入以大写英文及阿拉伯数字回答如-cat10.jpg需回答cat10jpg">36.承上题，这张照片原本的档案名(Original Filename) 是什么?不要输入，以大写英文及阿拉伯数字回答。如 Cat10.jpg，需回答CAT10JPG)</h4>
+<p>同上。</p>
+<h4 id="林俊熙手机里有一个备忘录notes被上了锁这个备忘录的名称是什么以大写英文及阿拉数字回答">37.林俊熙手机里有一个备忘录(Notes)被上了锁，这个备忘录的名称是什么?(以大写英文及阿拉数字回答)</h4>
+<p>这里查看备忘录，能看到有两个备忘录是不显示内容的。其中一个被删除，那应该就是Halo那个。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/39.png"></p>
+<h4 id="承上题上述备忘录的内容有一串数字它是什么以阿拉伯数字回答">38.承上题，上述备忘录的内容有一串数字，它是什么?(以阿拉伯数字回答)</h4>
+<p>这里我能找到的备忘录数据库只有notes.sqlite，看了wp发现要在另一个数据库文件里找，但是我找了很久都没找到orz。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/88.png"></p>
+<h4 id="林浚熙计算机computer的操作系统operating-system-版本是什么">39.林浚熙计算机(Computer)的操作系统(Operating System) 版本是什么?</h4>
+<h5 id="a.-windows-10-pro-for-workstations-21h2">A. Windows 10 Pro for Workstations 21H2</h5>
+<h5 id="b.-windows-10-pro-22h2">B. Windows 10 Pro 22H2</h5>
+<h5 id="c.-windows-10-home-21h2">C. Windows 10 Home 21H2</h5>
+<h5 id="d.-windows-10-pro-for-workstations-21h1">D. Windows 10 Pro for Workstations 21H1</h5>
+<p><em>从这里开始切到林俊熙的计算机取证部分</em></p>
+<p>这里我的自动取证还在继续，就先做一些能做的。</p>
+<p>然后，喝喝，非常狼狈地只能知道一半的信息，这里我看了一眼师傅们的wp都是用的仿真软件做，但是我没有仿真软件，只能另寻他路了…… <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/44.png"></p>
+<p>找ai问了一下可以查看操作系统版本的文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/41.png"></p>
+<p>这里我找的kernel32.dll那个文件，查看属性后查看详细信息： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/42.png"></p>
+<p>额。</p>
+<p>扔给ai： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/43.png"></p>
+<p>那就21H2吧。</p>
+<h4 id="林浚照计算机安装了什么品牌的虚拟专用网络-virtual-private-network---vpn软件不要输入符号及空白以大写英文及阿拉伯数字回答">40.林浚照计算机安装了什么品牌的虚拟专用网络 Virtual Private Network - VPN)软件?(不要输入符号及空白，以大写英文及阿拉伯数字回答)</h4>
+<p>在vpn软件这里看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/45.png"></p>
+<h4 id="承上题分析该虚拟专用网络的日志log他在哪天安装该虚拟专用网络如答案为-2022-12-29需回答-20221229">41.承上题，分析该虚拟专用网络的日志(Log)，他在哪天安装该虚拟专用网络?(如答案为 2022-12-29，需回答 20221229)</h4>
+<p>和刚刚同样的方法。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/46.png"></p>
+<h4 id="检视林浚照计算机的数据他使用哪种加mh币cryptocurrency-以支付虚拟专用网络软件以大写英文回答该加密货币的全名如-bitcoin">42.检视林浚照计算机的数据，他使用哪种加mh币(Cryptocurrency) 以支付虚拟专用网络软件?以大写英文回答该加密货币的全名，如 BITCOIN)</h4>
+<p>先找到虚拟币钱包，然后ai一下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/47.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/54.png"></p>
+<h4 id="林浚熙的加密贷钱包名称是什么不要输入符号以大写英文及阿拉伯数字回答">43.林浚熙的加密贷钱包名称是什么?（不要输入符号，以大写英文及阿拉伯数字回答）</h4>
+<p>嗯……这里我搜索了一下wallet搜索不到名称，看了一眼wp，思路：<strong>在Electrum的日志里面找</strong>。</p>
+<p><del>其实用仿真一下就可以看到了可惜我没有</del> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/55.png"></p>
+<h4 id="林浚熙计算机里安装了哪个浏览器web-browser">44.林浚熙计算机里安装了哪个浏览器(Web Browser)?</h4>
+<h5 id="a.tor-browser">A.Tor Browser</h5>
+<h5 id="b.microsoft-edge">B.Microsoft Edge</h5>
+<h5 id="c.google-chrome">C.Google Chrome</h5>
+<h5 id="d.opera">D.Opera</h5>
+<h5 id="e.internet-explorer">E.Internet Explorer</h5>
+<p>这里我看的取证结果只有三个，但是答案还有A orz。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/48.png"></p>
+<h4 id="林浚熙使用浏览器-google-chrome曾经浏览最多的是哪个网站">45.林浚熙使用浏览器 Google Chrome曾经浏览最多的是哪个网站?</h4>
+<h5 id="a.-httpsgmail.com">A. https://gmail.com</h5>
+<h5 id="b.-httpsmail.google.commail">B. https://mail.google.com/mail</h5>
+<h5 id="c.-httpsweb.whatsapp.com">C. https://web.whatsapp.com</h5>
+<h5 id="d.-httpsfacebook.com">D. https://facebook.com</h5>
+<p>看最常访问记录： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/49.png"></p>
+<h4 id="除了上述网站林浚熙曾使用浏览器-google-chrome-搜索过什么">46.除了上述网站,林浚熙曾使用浏览器 Google Chrome’ 搜索过什么?</h4>
+<h5 id="a.-javascript教学">A. javascript教学</h5>
+<h5 id="b.-php-sql教学">B. php sql教学</h5>
+<h5 id="c.-tor教学">C. tor教学</h5>
+<h5 id="d.-docker-image教学">D. docker image教学</h5>
+<h5 id="e.-electrum教学">E. electrum教学</h5>
+<p>这里搜索繁体字教學，我也是在点开一个tor后才发现要搜索繁体字的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/50.png"></p>
+<h4 id="林浚照的计算机安装了一个通讯软件signal它的用户部储存路径是什么">47.林浚照的计算机安装了一个通讯软件Signal，它的用户部储存路径是什么?</h4>
+<h5 id="a.-userssignal">A. UsersSignal</h5>
+<h5 id="b.-usersroaming-signal">B. UsersRoaming Signal</h5>
+<h5 id="c.-program-files-x86signal">C. Program Files (x86)Signal</h5>
+<h5 id="d.-usersroaming-signal">D. UsersRoaming Signal</h5>
+<p>这里刚开始我以为搜索结果里看不了直接根据选项A的路径去找了，正正好就是hhh <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/51.png"></p>
+<h4 id="通讯软件signal采用一个档案存放用户的聊天记录它的档案名是什么不要输入以大写英文及阿拉伯数字回答如cat10.jpg需回答cat10jpg">48.通讯软件Signal采用一个档案存放用户的聊天记录，它的档案名是什么?(不要输入，以大写英文及阿拉伯数字回答。如Cat10.jpg，需回答CAT10JPG)</h4>
+<p>看了一下wp，有的师傅是用火眼分析signal，有的就是直接说在数据库里，就是我自己做我估计第一时间不会想到在数据库里orz（反省反省。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/56.png"></p>
+<h4 id="承上题对上档案进行分析林发熙的联络人当中有多少人安装了siqnal以阿拉伯数字回答">49.承上题，对上档案进行分析，林发熙的联络人当中有多少人安装了Siqnal?(以阿拉伯数字回答)</h4>
+<p>在第二天自动取证vmdk文件的时候意外发现取证大师把signal的聊天记录取证出来可以做了hhh</p>
+<p>在联系人里可以看到是四个人。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/57.png"></p>
+<h4 id="林浚熙在signal曾经与某人对话那人的手机号码是什么">50.林浚熙在Signal曾经与某人对话，那人的手机号码是什么?</h4>
+<p>通过聊天记录知道昵称是King，在联系人里找到对应的手机号码。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/59.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/58.png"></p>
+<h4 id="承上题两人在signal的对话中有些讯息message-包含附件这些讯息的id包括">51.承上题，两人在Signal的对话中有些讯息(Message) 包含附件，这些讯息的ID包括?</h4>
+<h5 id="a.5b9650fe-3bb6-4182-9900-f56177003672">A.5b9650fe-3bb6-4182-9900-f56177003672</h5>
+<h5 id="b.46a8762b-78ea-49aa-a6f5-b24975ec189f">B.46a8762b-78ea-49aa-a6f5-b24975ec189f</h5>
+<h5 id="c.9729bf92-ab9c-45f7-8147-66234296aele">C.9729bf92-ab9c-45f7-8147-66234296aele</h5>
+<h5 id="d.47233ffe-1a73-4b3d-b97c-626246ec3129">D.47233ffe-1a73-4b3d-b97c-626246ec3129</h5>
+<p>有两个附件，我是直接在信息里看哪些和答案对应的上的hhh。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/60.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/61.png"></p>
+<h4 id="承上题林浚熙曾经于2022年10月20日账transfer-money-予上述对话人士那次转账的参考编号是什么以大写英文及阿拉白数字回答">52.承上题，林浚熙曾经于2022年10月20日账Transfer Money) 予上述对话人士,那次转账的参考编号是什么?(以大写英文及阿拉白数字回答)</h4>
+<p>根据聊天记录判断这张图片应该是和转账有关的信息。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/62.png"></p>
+<p>在文件里找到图片查看： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/63.png"></p>
+<h4 id="林浚照的计算机安装了多少台虚拟机virtual-machine---vm-以阿拉伯数字回答">53.林浚照的计算机安装了多少台虚拟机Virtual Machine - VM) ?(以阿拉伯数字回答)</h4>
+<h5 id="a.4">A.4</h5>
+<h5 id="b.1">B.1</h5>
+<h5 id="c.2">C.2</h5>
+<h5 id="d.3">D.3</h5>
+<p>这里直接看虚拟机文件就好，能看到只有一个Ubuntu。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/52.png"></p>
+<h4 id="林浚熙的计算机里的虚拟机vm-存放在什么路径">54.林浚熙的计算机里的虚拟机(VM) 存放在什么路径?</h4>
+<h5 id="a.user-hei-roaming-virtual-machinesl">A.User HEI Roaming Virtual Machinesl</h5>
+<h5 id="b.users-public-documents-virtual-machines">B.Users Public Documents Virtual Machines</h5>
+<h5 id="c.program-files-virtual-machines">C.Program Files Virtual Machines</h5>
+<h5 id="d.virtual-machines">D.Virtual Machines</h5>
+<p>如图，随便点一个看路径。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/53.png"></p>
+<h4 id="虚拟机-vm-使用什么版本的作业系统operating-system">55.虚拟机 (VM) 使用什么版本的作业系统(Operating System) ?</h4>
+<h5 id="a.-centos-linux-7.5.1804-core">A. CentOs Linux 7.5.1804 (Core)</h5>
+<h5 id="b.-ubuntu-22.04.1-lts">B. Ubuntu 22.04.1 LTS</h5>
+<h5 id="c.-centos-linux-release-7.6.1810core">C. CentOS Linux release 7.6.1810(Core)</h5>
+<h5 id="d.-ubuntu-20.04.5-lts">D. Ubuntu 20.04.5 LTS</h5>
+<p>这里用取证大师自动取证导出的vmdk文件，版本在这。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/64.png"></p>
+<h4 id="虚拟机vm-中的文件传输服务器ftp-server-有哪些用户">56.虚拟机(VM) 中的文件传输服务器(FTP Server) 有哪些用户?</h4>
+<h5 id="a.-nobody">A. nobody</h5>
+<h5 id="b.-root">B. root</h5>
+<h5 id="c.-admin">C. admin</h5>
+<h5 id="d.-man">D. man</h5>
+<h5 id="e.-ftpuser">E. ftpuser</h5>
+<p>这里我做错了，看了一眼师傅们的wp，有用火眼仿真做的，奇哥的思路：<strong>查看终端的历史记录，找对应的配置文件继续查看，不允许匿名登录，只允许本地账号登录。</strong></p>
+<p>这里我把部分终端记录导了出来用搜索，其中这里的指令因为我不是很懂我就喂了一下ai补充一下知识点。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/89.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/90.png"></p>
+<p>然后去配置文件里查看，这里显示只允许用本地账号登录。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/91.png"></p>
+<p>其中本地账号如下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/92.png"></p>
+<h4 id="虚拟机设置了什么网页服务器web-server">57.虚拟机设置了什么网页服务器(Web Server)?</h4>
+<h5 id="a.-nginx">A. NGINX</h5>
+<h5 id="b.-lighttpd">B. LIGHTTPD</h5>
+<h5 id="c.-wordpress">C. WORDPRESS</h5>
+<h5 id="d.-apache">D. APACHE</h5>
+<h5 id="e.-iis">E. IIS</h5>
+<p>这里我刚开始做的时候单纯只看了左边侧栏日志里的APACHE，后面看了师傅们的wp发现要看终端记录才是对的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/94.png"></p>
+<h4 id="网页服务器目录内有图片档案而此档案的储存位置是">58.网页服务器目录内有图片档案，而此档案的储存位置是?</h4>
+<h5 id="a.-varwwwhtmlpostsrc">A. /var/www/html/post/src</h5>
+<h5 id="b.-varwwwhtmlpostcss">B. /var/www/html/post/css</h5>
+<h5 id="c.-varwwwhtmlpostvendor">C. /var/www/html/post/vendor</h5>
+<h5 id="d.-varwwwpost">D. /var/www/post</h5>
+<p>这里在日志里找有包含图片的请求，能看到路径。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/68.png"></p>
+<h4 id="分析网页服务器的网站数据假网站的公司名称是什么">59.分析网页服务器的网站数据，假网站的公司名称是什么?</h4>
+<h5 id="a.-krick-global-logistics">A. Krick Global Logistics</h5>
+<h5 id="b.-global-logistics">B. Global Logistics</h5>
+<h5 id="c.-krick-post-global-logistics">C. Krick Post Global Logistics</h5>
+<h5 id="d.-krick-post">D. Krick Post</h5>
+<p>把logo.png导出，然后查看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/69.png"></p>
+<h4 id="检视假网站首页的显示ay806369745hk-代表什么">60.检视假网站首页的显示，AY806369745HK 代表什么?</h4>
+<h5 id="a.-邮件号码">A. 邮件号码</h5>
+<h5 id="b.-邮件收费号码">B. 邮件收费号码</h5>
+<h5 id="c.-邮件序号">C. 邮件序号</h5>
+<h5 id="d.-邮件参考号码">D. 邮件参考号码</h5>
+<p>这里我刚开始还是不会做，后面看了wp要去查看源码，于是把index.php导出，导出后直接搜索这一串字符。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/70.png"></p>
+<h4 id="分析假网站的资料当受害人经假网站输入数据后网站会产生一个档案它的档案名是什么不要输入以大写英文及阿拉数字回答如-cat10.jpg需回答cat10jpg">61.分析假网站的资料，当受害人经假网站输入数据后，网站会产生一个档案，它的档案名是什么?(不要输入“，以大写英文及阿拉数字回答。如 Cat10.jpg，需回答CAT10JPG)</h4>
+<p>这里关于网站的一共有三个php文件，猜测应该在其他两个php文件中找，我就把三个php文件都导出，然后……喂给ai:D</p>
+<p>可以看到index.php的功能如下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/71.png"></p>
+<p>然后再解析process.php。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/72.png"></p>
+<p>在process.php里的位置如下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/73.png"></p>
+<h4 id="分析假网站档案process.php源码推测此档案的用途可能是">62.分析假网站档案，process.php源码,推测此档案的用途可能是?</h4>
+<h5 id="a.-改变函数">A. 改变函数</h5>
+<h5 id="b.-产生档案">B. 产生档案</h5>
+<h5 id="c.-发出邮件">C. 发出邮件</h5>
+<h5 id="d.-更新数据库">D. 更新数据库</h5>
+<p>如图ai一把梭： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/74.png"></p>
+<h4 id="检视档案process.php源码-林浚照的电邮密码是以大写英文回答">63.检视档案process.php源码, 林浚照的电邮密码是?(以大写英文回答)</h4>
+<p>这里直接翻一下就好，在这里找到密码。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/75.png"></p>
+<h4 id="分析档案process.php-源码-它不会收集哪些资料">64.分析档案process.php 源码, 它不会收集哪些资料?</h4>
+<h5 id="a.-gps位置">A. GPS位置</h5>
+<h5 id="b.-信用卡号码">B. 信用卡号码</h5>
+<h5 id="c.-短讯验证码">C. 短讯验证码</h5>
+<h5 id="d.-电话号码">D. 电话号码</h5>
+<h5 id="e.-电邮地址">E. 电邮地址</h5>
+<p>这里往上翻，查看要求填入的信息： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/76.png"></p>
+<h4 id="虚拟机-vm安装了-docker-程序列出一个以5作为开端的docker镜像-mage-id-以阿拉伯数字及大写英文回答">65.虚拟机 (VM)安装了 Docker 程序，列出一个以5作为开端的Docker镜像 mage) ID (以阿拉伯数字及大写英文回答)</h4>
+<p>这里回到取证大师，看拉取的镜像信息。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/77.png"></p>
+<h4 id="docker-容器containermysql对外开放的通讯端口port-是">66.Docker 容器(Container)mysql对外开放的通讯端口(Port) 是?</h4>
+<p>这里我刚开始又找错了（），这里要去源文件里找，路径如下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/96.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/95.png"></p>
+<h4 id="docker容器mysql用户-root-的密码是以大写英文及阿拉伯数字回答">67.Docker容器mysql，用户 root 的密码是?(以大写英文及阿拉伯数字回答)</h4>
+<p>密码在终端记录里能找到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2022/79.png"></p>
+<h4 id="docker容器mysql-里哪一个数据库储存了大量个人资料以大写英文回答">68.Docker容器，mysql 里哪一个数据库储存了大量个人资料?(以大写英文回答)</h4>
+<p>这里我把数据库文件导出了但是用navicat打不开（？，也没办法仿真虚拟机，然后就和下一题一起放弃了。</p>
+<h4 id="检视-docker-容器mysql-内数据库里的资料李大辉的出生日期是如答案为-2022-12-29需答-20221229">69.检视 Docker 容器’mysql’ 内数据库里的资料，李大辉的出生日期是?(如答案为 2022-12-29，需答 20221229)</h4>
+<h4 id="通过取证调查结果进行分析包括但不限于以上问题及情节林照的行为涉及哪一种罪案">70.通过取证调查结果进行分析(包括但不限于以上问题及情节)，林照的行为涉及哪一种罪案?</h4>
+<h5 id="a.传送儿童色情物品">A.传送儿童色情物品</h5>
+<h5 id="b.抢劫">B.抢劫</h5>
+<h5 id="c.诈骗">C.诈骗</h5>
+<h5 id="d.勒索金钱">D.勒索金钱</h5>
+<h5 id="e.购买毒品">E.购买毒品</h5>
+<p>这题根据前面的做题记录能判断选CDE。</p>
+<p>到这里也是比较艰辛的终于把复现过程写完了，虽然有些题依旧没做出来orz。</p>
+<p>我现在主要是以学思路和软件使用为主，所以并没有限制自己的做题时长。做的时候就是一整个边学边做，像21年涉及到的什么关于端口和协议的知识点我就完全是之前都没怎么了解过orz。</p>
+<p>22年资格赛的复现过程让我学会了一些关于手机取证的知识，像有些东西要找.db文件连接navicat，还有像plist文件，可以用爱思助手打开查找。</p>
+<p>觉得自己很多方面还需要继续加强，包括有时候脑子也不灵光，像21年资格赛里面有些题虽然说是问A的，但是实际上要去B里面找这个东西，就是有时候前因后果不会很好连接起来吧。还有就是觉得自己有时候也不会很好地用搜索引擎，有时候第一反应就是硬找，实际上有些可能搜索大法一下就出来叻，还有些东西不懂的也可以丢给ai分析:D。</p>
+<p>看了学长的PDF文件，发现还有很多镜像文件我还没有做过，我应该会先把资格赛的题目都做完再去做团体赛的，美亚的题目做完后再限制一下自己的做题时间做别的比赛的题目提速叻。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

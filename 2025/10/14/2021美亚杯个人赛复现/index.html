@@ -1,0 +1,699 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>2021美亚杯个人赛复现 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>2021美亚杯个人赛复现</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/10/14
+        </span>
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8F%96%E8%AF%81/" style="color: #ff7d73">
+                    取证
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/wp/" style="color: #ffa2c4">
+                    wp
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>过程非常坎坷，但是学会了取证大师和x-ways的基础操作:D（也许?。</p>
+<span id="more"></span>
+<p>这里我去搜了一下怎么去申请试用取证大师，贴一下链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_80284843/article/details/145264268?sharetype=blogdetail&amp;shareId=145264268&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=link">【2_取证大师试用申请 - CSDN App】</a></p>
+<p>但我搜索取证大师试用申请搜到的申请方法是这个：</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/qzfjt/1.png"></p>
+<p>然后跟着公众号给的的方法走，等待审核ing。</p>
+<p>取证大师审核到了，最近正在复现真题。</p>
+<h2 id="美亚杯个人赛复现">2021美亚杯个人赛复现</h2>
+<p>贴两个讲的师傅的wp，有大部分是对照着这两个师傅复现的hhh：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43140411/article/details/127033824?sharetype=blogdetail&amp;shareId=127033824&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=link">【2021美亚杯（个人赛）练习记录 - CSDN App】</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51233573/article/details/122953241">2021年美亚杯资格赛解析</a></p>
+<p>把资源下载完了用取证大师打开，虽然取证大师的使用暂时没有特别熟练orz</p>
+<p><del>讲道理我的轻薄本有时候总会不由自主卡住唉</del> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/0.png"></p>
+<p>在这里能看到一个叫做List of image and path的文档，打开就是美亚的题目相关了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/2.png"></p>
+<p>然后对照着文档里的描述一个个导出文件就可以看题了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/3.png"></p>
+<p>（这里的VTM-computer.E01要用压缩包里提供的，师傅说容器里那个是坏的hhh）</p>
+<p>这里三个手机镜像压缩包解压会有手机取证的软件，挂载ufdr文件。</p>
+<h4 id="单选题-工地主管电话的微信账号是什么">1.[单选题] 工地主管电话的微信账号是什么?</h4>
+<p>香港那边用的大多是WhatsApp，在使用者账户这里就能找到相关的账号信息了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/4.png"></p>
+<h4 id="填空题-工地主管的隔空投送装置编号是什么-请以英文全大写及阿拉伯数字回答">2. [填空题] 工地主管的隔空投送装置编号是什么? (请以英文全大写及阿拉伯数字回答)</h4>
+<p>百度了一下隔空投送就是AirDrop ID，在首页这里就能找到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/5.png"></p>
+<h4 id="单选题-工地主管电话的哪一个应用程序有关于于经纬度24.490474-118.110220的纪录">3.[单选题] 工地主管电话的哪一个应用程序有关于于经纬度24.490474, 118.110220的纪录?</h4>
+<p>我这里是在装置位置里找的，可能因为条例不是很多我就手动翻过去了kkk。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/6.png"></p>
+<h4 id="多选题-工地主管的手提电话中下列哪些数据正确-1分">4. [多选题] 工地主管的手提电话中下列哪些数据正确? (1分)<br></h4>
+<h5 id="a.-ios-版本为-12.5.4">A. iOS 版本为 12.5.4<br></h5>
+<h5 id="b.-imei-为-454120637213361">B. IMEI 为 454120637213361<br></h5>
+<h5 id="c.-apple-id-为-kaiserlee3660gmail.com">C. Apple ID 为 kaiserlee3660@gmail.com<br></h5>
+<h5 id="d.-手机曾经安装-dropbox-应用程序">D. 手机曾经安装 dropbox 应用程序</h5>
+<p>ABC在首页这里都能找到，D在应用程序那边搜没搜到应该就是没安装。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/7.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/8.png"></p>
+<h4 id="填空题-工地主管的电话最常使用的浏览器是什么-请以英文全大写回答">5. [填空题] 工地主管的电话最常使用的浏览器是什么? (请以英文全大写回答)</h4>
+<p>浏览器在网页历史记录这边点开能找到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/9.png"></p>
+<h4 id="单选题-工地主管的电话连接过哪一个wifi">6. [单选题] 工地主管的电话连接过哪一个WiFi?</h4>
+<p>wifi在无线网络这边查看能找到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/10.png"></p>
+<p><strong>补充一个知识点：SSld：无线局域网络（WLAN）名称（基础知识）</strong></p>
+<h4 id="多选题-工地主管与alex-chan的whatsapp对话中曾提及以下哪个teamviewer的用户号码-3分">7. [多选题] 工地主管与Alex Chan的Whatsapp对话中，曾提及以下哪个TeamViewer的用户号码? (3分)<br></h4>
+<h5 id="a.-435334881">A. 435334881<br></h5>
+<h5 id="b.-453851521">B. 453851521<br></h5>
+<h5 id="c.-435475200">C. 435475200<br></h5>
+<h5 id="d.-456874155">D. 456874155<br></h5>
+<h5 id="e.-435270306">E. 435270306 <br></h5>
+<p>既然是对话那就从WhatsApp的聊天里找到和Alex的对话，然后找到和TeamViewer相关的聊天，可以看到这里给他发了三张图片。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/14.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/11.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/12.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/13.png"></p>
+<h4 id="填空题-工地主管的whatsapp中有多少个黑名单的记录-请以阿拉伯数字回答">8. [填空题] 工地主管的WhatsApp中有多少个黑名单的记录? (请以阿拉伯数字回答)</h4>
+<p>黑名单搜black一开始搜不出来，去wp看了下要去数据库搜索，大致思路是先从微信聊天记录中查看微信数据库在手机里存放的位置，然后去数据库里找黑名单所在的位置查看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/15.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/16.png"></p>
+<p>这里能看到黑名单数是0。</p>
+<h4 id="多选题-以下哪个蓝牙装置的uuid曾连接过工地主管的手机">9. [多选题] 以下哪个蓝牙装置的Uuid曾连接过工地主管的手机?<br></h4>
+<h5 id="a.-7f1fe70d-2b15-c245-853d-4196f13cc446">A. 7F1FE70D-2B15-C245-853D-4196F13CC446<br></h5>
+<h5 id="b.-1b057c1d-83d3-99a6-d2b1-ec54846c7cee">B. 1B057C1D-83D3-99A6-D2B1-EC54846C7CEE<br></h5>
+<h5 id="c.-134acd1-83d3-99a6-d2b1-ec54846c7cee">C. 134ACD1-83D3-99A6-D2B1-EC54846C7CEE<br></h5>
+<h5 id="d.-7d1be70d-2c16-d246-851d-491613dd776">D. 7D1BE70D-2C16-D246-851D-491613DD776</h5>
+<p>这里搜索了bluetooth没有提到UUID，于是继续按上面的思路在数据库里面找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/17.png"></p>
+<h4 id="填空题-工地主管计算机的e盘的bitlocker修复密钥标识符是甚么-请以英文全大写及阿拉伯数字回答不用输入-">10. [填空题] 工地主管计算机的E盘的Bitlocker修复密钥标识符是甚么? (请以英文全大写及阿拉伯数字回答，不用输入”-“)</h4>
+<p>这里说到计算机那就要换成电脑的镜像了，在文档里看到工地主管的计算机数据是VTM_computer.E01。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/18.png"></p>
+<p>用取证大师挂载。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/19.png"></p>
+<p>挂载完后右键bitlocker解密，能看到密钥 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/20.png"></p>
+<h4 id="填空题-工地主管计算机內的ftp程序filezilla的用户名称是甚么-请以英文全大写及阿拉伯数字回答">11. [填空题] 工地主管计算机內的FTP程序FileZilla的用户名称是甚么? (请以英文全大写及阿拉伯数字回答)</h4>
+<p>这里取证完VTM_computer后在下载工具分析里的filezilla找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/21.png"></p>
+<h4 id="填空题-工地主管的team-viewer-id-是甚么-请以英文全大写及阿拉伯数字回答">12. [填空题] 工地主管的Team Viewer ID 是甚么? (请以英文全大写及阿拉伯数字回答)</h4>
+<p>这个在前面的题目里有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/13.png"></p>
+<h4 id="填空题-工地主管的team-viewer与哪一个id连接-请以英文全大写及阿拉伯数字回答">13. [填空题] 工地主管的Team Viewer与哪一个ID连接? (请以英文全大写及阿拉伯数字回答)</h4>
+<p>找到teamviewer应用后查看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/22.png"></p>
+<h4 id="多选题-工地主管曾用计算机浏览器作搜寻以下哪一个关键词他曾经搜寻">14. [多选题] 工地主管曾用计算机浏览器作搜寻，以下哪一个关键词他曾经搜寻?<br></h4>
+<h5 id="a.-tiktok">A. tiktok<br></h5>
+<h5 id="b.-web-whatsapp">B. web whatsapp<br></h5>
+<h5 id="c.-facebook">C. facebook<br></h5>
+<h5 id="d.-lihkg">D. lihkg<br></h5>
+<h5 id="e.-hkgolden">E. hkgolden</h5>
+<p>这里我是直接在谷歌的历史记录里找的，后面发现这样做不严谨，应该搜索的，不过居然误打误撞是对的（） <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/23.png"></p>
+<h4 id="填空题-工地主管计算机的windows系统的产品标识符是甚么-请以英文全大写及阿拉伯数字回答不用输入-">15. [填空题] 工地主管计算机的Windows系统的产品标识符是甚么? (请以英文全大写及阿拉伯数字回答，不用输入”-“)</h4>
+<p>这里我去搜了一下产品标识符的格式，是六个五位数，应该就是这个产品ID了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/24.png"></p>
+<h4 id="填空题-工地主管曾用计算机使用whatsapp他曾和以下哪个电话号码沟通-请以阿拉伯数字回答">16. [填空题] 工地主管曾用计算机使用WhatsApp，他曾和以下哪个电话号码沟通? (请以阿拉伯数字回答)</h4>
+<p>这里没找到，看了下wp原来是要在Alex的电脑里找，好吧，看下面做到要用alex电脑的时候能不能找到（）</p>
+<h4 id="多选题-工地主管计算机的用户名称是甚么-其用户标识符是甚么">17. [多选题] 工地主管计算机的用户名称是甚么? 其用户标识符是甚么?<br></h4>
+<h5 id="a.-用户名称pc1">A. 用户名称:PC1<br></h5>
+<h5 id="b.-用户名称pc2">B. 用户名称:PC2<br></h5>
+<h5 id="c.-用户名称pc3">C. 用户名称:PC3<br></h5>
+<h5 id="d.-用户标识符0x000003e7">D. 用户标识符:0x000003E7<br></h5>
+<h5 id="e.-用户标识符0x000003e8">E. 用户标识符:0x000003E8<br></h5>
+<h5 id="f.-用户标识符0x000003e9">F. 用户标识符:0x000003E9</h5>
+<p>用户名称在用户信息里找，用户标识符这里和选择题答案不一样要转化为十六进制。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/25.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26.png"></p>
+<h4 id="单选题-工地主管计算机的预设浏览器是甚么">18. [单选题] 工地主管计算机的预设浏览器是甚么?<br></h4>
+<h5 id="a.-chrome">A. Chrome<br></h5>
+<h5 id="b.-firefox">B. Firefox<br></h5>
+<h5 id="c.-safari">C. Safari<br></h5>
+<h5 id="d.-以上皆否">D. 以上皆否</h5>
+<p>这里看了一下浏览器只有谷歌符合，不过看了wp发现这样相当不严谨（） <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/27.png"></p>
+<p>贴一下师傅们说的正确做法：<strong>使用仿真方法做，仿真成功后，在桌面上建一个.html 文件即可发现是 chrome 浏览器的 logo</strong></p>
+<p>不过我没有仿真软件，后面去下一个（）</p>
+<h4 id="填空题-工地主管计算机的其中一个分区被人加密分区内的电子表格material3.xlsx的哈希值sha1是甚么-请以英文全大写及阿拉伯数字回答">19. [填空题] 工地主管计算机的其中一个分区被人加密，分区内的电子表格Material3.xlsx的哈希值(SHA1)是甚么? (请以英文全大写及阿拉伯数字回答)</h4>
+<p>这题等会做，我的取证大师这个时候正在取证alex的电脑，bitlocker解密功能打不开（）</p>
+<h4 id="多选题-路由器的记录中显示以下有哪些ip是公司的电子器材">20. [多选题] 路由器的记录中显示以下有哪些IP是公司的电子器材?<br></h4>
+<h5 id="a.-192.168.40.128">A. 192.168.40.128<br></h5>
+<h5 id="b.-192.168.40.129">B. 192.168.40.129<br></h5>
+<h5 id="c.-192.168.40.130">C. 192.168.40.130<br></h5>
+<h5 id="d.-192.168.40.131">D. 192.168.40.131<br></h5>
+<h5 id="e.-192.168.40.132">E. 192.168.40.132</h5>
+<p><del>从第二十题开始涉及路由器的知识我直接一整个整个人都是懵的，和协议、端口有关的知识一直在不断进入我的脑子（）</del></p>
+<p>这里我是挨个搜索ip过去，发现只有E选项搜不到，于是选择了ABCD（） <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/28.png"></p>
+<h4 id="填空题-路由器的记录中显示公司的计算机下载了ftp软件该下载网站的ip是什麼请以亚拉伯数字作答省去.符号">21. [填空题] 路由器的记录中显示公司的计算机下载了FTP软件，该下载网站的IP是什麼?(请以亚拉伯数字作答，省去“.”符号)</h4>
+<p>这里先是搜索ftp没有相关的记录，于是就搜索download，正好只有关于filezilla的下载记录。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/29.png"></p>
+<h4 id="多选题-路由器的记录中显示公司计算机的资料用ftp软件传到了甚么ip地址及利用端口">22. [多选题] 路由器的记录中显示公司计算机的资料用FTP软件传到了甚么IP地址及利用端口?<br></h4>
+<h5 id="a.-ip地址-2.2.2.114-b.-ip地址-8.8.1.20">A. IP地址: 2<em>.2</em>.2<em>.114<br> ##### B. IP地址: 8</em>.8<em>.1</em>.20<br></h5>
+<h5 id="c.-ip地址-1.1.0.13-d.-端口-21-e.-端口-80">C. IP地址: 1<em>.1</em>.0*.13<br> ##### D. 端口: 21<br> ##### E. 端口: 80</h5>
+<p>从这里开始关于端口和协议的知识点就在不断冲击我空空的脑子（）</p>
+<p>看了师傅们的wp补充相关知识点：<strong>ftp传输文件常用的端口为21</strong></p>
+<p>于是搜索/21。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/30.png"></p>
+<h4 id="多选题-路由器的记录中显示以下哪些关键词是表示公司计算机与外界网络联机">23. [多选题] 路由器的记录中显示以下哪些关键词是表示公司计算机与外界网络联机? <br></h4>
+<h5 id="a.-destination">A. destination<br></h5>
+<h5 id="b.-icmp-echo-request">B. ICMP echo request<br></h5>
+<h5 id="c.-inside">C. inside<br></h5>
+<h5 id="d.-outside">D. outside<br></h5>
+<h5 id="e.-以上皆是">E. 以上皆是</h5>
+<p>这里又学到了新的知识点：<strong>outside 表示外网地址，inside 表示内网地址，destination 表示目标地址， ICMP echo request 是 ICMP 回应请求报文（Ping 指令可以产生）</strong></p>
+<p>所以选择AD。</p>
+<h4 id="单选题-路由器的记录中显示哪一个ip曾以teamviewer-连接公司计算机-1分">24. [单选题] 路由器的记录中显示哪一个IP曾以teamviewer 连接公司计算机? (1分)</h4>
+<h5 id="a.-110.152.0.14">A. 110.152.0.14</h5>
+<h5 id="b.-52.152.117.114">B. 52.152.117.114</h5>
+<h5 id="c.-180.152.0.13">C. 180.152.0.13</h5>
+<h5 id="d.-83.26.80.131">D. 83.26.80.131</h5>
+<p><del>没错又涉及到了我的知识盲区：（</del></p>
+<p>补充知识点：<strong>teamviewer使用53和5938端口，teamviewer运行的最开始,会用53端口解析teamviewer的一个域名,由此得到服务器IP,然后用5938端口实现远程连接、文件传输等。</strong></p>
+<p>搜索对应端口关键字，找到答案。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/31.png"></p>
+<h4 id="多选题-路由器的记录中显示以下哪一个有可能是以teamviewer遥控公司计算机的时间">25. [多选题] 路由器的记录中显示以下哪一个有可能是以teamviewer遥控公司计算机的时间?</h4>
+<h5 id="a.-0931-0937">A. 09:31, 09:37</h5>
+<h5 id="b.-0933-0939">B. 0933, 09:39</h5>
+<h5 id="c.-1029-1036">C. 10:29, 10:36</h5>
+<h5 id="d.-1040">D. 10:40</h5>
+<h5 id="e.-1042">E. 10:42</h5>
+<p>这题在查找完上题的ip后搜索关键字可以得到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/32.png"></p>
+<h4 id="填空题-路由器的记录中显示有多少电子器材有可能曾被入侵-请以阿拉伯数字作答">26. [填空题] 路由器的记录中显示有多少电子器材有可能曾被入侵? (请以阿拉伯数字作答)</h4>
+<p>这里对照上面的思路搜索5938端口有三个ip。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/1.png"></p>
+<h4 id="多选题-阿力士iphone12pro电话于2021年10月21日以下哪一张相片可能曾被分享utc8">27. [多选题] 阿力士iPhone12pro电话于2021年10月21日，以下哪一张相片可能曾被分享(UTC+8)?</h4>
+<h5 id="a.-img_0011.heic">A. IMG_0011.HEIC</h5>
+<h5 id="b.-img_0010.heic">B. IMG_0010.HEIC</h5>
+<h5 id="c.-img_0009.heic">C. IMG_0009.HEIC</h5>
+<h5 id="d.-img_0008.heic">D. IMG_0008.HEIC</h5>
+<h5 id="e.-img_0007.heic">E. IMG_0007.HEIC</h5>
+<p>从这里开始换到iphone12pro的那个手机取证。</p>
+<p>刚开始做的时候没啥思路不知道怎么看，看了wp又学到新的知识点：<strong>被分享过的图片会生成不带元数据的缩略图</strong></p>
+<p>于是过滤一下不带元数据的图片就0011一张。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/2.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/3.png"></p>
+<h4 id="单选题-阿力士iphone12pro电话中哪一张相片可能曾被修改拍摄时间">28. [单选题] 阿力士iPhone12pro电话中哪一张相片可能曾被修改拍摄时间?</h4>
+<h5 id="a.-img_0011.heic-1">A. IMG_0011.HEIC</h5>
+<h5 id="b.-img_0010.heic-1">B. IMG_0010.HEIC</h5>
+<h5 id="c.-img_0009.heic-1">C. IMG_0009.HEIC</h5>
+<h5 id="d.-img_0008.heic-1">D. IMG_0008.HEIC</h5>
+<p><del>这里依旧不知道怎么看……我太菜了orz</del></p>
+<p>这里看师傅们的思路是只有0011这张图的三张图时间不一样，其他的图的三个时间都是一样的，于是选A（其实我还是有点子懵……后面再多看点wp看有无什么原理） <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/4.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/5.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/6.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/7.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/8.png"></p>
+<h4 id="填空题-阿力士iphone12pro的gsm媒体访问控制地址是什么-请以英文全大写及阿拉伯数字回答不用输入">29. [填空题] 阿力士iPhone12pro的GSM媒体访问控制地址是什么? (请以英文全大写及阿拉伯数字回答，不用输入“:”)</h4>
+<p>这里涉及到了不认识的名词于是搜了一下：<strong>MAC地址即媒体访问控制地址，由6个字节的16进制数构成。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/9.png"></p>
+<p><strong>手机为蓝牙媒体，所以选蓝牙设备的地址</strong>，不过这里我凭着格式刚开始就直接选了wifi地址……后面对照wp才发现自己找错了orz <del>（图偷的师傅的懒得开取证软件截了）</del> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/10-3.png"></p>
+<h4 id="单选题-阿力士的iphone-12-pro以什么屏幕密码保护">30. [单选题] 阿力士的iphone 12 pro以什么屏幕密码保护?</h4>
+<h5 id="a.6位阿拉伯数字密码">A.6位阿拉伯数字密码</h5>
+<h5 id="b.4位阿拉伯数字密码">B.4位阿拉伯数字密码</h5>
+<h5 id="c.-图形密码">C. 图形密码</h5>
+<h5 id="d.-以上皆非">D. 以上皆非</h5>
+<p>唉这里也没做出来，依旧补充知识点：<strong>找到苹果备份文件里面的plist文件详细的记录了ios版本信息，imei，和一些关于一些程序的相关记录。需要使用plist编辑器进行查看。同时Info.plist记录了ios的版本，型号，备份日期等。</strong></p>
+<p>这题我没有plist编辑器我就先搁置着没看先做后面的了。</p>
+<h4 id="多选题-阿力士iphone-12-pro内以下哪一张相片是实况相片live-photos">31. [多选题] 阿力士iphone 12 pro内以下哪一张相片是实况相片(live Photos)?</h4>
+<h5 id="a.-img_0011.heic-2">A. IMG_0011.HEIC</h5>
+<h5 id="b.-img_0010.heic-2">B. IMG_0010.HEIC</h5>
+<h5 id="c.-img_0012.heic">C. IMG_0012.HEIC</h5>
+<h5 id="d.-img_0009.heic">D. IMG_0009.HEIC</h5>
+<p>这里在图像里面查看就好，没有0012。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/11.png"></p>
+<h4 id="单选题-以下哪一个是阿力士iphone-12-pro可能曾经连接的装置名称">32. [单选题] 以下哪一个是阿力士iphone 12 pro可能曾经连接的装置名称?</h4>
+<h5 id="a.-chriss-macbook-pro">A. Chris’s MacBook Pro</h5>
+<h5 id="b.-chirss-iphone">B. Chirs’s iPhone</h5>
+<h5 id="c.-chirss-computer">C. Chirs’s Computer</h5>
+<h5 id="d.-chirss-linux">D. Chirs’s Linux</h5>
+<p>这里在联系人里面查看，连接里面找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/12.png"></p>
+<h4 id="多选题-接上题记录连接时间是什么时候utc8">33. [多选题] 接上题，记录连接时间是什么时候(UTC+8)?</h4>
+<h5 id="a.-2021-年-10-月-21-日-005801">A. 2021 年 10 月 21 日 00:58:01</h5>
+<h5 id="b.-2021-年-10-月-21-日-085801">B. 2021 年 10 月 21 日 08:58:01</h5>
+<h5 id="c.-2021-年-10-月-21-日-005829">C. 2021 年 10 月 21 日 00:58:29</h5>
+<h5 id="d.-2021-年-10-月-21-日-085829">D. 2021 年 10 月 21 日 08:58:29</h5>
+<p>这里接上题那一页里有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/13.png"></p>
+<h4 id="多选题-阿力士iphone-xr中在软件whatsapp中工地主管与阿力士的对话中曾提到佢叫我俾钱喎btc係唔係呢个啊在进行电子数据取证分析后以下哪一个是有可能关于此对话的正确描述">34. [多选题] 阿力士iPhone XR中在软件WhatsApp中工地主管与阿力士的对话中曾提到：[佢叫我俾钱喎，BTC係唔係呢个啊？]。在进行电子数据取证分析后，以下哪一个是有可能关于此对话的正确描述？</h4>
+<h5 id="a.-此对话被kariser-lee删除">A. 此对话被Kariser Lee删除</h5>
+<h5 id="b.-此对话的附件为一张图片文件">B. 此对话的附件为一张图片文件</h5>
+<h5 id="c.-此对话被alex-chan-删除">C. 此对话被Alex Chan 删除</h5>
+<h5 id="d.-此对话是引用alex-chan-回复">D. 此对话是引用Alex Chan 回复</h5>
+<p><strong>这里取证换到了alex的另一部手机。</strong></p>
+<p>先找到对应的聊天记录，可以看到一个删除键，前面在主管的手机里没看到这段聊天记录，判断是被主管删除了，同时附件是一张图片。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/14.png"></p>
+<h4 id="填空题-阿力士iphone-xr的whatsapp对话中阿力士曾要求工地主管支付多少个btc-请以阿拉伯数字回答">35.[填空题] 阿力士iPhone XR的WhatsApp对话中，阿力士曾要求工地主管支付多少个BTC? (请以阿拉伯数字回答)</h4>
+<p>接上题那张图知道是10个。</p>
+<h4 id="多选题-阿力士iphone-xr中-img_0056.heic的图像与5005.jpgmd5-96c48152249536d14eaa80086c92fcb9-看似为同一张相片在电子数据取证分析下以下哪样描述是正确">36. [多选题] 阿力士iPhone XR中 “IMG_0056.HEIC”的图像与“5005.JPG”(MD5: 96c48152249536d14eaa80086c92fcb9)” 看似为同一张相片，在电子数据取证分析下，以下哪样描述是正确?</h4>
+<h5 id="a.-储存在不同的.db-里">A. 储存在不同的.db 里</h5>
+<h5 id="b.-有不同哈希值">B. 有不同哈希值</h5>
+<h5 id="c.-img_0056.heic-为原图-5005.jpgmd5-96c48152249536d14eaa80086c92fcb9为缩略图">C. IMG_0056.HEIC 为原图, 5005.JPG(MD5: 96c48152249536d14eaa80086c92fcb9)为缩略图</h5>
+<h5 id="d.-img_0056.heic-曾被开启过所以在ios系统中创建了缩略图5005.jpgmd5-96c48152249536d14eaa80086c92fcb9">D. IMG_0056.HEIC 曾被开启过，所以在IOS系统中创建了缩略图5005.JPG(MD5: 96c48152249536d14eaa80086c92fcb9)</h5>
+<p>这里刚开始不知道.db是啥……<strong>原来是数据库啊。</strong>（我就这样一直恶补） <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/17.png"></p>
+<p>然后找到对应的两张图片，可以知道两张图存储在同样的数据库里，同时有不同的哈希值。原图和缩略图这里看图像大小判断，大的那个肯定是原图。这个D是否开启过我不是很知道…… <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/15.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/16.png"></p>
+<h4 id="多选题-阿力士iphone-xr中相片檔img_0056.heic提供了什么电子数据取证的信息">37. [多选题] 阿力士iPhone XR中相片檔IMG_0056.HEIC提供了什么电子数据取证的信息?</h4>
+<h5 id="a.-此相片是由隔空投送-airdrop得来">A. 此相片是由隔空投送 (Airdrop)得来</h5>
+<h5 id="b.-此相片由-iphone-xr-拍摄">B. 此相片由 iPhone XR 拍摄</h5>
+<h5 id="c.-此相片的拍摄时间为-2021-10-21-174548utc8">C. 此相片的拍摄时间为 2021-10-21 17:45:48(UTC+8)</h5>
+<h5 id="d.-此相片的拍摄时间为-2021-09-08-173500utc8">D. 此相片的拍摄时间为 2021-09-08 17:35:00(UTC+8)</h5>
+<p>AB这里看图可以知道是iphone12pro拍的不是XR，可以知道是从别的手机隔空投送来的，时间上面也有，所以选AD。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/18.png"></p>
+<h4 id="单选题-阿力士iphone-xr中阿力士的电邮账户alexc19851016gmail.com的密码有可能是什么">38. [单选题] 阿力士iPhone XR中阿力士的电邮账户Alexc19851016@gmail.com的密码有可能是什么?</h4>
+<p>这里我刚开始在密码那边找找不到，原来在备忘录这里这个人自己写了……晕。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/19.png"></p>
+<h4 id="填空题-阿力士iphone-xr曾经连接wifi-alex-home的密码是什么-请以英文全大写及阿拉伯数字回答">39. [填空题] 阿力士iPhone XR曾经连接Wifi “Alex Home”的密码是什么? (请以英文全大写及阿拉伯数字回答)</h4>
+<p>这里左边没找到可以看wifi的地方，在密码这边搜索alex home能搜到。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/20.png"></p>
+<h4 id="单选题-阿力士iphone-xr经icloud备份的最后时间是什么utc8">40. [单选题] 阿力士iPhone XR经iCloud备份的最后时间是什么?(UTC+8)?</h4>
+<h5 id="a.-2021-10-21-175138utc8">A. 2021-10-21 17:51:38(UTC+8)</h5>
+<h5 id="b.-2021-10-21-180213utc8">B. 2021-10-21 18:02:13(UTC+8)</h5>
+<h5 id="c.-2021-10-21-095138utc8">C. 2021-10-21 09:51:38(UTC+8)</h5>
+<h5 id="d.-2021-10-21-100213utc8">D. 2021-10-21 10:02:13(UTC+8)</h5>
+<p>这里在首页这里有。<del>（虽然我一开始又找错位置了）</del> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/21.png"></p>
+<h4 id="填空题-阿力士iphone-xr中的iboot版本是iboot-__________-请以阿拉伯数字回答不用轮入.">41. [填空题] 阿力士iPhone XR中的iBoot版本是iBoot-__________? (请以阿拉伯数字回答，不用轮入“.”)</h4>
+<p>又涉及到我的知识盲区……</p>
+<p>补充知识点：<strong>iboot苹果路径：Lockdown srvice/phoneInfo.xml</strong></p>
+<p>把xml文件导出后在notepad里查找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/22.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/23.png"></p>
+<h4 id="多选题-阿力士iphone-xr中的whatsapp群组团购-新鲜猪肉牛肉-东涌群组-930有以下哪一个成员">42. [多选题] 阿力士iPhone XR中的WhatsApp群组『团购-新鲜猪肉牛肉-东涌群组-9/30』有以下哪一个成员?</h4>
+<h5 id="a.-85260617332s.whatsapp.net">A. 85260617332@s.whatsapp.net</h5>
+<h5 id="b.-85260452579s.whatsapp.net">B. 85260452579@s.whatsapp.net</h5>
+<h5 id="c.-85248791565s.whatsapp.net">C. 85248791565@s.whatsapp.net</h5>
+<h5 id="d.-85264630956s.whatsapp.net">D. 85264630956@s.whatsapp.net</h5>
+<p>在WhatsApp里面搜猪肉牛肉搜不出来，搜索一个牛可以搜到，可以看到有五个人，下面那些群组不是。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/24.png"></p>
+<h4 id="单选题-阿力士的计算机显示曾于hongkongcard.com-的论坛登记成为会员以下哪个是他的帐户密码-3分">43. [单选题] 阿力士的计算机显示曾于hongkongcard.com 的论坛登记成为会员，以下哪个是他的帐户密码? (3分)</h4>
+<h5 id="a.-aa475869">A. Aa475869!</h5>
+<h5 id="b.-bb475869">B. Bb475869!</h5>
+<h5 id="c.-cd475869">C. Cd475869!</h5>
+<h5 id="d.-以上皆非-1">D. 以上皆非</h5>
+<p><strong>从这里开始取证换成alex的计算机。</strong></p>
+<p>用取证大师挂载alex的计算机，搜索hongkongcard可以搜到账户。</p>
+<p>说起来得反省一下自己，我发现我总是在做后面的忘了前面的，比如做这里的时候我找到了账户却不会想到回去他的手机里面找密码…… <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/25.png"></p>
+<p>密码在上面找到过的备忘录里，在这里才发现和之前找过的账号是同一个。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/26.png"></p>
+<h4 id="单选题-阿力士的计算机显示阿力士曾用什么方法进入受害者主管的计算机">44. [单选题] 阿力士的计算机显示阿力士曾用什么方法进入受害者(主管)的计算机?</h4>
+<h5 id="a.-远程操控">A. 远程操控</h5>
+<h5 id="b.-特洛伊木马程序">B. 特洛伊木马程序</h5>
+<h5 id="c.-勒索软件">C. 勒索软件</h5>
+<h5 id="d.-恶意软件">D. 恶意软件</h5>
+<p>这里可以看到用的是teamviewer远程操控。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/27.png"></p>
+<h4 id="单选题-续上题阿力士最后一次进入受害者主管计算机的时间是什么">45. [单选题] 续上题，阿力士最后一次进入受害者(主管)计算机的时间是什么?</h4>
+<h5 id="a.-于-2021-年-10-月-18-日-10-时-36-分">A. 于 2021 年 10 月 18 日 10 时 36 分</h5>
+<h5 id="b.-于-2021-年-10-月-18-日-18-时-36-分">B. 于 2021 年 10 月 18 日 18 时 36 分</h5>
+<h5 id="c.-于-2021-年-10-月-18-日-6-时-53-分">C. 于 2021 年 10 月 18 日 6 时 53 分</h5>
+<h5 id="d.-于-2021-年-10-月-18-日-18-时-42-分">D. 于 2021 年 10 月 18 日 18 时 42 分</h5>
+<p>在teamviewer这里查看能看到选D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/28.png"></p>
+<h4 id="填空题-阿力士的计算机显示他曾经使用ftp程序ftp的主机ip地址是什麼请以亚拉伯数字作答省去.符号">46. [填空题] 阿力士的计算机显示他曾经使用FTP程序，FTP的主机IP地址是什麼?(请以亚拉伯数字作答，省去“.”符号)</h4>
+<p>在filezilla这里查看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/29.png"></p>
+<h4 id="填空题-阿力士的计算机显示于2021年9月至2021年11月期间计算机曾被登入过多少次-请以阿拉伯数字回答">47. [填空题] 阿力士的计算机显示于2021年9月至2021年11月期间，计算机曾被登入过多少次? (请以阿拉伯数字回答)</h4>
+<p>系统信息里有个用户登录，能看到是28次。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/30.png"></p>
+<h4 id="填空题-阿力士计算机所安装的microsoft-office-2007-是以下哪一个版本-请以亚拉伯数字作答省去.符号">48. [填空题] 阿力士计算机所安装的Microsoft Office 2007 是以下哪一个版本? (请以亚拉伯数字作答，省去“.”符号)</h4>
+<p>这里找到office软件信息然后查看之后往下滑能看到版本。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/31.png"></p>
+<h4 id="填空题-以下是阿力士计算机中的basic-data-partition-efi-3-的volume-id-请以英文全大写及阿拉伯数字回答">49. [填空题] 以下是阿力士计算机中的Basic data partition (EFI 3) 的Volume ID? (请以英文全大写及阿拉伯数字回答)</h4>
+<p>绝望的知识盲区袭来，自己找了半天无果，于是看wp学到新知识（）</p>
+<p>**用x-ways挂载镜像后路径：3Volume Information*</p>
+<p>也有师傅用的diskgenius，但不知道为什么我的diskgenius挂载后看不到卷序列号（）所以改用x-ways，正好也学习一下x-ways的用法。</p>
+<p>把带有volumeID的文件导出打开后发现是乱码，师傅说要看文件的十六进制，于是用010打开。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/33.png"></p>
+<h4 id="填空题-阿力士计算机的window-product-id是什么-请以英文全大写及阿拉伯数字回答不用输入-">50.[填空题] 阿力士计算机的Window product ID是什么? (请以英文全大写及阿拉伯数字回答，不用输入”-“)</h4>
+<p>产品ID这个直接在系统信息找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/26-50/32.png"></p>
+<h4 id="单选题-阿力士计算机曾经下载一张猴子的图片以下哪一项描述正确">51. [单选题] 阿力士计算机曾经下载一张猴子的图片，以下哪一项描述正确?</h4>
+<h5 id="a.-该图片是由httpsencrypted-tbn0.gstatic.comimagesqtbnand9gcsgn6abvcqtffpjcibjc9hdx1h4ptqsauvytqusqpcau下载的">A. 该图片是由“https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgn6ABvcqTfFPjcIbjc9hdx1H4PtQsAuVyTQ&amp;usqp=CAU”下载的</h5>
+<h5 id="b.-该图片经过加密">B. 该图片经过加密</h5>
+<h5 id="c.-该图片于-2021-09-30-下载">C. 该图片于 2021-09-30 下载</h5>
+<h5 id="d.-该图片是由-gif-档转换成-png">D. 该图片是由 GIF 档转换成 PNG</h5>
+<p>自己翻了一下图片没找到猴子，于是打开搜索引擎。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/1.png"></p>
+<p>这里导出来是history文件……于是根据路径去x-ways导出图片，这里在x-ways就能差不多查看详细信息了。（不过找到A是对的就可以了啊，忘记是单选题了） <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/2.png"></p>
+<h4 id="填空题-阿力士计算机所安装的microsoft-office-2007-的密钥是甚么-请以英文全大写及阿拉伯数字回答不用输入-">52. [填空题] 阿力士计算机所安装的Microsoft Office 2007 的密钥是甚么? (请以英文全大写及阿拉伯数字回答，不用输入”-“)</h4>
+<p>这里因为自己找不到我又去看了师傅们的wp orz，根据第48题的路径找不到Microsoft officer的密钥，然后发现原来在桌面上。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/3.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/4.png"></p>
+<h4 id="单选题-阿力士ftp-服务器用户使用命令行安装了甚么程序">53. [单选题] 阿力士FTP 服务器用户使用命令行安装了甚么程序?</h4>
+<h5 id="a.-docker">A. Docker</h5>
+<h5 id="b.-chrome">B. Chrome</h5>
+<h5 id="c.-filezilla">C. FileZilla</h5>
+<h5 id="d.-teamviewer">D. TeamViewer</h5>
+<p><strong>这里开始切换到FTP.E01文件</strong></p>
+<p>找到终端记录，可以看到安装了docker。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/5.png"></p>
+<h4 id="多选题-以下哪些档案于阿力士ftp-服务器曾重复出现">54. [多选题] 以下哪些档案于阿力士FTP 服务器曾重复出现?</h4>
+<h5 id="a.-material1">A. Material1</h5>
+<h5 id="b.-material2">B. Material2</h5>
+<h5 id="c.-material3">C. Material3</h5>
+<h5 id="d.-staff1">D. Staff1</h5>
+<h5 id="e.-staff2">E. Staff2</h5>
+<h5 id="f.-staff">F. Staff</h5>
+<p>非常简单粗暴地使用搜索引擎:D，可以看到ABC都是只有出现没有重复出现，于是选DEF。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/6.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/7.png"></p>
+<h4 id="填空题-在阿力士ftp服务器中文件夹___________曾被用户变更了访问权限请以英文全大写及阿拉伯数字回答">55. [填空题] 在阿力士FTP服务器中，文件夹___________曾被用户变更了访问权限(请以英文全大写及阿拉伯数字回答)</h4>
+<p>变更文件夹的访问权限是什么命令不知道，于是继续补充知识点ing。</p>
+<p><strong>变更文件夹的访问权限的基本命令：chmod [选项] 权限模式 文件夹路径</strong> <img src="../../../../../../../../../Users/86153/Desktop/code/meiya/50-62/8.png"></p>
+<p>在终端记录找到命令。 <img src="../../../../../../../../../Users/86153/Desktop/code/meiya/50-62/9.png"></p>
+<h4 id="填空题-在阿力士ftp-服务器建设后有______个额外用户被加入-请以阿拉伯数字回答">56. [填空题] 在阿力士FTP 服务器建设后，有______个额外用户被加入 (请以阿拉伯数字回答)</h4>
+<p>依旧补充一下pure命令的知识点（），可以看到就加入了一个wai用户。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/11.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/10.png"></p>
+<h4 id="单选题-根据阿力士ftp服务器设定显示此服务器是以_____方式连接网络且是一个_______网络状态">57. [单选题] 根据阿力士FTP服务器设定显示，此服务器是以_____方式连接网络，且是一个_______网络状态。</h4>
+<h5 id="a.-无线-公开">A. 无线 , 公开</h5>
+<h5 id="b.-无线-私人">B. 无线 , 私人</h5>
+<h5 id="c.-有线-公开">C. 有线 , 公开</h5>
+<h5 id="d.-有线-私人">D. 有线 , 私人</h5>
+<p>这题答案是C，但是我选的是D……</p>
+<p>首先查看网络配置信息，导出文本信息。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/12.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/13.png"></p>
+<p><del>因为自己看不懂所以我丢给ai了</del> 可以知道是有线网络，然后网络状态ai告诉我是私人（可恶 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/14.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/15.png"></p>
+<p>看了一下师傅们的wp，师傅们说这个是公网ip，好吧我还是不了解……</p>
+<h4 id="填空题-阿力士ftp-服务器设定最多使用者数目是_____-请以阿拉伯数字回答">58. [填空题] 阿力士FTP 服务器设定最多使用者数目是_____ (请以阿拉伯数字回答)</h4>
+<p>这里依旧没做出来，师傅们给的思路是：<strong>需要看ftp的配置文件，所以找“.conf”文件，搜索“ftpd.conf”</strong></p>
+<p>搜索配置文件后导出搜索max，得知是50。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/16.png"></p>
+<h4 id="填空题-阿力士ftp服务器使用docker安装了一个ftp程序为___________例如-space-docker-1.1请输入-spacedocker1.1不要输入空格">59. [填空题] 阿力士FTP服务器使用Docker安装了一个FTP程序为___________。(例如 space docker /1.1，请输入 spacedocker/1.1，不要输入空格)</h4>
+<p>这里用过docker看终端命令就容易多了，是stilliard/pure-ftpd。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/17.png"></p>
+<h4 id="多选题-阿力士ftp-服务器曾使用过甚么版本的linux内核">60. [多选题] 阿力士FTP 服务器曾使用过甚么版本的Linux内核?</h4>
+<h5 id="a.-linux-headers-5.11.0-16">A. linux-headers-5.11.0-16</h5>
+<h5 id="b.-linux-headers-5.11.0-17">B. linux-headers-5.11.0-17</h5>
+<h5 id="c.-linux-headers-5.11.0-36">C. linux-headers-5.11.0-36</h5>
+<h5 id="d.-linux-headers-5.11.0-37">D. linux-headers-5.11.0-37</h5>
+<h5 id="e.-linux-headers-5.11.0-40">E. linux-headers-5.11.0-40</h5>
+<p><del>依旧搜索引擎大法好！（bushi</del></p>
+<p>搜索之后知道选AD。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/18.png"></p>
+<h4 id="多选题-阿力士ftp-服务器的磁盘分区有以下哪一种文件系统">61. [多选题] 阿力士FTP 服务器的磁盘分区，有以下哪一种文件系统?</h4>
+<h5 id="a.-fat16">A. FAT16</h5>
+<h5 id="b.-fat32">B. FAT32</h5>
+<h5 id="c.-exfat">C. ExFAT</h5>
+<h5 id="d.-hfs">D. HFS+</h5>
+<h5 id="e.-ext4">E. Ext4</h5>
+<p>涉及到磁盘那就切到x-ways，直接点击之后详细信息里面有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/19.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/20.png"></p>
+<h4 id="填空题-阿力士ftp服务器用户输入了指令_____________去检查现存的docker容器-例如-netstat-lntp请输入-netstatlntp不要输入空格">62. [填空题] 阿力士FTP服务器用户输入了指令_____________去检查现存的Docker容器 (例如 netstat lntp，请输入 netstatlntp，不要输入空格)</h4>
+<p>这里依旧用过docker知道那个ps -a是查看所有的容器。 <img src="https://github.com/ncbdd0/images/raw/main/meiya/1-10/50-62/21.png"></p>
+<p>这里写完最后一题之后因为有点小开心脑子一热直接把文件删了（占了我120多个g有点嫌烦）</p>
+<p>然后……很悲剧地发现前面还有题目没做说要等后面做完了回去做给忘记这回事了TT</p>
+<p>偏偏它是说文件过大只能直接删除不能拖进回收站，所以……前面没做的题就不补充了（被打</p>
+<p>不过说实话，到时候比赛好像就两个半小时但是这些题我大概做了两天多TT……</p>
+<p>后面会继续复现别的真题，希望能提高做题速度和补充补充不知道的知识点吧。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>2025春秋杯冬季赛wp | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>2025春秋杯冬季赛wp</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/1/31
+        </span>
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/wp/" style="color: #ff7d73">
+                    wp
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/misc/" style="color: #00bcd4">
+                    misc
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>很适合像我这种菜鸟的一个比赛，做完了misc，web的wp就不写了一直在ai梭（）。</p>
+<span id="more"></span>
+<h5 id="流量分析与协议">1.流量分析与协议</h5>
+<p><em>1.Beacon_Hunter</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/1.png"> 这个流量包还挺小的，打开流量包第一条数据的ip地址就是。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/2.png"></p>
+<p><em>2.流量中的秘密</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/3.png"> 过滤一下流找到上传的文件。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/4.png"> 导出字节流用010打开。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/5.png"> 可以看到里面藏了个图片，直接foremost提取一下。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/6.png"></p>
+<p><em>3.Stealthy_Ping</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/8.png"> 打开这个流量包，挨个点过去可以看到每条数据流的字节拼接起来就是flag。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/9.png"> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/10.png"> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/11.png"> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/12.png"></p>
+<h5 id="数据处理与分析">2.数据处理与分析</h5>
+<p><em>1.破碎的日志</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/13.png"> 这个bin文件下载后用010打开直接把那个角标换成2就是flag。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/14.png"></p>
+<p><em>2.大海捞针</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/16.png"> 直接梭一下（）。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/15.png"></p>
+<p><em>3.隐形的守护者</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/17.png"> 看题目说数字水印就知道直接拿stegsolve找一下了（）。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/18.png"></p>
+<p>还有一题全程ai出来的太多了就不贴了:D</p>
+<h5 id="安全分析基础">3.安全分析基础</h5>
+<p><em>1. Log_Detective</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/19.png"> 一个简单日志，用记事本打开看sql语句，这个把每条的ascii码转一下就是flag。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/20.png"></p>
+<h5 id="ai安全与可信性">4.AI安全与可信性</h5>
+<p><em>1.越狱的翻译官</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/21.png"> 绕过关键词询问。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/22.png"></p>
+<p><em>2.健忘的客服</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/24.png"> 这题有个hint： <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/23.png"> 工作手册忘记截图了，这里大概思路就是伪装电商然后格式化输出吧。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/25.png"> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/26.png"> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/27.png"> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/28.png"></p>
+<p><em>3.窥探内心</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/29.png"> 先试探一下，flag不让直接给。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/30.png"> 总之就是说话绕晕ta（嗯对。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/31.png"> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/32.png"></p>
+<p><em>4.幻觉诱导</em> <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/33.png"> 一秒梭。 <img src="https://github.com/ncbdd0/images/blob/main/ichunqiu2025/34.png"></p>
+<p>好久没写博客了倒是有一点生疏hhh</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

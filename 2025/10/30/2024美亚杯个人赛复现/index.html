@@ -1,0 +1,954 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>2024美亚杯个人赛复现 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>2024美亚杯个人赛复现</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/10/30
+        </span>
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8F%96%E8%AF%81/" style="color: #ffa2c4">
+                    取证
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/wp/" style="color: #00bcd4">
+                    wp
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>取证练习中……话说给博客用了个点击特效有人发现吗:D <del>(其实没有</del></p>
+<span id="more"></span>
+<p>开头依旧滑跪感谢师傅们的wp：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_77163694/article/details/143671589">2024年美亚杯个人赛 资格赛 wp</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/Pisces50002/article/details/144492701?sharetype=blogdetail&amp;shareId=144492701&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=link">2024美亚杯资格赛复现</a>、<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU5Njc1NTAwMQ==&amp;mid=2247483695&amp;idx=1&amp;sn=d75b8f4525bc900030c34acc2ca25ef7&amp;chksm=fe5c9679c92b1f6f2bb79d64021b9c3e444d63a45e9b81f65736f5d1c787d03a9d1a69ae04d4&amp;scene=21#wechat_redirect">第十届美亚杯个人赛内存和优盘解答</a>。</p>
+<p>背景资料： <img src="https://github.com/ncbdd0/images/raw/main/1-40/1.png"></p>
+<p>一个小教训敲打自己，每次做之前记得要看一眼背景资料，刚开始火眼取证的时候居然把ios镜像选成安卓了（）。</p>
+<p>检材： <img src="https://github.com/ncbdd0/images/raw/main/1-40/2.png"></p>
+<h3 id="emma的ios手机镜像"><em>Emma的IOS手机镜像</em></h3>
+<h4 id="单选题-emma已经几天没有收到她姐姐clara的消息了报警失踪她焦虑地将手机提交给警察希望能找到线索警察将手机交给你进行电子数据取证你成功提取了emma手机的镜像请根据取证结果回答以下问题根据emma_mobile.zipemma和clara的微信聊天记录emma最后到警署报案并拍摄写有报案编号的卡片拍摄时的经纬值是多少">1.[单选题] Emma已经几天没有收到她姐姐Clara的消息了，报警失踪，她焦虑地将手机提交给警察，希望能找到线索。警察将手机交给你进行电子数据取证。你成功提取了Emma手机的镜像。请根据取证结果回答以下问题。根据Emma_Mobile.zip，Emma和Clara的微信聊天记录，Emma最后到警署报案并拍摄写有报案编号的卡片，拍摄时的经纬值是多少？</h4>
+<h5 id="a.-22.451721666667-114.171853333333">A. 22.451721666667, 114.171853333333</h5>
+<h5 id="b.-22.451553333333-114.172845">B. 22.451553333333, 114.172845</h5>
+<h5 id="c.-22.451928333333-114.170503333333">C. 22.451928333333, 114.170503333333</h5>
+<h5 id="d.-22.451638333333-114.16993">D. 22.451638333333, 114.16993</h5>
+<p>刚开始做的时候我是先把图片导出，发现在属性里的详细信息没有后用exiftool工具查看，结果居然还是没有（？，于是只能去数据库里找了。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/3.png"></p>
+<p>但是这里先用exiftool查看还是有用的，因为photos数据库里图片的名称不一样，要用创建时间对应一下。 <img src=".https://github.com/ncbdd0/images/raw/main/1-40/4.png"> <img src="https://github.com/ncbdd0/images/raw/main/1-40/5.png"></p>
+<p>这里找到图片对应的是IMG.0019后再ZASSET表里找到经纬度。</p>
+<h4 id="单选题-根据emma_mobile.zip2024年8月30日下午两点后emma共致电clara多少次">2. [单选题] 根据Emma_Mobile.zip，2024年8月30日下午两点后Emma共致电Clara多少次？</h4>
+<h5 id="a.-85">A. 85</h5>
+<h5 id="b.-86">B. 86</h5>
+<h5 id="c.-87">C. 87</h5>
+<h5 id="d.-88">D. 88</h5>
+<p>其实这里我做的不是很严谨，因为我直接默认把这个时间后emma的通话记录都是给clara的了，跳过了查clara手机号的这一步orz。（不过答案居然是对的</p>
+<p>找到通话记录数据库。 <img src=".https://github.com/ncbdd0/images/raw/main/1-40/6.png"></p>
+<p>把时间戳转换后找到下午两点后的第一条通话 <img src="https://github.com/ncbdd0/images/raw/main/1-40/8.png"> <img src="https://github.com/ncbdd0/images/raw/main/1-40/7.png"></p>
+<p>一共106条表记录，减去19加一后就是88条。</p>
+<p>这里再贴一下时间戳的脚本吧，这个脚本是真好用hhh。</p>
+<pre class="sourceCode python" id="cb1"><code class="sourceCode python"><div class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</div>
+<div class="sourceLine" id="cb1-2" data-line-number="2">    </div>
+<div class="sourceLine" id="cb1-3" data-line-number="3">cocoa_epoch <span class="op">=</span> datetime(<span class="dv">2001</span>, <span class="dv">1</span>, <span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb1-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb1-5" data-line-number="5">timestamp <span class="op">=</span> <span class="fl">744529095.672000</span> </div>
+<div class="sourceLine" id="cb1-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb1-7" data-line-number="7">utc_time <span class="op">=</span> cocoa_epoch <span class="op">+</span> timedelta(seconds<span class="op">=</span>timestamp)</div>
+<div class="sourceLine" id="cb1-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb1-9" data-line-number="9">utc8_time <span class="op">=</span> utc_time <span class="op">+</span> timedelta(hours<span class="op">=</span><span class="dv">8</span>)  <span class="co"># 转换为 UTC+8</span></div>
+<div class="sourceLine" id="cb1-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb1-11" data-line-number="11"><span class="bu">print</span>(utc8_time.strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S"</span>)) </div></code></pre>
+<h4 id="单选题-根据emma和clara的微信聊天记录clara失踪前曾告诉emma会到哪里">3. [单选题] 根据Emma和Clara的微信聊天记录，Clara失踪前曾告诉Emma会到哪里？</h4>
+<h5 id="a.-到酒店和丈夫david庆祝结婚周年">A. 到酒店和丈夫David庆祝结婚周年</h5>
+<h5 id="b.-吃自助餐">B. 吃自助餐</h5>
+<h5 id="c.-约了朋友见面">C. 约了朋友见面</h5>
+<h5 id="d.-去旅行">D. 去旅行</h5>
+<p>这里找到了微信聊天记录的数据库，不过后面做的时候才发现其实直接在Clera的手机看更方便。</p>
+<p>导出数据库： <img src="https://github.com/ncbdd0/images/raw/main/1-40/10.png"></p>
+<p>聊天记录在Chat这张表里。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/9.png"></p>
+<h4 id="填空题-参考emma_mobile.zipemma的iphone-xr内微信应用程序的版本是多少">4. [填空题] 参考Emma_Mobile.zip，Emma的iPhone XR内微信应用程序的版本是多少？</h4>
+<p>这里要找Manifest.plist这个数据库。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/12.png"></p>
+<p>查找一下。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/11.png"></p>
+<h4 id="多选题-参考emma_mobile.zipemma手机中下列哪个选项是正确的">5. [多选题] 参考Emma_Mobile.zip，Emma手机中下列哪个选项是正确的？</h4>
+<h5 id="a.-ios版本为17.6.1">A. iOS版本为17.6.1</h5>
+<h5 id="b.-imei为356414106484705">B. IMEI为356414106484705</h5>
+<h5 id="c.-apple-id为emma1761gmail.com">C. Apple ID为Emma1761@gmail.com</h5>
+<h5 id="d.-手机曾经安装metamask应用程式">D. 手机曾经安装Metamask应用程式</h5>
+<p>AB找上面那个数据库，D在下面那个数据库。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/17.png"></p>
+<p>直接查找iOS版本和IMEI还有Metamask： <img src="https://github.com/ncbdd0/images/raw/main/1-40/13.png"> <img src="https://github.com/ncbdd0/images/raw/main/1-40/14.png"> <img src="https://github.com/ncbdd0/images/raw/main/1-40/16.png"></p>
+<p>C这里在火眼里看： <img src="https://github.com/ncbdd0/images/raw/main/1-40/15.png"></p>
+<h4 id="填空题-参考emma_mobile.zipemma手机中apple-id的注册电子邮箱是多少">6. [填空题] 参考Emma_Mobile.zip,Emma手机中Apple ID的注册电子邮箱是多少？</h4>
+<p>直接看上面那张图就是。</p>
+<h4 id="填空题-参考emma_mobile.zip在2024年emma手机上曾记录的电话卡集成电路卡标识符iccid是多少答案格式只需使用阿拉伯数字回答">7. [填空题] 参考Emma_Mobile.zip，在2024年，Emma手机上曾记录的电话卡集成电路卡标识符(ICCID)是多少？(答案格式:只需使用阿拉伯数字回答)</h4>
+<p>SIM卡记录直接看： <img src="https://github.com/ncbdd0/images/raw/main/1-40/18.png"></p>
+<h4 id="填空题-参考emma_mobile.zipemma手机的蓝牙设备名称elk-bledom的通用唯一标识符uuid是什么">8. [填空题] 参考Emma_Mobile.zip，Emma手机的蓝牙设备名称“ELK-BLEDOM”的通用唯一标识符(UUID)是什么？</h4>
+<p>这里蓝牙记录里没有，直接去蓝牙的数据库里看。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/19.png"> <img src="https://github.com/ncbdd0/images/raw/main/1-40/20.png"></p>
+<h4 id="单选题-你发现了一些线索emma看起来也很可疑她似乎背负了大量债务参考emma_mobile.zipemma手机内safari浏览记录中网页httpsracing.hkjc.com-的网站标题是什么">9. [单选题] 你发现了一些线索，Emma看起来也很可疑，她似乎背负了大量债务。参考Emma_Mobile.zip，Emma手机内Safari浏览记录中网页“https://racing.hkjc.com/” 的网站标题是什么？</h4>
+<h5 id="a.-香港马会奖券有限公司">A. 香港马会奖券有限公司</h5>
+<h5 id="b.-六合彩---google-搜索">B. 六合彩 - Google 搜索</h5>
+<h5 id="c.-快易钱网上贷款财务公司-足不出户现金即日到手">C. 快易钱:网上贷款财务公司 | 足不出户现金即日到手</h5>
+<h5 id="d.-赛马信息---香港赛马会">D. 赛马信息 - 香港赛马会</h5>
+<p><del>哦莫事情不简单。</del></p>
+<p>在浏览器记录里看： <img src="https://github.com/ncbdd0/images/raw/main/1-40/21.png"></p>
+<h4 id="单选题-参考emma_mobile.zipemma向clara透露什么原因令emma欠下巨债">10. [单选题] 参考Emma_Mobile.zip，Emma向Clara透露什么原因令Emma欠下巨债？</h4>
+<h5 id="a.-投资孖展">A. 投资孖展</h5>
+<h5 id="b.-虚拟货币失利">B. 虚拟货币失利</h5>
+<h5 id="c.-网上赌博">C. 网上赌博</h5>
+<h5 id="d.-以上皆是">D. 以上皆是</h5>
+<p>这里学聪明了去Clera的手机里看了，里面可以直接看聊天记录。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/22.png"></p>
+<p>可以知道全都是（田纳。</p>
+<h4 id="单选题-参考emma_mobile.zip收债人要求emma还款数量">11. [单选题] 参考Emma_Mobile.zip，收债人要求Emma还款数量？</h4>
+<h5 id="a.-港币786990">A. 港币$786,990</h5>
+<h5 id="b.-港币878990">B. 港币$878,990</h5>
+<h5 id="c.-港币786980">C. 港币$786,980</h5>
+<h5 id="d.-港币745330">D. 港币$745,330</h5>
+<p>查看Emma的短信记录（不是她甚至没把欠债最多的那一条发给Clera。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/23.png"></p>
+<h4 id="单选题-参考emma_mobile.zipemma发送了多少张.png图片给clara证明自己正被人追债">12. [单选题] 参考Emma_Mobile.zip，Emma发送了多少张.PNG图片给Clara，证明自己正被人追债？</h4>
+<h5 id="a.-6">A. 6</h5>
+<h5 id="b.-7">B. 7</h5>
+<h5 id="c.-8">C. 8</h5>
+<h5 id="d.-9">D. 9</h5>
+<p>直接数，聊天记录里发了七张。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/24.png"></p>
+<h4 id="单选题-参考emma_mobile.zipemma用来浏览虚拟货币的网址">13. [单选题] 参考Emma_Mobile.zip，Emma用来浏览虚拟货币的网址？</h4>
+<h5 id="a.-google.com">A. Google.com</h5>
+<h5 id="b.-facebook.com">B. Facebook.com</h5>
+<h5 id="c.-intellax.io">C. IntellaX.io</h5>
+<h5 id="d.-yahoo.com">D. Yahoo.com</h5>
+<p>看浏览器记录，包含钱包的这个就是。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/26.png"></p>
+<h4 id="单选题-参考emma_mobile.zip的浏览器记录有多少网址与bet365有关">14. [单选题] 参考Emma_Mobile.zip的浏览器记录，有多少网址与bet365有关?</h4>
+<h5 id="a.-3">A. 3</h5>
+<h5 id="b.-13">B. 13</h5>
+<h5 id="c.-9">C. 9</h5>
+<h5 id="d.-12">D. 12</h5>
+<p>在浏览器记录里搜索bet就行，注意看四条里有两条是同一个网址。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/25.png"></p>
+<h4 id="单选题-你还发现了一些与不当使用他人加密钱包相关的痕迹参考emma_mobile.zipemma用了哪些恢复短语recovery-phrase进入david的虚拟货币账户">15. [单选题] 你还发现了一些与不当使用他人加密钱包相关的痕迹。参考Emma_Mobile.zip，Emma用了哪些恢复短语(Recovery Phrase)进入David的虚拟货币账户？</h4>
+<h5 id="a.-stockavocadograbclay">A. stock,avocado,grab,clay</h5>
+<h5 id="b.-lightsadnesssegmentancient">B. light,sadness,segment,ancient</h5>
+<h5 id="c.-toetalkelderoil">C. toe,talk,elder,oil</h5>
+<h5 id="d.-以上皆是-1">D. 以上皆是</h5>
+<p>这里我全局查找找不到还以为见了鬼了，原来是在图片里orz。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/27.png"></p>
+<h4 id="单选题-参考emma_mobile.zipemma从david处窃取的虚拟货币的名称是什么">16. [单选题] 参考Emma_Mobile.zip，Emma从David处窃取的虚拟货币的名称是什么？</h4>
+<h5 id="a.-idfc">A. IDFC</h5>
+<h5 id="b.-icac">B. ICAC</h5>
+<h5 id="c.-inic">C. INIC</h5>
+<h5 id="d.-ifcc">D. IFCC</h5>
+<p>这张图，Clera自己发给Emma的额。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/28.png"></p>
+<h4 id="单选题-参考emma_mobile.zipclara偷拍的照片中david的虚拟货币余额是多少">17. [单选题] 参考Emma_Mobile.zip，Clara偷拍的照片中，David的虚拟货币余额是多少？</h4>
+<h5 id="a.-3266378.99">A. 3266378.99</h5>
+<h5 id="b.-1044749.22">B. 1044749.22</h5>
+<h5 id="c.-5022915.66">C. 5022915.66</h5>
+<h5 id="d.-7822468.44">D. 7822468.44</h5>
+<p>同上那张图。</p>
+<h4 id="单选题-参考emma_mobile.zipemma在偷窃david的虚拟货币前emma曾向clara透露有什么事发生在emma身上">18. [单选题] 参考Emma_Mobile.zip，Emma在偷窃David的虚拟货币前，Emma曾向Clara透露有什么事发生在Emma身上？</h4>
+<h5 id="a.-中彩票">A. 中彩票</h5>
+<h5 id="b.-欠债">B. 欠债</h5>
+<h5 id="c.-升职">C. 升职</h5>
+<h5 id="d.-失业">D. 失业</h5>
+<p>分析前面就很容易知道是欠债。</p>
+<h4 id="多选题-你查看了emma手机中的一些照片数字信息以获取更多与失踪案件的信息emma的iphone-xr中img_0008.heic的图像与相片名字为的5005.jpg-看似为同一张相片在数码法理鉴证分析下以下哪样描述是正确">19. [多选题] (你查看了Emma手机中的一些照片数字信息，以获取更多与失踪案件的信息)Emma的iPhone XR中“IMG_0008.HEIC”的图像与相片名字为的“5005.JPG” 看似为同一张相片，在数码法理鉴证分析下，以下哪样描述是正确？</h4>
+<h5 id="a.-储存在不同的.db檔案里">A. 储存在不同的.db檔案里</h5>
+<h5 id="b.-有不同哈希值">B. 有不同哈希值</h5>
+<h5 id="c.-img_0008.heic为原图5005.jpg为并非原图">C. IMG_0008.HEIC为原图，“5005.JPG”为并非原图</h5>
+<h5 id="d.-img_0008.heic和名字5005.jpg是同一张相片">D. IMG_0008.HEIC和名字“5005.JPG”是同一张相片</h5>
+<p>这里我全局搜索找不到5005.jpg这一张，IMG.0008我也不知道是哪张照片，于是放弃叻。</p>
+<h4 id="单选题-参考emma_mobile.zipemma的iphone-xr中img_0009.heic-的图像显示拍摄参数怎样">20. [单选题] 参考Emma_Mobile.zip，Emma的iPhone XR中“IMG_0009.HEIC” 的图像显示拍摄参数怎样？</h4>
+<h5 id="a.-iphone-xr-back-camera-4.25mm-f1.8">A. iPhone XR back camera 4.25mm f/1.8</h5>
+<h5 id="b.-iphone-xr-back-camera-4.25mm-f2.8">B. iPhone XR back camera 4.25mm f/2.8</h5>
+<h5 id="c.-iphone-xr-back-camera-4.25mm-f2">C. iPhone XR back camera 4.25mm f/2</h5>
+<h5 id="d.-iphone-xr-back-camera-4.25mm-f1.6">D. iPhone XR back camera 4.25mm f/1.6</h5>
+<p>这里要去照片的数据库里找，比较坑的是包含拍摄参数的这张表没有照片名称，要去ZASSET这张表找一下在另一张表里有的信息然后找一下对应的是哪张图片。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/29.png"> <img src="https://github.com/ncbdd0/images/raw/main/1-40/30.png"></p>
+<h4 id="多选题-参考emma_mobile.zipemma的iphone-xr中相片文件img_0009.heic提供了什么电子证据信息">21. [多选题] 参考Emma_Mobile.zip，Emma的iPhone XR中相片文件IMG_0009.HEIC提供了什么电子证据信息？</h4>
+<h5 id="a.-此相片是由隔空投送-airdrop得来">A. 此相片是由隔空投送 (Airdrop)得来</h5>
+<h5 id="b.-此相片由iphone-xr拍摄">B. 此相片由iPhone XR拍摄</h5>
+<h5 id="c.-此相片的拍摄时间为2024-08-05-133815utc8">C. 此相片的拍摄时间为2024-08-05 13:38:15(UTC+8)</h5>
+<h5 id="d.-此相片的拍摄时间为2024-08-06-083052utc8">D. 此相片的拍摄时间为2024-08-06 08:30:52(UTC+8)</h5>
+<p>BC在这，时间戳要转换一下。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/31.png"> <img src="https://github.com/ncbdd0/images/raw/main/1-40/32.png"></p>
+<p>然后A这里我问了一下ai，ai说这个显示1就说明是本地图片，好叭。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/33.png"></p>
+<h4 id="多选题-参考emma_mobile.zipemma的iphone-xr内以下哪张照片是实况照片live-photos">22. [多选题] 参考Emma_Mobile.zip，Emma的iPhone XR内以下哪张照片是实况照片(Live Photos)？</h4>
+<h5 id="a.-img_0002.heic">A. IMG_0002.HEIC</h5>
+<h5 id="b.-img_0005.heic">B. IMG_0005.HEIC</h5>
+<h5 id="c.-img_0004.heic">C. IMG_0004.HEIC</h5>
+<h5 id="d.-img_0006.heic">D. IMG_0006.HEIC</h5>
+<p>这里有media信息的应该就是实况图片。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/34.png"></p>
+<h4 id="单选题-参考emma_mobile.zip手机里有多少张照片是用手机后置摄像镜头拍摄的">23. [单选题] 参考Emma_Mobile.zip,手机里有多少张照片是用手机后置摄像镜头拍摄的?</h4>
+<h5 id="a.-5">A. 5</h5>
+<h5 id="b.-6">B. 6</h5>
+<h5 id="c.-7">C. 7</h5>
+<h5 id="d.-8">D. 8</h5>
+<p>这里这个列有信息的就是后置摄像头拍的。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/35.png"></p>
+<h4 id="单选题-参考emma_mobile.zip的通讯记录meslocalid-224是什么类的文件">24. [单选题] 参考Emma_Mobile.zip的通讯记录，MesLocalID 224是什么类的文件？</h4>
+<h5 id="a.-相片">A. 相片</h5>
+<h5 id="b.-影片">B. 影片</h5>
+<h5 id="c.-文件">C. 文件</h5>
+<h5 id="d.-报表">D. 报表</h5>
+<p>这里我刚开始还不知道MesLocalID是啥，看通讯记录还以为是通话记录……原来是聊天记录这个库里的一个列，在序号224这里能知道是张图片。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/36.png"></p>
+<h3 id="clera的安卓手机镜像"><em>Clera的安卓手机镜像</em></h3>
+<h4 id="单选题-依据你在emma的手机上找到的照片你告诉调查员clara最后的位置是在湾仔的一家酒店根据你提供的信息调查员发现clara在酒店去世clara的手机在她的附近你对clara的手机进行取证请根据取证结果回答以下问题-参考clara_smartphone.binclara手机的android操作系统版本是">25. [单选题] 依据你在Emma的手机上找到的照片，你告诉调查员Clara最后的位置是在湾仔的一家酒店。根据你提供的信息，调查员发现Clara在酒店去世，Clara的手机在她的附近，你对Clara的手机进行取证。请根据取证结果回答以下问题｡ 参考Clara_Smartphone.bin，Clara手机的Android操作系统版本是？</h4>
+<h5 id="a.-8.0.0">A. 8.0.0</h5>
+<h5 id="b.-9.0.0">B. 9.0.0</h5>
+<h5 id="c.-8.1.0">C. 8.1.0</h5>
+<h5 id="d.-7.0.0">D. 7.0.0</h5>
+<p><del>其实看到这个去世我还懵了一下，有点突然。</del></p>
+<p>基础信息里直接看。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/37.png"></p>
+<h4 id="填空题-参考clara_smartphone.binclara手机的版本号build-number是什么">26. [填空题] 参考Clara_Smartphone.bin，Clara手机的版本号(Build Number)是什么？</h4>
+<p>ai了一下在build.prop这个文件里。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/41.png"></p>
+<h4 id="填空题-参考clara_smartphone.binclara手机的imei号码是多少答案格式只填写阿拉伯数字部分">27. [填空题] 参考Clara_Smartphone.bin，Clara手机的IMEI号码是多少？(答案格式:只填写阿拉伯数字部分)</h4>
+<p>这里搜索imei有个文件。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/40.png"></p>
+<h4 id="填空题-参考clara_smartphone.binemma的微信账号是">28. [填空题] 参考Clara_Smartphone.bin，Emma的微信账号是？</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/1-40/39.png"></p>
+<h4 id="单选题-参考clara_smartphone.binclara的第一封电子邮件记录的日期">29. [单选题] 参考Clara_Smartphone.bin，Clara的第一封电子邮件记录的日期？</h4>
+<h5 id="a.-2024-07-10">A. 2024-07-10</h5>
+<h5 id="b.-2024-07-18">B. 2024-07-18</h5>
+<h5 id="c.-2024-07-23">C. 2024-07-23</h5>
+<h5 id="d.-2024-07-30">D. 2024-07-30</h5>
+<p>这里在gmail里看按创建时间找。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/49.png"></p>
+<h4 id="单选题-参考clara_smartphone.bin在通讯录中david的联系人信息还包括什么">30. [单选题] 参考Clara_Smartphone.bin，在通讯录中“David”的联系人信息还包括什么?</h4>
+<h5 id="a.-出生日期">A. 出生日期</h5>
+<h5 id="b.-linkedin">B. LinkedIn</h5>
+<h5 id="c.-电子邮件">C. 电子邮件</h5>
+<h5 id="d.-地址">D. 地址</h5>
+<p>这里和通讯录有关的是这个数据库：contact2.db。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/43.png"></p>
+<p>额虽然我觉得这些不完全是David信息但是就Linkedin符合：（。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/42.png"></p>
+<h4 id="单选题-参考clara_smartphone.bindavid和clara之间通话次数">31. [单选题] 参考Clara_Smartphone.bin，David和Clara之间通话次数?</h4>
+<h5 id="a.-0">A. 0</h5>
+<h5 id="b.-8">B. 8</h5>
+<h5 id="c.-10">C. 10</h5>
+<h5 id="d.-24">D. 24</h5>
+<p>这里找到通讯记录的表（直觉告诉我直接搜call。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/45.png"></p>
+<p>然后在call这张表里。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/44.png"></p>
+<p>先查一下David号码然后在call那张表里找。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/47.png"> <img src="https://github.com/ncbdd0/images/raw/main/40-82/46.png"></p>
+<h4 id="单选题-参考clara_smartphone.binclara在chrome浏览器搜索中哪天使用了关键词popmart-炒价">32. [单选题] 参考Clara_Smartphone.bin，Clara在Chrome浏览器搜索中哪天使用了关键词“popmart 炒价”?</h4>
+<h5 id="a.-2024-08-10">A. 2024-08-10</h5>
+<h5 id="b.-2024-08-15">B. 2024-08-15</h5>
+<h5 id="c.-2024-08-20">C. 2024-08-20</h5>
+<h5 id="d.-2024-08-25">D. 2024-08-25</h5>
+<p>在浏览器记录里搜索关键字就有。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/48.png"></p>
+<h4 id="单选题-参考clara_smartphone.bin2024年7月30日共收到多少封电子邮件">33. [单选题] 参考Clara_Smartphone.bin，2024年7月30日共收到多少封电子邮件？</h4>
+<h5 id="a.-2">A. 2</h5>
+<h5 id="b.-3">B. 3</h5>
+<h5 id="c.-4">C. 4</h5>
+<h5 id="d.-5">D. 5</h5>
+<p>这里在gmail里看。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/50.png"></p>
+<h4 id="填空题-参考clara_smartphone.binclara的gmail账号是">34. [填空题] 参考Clara_Smartphone.bin，Clara的Gmail账号是?</h4>
+<p>gamil账号信息： <img src="https://github.com/ncbdd0/images/raw/main/40-82/51.png"></p>
+<h4 id="单选题-参考clara_smartphone.binclara的手机安装了哪个版本的whatsapp">35. [单选题] 参考Clara_Smartphone.bin，Clara的手机安装了哪个版本的WhatsApp？</h4>
+<h5 id="a.-241676000">A. 241676000</h5>
+<h5 id="b.-241676001">B. 241676001</h5>
+<h5 id="c.-241676004">C. 241676004</h5>
+<h5 id="d.-241676007">D. 241676007</h5>
+<p>这里ai然后知道app信息在packages.xml这个文件里。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/53.png"></p>
+<p>查找一下。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/54.png"></p>
+<h4 id="填空题-参考clara_smartphone.binclara的whatsapp账号答案格式只需填写11位阿拉伯数字">36. [填空题] 参考Clara_Smartphone.bin，Clara的WhatsApp账号？(答案格式:只需填写11位阿拉伯数字)</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/52.png"></p>
+<h4 id="单选题-参考clara_smartphone.binclara的手机在什么时候安装了小红书app">37. [单选题] 参考Clara_Smartphone.bin，Clara的手机在什么时候安装了小红书APP？</h4>
+<h5 id="a.-2024-07-10-1">A. 2024-07-10</h5>
+<h5 id="b.-2024-07-16">B. 2024-07-16</h5>
+<h5 id="c.-2024-07-20">C. 2024-07-20</h5>
+<h5 id="d.-2024-07-30-1">D. 2024-07-30</h5>
+<p>在应用程序这里。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/55.png"></p>
+<h4 id="单选题-参考clara_smartphone.bin2024年8月21日david的虚拟貨幣钱包里有多少idfc">38. [单选题] 参考Clara_Smartphone.bin，2024年8月21日David的虚拟貨幣钱包里有多少IDFC？</h4>
+<h5 id="a.-5022915.66">A. 5022915.66</h5>
+<h5 id="b.-3212695.22">B. 3212695.22</h5>
+<h5 id="c.-210355633.91">C. 210355633.91</h5>
+<h5 id="d.-以上皆不是">D. 以上皆不是</h5>
+<p>这里看她和Emma的聊天记录发现发给Emma图片的那天正好是8月21日，那就是这些了。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/56.png"></p>
+<h4 id="填空题-参考clara_smartphone.binclara注册的微信账号验证码是多少">39. [填空题] 参考Clara_Smartphone.bin，Clara注册的微信账号验证码是多少？</h4>
+<p>在短信里找。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/57.png"></p>
+<h4 id="填空题-参考clara_smartphone.bindavid为庆祝结婚周年纪念预订了哪家酒店提示请使用大写英文字母作答例如hong-kong-hotel">40. [填空题] 参考Clara_Smartphone.bin，David为庆祝结婚周年纪念预订了哪家酒店？提示:请使用大写英文字母作答，例如:HONG KONG HOTEL)</h4>
+<p>找一下她和David的聊天记录，酒店信息在这。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/58.png"></p>
+<h4 id="填空题-参考clara_smartphone.bin哪个数据库文件存储了微信消息答案格式只需使用全部大写回答-例如abc.db">41. [填空题] 参考Clara_Smartphone.bin，哪个数据库文件存储了微信消息？(答案格式:只需使用全部大写回答, 例如:ABC.DB)</h4>
+<p>这里ai了一下，并且在文件里也正好找得到那就是这个了。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/59.png"> <img src="https://github.com/ncbdd0/images/raw/main/40-82/60.png"></p>
+<h4 id="填空题-参考clara_smartphone.bin哪个数据库文件.db存储了whatsapp訊息">42. [填空题] 参考Clara_Smartphone.bin，哪个数据库文件(.db)存储了WhatsApp訊息？</h4>
+<p>这里前面查WhatsApp版本的时候意外找到的（虽然都是ai出来的。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/61.png"></p>
+<h4 id="单选题-参考clara_smartphone.binclara在2024年8月29日拍了多少张照片">43. [单选题] 参考Clara_Smartphone.bin，Clara在2024年8月29日拍了多少张照片？</h4>
+<h5 id="a.-0-1">A. 0</h5>
+<h5 id="b.-3-1">B. 3</h5>
+<h5 id="c.-4-1">C. 4</h5>
+<h5 id="d.-5-1">D. 5</h5>
+<p>图片里选相机，这三张都是。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/62.png"></p>
+<h4 id="单选题-参考clara_smartphone.binemma在2024年8月6日通过微信发送了多少张照片给clara">44. [单选题] 参考Clara_Smartphone.bin，Emma在2024年8月6日通过微信发送了多少张照片给Clara?</h4>
+<h5 id="a.-0-2">A. 0</h5>
+<h5 id="b.-1">B. 1</h5>
+<h5 id="c.-5">C. 5</h5>
+<h5 id="d.-12-1">D. 12</h5>
+<p>找到8月6日那天的聊天记录，没有图片。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/63.png"></p>
+<h4 id="填空题-参考clara_smartphone.bin照片20240829_144717.jpg的拍摄相机型号是什么">45. [填空题] 参考Clara_Smartphone.bin，照片20240829_144717.jpg的拍摄相机型号是什么？</h4>
+<p>这里其实刚开始用了下一题的做法绕了一大圈，不过最后找到了就好（额。</p>
+<p>直接搜索照片名称然后导出。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/65.png"></p>
+<p>属性里详细信息就有。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/66.png"></p>
+<h4 id="单选题-参考clara_smartphone.bin20240821_121435.jpg的储存路径是什么">46. [单选题] 参考Clara_Smartphone.bin，20240821_121435.jpg的储存路径是什么？</h4>
+<h5 id="a.-media0dcimcamera">A. /media/0/DCIM/Camera</h5>
+<h5 id="b.-media1dcimcamera">B. /media/1/DCIM/Camera</h5>
+<h5 id="c.-media00dcimcamera">C. /media/00/DCIM/Camera</h5>
+<h5 id="d.-media11dcimcamera">D. /media/11/DCIM/Camera</h5>
+<p>照片的数据库：external.db。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/64.png"></p>
+<p>导出后在files这张表里查找照片名称就行。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/67.png"></p>
+<h4 id="填空题-参考clara_smartphone.bin2024年8月20日有多少张截图">47. [填空题] 参考Clara_Smartphone.bin，2024年8月20日有多少张截图？</h4>
+<p>截图里这四张。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/68.png"></p>
+<h4 id="单选题-参考clara_smartphone.bin2024年8月22日被删除微信消息的类型是">48. [单选题] 参考Clara_Smartphone.bin，2024年8月22日被删除微信消息的类型是？</h4>
+<h5 id="a.-照片">A. 照片</h5>
+<h5 id="b.-视频">B. 视频</h5>
+<h5 id="c.-文本">C. 文本</h5>
+<h5 id="d.-以上都不是">D. 以上都不是</h5>
+<p>这里很纳闷啊，在8月22日没有显示删除的信息四个联系人都是，然后细看聊天记录发现和Emma这一天应该是缺了一张照片，应该对应的是之前在Emma手机里那张三句恢复短语。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/69.png"></p>
+<h3 id="david的手机镜像"><em>David的手机镜像</em></h3>
+<h4 id="填空题-你在查看clara的手机镜像后确定clara是david的妻子调查员通过查询酒店预订记录确认了这一点他们现在定位david的住所以进行进一步调查你首先分析david的手机参考david_smartphone_1.zip根据contents.dbdavid手机接收了通讯软件telegram的验证短信该验证码是多少">49. [填空题] 你在查看Clara的手机镜像后，确定Clara是David的妻子，调查员通过查询酒店预订记录确认了这一点。他们现在定位David的住所，以进行进一步调查。你首先分析David的手机。参考David_Smartphone_1.zip，根据Contents.db，David手机接收了通讯软件“Telegram”的验证短信，该验证码是多少？</h4>
+<p>这里我没去数据库里查直接在短信里就有（）。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/70.png"></p>
+<h4 id="填空题-参考david_smartphone_1.zipdavid把手机设置为个人热点请找出个人热点的密码">50. [填空题] 参考David_Smartphone_1.zip，David把手机设置为个人热点，请找出个人热点的密码。</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/71.png"></p>
+<h4 id="判断题-参考david_smartphone_1.zip-david-手机曾连接名为mtr-free-wi-fi-的wi-fi">51. [判断题] 参考David_Smartphone_1.zip, David 手机曾连接名为“MTR Free Wi-Fi” 的Wi-Fi ｡</h4>
+<p>依旧直接看。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/72.png"></p>
+<h4 id="填空题-参考david_smartphone_1.zip根据com.tencent.mm_preferences.xmldavid的手机最后登录微信的微信id是">52. [填空题] 参考David_Smartphone_1.zip，根据com.tencent.mm_preferences.xml，David的手机最后登录微信的微信ID是？</h4>
+<p>这里没去看这个网页文件，微信看一下ID只有一个账号。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/73.png"></p>
+<h4 id="填空题-参考david_smartphone_1.zip请指出哪一张图片是于2024年8月28日利用屏幕截取的答案格式abc_123.jpg">53. [填空题] 参考David_Smartphone_1.zip，请指出哪一张图片是于2024年8月28日利用屏幕截取的。(答案格式:ABC_123.jpg)</h4>
+<p>在图片里选截屏后是这张。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/74.png"> <img src="https://github.com/ncbdd0/images/raw/main/40-82/75.png"></p>
+<h4 id="填空题-参考-david_smartphone_1.zip根据contents.dbdavid手机的型号model答案格式大写英文字母和符号--混合组成">54. [填空题] 参考 David_Smartphone_1.zip，根据Contents.db，David手机的型号(Model)？(答案格式:大写英文字母和符号’-’ 混合组成)</h4>
+<p>这里导出数据库。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/77.png"></p>
+<p>在device_info这张表。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/76.png"></p>
+<h4 id="填空题-参考-david_smartphone_1.zip的contents.dbdavid所使用的手机sim-卡的序号答案格式只需要用阿拉伯数目字回答">55. [填空题] 参考 David_Smartphone_1.zip的Contents.db，David所使用的手机SIM 卡的序号？(答案格式:只需要用阿拉伯数目字回答)</h4>
+<p>依旧是刚刚那张表。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/78.png"></p>
+<h4 id="填空题-参考-david_smartphone_1.zipdavid手机安装了应用程序metamask根据persist-root中metamask钱包内有多少个账号">56. [填空题] 参考 David_Smartphone_1.zip，David手机安装了应用程序“MetaMask”。根据persist-root中，“MetaMask”钱包内有多少个账号？</h4>
+<p>这里搜索一下account，然后能看到序号一共有4个。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/79.png"></p>
+<h4 id="单选题-参考-david_smartphone_1.zip根据persist-root中何时从应用程序metamask发送虚拟货币至以下地址-0x10a4f01b80203591ccee76081a4489ae1cd1281c">57. [单选题] 参考 David_Smartphone_1.zip，根据persist-root中，何时从应用程序“MetaMask”发送虚拟货币至以下地址: 0X10A4F01B80203591CCEE76081A4489AE1CD1281C</h4>
+<h5 id="a.-2024-08-11-1249gmt8">A. 2024-08-11 1249(GMT+8)</h5>
+<h5 id="b.-2024-08-14-1658-gmt8">B. 2024-08-14 1658 (GMT+8)</h5>
+<h5 id="c.-2024-08-14-1659-gmt8">C. 2024-08-14 1659 (GMT+8)</h5>
+<h5 id="d.-2024-08-16-1724-gmt8">D. 2024-08-16 1724 (GMT+8)</h5>
+<p>这里查找关键字后再向下搜time。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/80.png"></p>
+<p>然后时间戳转换一下。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/81.png"></p>
+<p>又拿到一个新脚本，时间戳转GMT+8的:D，贴一下：</p>
+<pre class="sourceCode python" id="cb2"><code class="sourceCode python"><div class="sourceLine" id="cb2-1" data-line-number="1"><span class="im">import</span> datetime</div>
+<div class="sourceLine" id="cb2-2" data-line-number="2"><span class="im">import</span> time</div>
+<div class="sourceLine" id="cb2-3" data-line-number="3"></div>
+<div class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw">def</span> timestamp_to_gmt8(timestamp<span class="op">=</span><span class="va">None</span>):</div>
+<div class="sourceLine" id="cb2-5" data-line-number="5">    <span class="co">"""</span></div>
+<div class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">    将时间戳转换为GMT+8时间</span></div>
+<div class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">    :param timestamp: 时间戳（秒级），默认为当前时间</span></div>
+<div class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">    :return: GMT+8时间字符串</span></div>
+<div class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">    """</span></div>
+<div class="sourceLine" id="cb2-10" data-line-number="10">    <span class="cf">if</span> timestamp <span class="kw">is</span> <span class="va">None</span>:</div>
+<div class="sourceLine" id="cb2-11" data-line-number="11">        timestamp <span class="op">=</span> time.time()</div>
+<div class="sourceLine" id="cb2-12" data-line-number="12">    </div>
+<div class="sourceLine" id="cb2-13" data-line-number="13">    <span class="co"># 创建GMT+8时区</span></div>
+<div class="sourceLine" id="cb2-14" data-line-number="14">    gmt8 <span class="op">=</span> datetime.timezone(datetime.timedelta(hours<span class="op">=</span><span class="dv">8</span>))</div>
+<div class="sourceLine" id="cb2-15" data-line-number="15">    </div>
+<div class="sourceLine" id="cb2-16" data-line-number="16">    <span class="co"># 转换为datetime对象</span></div>
+<div class="sourceLine" id="cb2-17" data-line-number="17">    <span class="cf">if</span> timestamp <span class="op">&gt;</span> <span class="dv">10000000000</span>:  <span class="co"># 毫秒级时间戳</span></div>
+<div class="sourceLine" id="cb2-18" data-line-number="18">        dt <span class="op">=</span> datetime.datetime.fromtimestamp(timestamp <span class="op">/</span> <span class="dv">1000</span>, tz<span class="op">=</span>gmt8)</div>
+<div class="sourceLine" id="cb2-19" data-line-number="19">    <span class="cf">else</span>:  <span class="co"># 秒级时间戳</span></div>
+<div class="sourceLine" id="cb2-20" data-line-number="20">        dt <span class="op">=</span> datetime.datetime.fromtimestamp(timestamp, tz<span class="op">=</span>gmt8)</div>
+<div class="sourceLine" id="cb2-21" data-line-number="21">    </div>
+<div class="sourceLine" id="cb2-22" data-line-number="22">    <span class="cf">return</span> dt.strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S %Z"</span>)</div>
+<div class="sourceLine" id="cb2-23" data-line-number="23"></div>
+<div class="sourceLine" id="cb2-24" data-line-number="24"><span class="co"># 使用示例</span></div>
+<div class="sourceLine" id="cb2-25" data-line-number="25"><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</div>
+<div class="sourceLine" id="cb2-26" data-line-number="26">    <span class="co"># 当前时间</span></div>
+<div class="sourceLine" id="cb2-27" data-line-number="27">    <span class="bu">print</span>(<span class="st">"当前GMT+8时间:"</span>, timestamp_to_gmt8())</div>
+<div class="sourceLine" id="cb2-28" data-line-number="28">    </div>
+<div class="sourceLine" id="cb2-29" data-line-number="29">    <span class="co"># 指定时间戳</span></div>
+<div class="sourceLine" id="cb2-30" data-line-number="30">    timestamp <span class="op">=</span> <span class="dv">1723625933421</span>  <span class="co"># 2024-01-01 00:00:00 UTC</span></div>
+<div class="sourceLine" id="cb2-31" data-line-number="31">    <span class="bu">print</span>(<span class="ss">f"时间戳 </span><span class="sc">{</span>timestamp<span class="sc">}</span><span class="ss"> 对应的GMT+8时间:"</span>, timestamp_to_gmt8(timestamp))</div>
+<div class="sourceLine" id="cb2-32" data-line-number="32">    </div>
+<div class="sourceLine" id="cb2-33" data-line-number="33">    <span class="co"># 毫秒级时间戳</span></div>
+<div class="sourceLine" id="cb2-34" data-line-number="34">    millis_timestamp <span class="op">=</span> <span class="dv">1704067200000</span></div>
+<div class="sourceLine" id="cb2-35" data-line-number="35">    <span class="bu">print</span>(<span class="ss">f"毫秒时间戳 </span><span class="sc">{</span>millis_timestamp<span class="sc">}</span><span class="ss"> 对应的GMT+8时间:"</span>, timestamp_to_gmt8(millis_timestamp))</div></code></pre>
+<h4 id="单选题-参考-david_smartphone_1.zipdavid曾利用手机应用程序metamask三次发送虚拟货币失败根据persist-root发送虚拟货币失败的原因是什麼">58. [单选题] 参考 David_Smartphone_1.zip，David曾利用手机应用程序“MetaMask”三次发送虚拟货币失败。根据persist-root，发送虚拟货币失败的原因是什麼？</h4>
+<h5 id="a.-网络连接问题">A. 网络连接问题</h5>
+<h5 id="b.-应用程序权限被拒">B. 应用程序权限被拒</h5>
+<h5 id="c.-接收地址错误">C. 接收地址错误</h5>
+<h5 id="d.-手续费不足">D. 手续费不足</h5>
+<p>这里我改成txt文件后发给了ai看（其实是自己看看不太懂orz。</p>
+<p>如图。 <img src="https://github.com/ncbdd0/images/raw/main/40-82/82.png"></p>
+<h3 id="david的windows系统计算器内存镜像"><em>David的Windows系统计算器内存镜像</em></h3>
+<h4 id="单选题-你根据易失性volatility-level优先次序进行内存取证分析david的笔记本电脑参考ram_capture_david_laptop.raw以下哪一个不是程序firefox.exe的pid">59. [单选题] 你根据易失性(Volatility Level)优先次序，进行内存取证分析David的笔记本电脑。参考RAM_Capture_David_Laptop.RAW，以下哪一个不是程序“firefox.exe”的PID？</h4>
+<h5 id="a.-9240">A. 9240</h5>
+<h5 id="b.-8732">B. 8732</h5>
+<h5 id="c.-5260">C. 5260</h5>
+<h5 id="d.-3108">D. 3108</h5>
+<p>这里我本来也想像师傅们一样用LovelyMem做的，之前强网杯就有听过，但不知道为什么我安装了没法使用（？。只能老老实实用vol3做了（vol2意外地做不了好像。</p>
+<p>这里先列举进程出来。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/18.png"></p>
+<p>忘记把D截进来了，ABD都是。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/19.png"></p>
+<h4 id="填空题-参考ram_capture_david_laptop.raw汇出pid724的程序其哈希值-sha-256-是">60. [填空题] 参考RAM_Capture_David_Laptop.RAW,汇出PID:724的程序,其哈希值 (SHA-256) 是?</h4>
+<p>是这个，本来想用地址提取但是没提取出来orz。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/20.png"></p>
+<p>dump出来然后用cmd看SHA256。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/21.png"> <img src="https://github.com/ncbdd0/images/raw/main/59-100/22.png"></p>
+<h4 id="单选题-参考ram_capture_david_laptop.raw哪一个是执行pid724程序的sid">61. [单选题] 参考RAM_Capture_David_Laptop.RAW,哪一个是执行PID:724程序的SID?</h4>
+<h5 id="a.-s-1-1-0">A. S-1-1-0</h5>
+<h5 id="b.-s-1-2-0">B. S-1-2-0</h5>
+<h5 id="c.-s-1-5-21-1103701427-1706751984-2965915307-1001">C. S-1-5-21-1103701427-1706751984-2965915307-1001</h5>
+<h5 id="d.-s-1-5-21-1103701427-1706751984-2965915307-513">D. S-1-5-21-1103701427-1706751984-2965915307-513</h5>
+<p>我第一次用这个命令，还是做的题不够多（）。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/23.png"></p>
+<h4 id="填空题-参考ram_capture_david_laptop.raw账户david-tenth的nt-lan-manager的哈希值ntlm-hash-答案格式只需使用全部小写及阿拉伯数字回答">62. [填空题] 参考RAM_Capture_David_Laptop.RAW,账户David Tenth的NT LAN Manager的哈希值(NTLM Hash) ? (答案格式:只需使用全部小写及阿拉伯数字回答)</h4>
+<p>总之就是看用户信息，用hashdump。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/24.png"></p>
+<h3 id="david的u盘镜像"><em>David的U盘镜像</em></h3>
+<h4 id="单选题-在取证中你发现d盘被bitlocker加密u盘上可能有一些线索你对u盘进行了取证参考david_usb_8gb.e01david-的u盘文件系统的格式">63. [单选题] 在取证中，你发现D盘被BitLocker加密。U盘上可能有一些线索，你对U盘进行了取证。参考David_USB_8GB.e01，David 的U盘文件系统的格式？</h4>
+<h5 id="a.-ntfs">A. NTFS</h5>
+<h5 id="b.-fat32">B. FAT32</h5>
+<h5 id="c.-exfat">C. exFAT</h5>
+<h5 id="d.-refs">D. ReFS</h5>
+<p>这里用x-ways在详细看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/1.png"></p>
+<h4 id="单选题-参考david_usb_8gb.e01david的u盘文件系统中每簇cluster定义了多少字节byte">64. [单选题] 参考David_USB_8GB.e01，David的U盘文件系统中，每簇(Cluster)定义了多少字节(Byte)？</h4>
+<h5 id="a.-128">A. 128</h5>
+<h5 id="b.-256">B. 256</h5>
+<h5 id="c.-512">C. 512</h5>
+<h5 id="d.-1024">D. 1024</h5>
+<p>我这里是直接把这个文件打开了看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/2.png"></p>
+<h4 id="单选题-参考david_usb_8gb.e01david的u盘中有多少个已删除的文件">65. [单选题] 参考David_USB_8GB.e01，David的U盘中有多少个已删除的文件？</h4>
+<h5 id="a.-1">A. 1</h5>
+<h5 id="b.-2">B. 2</h5>
+<h5 id="c.-3">C. 3</h5>
+<h5 id="d.-4">D. 4</h5>
+<p>这里应该是只有这个。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/4.png"></p>
+<h4 id="单选题-承上题参考david_usb_8gb.e01已删除的文件的运行列表run-list的运行偏移量run-offset数量是多少">66. [单选题] 承上题,参考David_USB_8GB.e01,已删除的文件的运行列表(Run List)的运行偏移量(Run Offset)数量是多少?</h4>
+<h5 id="a.-16">A. 16</h5>
+<h5 id="b.-32">B. 32</h5>
+<h5 id="c.-64">C. 64</h5>
+<h5 id="d.-128">D. 128</h5>
+<p>这里贴几个师傅分享的NTFS文件系统结构学习，虽然我有些还是看不太懂TT。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lily960427/article/details/66479071">利用winhex在NTFS文件系统下定位文件，找到其目录项和簇号等等_起始簇号怎么看-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a307871404/article/details/51850356">NTFS文件系统-MFT的属性头_mft 80属性-CSDN博客</a></p>
+<p>我从这里开始后面几题都是半懵半懂地做的，有些理解了有些没（）。</p>
+<p>这里我只知道找从80属性头开始看偏移量字节为0A-0B的地方。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/25.png"> <img src="https://github.com/ncbdd0/images/raw/main/59-100/26.png"></p>
+<p>右键跳转导航到文件记录，但是好像因为我不是用winhex打开的，偏移字节好像不一样orz。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/5.png"></p>
+<p>十六进制40转十进制64。</p>
+<h4 id="单选题承上题参考david_usb_8gb.e01已删除文件的第一个运行的十六进制值低端字节序-little-endian是多少">67. [单选题]承上题,参考David_USB_8GB.e01,已删除文件的第一个运行的十六进制值(低端字节序 Little-Endian)是多少?</h4>
+<h5 id="a.-0x4c3f0db522">A. 0x4C3F0DB522</h5>
+<h5 id="b.-0x4c3f0d22b5">B. 0x4C3F0D22B5</h5>
+<h5 id="c.-0x224c3f0db5">C. 0x224C3F0DB5</h5>
+<h5 id="d.-0x3f4c0db522">D. 0x3F4C0DB522</h5>
+<p>这里贴两个ai的补充知识点。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/8.png"> <img src="https://github.com/ncbdd0/images/raw/main/59-100/9.png"></p>
+<p>然后根据DataRun格式从后往前看有效十六进制值。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/6.png"></p>
+<h4 id="填空题-承上题参考david_usb_8gb.e01已删除的文件的实际大小单位字节-byte是多少-答案格式只需使用阿拉伯数字回答">68. [填空题] 承上题,参考David_USB_8GB.e01,已删除的文件的实际大小(单位:字节 Byte)是多少? 答案格式:只需使用阿拉伯数字回答</h4>
+<p>这题还好，可以直接看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/7.png"></p>
+<h4 id="填空题承上题参考david_usb_8gb.e01已删除文件的第一个运行偏移量run-offset是多少-答案格式只需使用阿拉伯数字回答">69. [填空题]承上题,参考David_USB_8GB.e01,已删除文件的第一个运行偏移量(Run Offset)是多少? (答案格式:只需使用阿拉伯数字回答)</h4>
+<p>根据DataRun格式，第一个字节分别是长度和起始簇号的长度，运行偏移为0x4C3F。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/10.png"></p>
+<h4 id="单选题-承上题参考david_usb_8gb.e01已删除的文件的第一个运行的簇运行长度run-length是多少">70. [单选题] 承上题,参考David_USB_8GB.e01,已删除的文件的第一个运行的簇运行长度(Run Length)是多少?</h4>
+<h5 id="a.-2408">A. 2408</h5>
+<h5 id="b.-3509">B. 3509</h5>
+<h5 id="c.-3128">C. 3128</h5>
+<h5 id="d.-4021">D. 4021</h5>
+<p>解析同上，根据DataRun格式，第一个字节分别是长度和起始簇号的长度，长度为0x0DB5。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/11.png"></p>
+<h4 id="单选题-承上题参考david_usb_8gb.e01已删除文件的图像文件像素值pixel是多少">71. [单选题] 承上题,参考David_USB_8GB.e01,已删除文件的图像文件像素值(Pixel)是多少?</h4>
+<h5 id="a.-1000-x-2000">A. 1000 x 2000</h5>
+<h5 id="b.-2000-x-3000">B. 2000 x 3000</h5>
+<h5 id="c.-3000-x-4000">C. 3000 x 4000</h5>
+<h5 id="d.-4000-x-5000">D. 4000 x 5000</h5>
+<p>这里把文件导出后在属性里的详细信息里看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/12.png"></p>
+<h4 id="单选题-承上题参考david_usb_8gb.e01已删除图像文件是用哪个品牌和型号的手机拍摄">72. [单选题] 承上题,参考David_USB_8GB.e01,已删除图像文件是用哪个品牌和型号的手机拍摄?</h4>
+<h5 id="a.-samsung-sm-a425">A. SAMSUNG SM-A425</h5>
+<h5 id="b.-samsung-sm-a4580">B. SAMSUNG SM-A4580</h5>
+<h5 id="c.-samsung-sm-a4260">C. SAMSUNG SM-A4260</h5>
+<h5 id="d.-samsung-sm-a5g">D. SAMSUNG SM-A5G</h5>
+<p>依旧属性里的详细信息。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/13.png"></p>
+<h4 id="单选题在u盘中你还发现了一个exe文件但它被锁定可能需要进行反编译以便进一步检查参考david_usb_8gb.e01使用x64dbg的字符串搜索string-search功能在bitlocker.exe中查找哪个字符串最有可能与显示的登录状态有关">73.[单选题]在U盘中,你还发现了一个exe文件,但它被锁定,可能需要进行反编译以便进一步检查。参考David_USB_8GB.e01,使用x64dbg的字符串搜索(String Search)功能,在Bitlocker.exe中查找哪个字符串最有可能与显示的登录状态有关?</h4>
+<h5 id="a.welcome">A.Welcome;</h5>
+<h5 id="b.invalid-input">B.Invalid input;</h5>
+<h5 id="c.login-successful">C.Login Successful!;</h5>
+<h5 id="d.access-denied">D.Access Denied</h5>
+<p>这里把exe文件提取出来，然后用strings命令。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/14.png"></p>
+<p>关键信息在这里。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/15.png"></p>
+<h4 id="单选题承上題当找到控制登录成功的逻辑代码时如何修改汇编代码assembly-code来绕过检查达到任意输入都成功登录的效果">74.[单选题]承上題,当找到控制登录成功的逻辑代码时,如何修改汇编代码(Assembly Code)来绕过检查,达到任意输入，都成功登录的效果?</h4>
+<h5 id="a.修改cmp指令使其总是比较相等">A.修改CMP指令,使其总是比较相等</h5>
+<h5 id="b.修改cmp-指令後的跳转指令jne-為nop使跳转指令失效">B.修改CMP 指令後的跳转指令JNE 為nop,使跳转指令失效</h5>
+<h5 id="c.修改mov指令使其移动错误的数据">C.修改MOV指令,使其移动错误的数据</h5>
+<h5 id="d.修改test-指令後的跳转指令jne-為nop使跳转指令失效">D.修改TEST 指令後的跳转指令JNE 為nop,使跳转指令失效</h5>
+<p>从这题开始后面很多U盘取证的题都涉及逆向了，于是一个从没接触过逆向的小女孩轻轻地碎了…….我连IDA都没下：（。</p>
+<h4 id="填空题参考david_usb_8gb.e01bitlocker.exe的正确用户登录名称是">75. [填空题]参考David_USB_8GB.e01,Bitlocker.exe的正确用户登录名称是?</h4>
+<p>这里我直接把上面strings跑出来的账号密码输进去可以登录，那这个就是正确的了:D。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/16.png"></p>
+<h4 id="填空题参考david_usb_8gb.e01bitlocker.exe的正确登录密码是">76. [填空题]参考David_USB_8GB.e01,Bitlocker.exe的正确登录密码是?</h4>
+<p>和上面一样。</p>
+<h4 id="单选题参考david_usb_8gb.e01当bitlocker.exe程序尝试显示登录结果成功或失败时使用了哪一种途径来决定显示的消息">77. [单选题]参考David_USB_8GB.e01,当Bitlocker.exe程序尝试显示登录结果（成功或失败）时,使用了哪一种途径来决定显示的消息?</h4>
+<h5 id="a.通过检查某个寄存器的值来决定跳转到不同的汇编代码区段">A.通过检查某个寄存器的值来决定跳转到不同的汇编代码区段</h5>
+<h5 id="b.通过调用硬编码的内存地址来显示特定的消息框">B.通过调用硬编码的内存地址来显示特定的消息框</h5>
+<h5 id="c.通过堆栈中的返回地址来确定要显示的消息">C.通过堆栈中的返回地址来确定要显示的消息</h5>
+<h5 id="d.通过逐位操作来修改显示消息的字符串内容">D.通过逐位操作来修改显示消息的字符串内容</h5>
+<h4 id="单选题参考david_usb_8gb.e01决定能否解密-bitlocker-key-的字节的内存偏移量memory-offset相对于基址bitlocker.exe是什么">78. [单选题]参考David_USB_8GB.e01,决定能否解密 Bitlocker Key 的字节的内存偏移量(Memory Offset)（相对于基址“bitlocker.exe”）是什么?</h4>
+<h5 id="a0xa0b2">A:0xA0B2</h5>
+<h5 id="b0x808c">B:0x808C</h5>
+<h5 id="c0xa0c8">C:0xA0C8</h5>
+<h5 id="d0xa0e0">D:0xA0E0</h5>
+<h4 id="单选题参考david_usb_8gb.e01决定能否解密-bitlocker-key-的内存偏移量memory-offset后应该如何利用它来进行解密">79. [单选题]参考David_USB_8GB.e01,决定能否解密 Bitlocker Key 的内存偏移量(Memory Offset)后,应该如何利用它来进行解密?</h4>
+<h5 id="a.将该偏移量处的值改为-1-true以启用解密过程">A.将该偏移量处的值改为 1 (true),以启用解密过程</h5>
+<h5 id="b.将该偏移量处的值改为-0-false以重新初始化加密过程">B.将该偏移量处的值改为 0 (false),以重新初始化加密过程</h5>
+<h5 id="c.将该偏移量的内容保存到档中以作解密过程中的key">C.将该偏移量的内容保存到档中以作解密过程中的key</h5>
+<h5 id="d.清空该偏移量的内存并强制退出程序">D.清空该偏移量的内存并强制退出程序</h5>
+<p>到这里逆向的题终于结束了……暂时还没有学逆向的打算，就放着吧（）。</p>
+<h4 id="单选题-参考david_usb_8gb.e01解密后的bitlocker-key是">80. [单选题] 参考David_USB_8GB.e01,解密后的Bitlocker Key是?</h4>
+<h5 id="a.299255-418649-198198-616891-099682-482306-642609-483527">A.299255-418649-198198-616891-099682-482306-642609-483527</h5>
+<h5 id="b.-745823-918273-564738-290183-475920-182736-594827-162839">B. 745823-918273-564738-290183-475920-182736-594827-162839</h5>
+<h5 id="c.-539823-847291-094857-194756-382910-472918-482937-120984">C. 539823-847291-094857-194756-382910-472918-482937-120984</h5>
+<h5 id="d.-829384-192837-475910-298374-019283-847362-564738-293847">D. 829384-192837-475910-298374-019283-847362-564738-293847</h5>
+<p>图片里就是。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/17.png"></p>
+<h3 id="david的windows系统计算器镜像"><em>David的Windows系统计算器镜像</em></h3>
+<h4 id="单选题-到目前为止你已经获得了bitlocker密钥以解密d盤通过对david笔记本电脑d盤的分析并发现了一些重要信息你现在将继续调查未加密的c盤-参考david_laptop_64gb.e01分区格式partition是">81. [单选题] 到目前为止,你已经获得了BitLocker密钥以解密D盤，通过对David笔记本电脑D盤的分析，并发现了一些重要信息。你现在将继续调查未加密的C盤｡ 参考David_Laptop_64GB.e01，分区格式(Partition)是？</h4>
+<h5 id="a.-mbr">A. MBR</h5>
+<h5 id="b.-gpt">B. GPT</h5>
+<h5 id="c.-raw">C. RAW</h5>
+<p>这里用x-ways看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/27.png"></p>
+<h4 id="单选题-参考david_laptop_64gb.e01該e01成功提取的日期和时间是">82. [单选题] 参考David_Laptop_64GB.e01，該e01成功提取的日期和时间是？</h4>
+<h5 id="a.-2024-09-05-155528">A. 2024-09-05 15:55:28</h5>
+<h5 id="b.-2024-09-02-115231">B. 2024-09-02 11:52:31</h5>
+<h5 id="c.-2024-09-03-143728">C. 2024-09-03 14:37:28</h5>
+<h5 id="d.-2024-09-03-121649">D. 2024-09-03 12:16:49</h5>
+<p>这里用右键属性，虽然不知道为什么和答案不一样（？。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/28.png"></p>
+<h4 id="填空题-参考david_laptop_64gb.e01最后登录的用户是谁答案格式大写英文字母小写英文字母和空格混合组成例如tom-hanks">83. [填空题] 参考David_Laptop_64GB.e01，最后登录的用户是谁？(答案格式:大写英文字母,小写英文字母和空格混合组成,例如:Tom Hanks)</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/29.png"></p>
+<h4 id="单选题-参考david_laptop_64gb.e01用户配置的时区是">84. [单选题] 参考David_Laptop_64GB.e01，用户配置的时区是？</h4>
+<h5 id="a.-australian-central-time">A. Australian Central Time</h5>
+<h5 id="b.-china-standard-time">B. China Standard Time</h5>
+<h5 id="c.-new-zealand-standard-time">C. New Zealand Standard Time</h5>
+<h5 id="d.-nepal-time">D. Nepal Time</h5>
+<p>依旧火眼里直接看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/30.png"></p>
+<h4 id="单选题-参考david_laptop_64gb.e01david的笔记本电脑曾經连接了多少个设备">85. [单选题] 参考David_Laptop_64GB.e01，David的笔记本电脑曾經连接了多少个设备？</h4>
+<h5 id="a.-1-1">A. 1</h5>
+<h5 id="b.-2-1">B. 2</h5>
+<h5 id="c.-3-1">C. 3</h5>
+<h5 id="d.-4-1">D. 4</h5>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/31.png"></p>
+<h4 id="填空题-参考david_laptop_64gb.e01david的笔记本电脑上的firefox浏览器安装了哪些扩展工具答案格式请以大寫英文字母作答无须留空白位">86. [填空题] 参考David_Laptop_64GB.e01，David的笔记本电脑上的Firefox浏览器安装了哪些扩展工具？(答案格式:请以大寫英文字母作答，无须留空白位)</h4>
+<p>这里要用到仿真，我好像在仿真这里还是不太会变通，第一反应不会想到仿真orz。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/33.png"></p>
+<p>打开火狐浏览器右上角扩展程序。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/36.png"></p>
+<h4 id="单选题-参考david_laptop_64gb.e01根据用户配置文件中的.lnk文件最后访问的文件名称是">87. [单选题] 参考David_Laptop_64GB.e01，根据用户配置文件中的.lnk文件，最后访问的文件名称是？</h4>
+<h5 id="a.-下載">A. 下載</h5>
+<h5 id="b.-export-token">B. export-token</h5>
+<h5 id="c.-ram_capture_david">C. RAM_Capture_DaviD</h5>
+<h5 id="d.-本機磁碟e-2">D. 本機磁碟(E) (2)</h5>
+<p>这里学到了一个新指令：<strong>win+R输入recent后弹出最近文件夹</strong>。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/37.png"></p>
+<h4 id="单选题-参考david_laptop_64gb.e01david的笔记本电脑曾經连接了多少个不同的wi-fi">88. [单选题] 参考David_Laptop_64GB.e01,David的笔记本电脑曾經连接了多少个不同的Wi-Fi?</h4>
+<h5 id="a.-1-2">A. 1</h5>
+<h5 id="b.-2-2">B. 2</h5>
+<h5 id="c.-3-2">C. 3</h5>
+<h5 id="d.-4-2">D. 4</h5>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/34.png"></p>
+<h4 id="填空题-承上题参考david_laptop_64gb.e01该wi-fi网络的名称ssid是答案格式大写英文字母和小写英文字母混合组成">89. [填空题] 承上题,参考David_Laptop_64GB.e01，该Wi-Fi网络的名称(SSID)是？(答案格式:大写英文字母和小写英文字母混合组成)</h4>
+<p>在上面那张图里。</p>
+<h4 id="单选题-参考david_laptop_64gb.e0该电脑的windows操作系统的安装日期是什么">90. [单选题] 参考David_Laptop_64GB.e0，该电脑的Windows操作系统的安装日期是什么？</h4>
+<h5 id="a.-2024-07-31-095537-utc8">A. 2024-07-31 09:55:37 UTC+8</h5>
+<h5 id="b.-2024-08-01-131015-utc8">B. 2024-08-01 13:10:15 UTC+8</h5>
+<h5 id="c.-2024-07-31-101826-utc8">C. 2024-07-31 10:18:26 UTC+8</h5>
+<h5 id="d.-2024-08-01-144355-utc8">D. 2024-08-01 14:43:55 UTC+8</h5>
+<p>在系统信息里直接看。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/35.png"></p>
+<h4 id="单选题-通过对david-笔记本电脑的电子数据取证和痕迹分析你了解到david是一名cryptocurrency专家假設虚拟貨幣international-digital-forensics-coin-idfc面值是每1個idfc等如1-hkd-idfc-token-address-0x56e7a6dd8aa1c78ba77944c94c43054978e89b7b-區塊鏈-binance-smart-chain-下列那个网站能够找到区块链binance-smart-chain的交易记录">91. [单选题] 通过对David 笔记本电脑的电子数据取证和痕迹分析，你了解到David是一名cryptocurrency专家。(假設虚拟貨幣International Digital Forensics Coin (IDFC)面值是每1個IDFC等如1-HKD IDFC Token Address: 0x56E7A6dd8aA1c78ba77944C94c43054978E89b7b 區塊鏈: Binance Smart Chain) 下列那个网站能够找到区块链:Binance Smart Chain的交易记录？</h4>
+<h5 id="a.-binance.com">A. binance.com</h5>
+<h5 id="b.-bscscan.com">B. bscscan.com</h5>
+<h5 id="c.-etherscan.io">C. etherscan.io</h5>
+<h5 id="d.-blockchain.com">D. blockchain.com</h5>
+<p>这题好像和取证没啥关系，直接ai跑一下就好。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/38.png"></p>
+<h4 id="单选题-参考emma_mobile.zip中的微信聊天记录分析emma用什么方法盜取david的idfc">92. [单选题] 参考Emma_Mobile.zip中的微信聊天记录分析，Emma用什么方法盜取David的IDFC？</h4>
+<h5 id="a.-emma经clara盗取了david虚拟货币钱包的私匙private-key">A. Emma经Clara盗取了David虚拟货币钱包的私匙(Private Key)</h5>
+<h5 id="b.-emma经clara盗取了david虚拟货币钱包的公匙public-key">B. Emma经Clara盗取了David虚拟货币钱包的公匙(Public Key)</h5>
+<h5 id="c.-emma经clara盗取了david虚拟货币钱包的回复匙recovery-seed">C. Emma经Clara盗取了David虚拟货币钱包的回复匙(Recovery seed)</h5>
+<h5 id="d.-emma盗取了david电话">D. Emma盗取了David电话</h5>
+<p>其实做了前面的题应该就能直接选hhh。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/39.png"></p>
+<h4 id="单选题-根据davidemma及clara的微信对话david在什么日期时间发现idfc被盗">93. [单选题] 根据David,Emma及Clara的微信对话，David在什么日期时间发现IDFC被盗？</h4>
+<h5 id="a.-2024-8-22-1806">A. 2024-8-22 18:06</h5>
+<h5 id="b.-2024-8-28-0914">B. 2024-8-28 09:14</h5>
+<h5 id="c.-2024-8-28-0957">C. 2024-8-28 09:57</h5>
+<h5 id="d.-2024-8-29-1552">D. 2024-8-29 15:52</h5>
+<p>看Clera手机里的聊天记录。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/40.png"></p>
+<h4 id="单选题-参考emma_mobile.zip中的微信对话分析emma为什么盜取david的idfc">94. [单选题] 参考Emma_Mobile.zip中的微信对话分析，Emma为什么盜取David的IDFC？</h4>
+<h5 id="a.-emma为了买名贵手表">A. Emma为了买名贵手表</h5>
+<h5 id="b.-emma为了赌钱">B. Emma为了赌钱</h5>
+<h5 id="c.-emma为了炒卖虚拟货币">C. Emma为了炒卖虚拟货币</h5>
+<h5 id="d.-emma为了还财务公司的欠债">D. Emma为了还财务公司的欠债</h5>
+<p>这题前面的题做完就知道选D。</p>
+<h4 id="单选题-参考david_laptop_64gb.e01及davidemma及clara的微信对话分析idfc的交易记录emma盜取了david虚拟货币钱包内哪个地址的idfc">95. [单选题] 参考David_Laptop_64GB.e01及David，Emma及Clara的微信对话，分析IDFC的交易记录，Emma盜取了David虚拟货币钱包内哪个地址的IDFC?</h4>
+<h5 id="a.-0x10a4f01b80203591ccee76081a4489ae1cd1281c">A. 0x10a4f01b80203591ccee76081a4489ae1cd1281c</h5>
+<h5 id="b.-0x152c90200be61a540875f2a752c328bd19dbfb87">B. 0x152c90200be61a540875f2a752c328bd19dbfb87</h5>
+<h5 id="c.-0x59eb2c55eefdd4d8af2886c9fd8fc6f465c3e220">C. 0x59eb2c55eefdd4d8af2886c9fd8fc6f465c3e220</h5>
+<h5 id="d.-0x70544880875fe907cee383873ca58da23378caa5">D. 0x70544880875fe907cee383873ca58da23378caa5</h5>
+<p>这里进入仿真的虚拟机，这个文档是交易记录。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/43.png"></p>
+<p>其实我看不太懂然后就复制了扔给ai帮我看了kkk，可以看到只有A是转出的。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/44.png"></p>
+<h4 id="单选题-根据davidemma及clara的微信对话及idfc的交易记录作分析emma总共盗取了david多少idfc">96. [单选题] 根据David，Emma及Clara的微信对话及IDFC的交易记录作分析，Emma总共盗取了David多少IDFC？</h4>
+<p>做完上题那个地址后面对应的90000.</p>
+<h4 id="多选题-根据emma及clara的微信对话下列哪些地址是由相同的恢复短语recovery-seed所生成">97. [多选题] 根据Emma及Clara的微信对话，下列哪些地址是由相同的恢复短语(Recovery Seed)所生成？</h4>
+<h5 id="a.-0x10a4f01b80203591ccee76081a4489ae1cd1281c-1">A. 0x10a4f01b80203591ccee76081a4489ae1cd1281c</h5>
+<h5 id="b.-0x152c90200be61a540875f2a752c328bd19dbfb87-1">B. 0x152c90200be61a540875f2a752c328bd19dbfb87</h5>
+<h5 id="c.-0x59eb2c55eefdd4d8af2886c9fd8fc6f465c3e220-1">C. 0x59eb2c55eefdd4d8af2886c9fd8fc6f465c3e220</h5>
+<h5 id="d.-0x63a8ba1df0404ee41f7c6af8efd2f54006f32042">D. 0x63a8ba1df0404ee41f7c6af8efd2f54006f32042</h5>
+<p>这里要关联到之前Clera发给Emma的恢复短语图片。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/45.png"></p>
+<p>然后把恢复短语放到这个网站里：<a target="_blank" rel="noopener" href="https://iancoleman.im/bip39/">BIP39 - Mnemonic Code</a></p>
+<p><del>知识盲区之第一次知道这个网站（）</del></p>
+<p>然后设置好货币类型，把地址扔给ai可以知道是ETH。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/46.png"></p>
+<p>前三个就是ABC。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/47.png"></p>
+<h4 id="单选题-根据idfc的交易记录作分析总共有多少次idfc交易流入地址0x10a4f01b80203591ccee76081a4489ae1cd1281c">98. [单选题] 根据IDFC的交易记录作分析，总共有多少次IDFC交易流入地址0x10a4f01b80203591ccee76081a4489ae1cd1281c？</h4>
+<h5 id="a.-0-3">A. 0</h5>
+<h5 id="b.-1-1">B. 1</h5>
+<h5 id="c.-2">C. 2</h5>
+<h5 id="d.-3">D. 3</h5>
+<p>这里在交易记录里搜一下就好，注意是流入，有两条。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/48.png"></p>
+<h4 id="单选题-参考david_laptop_64gb.e01在david计算机的d盘内有一张图片根据图片上的信息找出david另一个虚拟货币钱包的恢复短语2recovery-seed下列哪一个单词是在此恢复短语2recovery-seed内">99. [单选题] 参考David_Laptop_64GB.e01，在David计算机的D盘内有一张图片，根据图片上的信息，找出David另一个虚拟货币钱包的恢复短语(2)(Recovery Seed)，下列哪一个单词是在此恢复短语(2)(Recovery Seed)内？</h4>
+<h5 id="a.-fall">A. fall</h5>
+<h5 id="b.-bread">B. bread</h5>
+<h5 id="c.-brain">C. brain</h5>
+<h5 id="d.-dove">D. dove</h5>
+<p>先看里面有一张恢复短语的图片，但只有一半。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/49.png"></p>
+<p>然后这题我打死都想不到暴力搜索……</p>
+<p>用x-ways打开内存镜像文件后直接查找这两个知道的单词。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/50.png"></p>
+<h4 id="多选题-承上题参考david_laptop_64gb.e01在idfc的交易记录中下列哪些地址由上述恢复短语2recovery-seed所生成">100. [多选题] 承上题,参考David_Laptop_64GB.e01，在IDFC的交易记录中，下列哪些地址由上述恢复短语(2)(Recovery Seed)所生成？</h4>
+<h5 id="a.-0xb2e3dbea311511ec5bda3e85e061f15366f888a6">A. 0xb2e3dbea311511ec5bda3e85e061f15366f888a6</h5>
+<h5 id="b.-0xe90ad3f80e39e83b533eef3ed23c641ec51089c6">B. 0xe90ad3f80e39e83b533eef3ed23c641ec51089c6</h5>
+<h5 id="c.-0x90f73497e4446f6cf9881213c32d6af66d799fe5">C. 0x90f73497E4446f6Cf9881213C32D6af66d799fE5</h5>
+<h5 id="d.-0x63a8ba1df0404ee41f7c6af8efd2f54006f32042-1">D. 0x63a8ba1df0404ee41f7c6af8efd2f54006f32042</h5>
+<p>和上面的题目做法一样，把恢复短语扔进去然后改货币格式就可以了。 <img src="https://github.com/ncbdd0/images/raw/main/59-100/51.png"> <img src="https://github.com/ncbdd0/images/raw/main/59-100/52.png"></p>
+<p>终于写完了这一百题……好久没做内存取证了虽然这几道内存题没有很难。这次也是第一次做了U盘取证，涉及了好多偏移量一些类似于文件结构的知识点，后面也要恶补一下。下一个还没想好做数证杯还是美亚团体赛真题hhh。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

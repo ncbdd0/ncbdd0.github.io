@@ -1,0 +1,1195 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>2023美亚杯个人赛复现 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>2023美亚杯个人赛复现</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/10/24
+        </span>
+        
+        <span class="category">
+            <a href="/categories/CTF/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8F%96%E8%AF%81/" style="color: #00bcd4">
+                    取证
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/wp/" style="color: #03a9f4">
+                    wp
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>先建设一下，资源已经拷完了，终于让我拿到火眼的使用权了:D，火速拿来练练手。</p>
+<span id="more"></span>
+<p>依旧滑跪感谢师傅们的wp参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_80780402/article/details/142206498?sharetype=blogdetail&amp;shareId=142206498&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=link">美亚杯2023个人资格赛</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/tanbinn/article/details/134527004?sharetype=blogdetail&amp;shareId=134527004&amp;sharerefer=APP&amp;sharesource=2401_87851833&amp;sharefrom=link">2023美亚杯个人赛全题目复盘</a></p>
+<p>先用veracrypt挂载一下两个容器，这次主要是想学一下火眼等软件的使用，手机大师和取证大师除非遇到做不了的题就不用了。</p>
+<p>容器导出的检材如下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/1.png"></p>
+<h4 id="填空题-李大辉所用手机移动运营商公司的名称是什么提示请所有字母都用大写英文">1. [填空题] 李大辉所用手机移动运营商公司的名称是什么？提示:请所有字母都用大写英文</h4>
+<p>李大辉的手机就是那个Android.bin，用火眼挂载后取证分析，公司是那个Duck。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/2.png"></p>
+<h4 id="单选题-李大辉的手机安装了什么即时通讯软件">2. [单选题] 李大辉的手机安装了什么即时通讯软件？</h4>
+<h5 id="a.-whatsapp">A. WhatsApp</h5>
+<h5 id="b.-line">B. LINE</h5>
+<h5 id="c.-微信">C. 微信</h5>
+<h5 id="d.-signal">D. Signal</h5>
+<h5 id="e.-qq">E. QQ</h5>
+<p>直接看左边Whatsapp。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/3.png"></p>
+<h4 id="填空题-李大辉的手机安装了什么反追踪软件提示-所有答案字母都用小写字母并用xxx_xxx_xxxxxxx_xxxxxx_xxxx格式作答">3. [填空题] 李大辉的手机安装了什么反追踪软件？提示: 所有答案字母都用小写字母并用xxx_xxx_xxxxxxx_xxxxxx_xxxx格式作答</h4>
+<p>这题我单纯找应用程序没找到，看了眼wp据说在这四个我打不开的图片里TT。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/4.png"></p>
+<h4 id="单选题-李大辉的手机是什么时间成功登入whatsapp">4. [单选题] 李大辉的手机是什么时间成功登入WhatsApp？</h4>
+<h5 id="a.-2022-08-18_215230">A. 2022-08-18_21:52:30</h5>
+<h5 id="b.-2022-08-19_215623">B. 2022-08-19_21:56:23</h5>
+<h5 id="c.-2022-08-18_215637">C. 2022-08-18_21:56:37</h5>
+<h5 id="d.-2022-08-19_065907">D. 2022-08-19_06:59:07</h5>
+<h5 id="e.-2022-08-19_070117">E. 2022-08-19_07:01:17</h5>
+<p>这里和第五题一起看，在短信里看验证码发的时间。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/5.png"></p>
+<h4 id="填空题-李大辉登入whatsapp时的认证短码是什么提示-请以阿拉伯数字作答">5. [填空题] 李大辉登入WHATSAPP时的认证短码是什么？提示: 请以阿拉伯数字作答</h4>
+<p>同上看上题。</p>
+<h4 id="单选题-李大辉到美丽好化妆品公司的入职时间是何时">6. [单选题] 李大辉到美丽好化妆品公司的入职时间是何时？</h4>
+<h5 id="a.-2016-04-16">A. 2016-04-16</h5>
+<h5 id="b.-2016-06-28">B. 2016-06-28</h5>
+<h5 id="c.-2017-05-25">C. 2017-05-25</h5>
+<h5 id="d.-2017-07-25">D. 2017-07-25</h5>
+<h5 id="e.-2017-08-18">E. 2017-08-18</h5>
+<p>这题在22年的资格赛里是同一个PDF，因为在图片里看到了22年资格赛里看到的图片，于是猜测还是在那个PDF文档里。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/6.png"></p>
+<h4 id="单选题-李大辉曾于什么时间使用了图像编辑软件">7. [单选题] 李大辉曾于什么时间使用了图像编辑软件？</h4>
+<h5 id="a.-2022-09-10">A. 2022-09-10</h5>
+<h5 id="b.-2022-09-12">B. 2022-09-12</h5>
+<h5 id="c.-2022-10-05">C. 2022-10-05</h5>
+<h5 id="d.-2022-11-10">D. 2022-11-10</h5>
+<h5 id="e.-2022-11-13">E. 2022-11-13</h5>
+<p>这题我没做出来TT，看了一下美亚扫出来有个美图秀秀，但是发现没办法看取证结果，看了一下师傅们的wp是用取证大师看图片的创建和修改时间的。</p>
+<h4 id="填空题-这个访问服务器使用了哪个端口提示-请用阿拉伯数字作答">8. [填空题] 这个访问服务器使用了哪个端口？提示: 请用阿拉伯数字作答</h4>
+<p><em>从这里开始切换到Meiya_VPN.vmdk文件了。</em></p>
+<p>我先用火眼仿真重置了一下虚拟机的密码:D（其实只是想上手试试新软件最后也没用到）。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/7.png"></p>
+<p>然后火眼取证分析这个vmdk文件，在浏览器这里能够看到端口是943. <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/8.png"></p>
+<h4 id="填空题-user1账户最近连接到这个访问服务器时使用的ip地址是多少提示-用ipv4-格式回答">9. [填空题] “User1”账户最近连接到这个访问服务器时使用的IP地址是多少？提示: 用IPV4 格式回答</h4>
+<p>这里我刚开始不会做，看了一眼wp说是要去找日志（我发现我变通的能力还是太差了orz） <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/9.png"></p>
+<p>导出日志后用notepad打开，直接查找User1。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/10.png"></p>
+<h4 id="多选题哪些文件可以找出这个访问服务器的ubuntu版本">10. [多选题]哪些文件可以找出这个访问服务器的Ubuntu版本？</h4>
+<h5 id="a.-lsb-release">A. lsb-release</h5>
+<h5 id="b.-issue.net">B. issue.net</h5>
+<h5 id="c.-.profile">C. .profile</h5>
+<h5 id="d.-console">D. console</h5>
+<p>这里开始后面很多题我都用ai了，ai真是个好东西（被打。</p>
+<p><del>吐槽一下其实chatgpt更聪明，但是我的小火箭过期了坐等我哥续费。</del> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/11.png"></p>
+<h4 id="多选题-哪些文件有助于分辨这是一个存储服务器">11. [多选题] 哪些文件有助于分辨这是一个存储服务器？</h4>
+<h5 id="a.-auth.log">A. auth.log</h5>
+<h5 id="b.-sys.log">B. sys.log</h5>
+<h5 id="c.-bash_history">C. bash_history</h5>
+<h5 id="d.-idconfig">D. idconfig</h5>
+<p>依旧上来先ai一下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/12.png"></p>
+<p>其中C的判断不明确，我就去文件里找了一下，文件里这个bash_history是空的，那C应该不选吧。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/13.png"></p>
+<h4 id="单选题-这个访问服务器所在时区是哪个时区">12. [单选题] 这个访问服务器所在时区是哪个时区？</h4>
+<h5 id="a.-utc-9">A. UTC +9</h5>
+<h5 id="b.-utc-8">B. UTC +8</h5>
+<h5 id="c.-utc--7">C. UTC -7</h5>
+<h5 id="d.-utc">D. UTC</h5>
+<p>这里依旧ai，让ai给一条寻找的路径（额和我当时新生赛做磁盘取证的时候一样。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/14.png"></p>
+<p>然后根据路径找到文件，找到文件后发给ai问。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/15.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/16.png"></p>
+<h4 id="填空题-这个访问服务器的openvpn帐户密码是多少提示请用大写字母与阿拉伯数字作答">13.[填空题] 这个访问服务器的“openvpn”帐户密码是多少？提示:请用大写字母与阿拉伯数字作答</h4>
+<p>这里直接看密码管理是两个密码，因为不知道怎么分辨所以看了wp，wp给了两种方法： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/18.png"></p>
+<p>方法一：看网络信息，后者是vpn的ip。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/19.png"></p>
+<p>方法二：到日志里找，日志里有密码。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/17.png"></p>
+<h4 id="单选题-在这个访问服务器中user1账户之间的连接所使用的加密算法密码是什么">14. [单选题] 在这个访问服务器中，“User1”账户之间的连接所使用的加密算法（密码）是什么？</h4>
+<h5 id="a.-blowfish-cbc">A. Blowfish-CBC</h5>
+<h5 id="b.-3des-cbc">B. 3DES-CBC</h5>
+<h5 id="c.-aes-128-gcm">C. AES-128-GCM</h5>
+<h5 id="d.-aes-256-cbc">D. AES-256-CBC</h5>
+<p>回到上面openvpn的那个日志，查找User1，其中有一条有写算法： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/20.png"></p>
+<h4 id="填空题-给出正在进行nmap扫瞄的计算机互联网协议地址提示-以ipv4格式给出答案">15. [填空题] 给出正在进行Nmap扫瞄的计算机互联网协议地址？提示: 以IPV4格式给出答案</h4>
+<p><em>从这里开始要切到网络题目.pcapng。</em></p>
+<p>开始了流量分析（），涉及到了很多不知道的名词还有知识点，依旧ai。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/21.png"></p>
+<p>在输入命令后直接看攻击者的ip。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/23.png"></p>
+<h4 id="填空题-有多少个nmap扫瞄正在同时进行提示请给出阿拉伯数字作答">16. [填空题] 有多少个Nmap扫瞄正在同时进行？提示:请给出阿拉伯数字作答</h4>
+<p>在这里补充一个知识点：</p>
+<p><strong>Nmap 主要用于发现网络上有哪些设备（主机发现） 以及这些设备上开放了哪些端口和服务（端口扫描）。</strong></p>
+<p>这里根据nmap扫描的特征判断，大量连接尝试就是这个TCP协议和UDP协议了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/22.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/24.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/25.png"></p>
+<h4 id="单选题-当计算机正在扫瞄8.8.8.8namp相关的指令是什么">17. [单选题] 当计算机正在扫瞄8.8.8.8，namp相关的指令是什么？</h4>
+<h5 id="a.-nmap--st-8.8.8.8">A. nmap -sT 8.8.8.8</h5>
+<h5 id="b.-nmap--su-8.8.8.8">B. nmap -sU 8.8.8.8</h5>
+<h5 id="c.-nmap--sn--pr-8.8.8.8">C. nmap -sn -PR 8.8.8.8</h5>
+<h5 id="d.-nmap--sn--pu-8.8.8.8">D. nmap -sn -PU 8.8.8.8</h5>
+<p>这里指令不知道梭一下。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/26.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/27.png"></p>
+<p>由上面的题目对应的TCP协议可以知道选A。</p>
+<h4 id="单选题-当计算机正在扫瞄45.33.32.156namp相关的指令是什么">18. [单选题] 当计算机正在扫瞄45.33.32.156，namp相关的指令是什么？</h4>
+<h5 id="a.-nmap--st-45.33.32.156">A. nmap -sT 45.33.32.156</h5>
+<h5 id="b.-nmap--su-45.33.32.156">B. nmap -sU 45.33.32.156</h5>
+<h5 id="c.-nmap--sn--45.33.32.156">C. nmap -sn -45.33.32.156</h5>
+<h5 id="d.-nmap--sn--45.33.32.156">D. nmap -sn -45.33.32.156</h5>
+<p>这里由上面的题目对应的UDP选B。</p>
+<h4 id="单选题-国强被指派设定一个dhcp服务器该服务器需借出最后100个的ip地址以下哪个ip地址会是被借出的ip地址">19. [单选题] 国强被指派设定一个DHCP服务器，该服务器需借出最后100个的IP地址，以下哪个IP地址会是被借出的IP地址？</h4>
+<h5 id="a.-10.1.4.255">A. 10.1.4.255</h5>
+<h5 id="b.-10.1.4.100">B. 10.1.4.100</h5>
+<h5 id="c.-10.1.4.254">C. 10.1.4.254</h5>
+<h5 id="d.-10.1.4.1">D. 10.1.4.1</h5>
+<p><em>从这里开始是理论题。</em> <del>我只是个这周才开始上计算机网络的小白为什么要这么对我</del></p>
+<p>理论题更不可能自己做了（），梭一下。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/28.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/29.png"></p>
+<h4 id="单选题-以下那个协议是属于tcpip协议-i-dhcp-ii-http-iii-rtp-iv-telnet">20. [单选题] 以下那个协议是属于TCP/IP协议? i: DHCP ii: HTTP iii: RTP iv: Telnet</h4>
+<h5 id="a.-i-iii">A. i &amp; iii</h5>
+<h5 id="b.-ii-iv">B. ii &amp; iv</h5>
+<h5 id="c.-所有皆是-all-answers-belong-to-tcpip-protocol">C. 所有皆是 (All answers belong to TCP/IP protocol)</h5>
+<h5 id="d.-所有皆否all-answers-dont-belong-to-tcpip-protocol">D. 所有皆否(All answers don’t belong to TCP/IP protocol)</h5>
+<p>这里ai给的答案不准确，我就去查百度。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/30.png"></p>
+<h4 id="单选题-题目内容请看题目描述">21. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="浩贤为一间公司的网络管理员他需要把一个路由器作出以下设定">浩贤为一间公司的网络管理员，他需要把一个路由器作出以下设定</h5>
+<h5 id="允许192.168.26.3连上互联网">1) 允许192.168.26.3连上互联网</h5>
+<h5 id="允许192.168.26.2作udp连接">2) 允许192.168.26.2作UDP连接</h5>
+<h5 id="现在浩贤把路由器作以下设定">现在浩贤把路由器作以下设定:</h5>
+<pre class="sourceCode yaml" id="cb1"><code class="sourceCode yaml"><div class="sourceLine" id="cb1-1" data-line-number="1">access-list 119 deny udp any any</div>
+<div class="sourceLine" id="cb1-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb1-3" data-line-number="3">access-list 121 permit udp host 192.168.26.2 any</div>
+<div class="sourceLine" id="cb1-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb1-5" data-line-number="5">access-list 120 deny tcp any any</div>
+<div class="sourceLine" id="cb1-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb1-7" data-line-number="7">access-list 122 permit tcp host 192.168.26.3 eq www any</div>
+<div class="sourceLine" id="cb1-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb1-9" data-line-number="9">access-list 123 permit tcp any eq ftp any</div></code></pre>
+<h5 id="志伟是浩贤的主管他发现浩贤的设定错误浩贤应作怎样的更正">志伟是浩贤的主管，他发现浩贤的设定错误，浩贤应作怎样的更正？</h5>
+<h5 id="a.-access-list-123-permit-tcp-any-eq-ftp-any-更正为change-access-list-123-permit-udp-any-eq-ftp-any">A. ‘access-list 123 permit tcp any eq ftp any’ 更正为(change) ‘access-list 123 permit udp any eq ftp any’</h5>
+<h5 id="b.-access-list-122-permit-tcp-host-192.168.26.3-eq-www-any-更正为change-access-list-122-permit-udp-host-192.168.26.3-eq-www-any">B. ‘access-list 122 permit tcp host 192.168.26.3 eq www any’ 更正为(change) ‘access-list 122 permit udp host 192.168.26.3 eq www any’</h5>
+<h5 id="c.-删除deleteaccess-list-120-deny-tcp-any-any-与-access-list-119-deny-udp-any-any">C. 删除(Delete)‘access-list 120 deny tcp any any’ 与’ access-list 119 deny udp any any ’</h5>
+<h5 id="d.-删除deleteaccess-list-123-permit-tcp-any-eq-ftp-any">D. 删除(Delete)‘access-list 123 permit tcp any eq ftp any’</h5>
+<p>贴一下ai： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/31.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/32.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/33.png"></p>
+<h4 id="单选题-题目内容请看题目描述-1">22. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="根据以下ping指令的结果你会估计192.168.186.132是哪一个操作系统">根据以下ping指令的结果，你会估计192.168.186.132是哪一个操作系统</h5>
+<h5 id="ping-192.168.186.132-使用-32-字节的数据">Ping 192.168.186.132 (使用 32 字节的数据):</h5>
+<h5 id="回复自-192.168.186.132-字节32-时间1ms-ttl64">回复自 192.168.186.132: 字节=32 时间&lt;1ms TTL=64</h5>
+<h5 id="回复自-192.168.186.132-字节32-时间1ms-ttl64-1">回复自 192.168.186.132: 字节=32 时间&lt;1ms TTL=64</h5>
+<h5 id="回复自-192.168.186.132-字节32-时间1ms-ttl64-2">回复自 192.168.186.132: 字节=32 时间&lt;1ms TTL=64</h5>
+<h5 id="回复自-192.168.186.132-字节32-时间1ms-ttl64-3">回复自 192.168.186.132: 字节=32 时间&lt;1ms TTL=64</h5>
+<h5 id="的-ping-统计资料">192.168.186.132 的 Ping 统计资料:</h5>
+<h5 id="封包-已传送-4已收到-4-已遗失-0-0-遗失">封包: 已传送 = 4，已收到 = 4, 已遗失 = 0 (0% 遗失)，</h5>
+<h5 id="大约的来回时间-毫秒">大约的来回时间 (毫秒):</h5>
+<h5 id="最小值-0ms最大值-0ms平均-0ms">最小值 = 0ms，最大值 = 0ms，平均 = 0ms</h5>
+<h5 id="a.-linux">A. Linux</h5>
+<h5 id="b.-windows-xp">B. Windows XP</h5>
+<h5 id="c.-windows-7">C. Windows 7</h5>
+<h5 id="d.-ios-12.4-cisco-routers">D. iOS 12.4 (Cisco Routers)</h5>
+<p>依旧梭（边梭边学ing）： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/34.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/35.png"></p>
+<h4 id="单选题-当使用nmap扫瞄目标后nmap内出现以下信息主机似乎关机如果它是开启的它正在阻挡ping探测-应用哪一个指令找出开放的端口">23. [单选题] 当使用nmap扫瞄目标后，nmap内出现以下信息(主机似乎关机。如果它是开启的，它正在阻挡ping探测。) 应用哪一个指令找出开放的端口?</h4>
+<h5 id="a.-nmap--st">A. nmap -sT</h5>
+<h5 id="b.-nmap--sn">B. nmap -sN</h5>
+<h5 id="c.-nmap--sx">C. nmap -sX</h5>
+<h5 id="d.-nmap--pn">D. nmap -Pn</h5>
+<p>这里补充知识点：</p>
+<p><strong>nmap会默认先用ping探活，如果ping不通就直接停止后续操作——除非加上参数-Pn，即不进行ping探活就直接进行扫描。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/36.png"></p>
+<h4 id="单选题-以下哪一个nmap指令可以减低被侦测的可能性">24. [单选题] 以下哪一个Nmap指令可以减低被侦测的可能性?</h4>
+<h5 id="a.-nmap--st--o--t5">A. nmap -sT -O -T5</h5>
+<h5 id="b.-nmap--st--o--t0">B. nmap -sT -O -T0</h5>
+<h5 id="c.-nmap-su">C. nmap sU</h5>
+<h5 id="d.-nmap--a-host-timeout-99-t1">D. nmap -A –host-timeout 99-T1</h5>
+<p>首先应该要先知道选项指令的意义吧，-sT和-sU在前面的题目能了解到分别是TCP扫描和UDP扫描，其他的继续补充：</p>
+<p><strong>-O (大写字母 O)：操作系统检测，功能：-O 选项用于启用操作系统检测功能。</strong></p>
+<p><strong>–host-timeout：主机超时，功能：–host-timeout &lt;时间&gt; 选项用于设置扫描单个主机的最大时间。</strong></p>
+<p>T0和T5通俗意义应该就是扫描速度了，其中T0是最慢的扫描，所以选B。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/37.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/38.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/39.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/40.png"></p>
+<h4 id="单选题-apple计算机的硬盘可以使用以下分区方案">25. [单选题] Apple计算机的硬盘可以使用以下分区方案：</h4>
+<h5 id="a.-apple-partition-map">A. Apple Partition Map</h5>
+<h5 id="b.-guid-partition-table">B. GUID Partition Table</h5>
+<h5 id="c.-master-boot-record">C. Master Boot Record</h5>
+<h5 id="d.-all-of-the-above">D. All of the above</h5>
+<p>这里我去苹果官网看的懵懵的，继续梭，大概意思就是这三种都是分区方案只是处于不同时期罢了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/42.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/43.png"></p>
+<h4 id="单选题-mac-os.img-文件中可以找到多少个符号链接">26. [单选题] ‘Mac OS.img’ 文件中可以找到多少个符号链接？</h4>
+<h5 id="a.-0">A. 0</h5>
+<h5 id="b.-1">B. 1</h5>
+<h5 id="c.-2">C. 2</h5>
+<h5 id="d.-3">D. 3</h5>
+<p><em>从这里开始切换到Mac OS.img。</em></p>
+<p>我搜了一下，符号链接其实就约等于快捷方式，我试着仿真苹果虚拟机但是失败了orz，在火眼取证出来的结果里没办法直接看出来，看了眼师傅们的wp是通过alias判断。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/45.png"></p>
+<p>补充一个alias的知识点： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/44.png"></p>
+<h4 id="单选题-在-mac-os.img-档中使用了哪种分区方案-which-partition-scheme-was-used-in-the-mac-os.img">27. [单选题] 在’ Mac OS.img ‘档中使用了哪种分区方案？ Which partition scheme was used in the’ Mac OS.img ’ ?</h4>
+<h5 id="a.-apple-partition-map-1">A. Apple Partition Map</h5>
+<h5 id="b.-guid-partition-table-1">B. GUID Partition Table</h5>
+<h5 id="c.-master-boot-record-1">C. Master Boot Record</h5>
+<h5 id="d.-hfs">D. HFS+</h5>
+<p>这里用x-ways挂载了看： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/46.png"></p>
+<h4 id="单选题-mac-os.img-档的文件系统的正确描述是什么">28. [单选题] ‘Mac OS.img’ 档的文件系统的正确描述是什么？</h4>
+<h5 id="a.-hfs已启用日志记录">A. HFS+（已启用日志记录）</h5>
+<h5 id="b.-hfs已启用区分大小写">B. HFS+（已启用区分大小写）</h5>
+<h5 id="c.-hfs已启用日志记录和区分大小写">C. HFS+（已启用日志记录和区分大小写）</h5>
+<h5 id="d.-apfs-已启用区分大小写">D. APFS (已启用区分大小写）</h5>
+<p>这里我依旧用的x-ways看的，后面看了眼wp师傅们有用仿真做的，也不知道我这个做法对不对，但是答案是对的:D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/47.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/48.png"></p>
+<h4 id="填空题-从文件car.rtfd中删除了哪个文件提示答案需包括副文件名并以全小写字母作答例如-answer.docx">29. [填空题] 从文件“Car.rtfd”中删除了哪个文件？提示:答案需包括副文件名，并以全小写字母作答，例如 answer.docx</h4>
+<p>这里我刚开始自己做的时候很粗糙，直接点图片，然后里面有一张图片查看不了，估计就是被删除了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/49.png"></p>
+<p>正确的思路应该是：在分区日志里查看原先有哪些文件，后在分区里再查看哪个找不到了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/50.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/51.png"></p>
+<h4 id="填空题-请提供mac-os.img-映像文件被fsck命令检查的具体时间">30. [填空题] 请提供’Mac OS.img’ 映像文件被“fsck”命令检查的具体时间。</h4>
+<p>这里我没找出来……看了下师傅们的wp也没有特别好的解析，那就补充一个fsck命令的知识点吧： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/52.png"></p>
+<h4 id="单选题-参考-mac-os.img-文件回答以下题目在-.dmg-档中删除了多少个文件">31. [单选题] 参考 ‘Mac OS.img’ 文件回答以下题目，在 .dmg 档中删除了多少个文件</h4>
+<h4 id="a.-1">A. 1</h4>
+<h4 id="b.-2">B. 2</h4>
+<h4 id="c.-3">C. 3</h4>
+<h4 id="d.-4">D. 4</h4>
+<p>直接看回收站就好。（话说这里看回收站要搜索trash，记住了） <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/53.png"></p>
+<h4 id="填空题-elvis-chui-总共登入过该计算机多少次根据-window-artifacts.e01-内的windows-注册表记录">32. [填空题] Elvis Chui 总共登入过该计算机多少次？根据 ‘Window Artifacts.E01’ 内的Windows 注册表记录</h4>
+<p><em>从这里开始切换到Window Artifacts.E01。</em></p>
+<p>用火眼挂载取证后在用户这里就能看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/54.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/55.png"></p>
+<h4 id="单选题-该计算机的操作系统是在哪一个时区">33. [单选题] 该计算机的操作系统是在哪一个时区？</h4>
+<h5 id="a.-utc-4">A. UTC +4</h5>
+<h5 id="b.-utc-8-1">B. UTC +8</h5>
+<h5 id="c.-utc--8">C. UTC -8</h5>
+<h5 id="d.-utc--4">D. UTC -4</h5>
+<p>基础题，直接看系统信息。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/56.png"></p>
+<h4 id="单选题-该计算机的操作系统于何时安装以计算机系统时区回答">34. [单选题] 该计算机的操作系统于何时安装？(以计算机系统时区回答)</h4>
+<h5 id="a.-2023-07-13-191814">A. 2023-07-13 19:18:14</h5>
+<h5 id="b.-2023-07-13-111814">B. 2023-07-13 11:18:14</h5>
+<h5 id="c.-2023-07-13-031814">C. 2023-07-13 03:18:14</h5>
+<h5 id="d.-2023-07-12-191814">D. 2023-07-12 19:18:14</h5>
+<p>同一页。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/57.png"></p>
+<h4 id="多选题-哪几个程序会于操作系统启动时自动执行">35. [多选题] 哪(几)个程序会于操作系统启动时自动执行？</h4>
+<h5 id="a.-avast">A. Avast</h5>
+<h5 id="b.-steam">B. Steam</h5>
+<h5 id="c.-onedrive">C. OneDrive</h5>
+<h5 id="d.-qq">D. QQ</h5>
+<p>这里在开机自启动程序这里。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/58.png"></p>
+<h4 id="单选题-该计算机内安装了以下哪一个程序">36. [单选题] 该计算机内安装了以下哪一个程序？</h4>
+<h5 id="a.-qq">A. QQ</h5>
+<h5 id="b.-wps-office">B. WPS Office</h5>
+<h5 id="c.-opera">C. Opera</h5>
+<h5 id="d.-kaspersky">D. Kaspersky</h5>
+<p>看安装软件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/59.png"></p>
+<h4 id="填空题-计算机内的onedrive程序版本是什么">37. [填空题] 计算机内的OneDrive程序版本是什么？</h4>
+<p>浅浅ai了一下，ai告诉我可以把这个的exe文件导出然后从属性里的详细信息里面看，于是先找到路径然后导出： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/60.png"></p>
+<p>查看详细信息： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/61.png"></p>
+<h4 id="填空题-计算机有一个正在连接的网络接口该接口连接dhcp服务器的ip地址是多少提示-以-ipv4格式回答">38. [填空题] 计算机有一个正在连接的网络接口，该接口连接DHCP服务器的IP地址是多少？提示: 以 IPV4格式回答</h4>
+<p>从网络这里看，其实我不知道哪个是正在连接的网络接口就挨个点过去，就这个有显示DHCP服务器 <del>（没错就这么简单粗暴）</del>。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/62.png"></p>
+<h4 id="单选题-该计算机何时连接过一只u盘以计算机系统时区回答">39. [单选题] 该计算机何时连接过一只U盘？(以计算机系统时区回答)</h4>
+<h5 id="a.-2023-07-13-114826">A. 2023-07-13 11:48:26</h5>
+<h5 id="b.-2023-07-13-034829">B. 2023-07-13 03:48:29</h5>
+<h5 id="c.-2023-07-12-194829">C. 2023-07-12 19:48:29</h5>
+<h5 id="d.-2023-07-13-114829">D. 2023-07-13 11:48:29</h5>
+<p>USB设备信息里看，这个是U盘，一秒的出入应该不用管。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/63.png"></p>
+<h4 id="多选题-elvis-chui-将哪几个文本文件放在回收站中">40. [多选题] Elvis Chui 将哪几个文本文件放在回收站中？</h4>
+<h5 id="a.-d10i76a74p.txt">A. $+D10I76A74P.txt</h5>
+<h5 id="b.-holiday-schedule-2023-07-16.txt">B. Holiday schedule 2023-07-16.txt</h5>
+<h5 id="c.-holiday-schedule-2023-07-13.txt">C. Holiday schedule 2023-07-13.txt</h5>
+<h5 id="d.-minute-on-2023-07-01.txt">D. Minute on 2023-07-01.txt</h5>
+<h5 id="e.-minute-on-2023-07-10.txt">E. Minute on 2023-07-10.txt</h5>
+<p>在回收站里搜txt： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/64.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/65.png"></p>
+<h4 id="单选题-elvis-chui在什么时间删除了第一个文本文件以计算机系统时区回答">41. [单选题] Elvis Chui在什么时间删除了第一个文本文件？(以计算机系统时区回答)</h4>
+<h5 id="a.-2023-07-13-115015">A. 2023-07-13 11:50:15</h5>
+<h5 id="b.-2023-07-13-034945">B. 2023-07-13 03:49:45</h5>
+<h5 id="c.-2023-07-13-035015">C. 2023-07-13 03:50:15</h5>
+<h5 id="d.-2023-07-13-114945">D. 2023-07-13 11:49:45</h5>
+<p>这题和下一题一起做。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/66.png"></p>
+<h4 id="填空题-elvis-chui删除的第一个文本文件的文件名是什么提示-请用小写字母回答及需列明文件格式如文件名字内有空格位置请用_标示例如-go_to_school.docx">42. [填空题] Elvis Chui删除的第一个文本文件的文件名是什么？提示: 请用小写字母回答及需列明文件格式。如文件名字内有空格位置，请用_标示。例如: go_to_school.docx</h4>
+<p>同上。</p>
+<h4 id="单选题-elvis-chui删除的第一个文本文件在什么时间创建以计算机系统时区回答">43. [单选题] Elvis Chui删除的第一个文本文件在什么时间创建？(以计算机系统时区回答)</h4>
+<h5 id="a.-2023-07-13_114239">A. 2023-07-13_11:42:39</h5>
+<h5 id="b.-2023-07-13_115049">B. 2023-07-13_11:50:49</h5>
+<h5 id="c.-2023-07-13_114945">C. 2023-07-13_11:49:45</h5>
+<h5 id="d.-2023-07-13_114522">D. 2023-07-13_11:45:22</h5>
+<p>这里从第一个文本文件里跳转一下原始文件然后查看创建时间。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67.png"></p>
+<h4 id="填空题-elvis-chui计划于2023年7月15日20点5分有什么活动提示-答案请与文件内的文字与大细阶相同">44.[填空题] Elvis Chui计划于2023年7月15日20点5分有什么活动？提示: 答案请与文件内的文字与大细阶相同</h4>
+<p>这里我刚开始居然傻到去找备忘录还有去看时间线……后来反应过来哦那几个被删除的文件不就是日程安排嘛：（ <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/68.png"></p>
+<h4 id="填空题-该计算机执行steam.exe总共多少次提示-请用阿拉伯数字作答">45. [填空题] 该计算机执行STEAM.EXE总共多少次？提示: 请用阿拉伯数字作答</h4>
+<p>本来想去找日志文件，后面发现在日志里找到steam.exe文件就能显示了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/69.png"></p>
+<h4 id="单选题-一个名为account的数据库表拥有5个列以下哪一个指令会产生错误讯息-提示-1.数据库是拥有正常默认的系统表格-2.错误信息是关于超出上限的错误">46. [单选题] 一个名为“Account”的数据库表拥有5个“列”，以下哪一个指令会产生错误讯息？ (提示: 1.数据库是拥有正常默认的系统表格 2.错误信息是关于“超出上限”的错误)</h4>
+<h5 id="a.-select-from-account-where-namealex-or-11">A. SELECT * from Account WHERE name=‘Alex’ OR ‘1’=1</h5>
+<h5 id="b.-select-from-account-where-namebill-union-select-null-null-null-null">B. SELECT * FROM Account WHERE name=‘Bill’ UNION SELECT NULL, NULL, NULL, NULL</h5>
+<h5 id="c.-select-from-account-where-namecandy-order-by-6">C. SELECT * from Account WHERE name=‘Candy’ ORDER BY 6</h5>
+<h5 id="d.-select-name-from-sys.tables">D. SELECT name FROM sys.tables</h5>
+<p><em><del>我吐血了</del>从这里开始又变成理论题了。</em></p>
+<p>这里order by 6超出范围了，学过一点web方向的知识还是知道的。</p>
+<h4 id="单选题-当客户端收到一个页面请求的http状态代码为304时以下哪种情况最有可能发生">47. [单选题] 当客户端收到一个页面请求的HTTP状态代码为304时，以下哪种情况最有可能发生？</h4>
+<h5 id="a.-页面将显示错误">A. 页面将显示错误</h5>
+<h5 id="b.-页面将从浏览器缓存中加载">B. 页面将从浏览器缓存中加载</h5>
+<h5 id="c.-浏览器将显示访问被拒绝">C. 浏览器将显示“访问被拒绝”</h5>
+<h5 id="d.-服务器将复位向客户端到另一个资源">D. 服务器将复位向客户端到另一个资源</h5>
+<p>之间做方向任务的时候有学过状态码的知识，在菜鸟教程里找了一下： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/70.png"></p>
+<h4 id="单选题-在html注入攻击中以下哪种情况最有可能出现">48. [单选题] 在HTML注入攻击中，以下哪种情况最有可能出现？</h4>
+<p><img src="..https://github.com/ncbdd0/images/raw/main/meiya2023/88.png"></p>
+<p>学过一点html前端知识但明显知识储备不够用……ai大法好！ <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/72.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/73.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/74.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/75.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/76.png"></p>
+<h4 id="单选题-如何预防html注入攻击">49. [单选题] 如何预防HTML注入攻击？</h4>
+<h5 id="a.-密钥管理key-management">A. 密钥管理Key management</h5>
+<h5 id="b.-同源策略执行same-origin-policy-enforcement">B. 同源策略执行Same Origin Policy enforcement</h5>
+<h5 id="c.-会话验证session-validation">C. 会话验证Session validation</h5>
+<h5 id="d.-输入过滤input-sanitization">D. 输入过滤Input sanitization</h5>
+<p>学习学习。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/77.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/78.png"></p>
+<h4 id="单选题-同源策略在浏览器内存中提供web应用程序安全的目的是什么">50. [单选题] 同源策略在浏览器内存中提供Web应用程序安全的目的是什么？</h4>
+<h5 id="a.-防止客户端访问恶意网站">A. 防止客户端访问恶意网站</h5>
+<h5 id="b.-禁止web会话运行外部脚本">B. 禁止Web会话运行外部脚本</h5>
+<h5 id="c.-控制来自不同服务器的代码之间的交互">C. 控制来自不同服务器的代码之间的交互</h5>
+<h5 id="d.-阻止浏览器运行危险或有害的脚本">D. 阻止浏览器运行危险或有害的脚本</h5>
+<p>学习学习。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/79.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/80.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/81.png"></p>
+<h4 id="填空题-题目内容请看题目描述">51. [填空题] 题目内容请看题目描述。</h4>
+<h5 id="编写nmap命令以显示以下结果">编写Nmap命令以显示以下结果。</h5>
+<pre class="sourceCode yaml" id="cb2"><code class="sourceCode yaml"><div class="sourceLine" id="cb2-1" data-line-number="1"><span class="fu">Starting Nmap 7.94 (https:</span><span class="at">//nmap.org) at 2023-07-11 18:26 中国标准时间</span></div>
+<div class="sourceLine" id="cb2-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb2-3" data-line-number="3">Nmap scan report for www.baidu.com (220.181.38.149)</div>
+<div class="sourceLine" id="cb2-4" data-line-number="4">Host is up (0.044s latency).</div>
+<div class="sourceLine" id="cb2-5" data-line-number="5"></div>
+<div class="sourceLine" id="cb2-6" data-line-number="6"><span class="fu">Other addresses for www.baidu.com (not scanned):</span><span class="at"> 220.181.38.150</span></div>
+<div class="sourceLine" id="cb2-7" data-line-number="7"></div>
+<div class="sourceLine" id="cb2-8" data-line-number="8"><span class="fu">Not shown:</span><span class="at"> 998 filtered tcp ports (no-response)</span></div>
+<div class="sourceLine" id="cb2-9" data-line-number="9"></div>
+<div class="sourceLine" id="cb2-10" data-line-number="10">PORT          STATE            SERVICE</div>
+<div class="sourceLine" id="cb2-11" data-line-number="11"></div>
+<div class="sourceLine" id="cb2-12" data-line-number="12">80/tcp           open                http</div>
+<div class="sourceLine" id="cb2-13" data-line-number="13"></div>
+<div class="sourceLine" id="cb2-14" data-line-number="14"><span class="fu">|  http-robots.txt:</span><span class="at"> 10 disallowed entries</span></div>
+<div class="sourceLine" id="cb2-15" data-line-number="15"></div>
+<div class="sourceLine" id="cb2-16" data-line-number="16">|  /baidu /s? /ulink? /link? /home/news/data/  /bh /shifen/</div>
+<div class="sourceLine" id="cb2-17" data-line-number="17"></div>
+<div class="sourceLine" id="cb2-18" data-line-number="18">|_/homepage/  /cpro /</div>
+<div class="sourceLine" id="cb2-19" data-line-number="19"></div>
+<div class="sourceLine" id="cb2-20" data-line-number="20">443/tcp     open             https</div>
+<div class="sourceLine" id="cb2-21" data-line-number="21"></div>
+<div class="sourceLine" id="cb2-22" data-line-number="22"><span class="fu">|  http-robots.txt:</span><span class="at"> 10 disallowed entries</span></div>
+<div class="sourceLine" id="cb2-23" data-line-number="23"></div>
+<div class="sourceLine" id="cb2-24" data-line-number="24">|  /baidu /s? /ulink? /link? /home/news/data/  /bh /shifen/</div>
+<div class="sourceLine" id="cb2-25" data-line-number="25"></div>
+<div class="sourceLine" id="cb2-26" data-line-number="26">|_/homepage/  /cpro /</div>
+<div class="sourceLine" id="cb2-27" data-line-number="27"></div>
+<div class="sourceLine" id="cb2-28" data-line-number="28"><span class="fu">Nmap done:</span><span class="at"> 1 IP address (1 host up) scanned in 6.01 seconds</span></div></code></pre>
+<h5 id="提示请输入完整的nmap指令例如-nmap-script-http-brute--p-80-www.google.com">提示:请输入完整的Nmap指令，例如: nmap –script http-brute -p 80 www.google.com</h5>
+<p>首先得知道这些指令是什么意思： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/82.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/83.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/84.png"></p>
+<p>然后再进行命令推导，补充知识点：</p>
+<p><strong>–script 允许你在基本的端口扫描之上，运行一系列预写的、功能丰富的脚本，对目标进行深度探测和信息收集。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/85.png"></p>
+<h4 id="填空题-除了使用nmap还有其他方法可以验证上述结果其中一种方法是使用web浏览器浏览url编写url以显示上述结果答案不要包含http">52. [填空题] 除了使用Nmap，还有其他方法可以验证上述结果，其中一种方法是使用Web浏览器浏览URL，编写URL以显示上述结果。（答案不要包含“http://”）</h4>
+<p>学习学习，不过这个之前我在攻防世界做web题倒是有做到过。</p>
+<p>也补一句知识点吧：</p>
+<p><strong>robots.txt是一个标准的、放在网站根目录下的文件，用于告知网络爬虫哪些目录或页面不应被访问。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/86.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/87.png"></p>
+<h4 id="单选题-根据-com.apple.ios.storekituiservice.plist-这部电话是什么型号">53. [单选题] 根据 ’com.apple.ios.StoreKitUIService.plist ’ , 这部电话是什么型号？</h4>
+<h5 id="a.-samsung-s23">A. SAMSUNG S23</h5>
+<h5 id="b.-iphone-x">B. iPhone X</h5>
+<h5 id="c.-iphone-xr">C. iPhone XR</h5>
+<h5 id="d.-iphone-xs">D. iPhone XS</h5>
+<h5 id="e.-iphone-13">E. iPhone 13</h5>
+<p>这里先把这个plist文件导出然后用爱思助手查看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/90.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/89.png"></p>
+<p>没有直接写手机型号……那就扔给ai:D <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/91.png"></p>
+<h4 id="单选题-根据com.apple.ios.storekituiservice.plist上述电话的文件系统是什么">54. [单选题] 根据com.apple.ios.StoreKitUIService.plist，上述电话的文件系统是什么？</h4>
+<h5 id="a.-fat32">A. FAT32</h5>
+<h5 id="b.-ntfs">B. NTFS</h5>
+<h5 id="c.-hfs">C. HFS+</h5>
+<h5 id="d.-apfs">D. APFS</h5>
+<h5 id="e.-ext4">E. EXT4</h5>
+<p>继续梭。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/92.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/93.png"></p>
+<h4 id="多选题-根据chatstorage.sqlite哪些对话已锁定">55. [多选题] 根据ChatStorage.sqlite，哪些对话已锁定？</h4>
+<h5 id="a.-447380449879.whatsapp.net">A. 447380449879@.whatsapp.net</h5>
+<h5 id="b.-79096209701.whatsapp.net">B. 79096209701@.whatsapp.net</h5>
+<h5 id="c.-923109725619.whatsapp.net">C. 923109725619@.whatsapp.net</h5>
+<h5 id="d.-85256026169.whatsapp.net">D. 85256026169@.whatsapp.net</h5>
+<h5 id="e.-statusbroadcast">E. status@broadcast</h5>
+<p>从这里开始我试着用了新下载的工具数据库取证工具，感觉还挺好用的:D</p>
+<p>先导出文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/94.png"></p>
+<p>然后用简单看下英文，在WECHATSESSION这里，这三个ZFLAGS明显比其他账号大的就是了。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/95.png"></p>
+<h4 id="填空题-根据chatstorage.sqlite有多少段录音对话提示-请以阿拉伯数字作答">56. [填空题] 根据ChatStorage.sqlite，有多少段录音对话？提示: 请以阿拉伯数字作答</h4>
+<p>这里在ZWAMEDIAIEM这里，直接搜audio会有48条记录，查了一下audio/ogg和audio/mpeg的区别，ogg格式是语音文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/97.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/96.png"></p>
+<h4 id="单选题-apple-cocoa-core-data-timestamp-是由什么时间开始">57. [单选题] Apple Cocoa Core Data timestamp 是由什么时间开始？</h4>
+<h5 id="a.-2001年1月1日">A. 2001年1月1日</h5>
+<h5 id="b.-1970年1月1日">B. 1970年1月1日</h5>
+<h5 id="c.-2006年1月1日">C. 2006年1月1日</h5>
+<h5 id="d.-1960年1月1日">D. 1960年1月1日</h5>
+<p>这里我不太知道这个英文是什么意思就扔给ai，ai告诉我是固定的时间不用看取证：） <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/98.png"></p>
+<h4 id="填空题-根据photos.sqlite数据库中有多少段视频可能涉及whatsapp提示-请以阿拉伯数字作答">58.[填空题] 根据Photos.sqlite数据库中，有多少段视频可能涉及WhatsApp？提示: 请以阿拉伯数字作答</h4>
+<p>导出文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/99.png"></p>
+<p>在ZADDITIONALASSETATTRIBUTES这里，往后滑能看到有显示Whatsapp类型，但是里面有图片格式也有视频格式。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/100.png"></p>
+<p>导出表格过滤搜一下。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/101.png"></p>
+<h4 id="多选题-根据photos.sqlite数据库中下列哪个选项对img_0008.heic的描述是错的">59. [多选题] 根据Photos.sqlite数据库中，下列哪个选项对IMG_0008.HEIC的描述是错的？</h4>
+<h5 id="a.-由第三方软件拍摄">A. 由第三方软件拍摄</h5>
+<h5 id="b.-经过修改">B. 经过修改</h5>
+<h5 id="c.-由后镜拍摄">C. 由后镜拍摄</h5>
+<h5 id="d.-用iso200拍摄">D. 用ISO200拍摄</h5>
+<h5 id="e.-没有储存经纬度">E. 没有储存经纬度</h5>
+<p>这里在ZASSET找到这个文件先。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/102.png"></p>
+<p>然后……把右边的详细视图扔给ai:D。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/103.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/104.png"></p>
+<h4 id="填空题-根据-smsios.db-的资料全局唯一标识符guid-dd31c26f-1d72-de0f-431e-ef98f104402d显示的信息是什么提示答案需要与信息一样答案包括中文字阿拉伯数字与符号">60. [填空题] 根据 ’ sms(ios).db ’ 的资料，全局唯一标识符(GUID): DD31C26F-1D72-DE0F-431E-EF98F104402D显示的信息是什么？提示:答案需要与信息一样(答案包括中文字、阿拉伯数字与符号)</h4>
+<p>导出文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/105.png"></p>
+<p>这里.db文件我连的navicat，信息就在MESSAGE这里看，搜索一下关键字就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/106.png"></p>
+<h4 id="多选题-根据-com.burbn.instagram.plist-及-com.facebook.facebook.plist-手机安装了实时通讯软件facebook及instagram的那个版本">61. [多选题] 根据 ’ com.burbn.instagram.plist ’ 及 ’ com.facebook.Facebook.plist ’ 手机安装了实时通讯软件Facebook及Instagram的那个版本？</h4>
+<h5 id="a.-instagram-version-278.0.0.19.115">A. Instagram (Version 278.0.0.19.115)</h5>
+<h5 id="b.-facebook-version-410.0.0.41.116">B. Facebook (Version 410.0.0.41.116)</h5>
+<h5 id="c.-instagram-version-279.0.0.23.112">C. Instagram (Version 279.0.0.23.112)</h5>
+<h5 id="d.-facebook-version-410.0.0.26.115">D. Facebook (Version 410.0.0.26.115)</h5>
+<h5 id="e.-instagram-version-278.0.0.25.115">E. Instagram (Version 278.0.0.25.115)</h5>
+<h5 id="f.-facebook-version-410.0.0.57.116">F. Facebook (Version 410.0.0.57.116)]</h5>
+<p>这里导出文件后用爱思助手查看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/107.png"></p>
+<p>然后往下滑滑版本在这里。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/108.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/109.png"></p>
+<h4 id="填空题-根据-chatstorageios.sqlite-用户数据peter-chow-85262012141在什么日期和时间以utc-8时区曾经通过实时通讯软件送出一个信息内容为-i-am-already-home-提示以utc-8时区作答并以yyyy-mm-dd_hhmmss格式作答-例如2023-01-01_100101-答案无需输入utc-8">62. [填空题] 根据 ’ ChatStorage(ios).sqlite ’ , 用户数据Peter Chow (85262012141)在什么日期和时间(以UTC +8时区)曾经通过实时通讯软件送出一个信息(内容为: I am already home)? 提示:以UTC +8时区作答,并以YYYY-MM-DD_HH:MM:SS格式作答 例如:2023-01-01_10:01:01 (答案无需输入UTC +8)</h4>
+<p>导出文件后再MESSAGE这里看，消息在这。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/110.png"></p>
+<p>把详情信息扔给ai。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/112.png"></p>
+<p>ai给了一个脚本，跑一下脚本就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/111.png"></p>
+<p>脚本如下：</p>
+<pre class="sourceCode yaml" id="cb3"><code class="sourceCode yaml"><div class="sourceLine" id="cb3-1" data-line-number="1">from datetime import datetime, timedelta</div>
+<div class="sourceLine" id="cb3-2" data-line-number="2">    </div>
+<div class="sourceLine" id="cb3-3" data-line-number="3">cocoa_epoch = datetime(2001, 1, 1)</div>
+<div class="sourceLine" id="cb3-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb3-5" data-line-number="5">timestamp = 702012111.637933`</div>
+<div class="sourceLine" id="cb3-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb3-7" data-line-number="7">utc_time = cocoa_epoch + timedelta(seconds=timestamp)</div>
+<div class="sourceLine" id="cb3-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb3-9" data-line-number="9">utc8_time = utc_time + timedelta(hours=8)  <span class="co"># 转换为 UTC+8</span></div>
+<div class="sourceLine" id="cb3-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb3-11" data-line-number="11"><span class="fu">print(utc8_time.strftime("%Y-%m-%d %H:</span><span class="at">%M:%S")) </span></div>
+<div class="sourceLine" id="cb3-12" data-line-number="12">    </div></code></pre>
+<h4 id="填空题-根据影片img_0687.mov的原数据找出影片拍摄时间提示以utc-8时区作答并以yyyy-mm-dd_hhmmss格式作答-例如2023-01-01_100101-答案无需输入utc-8">63. [填空题] 根据影片IMG_0687.MOV的原数据，找出影片拍摄时间？提示:以UTC +8时区作答,并以YYYY-MM-DD_HH:MM:SS格式作答 例如:2023-01-01_10:01:01 (答案无需输入UTC +8)</h4>
+<p>这里不知道为什么我在取证和刚那个MASSAGE表里面都找不到这张照片，痛…… <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/113.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/114.png"></p>
+<h4 id="单选题-根据-callhistoryios.storedata-哪份表格显示了通话记录">64. [单选题] 根据 ’ CallHistory(ios).storedata ’，哪份表格显示了通话记录？</h4>
+<h5 id="a.-zcallbproperties">A. ZCALLBPROPERTIES</h5>
+<h5 id="b.-zcallrecord">B. ZCALLRECORD</h5>
+<h5 id="c.-z_2remoteparticipanthandles">C. Z_2REMOTEPARTICIPANTHANDLES</h5>
+<h5 id="d.-z_metadata">D. Z_METADATA</h5>
+<h5 id="e.-z_modelcache">E. Z_MODELCACHE</h5>
+<h5 id="f.-z_primarykey">F. Z_PRIMARYKEY</h5>
+<p>导出文件，刚开始不知道.storedata文件要用什么查看后来发现用查看sqlite的方式看就行。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/115.png"></p>
+<p>都通话记录了当然是CALLRECORD这张表叻。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/116.png"></p>
+<h4 id="填空题-根据-com.apple.sharingd.plist-这部手机的隔空投送的身份标识号airdrop-id是什么提示请以阿拉伯数字与小写字母作答">65. [填空题] 根据 ’ com.apple.sharingd.plist ’，这部手机的隔空投送的身份标识号(AirDrop ID)是什么？提示:请以阿拉伯数字与小写字母作答</h4>
+<p>导出文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/118.png"></p>
+<p>AirDropID。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/117.png"></p>
+<h4 id="填空题-根据-accounts3.sqlite-这部手机的苹果使用者账号-apple-id-是什么提示请以电邮格式作答例jack2023hotmail.com">66. [填空题] 根据 ’ Accounts3.sqlite ’，这部手机的苹果使用者账号 (Apple ID) 是什么？提示:请以电邮格式作答(例:jack2023@hotmail.com)</h4>
+<p>导出文件。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/119.png"></p>
+<p>在ACCOUNT账户这里查看。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/120.png"></p>
+<h4 id="单选题-题目内容请看题目描述-2">67. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="哪一行代码的是负责更新在github使用中的-.journal-文件的更新历史记录">哪一行代码的是负责更新在GitHub使用中的 .journal 文件的更新历史记录 ?</h5>
+<pre class="sourceCode yaml" id="cb4"><code class="sourceCode yaml"><div class="sourceLine" id="cb4-1" data-line-number="1">line 1 git config --global user.name <span class="st">"mikesezto"</span></div>
+<div class="sourceLine" id="cb4-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb4-3" data-line-number="3">line 2 git config --global user.email <span class="st">"smike@general.org"</span></div>
+<div class="sourceLine" id="cb4-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb4-5" data-line-number="5">line 3 </div>
+<div class="sourceLine" id="cb4-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb4-7" data-line-number="7">line 4 cd which-truth</div>
+<div class="sourceLine" id="cb4-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb4-9" data-line-number="9">line 5 rm.journal</div>
+<div class="sourceLine" id="cb4-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb4-11" data-line-number="11">line 6</div>
+<div class="sourceLine" id="cb4-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb4-13" data-line-number="13">line 7 git add.journal</div>
+<div class="sourceLine" id="cb4-14" data-line-number="14"></div>
+<div class="sourceLine" id="cb4-15" data-line-number="15">line 8 git commit -m <span class="st">"Remove sensitive data"</span></div>
+<div class="sourceLine" id="cb4-16" data-line-number="16"></div>
+<div class="sourceLine" id="cb4-17" data-line-number="17">line 9 git push</div>
+<div class="sourceLine" id="cb4-18" data-line-number="18"></div>
+<div class="sourceLine" id="cb4-19" data-line-number="19">line 10</div>
+<div class="sourceLine" id="cb4-20" data-line-number="20"></div>
+<div class="sourceLine" id="cb4-21" data-line-number="21"><span class="fu">line 11 git clone --mirror http:</span><span class="at">//github.com/smike/which-truth</span></div>
+<div class="sourceLine" id="cb4-22" data-line-number="22"></div>
+<div class="sourceLine" id="cb4-23" data-line-number="23">line 12</div>
+<div class="sourceLine" id="cb4-24" data-line-number="24"></div>
+<div class="sourceLine" id="cb4-25" data-line-number="25">line 13 java -jar bfg.jar --delete-files.journal which-truth</div>
+<div class="sourceLine" id="cb4-26" data-line-number="26"></div>
+<div class="sourceLine" id="cb4-27" data-line-number="27">line 14 cd which-truth</div>
+<div class="sourceLine" id="cb4-28" data-line-number="28"></div>
+<div class="sourceLine" id="cb4-29" data-line-number="29">line 15 git reflog expire --expire=now --all</div>
+<div class="sourceLine" id="cb4-30" data-line-number="30"></div>
+<div class="sourceLine" id="cb4-31" data-line-number="31">line 16 git gc --prune=now --aggressive</div>
+<div class="sourceLine" id="cb4-32" data-line-number="32"></div>
+<div class="sourceLine" id="cb4-33" data-line-number="33">line 17 git push --force</div></code></pre>
+<h5 id="a.-08">A. 08</h5>
+<h5 id="b.-13">B. 13</h5>
+<h5 id="c.-16">C. 16</h5>
+<h5 id="d.-17">D. 17</h5>
+<p><em>从这里开始又变成理论题。</em></p>
+<p>贴ai： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/1.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/2.png"></p>
+<h4 id="单选题-题目内容请看题目描述-3">68. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="下列哪一行aws-s3-bucket授权策略中的设置有问题">下列哪一行AWS S3 Bucket授权策略中的设置有问题?</h5>
+<pre class="sourceCode yaml" id="cb5"><code class="sourceCode yaml"><div class="sourceLine" id="cb5-1" data-line-number="1">line 1 <span class="kw">{</span></div>
+<div class="sourceLine" id="cb5-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb5-3" data-line-number="3"><span class="fu">line 2   "Version":</span><span class="at"> </span><span class="st">"2020-11-12"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb5-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb5-5" data-line-number="5"><span class="fu">line 3   "Statement":</span><span class="at"> </span><span class="kw">[</span></div>
+<div class="sourceLine" id="cb5-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb5-7" data-line-number="7">line 4       <span class="kw">{</span></div>
+<div class="sourceLine" id="cb5-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb5-9" data-line-number="9"><span class="fu">line 5         "Sid":</span><span class="at"> </span><span class="st">"PublicReadGetObject"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb5-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb5-11" data-line-number="11"><span class="fu">line 6         "Effect":</span><span class="at"> </span><span class="st">"Allow"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb5-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb5-13" data-line-number="13"><span class="fu">line 7         "Principal":</span><span class="at"> </span><span class="st">"*"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb5-14" data-line-number="14"></div>
+<div class="sourceLine" id="cb5-15" data-line-number="15"><span class="fu">line 8         "Action":</span><span class="at"> </span><span class="st">"s3:GetObject"</span><span class="er">,</span></div>
+<div class="sourceLine" id="cb5-16" data-line-number="16"></div>
+<div class="sourceLine" id="cb5-17" data-line-number="17"><span class="fu">line 9         "Resource":</span><span class="at"> </span><span class="st">"arn:aws:s3:::company-sensitive-14dnid23nfief/*"</span></div>
+<div class="sourceLine" id="cb5-18" data-line-number="18"></div>
+<div class="sourceLine" id="cb5-19" data-line-number="19">line 10     }</div>
+<div class="sourceLine" id="cb5-20" data-line-number="20"></div>
+<div class="sourceLine" id="cb5-21" data-line-number="21">line 11   ]</div>
+<div class="sourceLine" id="cb5-22" data-line-number="22"></div>
+<div class="sourceLine" id="cb5-23" data-line-number="23">line 12 }</div></code></pre>
+<h5 id="a.-2">A. 2</h5>
+<h5 id="b.-7">B. 7</h5>
+<h5 id="c.-8">C. 8</h5>
+<h5 id="d.-9">D. 9</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/3.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/4.png"></p>
+<h4 id="单选题-以下哪项是多重身份验证-mfa-的示例">69. [单选题] 以下哪项是多重身份验证 (MFA) 的示例?</h4>
+<h5 id="a.-pin-码和软件令牌-pin-and-software-token">A. PIN 码和软件令牌 PIN and software token</h5>
+<h5 id="b.-指纹和视网膜扫描-fingerprint-and-retinal-scan">B. 指纹和视网膜扫描 fingerprint and retinal scan</h5>
+<h5 id="c.-用户名和密码username-and-password">C. 用户名和密码username and password</h5>
+<h5 id="d.-一次性短信代码和硬件令牌one-time-sms-code-and-a-hardware-token">D. 一次性短信代码和硬件令牌one-time SMS code and a hardware token</h5>
+<p>这里补充一个关于MFA的知识点吧：</p>
+<p><strong>MFA要求用户提供两个或更多不同类别的身份验证因素才能获得访问权限。这三个因素是：</strong></p>
+<p><strong>1.你知道的东西 - 密码、PIN 码、安全问题的答案。</strong></p>
+<p><strong>2.你拥有的东西 - 手机（接收短信/验证码）、硬件令牌、智能卡。</strong></p>
+<p><strong>3.你固有的东西 - 指纹、面部识别、视网膜扫描、声纹。</strong></p>
+<p><strong>真正的 MFA 必须来自至少两个不同的类别。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/5.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/6.png"></p>
+<h4 id="单选题-题目内容请看题目描述-4">70. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="aws用家在户口网络进行设定而这些设定会记录用户或第三者的活动第-11-行代码中的设定可以找到哪些用户或第三者的活动信息">AWS用家在户口网络进行设定，而这些设定会记录用户或第三者的活动。第 11 行代码中的设定可以找到哪些用户或第三者的活动信息？</h5>
+<pre class="sourceCode yaml" id="cb6"><code class="sourceCode yaml"><div class="sourceLine" id="cb6-1" data-line-number="1">line 1  sudo yum install python-pip -y</div>
+<div class="sourceLine" id="cb6-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb6-3" data-line-number="3">line 2  sudo pip install opencanary</div>
+<div class="sourceLine" id="cb6-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb6-5" data-line-number="5">line 3</div>
+<div class="sourceLine" id="cb6-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb6-7" data-line-number="7">line 4  sudo opencanaryd --copyconfig</div>
+<div class="sourceLine" id="cb6-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb6-9" data-line-number="9">line 5</div>
+<div class="sourceLine" id="cb6-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb6-11" data-line-number="11">line 6  opencanaryd --start</div>
+<div class="sourceLine" id="cb6-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb6-13" data-line-number="13">line 7</div>
+<div class="sourceLine" id="cb6-14" data-line-number="14"></div>
+<div class="sourceLine" id="cb6-15" data-line-number="15">line 8</div>
+<div class="sourceLine" id="cb6-16" data-line-number="16"></div>
+<div class="sourceLine" id="cb6-17" data-line-number="17">line 9  sudo yun install jq -y</div>
+<div class="sourceLine" id="cb6-18" data-line-number="18"></div>
+<div class="sourceLine" id="cb6-19" data-line-number="19">line 10</div>
+<div class="sourceLine" id="cb6-20" data-line-number="20"></div>
+<div class="sourceLine" id="cb6-21" data-line-number="21">line 11  jq -r .src_host /var/tmp/opencanary.log | grep -V ^$ | sort | uniq &gt; -/sources.txt</div>
+<div class="sourceLine" id="cb6-22" data-line-number="22"></div>
+<div class="sourceLine" id="cb6-23" data-line-number="23">line 12  jq -r .logdata.USERNAME /var/tmp/opencanary.log | grep -V null | sort | uniq &gt; -/usernames.txt</div>
+<div class="sourceLine" id="cb6-24" data-line-number="24"></div>
+<div class="sourceLine" id="cb6-25" data-line-number="25">line 13  jq -r .logdata.PASSWORD /var/tmp/opencanary.log | grep -V null | sort | uniq &gt; -/passwords.txt</div></code></pre>
+<h5 id="a.-user-name-用户的名称">A. User Name 用户的名称</h5>
+<h5 id="b.-user-source-用户的来源">B. User Source 用户的来源</h5>
+<h5 id="c.-attacker-name-攻击者的名称">C. Attacker Name 攻击者的名称</h5>
+<h5 id="d.-attacker-source-攻击者的来源">D. Attacker Source 攻击者的来源</h5>
+<p>随便补充一点：</p>
+<p><strong>OpenCanary 是一个蜜罐系统，它会模拟各种服务（如 SSH、FTP、HTTP）来诱捕攻击者。当攻击者探测或尝试入侵时，OpenCanary 会记录详细信息，包括：</strong></p>
+<p><strong>1.来源 IP (src_host)</strong></p>
+<p><strong>2.尝试的用户名 (logdata.USERNAME)</strong></p>
+<p><strong>3.尝试的密码 (logdata.PASSWORD)</strong></p>
+<p><strong>4.访问的服务等</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/7.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/8.png"></p>
+<h4 id="单选题-aws用户设置了一个vpcip地址范围为10.0.0.0-10.0.0.24-下列哪个-ip-地址用于-dns">71. [单选题] AWS用户设置了一个VPC，IP地址范围为10.0.0.0-10.0.0.24。 下列哪个 IP 地址用于 DNS ?</h4>
+<h5 id="a.-10.0.0.0">A. 10.0.0.0</h5>
+<h5 id="b.-10.0.0.1">B. 10.0.0.1</h5>
+<h5 id="c.-10.0.0.2">C. 10.0.0.2</h5>
+<h5 id="d.-10.0.0.3">D. 10.0.0.3</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/9.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/10.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/11.png"></p>
+<h4 id="单选题-以下哪种类型的云服务用于操作系统和网络">72. [单选题] 以下哪种类型的云服务用于操作系统和网络 ?</h4>
+<h5 id="a.-软件即服务software-as-a-service">A. 软件即服务Software as a Service</h5>
+<h5 id="b.-平台即服务platform-as-a-service">B. 平台即服务Platform as a Service</h5>
+<h5 id="c.-基础架构即服务-infrasture-as-a-service">C. 基础架构即服务 Infrasture as a Service</h5>
+<h5 id="d.-数据即服务-data-as-a-service">D. 数据即服务 Data as a Service</h5>
+<p>操作系统啊……可惜我才刚学两节课：（ <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/12.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/13.png"></p>
+<h4 id="单选题-以下哪项是bastionhost的特点">73. [单选题] 以下哪项是Bastionhost的特点？</h4>
+<h5 id="a.-包含敏感信息-contains-sensitive-information">A. 包含敏感信息 Contains sensitive information</h5>
+<h5 id="b.-无法访问内部系统-no-access-to-internal-systems">B. 无法访问内部系统 No access to internal systems</h5>
+<h5 id="c.-限制暴露的服务-limits-exposed-services">C. 限制暴露的服务 Limits exposed services</h5>
+<h5 id="d.-没有连接到互联网-no-connection-to-the-internet">D. 没有连接到互联网 No connection to the internet</h5>
+<p>补充一点关于什么是Bastionhost：</p>
+<p><strong>Bastion Host 通常被称为 “堡垒主机” 或 “跳板机”，它是网络安全架构中的一个专门设计的主机。</strong></p>
+<p><strong>堡垒主机是一个被高度强化和安全配置的计算机，通常位于网络的 DMZ 或公共子网中，作为从外部网络（如互联网）访问内部私有网络的唯一入口点。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/14.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/15.png"></p>
+<h4 id="单选题-在linux系统中哪个命令可以用于创建文件系统">74. [单选题] 在Linux系统中，哪个命令可以用于创建文件系统？</h4>
+<h5 id="a.-mount-devsda3-mntusb">A. mount /dev/sda3 /mnt/usb</h5>
+<h5 id="b.-mkfs-ext4-devsda2">B. mkfs-ext4 /dev/sda2</h5>
+<h5 id="c.-mkfs-ext3-syssda1">C. mkfs-ext3 /sys/sda1</h5>
+<h5 id="d.-pvcreate-devsda">D. pvcreate /dev/sda</h5>
+<h5 id="e.-genfstab--u--p-mnt">E. genfstab -U -p /mnt</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/16.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/17.png"></p>
+<h4 id="单选题-题目内容请看题目描述-5">75. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="link实际上是指向linux系统中另一个文件或文件夹的指标以下哪个命令可以产生下面的结果">‘Link’实际上是指向LINUX系统中另一个文件或文件夹的指标。以下哪个命令可以产生下面的结果:</h5>
+<pre class="sourceCode yaml" id="cb7"><code class="sourceCode yaml"><div class="sourceLine" id="cb7-1" data-line-number="1">&gt; ls -ilas</div>
+<div class="sourceLine" id="cb7-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb7-3" data-line-number="3">|total 0</div>
+<div class="sourceLine" id="cb7-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb7-5" data-line-number="5"><span class="fu">|9731253 0 drwxr-xr-x 1 user users 4096 Jul 14 13:</span><span class="at">31 .</span></div>
+<div class="sourceLine" id="cb7-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb7-7" data-line-number="7"><span class="fu">|1725961 0 drwxr-xr-x 1 user users 4096 Jul 14 13:</span><span class="at">29 ..</span></div>
+<div class="sourceLine" id="cb7-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb7-9" data-line-number="9"><span class="fu">|90371467 0 -rw-r--r-- 2 user users 90 Jul 14 13:</span><span class="at">30 testing.txt</span></div>
+<div class="sourceLine" id="cb7-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb7-11" data-line-number="11"><span class="fu">|90371467 0 -rw-r--r-- 2 user users 90 Jul 14 13:</span><span class="at">30 shotcut-testing.txt</span></div></code></pre>
+<h5 id="a.-link--s-testing.txt-shotcut-testing.txt">A. link -s testing.txt shotcut-testing.txt</h5>
+<h5 id="b.-ln--s-shotcut.txt-testing.txt">B. ln -s shotcut.txt testing.txt</h5>
+<h5 id="c.-ln-testing.txt-shotcut-testing.txt">C. ln testing.txt shotcut-testing.txt</h5>
+<h5 id="d.-ln--s-testing.txt-shotcut-testing.txt">D. ln -s testing.txt shotcut-testing.txt</h5>
+<h5 id="e.-ln-shotcut.txt-testing.txt">E. ln shotcut.txt testing.txt</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/18.png"></p>
+<h4 id="单选题-以下哪个命令用于在linux系统中创建分区">76. [单选题] 以下哪个命令用于在Linux系统中创建分区？</h4>
+<h5 id="a.-gdisk-devsde">A. gdisk /dev/sde</h5>
+<h5 id="b.-mke2fs-devsdb1--t-ext4">B. mke2fs /dev/sdb1 -t ext4</h5>
+<h5 id="c.-mount-devsdc1-mntfs_home">C. mount /dev/sdc1 /mnt/fs_home</h5>
+<h5 id="d.-fdisk--lu">D. fdisk -lu</h5>
+<h5 id="e.-lvcreate--l-200-devvg00logvol-00">E. lvcreate -l +200 /dev/vg00/log/vol-00</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/19.png"></p>
+<h4 id="单选题-一个系统管理员要扩展运行在lvm系统中的服务器存储以下哪个命令可以用于扩展lvm中的逻辑卷">77. [单选题] 一个系统管理员要扩展运行在LVM系统中的服务器存储。以下哪个命令可以用于扩展LVM中的逻辑卷？</h4>
+<h5 id="a.-lvdisplay-devvg02vol-01">A. lvdisplay /dev/vg02/vol-01</h5>
+<h5 id="b.-lvcreate--n-devvg02--l-200">B. lvcreate -n /dev/vg02 -l 200</h5>
+<h5 id="c.-lvextend--n-devvg02--l-200">C. lvextend -n /dev/vg02 -l +200</h5>
+<h5 id="d.-lvscan--l-200-devvg02vol-01">D. lvscan -l +200 /dev/vg02/vol-01</h5>
+<h5 id="e.-lvresize--l-200-devvg02vol-01">E. lvresize -l +200 /dev/vg02/vol-01</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/20.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/21.png"></p>
+<h4 id="单选题-题目内容请看题目描述-6">78. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="一个系统管理员编写了一个bash代码来构建一个raid系统如下所示将要实现什么类型的raid">一个系统管理员编写了一个bash代码来构建一个RAID系统，如下所示，将要实现什么类型的RAID?</h5>
+<pre class="sourceCode yaml" id="cb8"><code class="sourceCode yaml"><div class="sourceLine" id="cb8-1" data-line-number="1">| <span class="co">#!/bin/bash</span></div>
+<div class="sourceLine" id="cb8-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb8-3" data-line-number="3">| hd1=/dev/sda1</div>
+<div class="sourceLine" id="cb8-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb8-5" data-line-number="5">| hd2=/dev/sdb1</div>
+<div class="sourceLine" id="cb8-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb8-7" data-line-number="7">| hd3=/dev/sdc1</div>
+<div class="sourceLine" id="cb8-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb8-9" data-line-number="9">| hd4=/dev/sdd1</div>
+<div class="sourceLine" id="cb8-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb8-11" data-line-number="11">| mdadm --build /dev/md1 --level=1 --raid-devices=2 $hd1 $hd2</div>
+<div class="sourceLine" id="cb8-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb8-13" data-line-number="13">| mdadm --build /dev/md2 --level=1 --raid-devices=2 $hd3 $hd4</div>
+<div class="sourceLine" id="cb8-14" data-line-number="14"></div>
+<div class="sourceLine" id="cb8-15" data-line-number="15">| mdadm --build /dev/md3 --level=0 --raid-devices=2 /dev/md2 /dev/md1</div></code></pre>
+<h5 id="a.-raid-0">A. RAID 0</h5>
+<h5 id="b.-raid-1">B. RAID 1</h5>
+<h5 id="c.-raid-10">C. RAID 1+0</h5>
+<h5 id="d.-raid-01">D. RAID 0+1</h5>
+<h5 id="e.-这个代码不起作用-no-effect">E. 这个代码不起作用 (No effect)</h5>
+<p>补充知识点关于RAID系统：</p>
+<p><strong>RAID 系统（Redundant Array of Independent Disks，独立磁盘冗余阵列）是一种将多个物理磁盘驱动器组合成一个或多个逻辑单元的技术，旨在提升数据存储的性能、可靠性或两者兼顾。</strong></p>
+<p>再关于mdadm命令：</p>
+<p><strong>mdadm 是 Linux 系统中用于管理和监控软件 RAID 设备的命令行工具。</strong> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/22.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/23.png"></p>
+<h4 id="单选题-题目内容请看题目描述-7">79. [单选题] 题目内容请看题目描述。</h4>
+<p>以下是运行在LINUX服务器中的服务清单。以下哪个命令可以关闭“bluetooth.service”服务？</p>
+<pre class="sourceCode yaml" id="cb9"><code class="sourceCode yaml"><div class="sourceLine" id="cb9-1" data-line-number="1">|● vm-production-xabonline.com</div>
+<div class="sourceLine" id="cb9-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb9-3" data-line-number="3"><span class="fu">| State:</span><span class="at"> running</span></div>
+<div class="sourceLine" id="cb9-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb9-5" data-line-number="5"><span class="fu">| Jobs:</span><span class="at"> 0 queued</span></div>
+<div class="sourceLine" id="cb9-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb9-7" data-line-number="7"><span class="fu">| Failed:</span><span class="at"> 0 units</span></div>
+<div class="sourceLine" id="cb9-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb9-9" data-line-number="9"><span class="fu">| Since:</span><span class="at"> Fri 2023-05-19 08:37:06 UTC; 2 months 11 days ago</span></div>
+<div class="sourceLine" id="cb9-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb9-11" data-line-number="11"><span class="fu">| CGroup:</span></div>
+<div class="sourceLine" id="cb9-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb9-13" data-line-number="13">| ├─init.scope</div>
+<div class="sourceLine" id="cb9-14" data-line-number="14"></div>
+<div class="sourceLine" id="cb9-15" data-line-number="15">| │ └─ 1 /sbin/init</div>
+<div class="sourceLine" id="cb9-16" data-line-number="16"></div>
+<div class="sourceLine" id="cb9-17" data-line-number="17">| ├─system.slice</div>
+<div class="sourceLine" id="cb9-18" data-line-number="18"></div>
+<div class="sourceLine" id="cb9-19" data-line-number="19">| │ ├─bluetooth.service</div>
+<div class="sourceLine" id="cb9-20" data-line-number="20"></div>
+<div class="sourceLine" id="cb9-21" data-line-number="21">| │ │ └─ 737 /usr/lib/bluetooth/bluetoothd</div>
+<div class="sourceLine" id="cb9-22" data-line-number="22"></div>
+<div class="sourceLine" id="cb9-23" data-line-number="23">| │ ├─dbus.service</div>
+<div class="sourceLine" id="cb9-24" data-line-number="24"></div>
+<div class="sourceLine" id="cb9-25" data-line-number="25">| │ ├─docker.service</div>
+<div class="sourceLine" id="cb9-26" data-line-number="26"></div>
+<div class="sourceLine" id="cb9-27" data-line-number="27"><span class="fu">| │ │ └─ 853 /usr/bin/dockerd -H fd:</span><span class="at">//</span></div>
+<div class="sourceLine" id="cb9-28" data-line-number="28"></div>
+<div class="sourceLine" id="cb9-29" data-line-number="29">| │ ├─libvirtd.service</div>
+<div class="sourceLine" id="cb9-30" data-line-number="30"></div>
+<div class="sourceLine" id="cb9-31" data-line-number="31">| │ │ └─ 2975 /usr/bin/libvirtd --timeout 120</div>
+<div class="sourceLine" id="cb9-32" data-line-number="32"></div>
+<div class="sourceLine" id="cb9-33" data-line-number="33">| │ ├─polkit.service</div>
+<div class="sourceLine" id="cb9-34" data-line-number="34"></div>
+<div class="sourceLine" id="cb9-35" data-line-number="35">| │ └─virtlogd.service</div>
+<div class="sourceLine" id="cb9-36" data-line-number="36"></div>
+<div class="sourceLine" id="cb9-37" data-line-number="37">| │ └─ 3176 /usr/bin/virtlogd</div>
+<div class="sourceLine" id="cb9-38" data-line-number="38"></div>
+<div class="sourceLine" id="cb9-39" data-line-number="39">| └─user.slice</div>
+<div class="sourceLine" id="cb9-40" data-line-number="40"></div>
+<div class="sourceLine" id="cb9-41" data-line-number="41">| └─user-1000.slice</div></code></pre>
+<h5 id="a.-systemctl-kill-bluetooth.service">A. systemctl kill bluetooth.service</h5>
+<h5 id="b.-systemctl-disable-bluetooth.service">B. systemctl disable bluetooth.service</h5>
+<h5 id="c.-systemctl-down-bluetooth.service">C. systemctl down bluetooth.service</h5>
+<h5 id="d.-systemctl-stop-bluetooth.service">D. systemctl stop bluetooth.service</h5>
+<h5 id="e.-systemctl-rm-bluetooth.service">E. systemctl rm bluetooth.service</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/24.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/25.png"></p>
+<h4 id="单选题-题目内容请看题目描述-8">80. [单选题] 题目内容请看题目描述。</h4>
+<h5 id="cron服务在linux系统中充当作业调度程序它实际上是在cron表crontab中指定的命令行列表现在准备启动和关闭一个web服务器httpd.service如下所示">cron服务在LINUX系统中充当作业调度程序。它实际上是在cron表（crontab）中指定的命令行列表。现在准备启动和关闭一个Web服务器（httpd.service），如下所示：</h5>
+<h5 id="上午8时30分启动--下午6时06分关闭周一至周五">上午8时30分（启动）- 下午6时06分（关闭）；周一至周五</h5>
+<h5 id="以下哪个crontab设置适用于这种情况">以下哪个crontab设置适用于这种情况？</h5>
+<h5 id="a.-30-8-1-5-usrbinsystemctl-start-httpd.service-及-06-18-1-5-usrbinsystemctl-stop-httpd.service">A. 30 8 * 1-5 * /usr/bin/systemctl start httpd.service 及 06 18 * 1-5 * /usr/bin/systemctl stop httpd.service</h5>
+<h5 id="b.-30-8-1-5-usrbinsystemctl-start-httpd.service-及-06-18-1-5-usrbinsystemctl-stop-httpd.service">B. 30 8 * * 1-5 /usr/bin/systemctl start httpd.service 及 06 18 * * 1-5 /usr/bin/systemctl stop httpd.service</h5>
+<h5 id="c.-30-8-1-5-usrbinsystemctl-start-httpd.service-及-06-18-1-5-usrbinsystemctl-stop-httpd.service">C. 30 8 1-5 * <em>/usr/bin/systemctl start httpd.service 及 06 18 1-5 </em> */usr/bin/systemctl stop httpd.service</h5>
+<h5 id="d.-30-8-usrbinsystemctl-start-httpd.service-及-06-18-usrbinsystemctl-stop-httpd.service">D. 30 8 * * * /usr/bin/systemctl start httpd.service 及 06 18 * * * /usr/bin/systemctl stop httpd.service</h5>
+<h5 id="e.-以上都不是">E. 以上都不是</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/26.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/27.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/28.png"></p>
+<h4 id="单选题-以下哪个linux命令可以显示目录中的所有文件包括隐藏文件">81. [单选题] 以下哪个Linux命令可以显示目录中的所有文件，包括隐藏文件？</h4>
+<h5 id="a.-ls--ls">A. ls -ls</h5>
+<h5 id="b.-ls--asl">B. ls -asl</h5>
+<h5 id="c.-ls--las-wc">C. ls -lAs | wc</h5>
+<h5 id="d.-ls--als-grep-ssh">D. ls -als | grep ssh</h5>
+<h5 id="e.-none">E. None</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/29.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/30.png"></p>
+<h4 id="单选题-如果您想要检查linux系统上可用的剩余磁盘空间量您会使用以下哪个命令">82. [单选题] 如果您想要检查Linux系统上可用的剩余磁盘空间量，您会使用以下哪个命令？</h4>
+<h5 id="a.-df--vh">A. df -vh</h5>
+<h5 id="b.-df--sh">B. df -sh</h5>
+<h5 id="c.-dl--vh">C. dl -vh</h5>
+<h5 id="d.-dd--sh">D. dd -sh</h5>
+<h5 id="e.-dt--vh">E. dt -vh</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/31.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/32.png"></p>
+<h4 id="单选题-dockerfile是一个文本文档用于在docker架构中生成以下哪个组件">83. [单选题] Dockerfile是一个文本文档，用于在Docker架构中生成以下哪个组件？</h4>
+<h5 id="a.-docker-engine">A. docker engine</h5>
+<h5 id="b.-image">B. image</h5>
+<h5 id="c.-container">C. container</h5>
+<h5 id="d.-volumes">D. volumes</h5>
+<h5 id="e.-docker-network">E. docker network</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/33.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/34.png"></p>
+<h4 id="单选题-在linux系统中运行中程序的进程并位于内存区域可以通过检查文件procpidmaps来显示这些内存区域以下哪个不是linux系统中的内存区">84. [单选题] 在Linux系统中，运行中程序的进程并位于内存区域，可以通过检查文件/proc/[pid]/maps来显示这些内存区域。以下哪个不是Linux系统中的内存区？</h4>
+<h5 id="a.-heap">A. [heap]</h5>
+<h5 id="b.-stack">B. [stack]</h5>
+<h5 id="c.-paging">C. [paging]</h5>
+<h5 id="d.-vvar">D. [vvar]</h5>
+<h5 id="e.-vdso">E. [vdso]</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/35.png"></p>
+<h4 id="单选题-以下命令中哪个命令可以对export-logs输出进行排序">85. [单选题] 以下命令中，哪个命令可以对“export-logs”输出进行排序?</h4>
+<h5 id="a.-export-logssort">A. export-logs&lt;sort</h5>
+<h5 id="b.-export-logssort">B. export-logs&gt;sort</h5>
+<h5 id="c.-export-logssort">C. export-logs&amp;sort</h5>
+<h5 id="d.-export-logssort">D. export-logs|sort</h5>
+<h5 id="e.-export-logssort">E. export-logs&lt;&gt;sort</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/36.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/37.png"></p>
+<h4 id="多选题-哪些文件会影响linux主机的名称解析功能">86. [多选题] 哪些文件会影响Linux主机的名称解析功能？</h4>
+<h5 id="a.-etcresolv.conf">A. /etc/resolv.conf</h5>
+<h5 id="b.-etchosts">B. /etc/hosts</h5>
+<h5 id="c.-etcdefaultnames">C. /etc/default/names</h5>
+<h5 id="d.-etcnsswitch.conf">D. /etc/nsswitch.conf</h5>
+<h5 id="e.-etcinethosts">E. /etc/inet/hosts</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/38.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/39.png"></p>
+<h4 id="单选题-哪个系统文件包含了一般的端口关联的服务和协议">87. [单选题] 哪个系统文件包含了一般的端口、关联的服务和协议？</h4>
+<h5 id="a.-etcservices">A. /etc/services</h5>
+<h5 id="b.-etcsysconfignetwork-scripts">B. /etc/sysconfig/network-scripts</h5>
+<h5 id="c.-etcservices.conf">C. /etc/services.conf</h5>
+<h5 id="d.-etcinethosts">D. /etc/inet/hosts</h5>
+<h5 id="e.-none-of-the-choices">E. None of the choices</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/40.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/41.png"></p>
+<h4 id="填空题-题目内容请看题目描述在-windows-10-中-视频文件mixkit-two-women-laying-together-925-medium.mp4在mft-中分成多少个data-cluster-储存提示-请以阿拉伯数字作答">88. [填空题] 题目内容请看题目描述。在 Windows 10 中 ，视频文件(mixkit-two-women-laying-together-925-medium.mp4)，在MFT 中分成多少个Data Cluster 储存？提示: 请以阿拉伯数字作答</h4>
+<p><em>从这里开始切换到Win 10文件夹。</em></p>
+<p>开始取证了，这里我刚开始在火眼里找没找出来，顺便查了一下MTF是什么意思：</p>
+<p><strong>MFT是NTFS文件系统的核心组件，相当于整个文件系统的 “总目录” 或 “数据库”。</strong></p>
+<p>差不多意思就是数据库，这里有师傅说可以跑脚本，最快的方法是用x-ways查看： <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/42.png"></p>
+<h4 id="单选题-在-windows-10-中-mixkit-two-woman-laying-together-925-medium.mp4-的last-access-时间是多少">89. [单选题] 在 Windows 10 中  mixkit-two-woman-laying-together-925-medium.mp4 的last Access 时间是多少?</h4>
+<h5 id="a.-20230710-183132">A. 2023/07/10 18:31:32</h5>
+<h5 id="b.-20230710-183101">B. 2023/07/10 18:31:01</h5>
+<h5 id="c.-20230710-193122">C. 2023/07/10 19:31:22</h5>
+<h5 id="d.-20230711-193122">D. 2023/07/11 19:31:22</h5>
+<p>last access就是最后访问时间，在x-ways里查看就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/43.png"></p>
+<h4 id="填空题-在-windows-7-中-有1个mp3-文件-例unlock-me-149058.mp3用户使用什么程序打开该mp3-文件-提示请以小写字母作答">90. [填空题] 在 Windows 7 中 ，有1个MP3 文件 (例:unlock-me-149058.mp3)，用户使用什么程序打开该MP3 文件? 提示:请以小写字母作答</h4>
+<p><em>从这里开始切换到Win 7文件夹。</em></p>
+<p>依旧火眼和x-ways同时挂载，在这两个里面找不到就仿真了一下，但不知道为什么我仿真后虚拟机文件打不开（？，研究了很久还是没办法打开就放弃叻。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/45.png"></p>
+<h4 id="单选题-在-windows-7-中-有1个mp3-文件-unlock-me-149058.mp3该文件的zone-identiflier为33代表哪一个security-zone">91. [单选题] 在 Windows 7 中 ’ ‘有1个MP3 文件 (unlock-me-149058.mp3)，该文件的Zone identiflier为’3’。’3’代表哪一个security Zone?</h4>
+<h5 id="a.-local-machine-zone">A. Local Machine Zone</h5>
+<h5 id="b.-internet-zone">B. Internet Zone</h5>
+<h5 id="c.-restricted-zone">C. Restricted Zone</h5>
+<h5 id="d.-trust-site-zone">D. Trust Site Zone</h5>
+<p>这题直接梭就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/44.png"></p>
+<h4 id="单选题-在-windows-7-中-1个mp3-文件-unlock-me-149058.mp3该文件从哪个网站下载">92. [单选题] 在 Windows 7 中 1个MP3 文件 (unlock-me-149058.mp3)，该文件从哪个网站下载?</h4>
+<h5 id="a.-www.pixbay.co">A. www.Pixbay.co</h5>
+<h5 id="b.-free-mp3-download.net">B. free-mp3-download.net/</h5>
+<h5 id="c.-httpsmp3juices.nu">C. https://mp3juices.nu</h5>
+<h5 id="d.-mygomp3.com">D. mygomp3.com</h5>
+<p>这里在浏览器找到下载记录就行。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/46.png"></p>
+<h4 id="单选题-在-windows-7-中-内有mp3文件-miracle.mp3-更改名称时间">93. [单选题] 在 Windows 7 中 内有mp3文件 (miracle.mp3), 更改名称时间?</h4>
+<h5 id="a.-2023-07-13-025520">A. 2023-07-13 02:55:20</h5>
+<h5 id="b.-2023-07-15-105520">B. 2023-07-15 10:55:20</h5>
+<h5 id="c.-2023-07-12-105804">C. 2023-07-12 10:58:04</h5>
+<h5 id="d.-2023-07-13-105520">D. 2023-07-13 10:55:20</h5>
+<p>不知道为什么我的NTFS日志分析完了还是查不到改名后的记录，但思路是这么做的倒是。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/47.png"></p>
+<h4 id="填空题-在-windows-7-中-内有mp3文件-miracle.mp3-mp3文件更改名称前的名称是什么-提示-请以与记录相同的名称与文件格式作答">94. [填空题] 在 Windows 7 中 内有mp3文件 (miracle.mp3), mp3文件更改名称前的名称是什么? 提示: 请以与记录相同的名称与文件格式作答</h4>
+<p>同上，这里我查不到TT。</p>
+<h4 id="单选题-在-windows-7中有多少个文件曾被potplayer-播放">95. [单选题] 在 Windows 7中有多少个文件曾被potplayer 播放?</h4>
+<h5 id="a.-7">A. 7</h5>
+<h5 id="b.-8">B. 8</h5>
+<h5 id="c.-9">C. 9</h5>
+<h5 id="d.-10">D. 10</h5>
+<p>查了一下potplayer是多媒体播放器，那看一下mp3文件打开了几次应该就好。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/48.png"></p>
+<h4 id="填空题-在-windows-7中-potplayer最后播放的文件名-提示-请以与记录相同的名称包括小写字母阿拉伯数字与符号与文件格式作答">96. [填空题] 在 Windows 7中, potplayer最后播放的文件名? 提示: 请以与记录相同的名称(包括小写字母、阿拉伯数字与符号)与文件格式作答</h4>
+<p>倒序查看访问记录。 <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/49.png"></p>
+<h4 id="单选题-事件应急小组正在处理一起网络事件以下哪一个指令是设定取证服务器以作取得内存内容的初步步骤">97. [单选题] 事件应急小组正在处理一起网络事件。以下哪一个指令是设定取证服务器以作取得内存内容的初步步骤?</h4>
+<p><em>从这里开始又变成ai一把梭了orz。</em></p>
+<h5 id="a.-nc--l-4444-mem126.lime.gz">A. nc -l 4444 &gt;mem126.lime.gz</h5>
+<h5 id="b.-insmod-lime.ko-pathtcp4444-formatlime-digestsha256-compress1">B. Insmod lime.ko “pathtcp:4444 format=lime digest=sha256 compress=1”</h5>
+<h5 id="c.-scp--i-dfirsciawtest.pem-lime.ko-ec2-duckman3.137.169.127scp--i-dfirsciawtest.pem-usrbinnc-ec2-duckman3.137.169.127">C. scp -I ~ /DFIRSciAWTest.pem lime.ko ec2-duckman@3.137.169.127:~/scp -I ~/DFIRSciAWTest.pem /usr/bin/nc ec2-duckman@3.137.169.127: ~/</h5>
+<h5 id="d.-ssh-duckman-sudo-dd-ifdevmem-gzip--1---memory_dump.gz">D. ssh duckman@<target_server_ip> “sudo dd if=/dev/mem | gzip -1 -” &gt; memory_dump.gz</target_server_ip></h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/50.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/51.png"> <img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/52.png"></p>
+<h4 id="单选题-基于两个sqlite数据库文件cus_202308102034.json和date_202308101120.json编译一个sqlite脚本找出谁前往目的地莫斯科">98. [单选题] 基于两个SQLite数据库文件“cus_202308102034.json”和“date_202308101120.json”，编译一个SQLite脚本找出谁前往目的地“莫斯科”。</h4>
+<h5 id="a.-select-c.customer_name-c.destination-datetimed.arrival_timestamp_hk-unixepoch-localtime-as-arrival_time_hk-from-cus-c-inner-join-date-d-on-c.destination-d.destination-where-c.destination-moscow">A. SELECT c.customer_name, c.destination, datetime(d.arrival_timestamp_HK, ‘unixepoch’, ‘localtime’) AS arrival_time_hk FROM cus c INNER JOIN date d ON c.destination = d.Destination WHERE c.destination = ‘Moscow’</h5>
+<h5 id="b.-select-cus.customer_name-cus.destination-datetimedate.arrival_timestamp_hk-unixepoch-localtime-as-arrival_time_hk-from-cus-inner-join-date-on-customer_id-date.id-where-cus.destination-moscow-and-date.destination-moscow-and-date.arrival_timestamp_hk-is-not-null-and-datetimedate.arrival_timestamp_hk-unixepoch-localtime">B. SELECT cus.customer_name, cus.destination, datetime(date.arrival_timestamp_HK, ‘unixepoch’, ‘localtime’) AS arrival_time_hk FROM cus INNER JOIN date ON customer_id = date.id WHERE cus.destination = ‘Moscow’ AND date.Destination = ‘Moscow’ AND date.arrival_timestamp_HK IS NOT NULL AND datetime(date.arrival_timestamp_HK, ‘unixepoch’, ‘localtime’)</h5>
+<h5 id="c.-select-cus.customer_name-cus.destination-date.arrival_timestamp-from-cus-inner-join-date-on-cus.destination-date.destinationwhere-cus.destination-moscow-and-date.destination-moscow">C. SELECT cus.customer_name, cus.destination, date.arrival_timestamp FROM cus INNER JOIN date ON cus.destination = date.destination；WHERE cus.destination = ‘Moscow’ AND date.Destination = ‘Moscow’</h5>
+<h5 id="d.-select-cus.customer_name-cus.destination-datetimedate.arrival_timestamp_hk-unixepoch-localtime-as-arrival_time_hk-from-cus-inner-join-date-on-cus.destination-date.destination-where-cus.destination-moscow-and-date.destination-moscow-and-date.arrival_timestamp_hk-is-not-null-and-datetimedate.arrival_timestamp_hk-unixepoch-localtime">D. SELECT cus.customer_name, cus.destination, datetime(date.arrival_timestamp_HK, ‘unixepoch’, ‘localtime’) AS arrival_time_hk FROM cus INNER JOIN date ON cus.destination = date.Destination WHERE cus.destination = ‘Moscow’ AND date.Destination = ‘Moscow’ AND date.arrival_timestamp_HK IS NOT NULL AND datetime(date.arrival_timestamp_HK, ‘unixepoch’, ‘localtime’)</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/53.png"></p>
+<h4 id="填空题-写一个powershell脚本以提取正在连接到window-11计算机的可移动设备的记录提取相关的数据如装置名称制造商装置详情硬件编号并用write-host指令显示数据">99. [填空题] 写一个Powershell脚本以提取正在连接到Window 11计算机的可移动设备的记录，提取相关的数据如装置名称、制造商、装置详情、硬件编号，并用“Write-Host”指令显示数据。</h4>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/54.png"></p>
+<h4 id="填空题-题目内容请看题目描述-1">100. [填空题] 题目内容请看题目描述。</h4>
+<h5 id="以下-powershell-脚本用于从-windows-server-2012-r2-获取具有管理员权限的所有使用者活动">以下 PowerShell 脚本用于从 Windows Server 2012 R2 获取具有管理员权限的所有使用者活动。</h5>
+<pre class="sourceCode yaml" id="cb10"><code class="sourceCode yaml"><div class="sourceLine" id="cb10-1" data-line-number="1">Get-WinEvent -FilterHashtable @<span class="kw">{</span></div>
+<div class="sourceLine" id="cb10-2" data-line-number="2"></div>
+<div class="sourceLine" id="cb10-3" data-line-number="3">    LogName = 'Security'</div>
+<div class="sourceLine" id="cb10-4" data-line-number="4"></div>
+<div class="sourceLine" id="cb10-5" data-line-number="5">    ID = 4688</div>
+<div class="sourceLine" id="cb10-6" data-line-number="6"></div>
+<div class="sourceLine" id="cb10-7" data-line-number="7">    Level = 0</div>
+<div class="sourceLine" id="cb10-8" data-line-number="8"></div>
+<div class="sourceLine" id="cb10-9" data-line-number="9"><span class="kw">}</span> | Where-Object <span class="kw">{</span>+B86</div>
+<div class="sourceLine" id="cb10-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb10-11" data-line-number="11">    $_.Properties[?].Value -match 'S-1-5-21-\d+-500'</div>
+<div class="sourceLine" id="cb10-12" data-line-number="12"></div>
+<div class="sourceLine" id="cb10-13" data-line-number="13"><span class="kw">}</span> | Select-Object -Property TimeCreated, Message</div></code></pre>
+<h5 id="使用-where-object-命令来进一步过滤事件">使用 “Where-Object” 命令来进一步过滤事件。</h5>
+<h5 id="事件的属性-_.properties-中的参数是什么">事件的属性 “$_.Properties[?]" 中的参数是什么？</h5>
+<h5 id="如果事件的第-9-个属性与内建的-administrator-账户的安全标识符sids-1-5-21500匹配则确保只选择与管理员活动相关的事件">如果事件的第 9 个属性与内建的 Administrator 账户的安全标识符（SID：S-1-5-21–500）匹配，则确保只选择与管理员活动相关的事件。</h5>
+<p><img src="https://github.com/ncbdd0/images/raw/main/meiya2023/67-100/55.png"></p>
+<p>23年资格赛的题量比21和22多了好多，做一半才发现多了三十题，虽然其中有几十题都是理论题（）。</p>
+<p>不过这次学到了很多关于弘联软件的使用，还有接触了很多新的之前没怎么接触过的文件类似.plist、.db、.storedata等数据库文件，做完的时候还是蛮感慨的。24资格赛的检材还在下载，但这两天应该会停一下做点极客大挑战的题学一下ctf:D <del>（其实也不一定做得出来额</del></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
