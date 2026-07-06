@@ -1,0 +1,864 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>python算法学习--动态规划 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>python算法学习--动态规划</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/7/6
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #00bcd4">
+                    python
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>动态规划</p>
+<span id="more"></span>
+<h3 id="动态规划">动态规划</h3>
+<h4 id="斐波那契类型">斐波那契类型</h4>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/description/">70. 爬楼梯 - 力扣（LeetCode）</a></p>
+<p><strong>70. 爬楼梯 - 力扣（LeetCode）</strong></p>
+<p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
+<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：n = 2</p>
+<p>输出：2</p>
+<p>解释：有两种方法可以爬到楼顶。</p>
+<ol type="1">
+<li><p>1 阶 + 1 阶</p></li>
+<li><p>2 阶</p></li>
+</ol>
+<p><strong>示例 2：</strong></p>
+<p>输入：n = 3</p>
+<p>输出：3</p>
+<p>解释：有三种方法可以爬到楼顶。</p>
+<ol type="1">
+<li><p>1 阶 + 1 阶 + 1 阶</p></li>
+<li><p>1 阶 + 2 阶</p></li>
+<li><p>2 阶 + 1 阶</p></li>
+</ol>
+<p><strong>思路：</strong> - 用 f(x) 表示爬到第 x 级台阶的方案数，考虑最后一步可能跨了一级台阶，也可能跨了两级台阶，所以我们可以列出如下式子： - f(x)=f(x−1)+f(x−2)</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb1"><code class="sourceCode python"><div class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb1-2" data-line-number="2">    <span class="kw">def</span> climbStairs(<span class="va">self</span>, n):</div>
+<div class="sourceLine" id="cb1-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">        :type n: int</span></div>
+<div class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb1-7" data-line-number="7">        <span class="co">#斐波那契数列</span></div>
+<div class="sourceLine" id="cb1-8" data-line-number="8">        a0 <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb1-9" data-line-number="9">        a1 <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb1-10" data-line-number="10">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb1-11" data-line-number="11">            a0 , a1 <span class="op">=</span> a1 , a0 <span class="op">+</span> a1</div>
+<div class="sourceLine" id="cb1-12" data-line-number="12">        <span class="cf">return</span> a0</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber/">198. 打家劫舍 - 力扣（LeetCode）</a></p>
+<p><strong>198. 打家劫舍 - 力扣（LeetCode）</strong></p>
+<p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：[1,2,3,1]</p>
+<p>输出：4</p>
+<p>解释：偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。</p>
+<p>偷窃到的最高金额 = 1 + 3 = 4 。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：[2,7,9,3,1]</p>
+<p>输出：12</p>
+<p>解释：偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。</p>
+<p>偷窃到的最高金额 = 2 + 9 + 1 = 12 。</p>
+<p><strong>思路：</strong> - 选或者不选 f[i][1] 表示考虑完前 i 个屋子, 且第 i 个屋子选的最大金额 f[i][0] 表示考虑完前 i 个屋子，且第 i 个屋子不选的最大金额不选，f[i][0]=max(f[i - 1][1], f[i - 1][0]) 选， f[i][1]=f[i - 1][0] + nums[i - 1]。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb2"><code class="sourceCode python"><div class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb2-2" data-line-number="2">    <span class="kw">def</span> rob(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</div>
+<div class="sourceLine" id="cb2-3" data-line-number="3">        n <span class="op">=</span> <span class="bu">len</span>(nums)</div>
+<div class="sourceLine" id="cb2-4" data-line-number="4">        dp <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> n</div>
+<div class="sourceLine" id="cb2-5" data-line-number="5">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb2-6" data-line-number="6">            <span class="cf">if</span> i <span class="op">&lt;</span> <span class="dv">2</span>:</div>
+<div class="sourceLine" id="cb2-7" data-line-number="7">                dp[i] <span class="op">=</span> nums[i]</div>
+<div class="sourceLine" id="cb2-8" data-line-number="8">            <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb2-9" data-line-number="9">                dp[i] <span class="op">=</span> <span class="bu">max</span>(dp[i<span class="dv">-1</span>] , dp[i <span class="op">-</span> <span class="dv">2</span>] <span class="op">+</span> nums[i])</div>
+<div class="sourceLine" id="cb2-10" data-line-number="10">        <span class="cf">return</span> dp[<span class="op">-</span><span class="dv">1</span>]</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/n-th-tribonacci-number/description/?envType=study-plan-v2&amp;envId=dynamic-programming">1137. 第 N 个泰波那契数</a></p>
+<p><strong>1137. 第 N 个泰波那契数</strong></p>
+<p>泰波那契序列 Tn 定义如下：</p>
+<p>T0 = 0, T1 = 1, T2 = 1, 且在 n &gt;= 0 的条件下 Tn+3 = Tn + Tn+1 + Tn+2</p>
+<p>给你整数 n，请返回第 n 个泰波那契数 Tn 的值。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：n = 4</p>
+<p>输出：4</p>
+<p>解释：</p>
+<p>T_3 = 0 + 1 + 1 = 2</p>
+<p>T_4 = 1 + 1 + 2 = 4</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：n = 25</p>
+<p>输出：1389537</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb3"><code class="sourceCode python"><div class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb3-2" data-line-number="2">    <span class="kw">def</span> tribonacci(<span class="va">self</span>, n):</div>
+<div class="sourceLine" id="cb3-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">        :type n: int</span></div>
+<div class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb3-7" data-line-number="7">        num <span class="op">=</span> [<span class="dv">0</span> , <span class="dv">1</span> , <span class="dv">1</span>]</div>
+<div class="sourceLine" id="cb3-8" data-line-number="8">        x , y , z <span class="op">=</span> <span class="dv">0</span> , <span class="dv">1</span> , <span class="dv">2</span></div>
+<div class="sourceLine" id="cb3-9" data-line-number="9">        <span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">2</span>:</div>
+<div class="sourceLine" id="cb3-10" data-line-number="10">            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">2</span>):</div>
+<div class="sourceLine" id="cb3-11" data-line-number="11">                <span class="bu">sum</span> <span class="op">=</span> num[x] <span class="op">+</span> num[y] <span class="op">+</span> num[z]</div>
+<div class="sourceLine" id="cb3-12" data-line-number="12">                x <span class="op">+=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb3-13" data-line-number="13">                y <span class="op">+=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb3-14" data-line-number="14">                z <span class="op">+=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb3-15" data-line-number="15">                num.append(<span class="bu">sum</span>)</div>
+<div class="sourceLine" id="cb3-16" data-line-number="16">        <span class="cf">return</span> num[n]</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-climbing-stairs/description/?envType=study-plan-v2&amp;envId=dynamic-programming">746. 使用最小花费爬楼梯</a></p>
+<p><strong>746. 使用最小花费爬楼梯</strong></p>
+<p>给你一个整数数组 cost ，其中 cost[i] 是从楼梯第 i 个台阶向上爬需要支付的费用。一旦你支付此费用，即可选择向上爬一个或者两个台阶。</p>
+<p>你可以选择从下标为 0 或下标为 1 的台阶开始爬楼梯。</p>
+<p>请你计算并返回达到楼梯顶部的最低花费。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：cost = [10,15,20]</p>
+<p>输出：15</p>
+<p>解释：你将从下标为 1 的台阶开始。</p>
+<ul>
+<li>支付 15 ，向上爬两个台阶，到达楼梯顶部。</li>
+</ul>
+<p>总花费为 15 。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：cost = [1,100,1,1,1,100,1,1,100,1]</p>
+<p>输出：6</p>
+<p>解释：你将从下标为 0 的台阶开始。</p>
+<ul>
+<li>支付 1 ，向上爬两个台阶，到达下标为 2 的台阶。</li>
+<li>支付 1 ，向上爬两个台阶，到达下标为 4 的台阶。</li>
+<li>支付 1 ，向上爬两个台阶，到达下标为 6 的台阶。</li>
+<li>支付 1 ，向上爬一个台阶，到达下标为 7 的台阶。</li>
+<li>支付 1 ，向上爬两个台阶，到达下标为 9 的台阶。</li>
+<li>支付 1 ，向上爬一个台阶，到达楼梯顶部。</li>
+</ul>
+<p>总花费为 6 。</p>
+<p><strong>思路：</strong> - 创建长度为 n+1 的数组 dp，其中 dp[i] 表示达到下标 i 的最小花费。 - 由于可以选择下标 0 或 1 作为初始阶梯，因此有 dp[0]=dp[1]=0。 - 当 2≤i≤n 时，可以从下标 i−1 使用 cost[i−1] 的花费达到下标 i，或者从下标 i−2 使用 cost[i−2] 的花费达到下标 i。为了使总花费最小，dp[i] 应取上述两项的最小值，因此状态转移方程如下： dp[i]=min(dp[i−1]+cost[i−1],dp[i−2]+cost[i−2]) - 依次计算 dp 中的每一项的值，最终得到的 dp[n] 即为达到楼层顶部的最小花费。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb4"><code class="sourceCode python"><div class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb4-2" data-line-number="2">    <span class="kw">def</span> minCostClimbingStairs(<span class="va">self</span>, cost):</div>
+<div class="sourceLine" id="cb4-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">        :type cost: List[int]</span></div>
+<div class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb4-7" data-line-number="7">        n <span class="op">=</span> <span class="bu">len</span>(cost)</div>
+<div class="sourceLine" id="cb4-8" data-line-number="8">        num <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span>(n<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb4-9" data-line-number="9">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,n<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb4-10" data-line-number="10">            num[i] <span class="op">=</span> <span class="bu">min</span>(num[i<span class="dv">-1</span>] <span class="op">+</span> cost[i<span class="dv">-1</span>] , num[i<span class="dv">-2</span>] <span class="op">+</span> cost[i<span class="dv">-2</span>])</div>
+<div class="sourceLine" id="cb4-11" data-line-number="11">        <span class="cf">return</span> num[n]</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/delete-and-earn/description/?envType=study-plan-v2&amp;envId=dynamic-programming">740. 删除并获得点数</a></p>
+<p><strong>740. 删除并获得点数</strong></p>
+<p>给你一个整数数组 nums ，你可以对它进行一些操作。</p>
+<p>每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除 所有 等于 nums[i] - 1 和 nums[i] + 1 的元素。</p>
+<p>开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：nums = [3,4,2]</p>
+<p>输出：6</p>
+<p>解释：</p>
+<p>你可以执行下列步骤：</p>
+<ul>
+<li>删除 4 获得 4 个点数，因此 3 也被删除。nums = [2]。</li>
+<li>之后，删除 2 获得 2 个点数。nums = []。 总共获得 6 个点数。</li>
+</ul>
+<p><strong>示例 2：</strong></p>
+<p>输入：nums = [2,2,3,3,3,4]</p>
+<p>输出：9</p>
+<p>解释：</p>
+<p>你可以执行下列步骤：</p>
+<ul>
+<li>删除 3 获得 3 个点数。所有的 2 和 4 也被删除。nums = [3,3]。</li>
+<li>之后，再次删除 3 获得 3 个点数。nums = [3]。</li>
+<li>再次删除 3 获得 3 个点数。nums = []。</li>
+</ul>
+<p>总共获得 9 个点数。</p>
+<p><strong>思路：</strong> - 用 Counter 统计每个数字出现多少次，计算每个数字的总分数：数字 × 出现次数比如 [2,2,3,3,3] → 2 出现 2 次 = 4 分，3 出现 3 次 = 9 分 - 转化为「打家劫舍」问题 - dp[i] = 考虑数字 1~i 时，能获得的最大分数</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb5"><code class="sourceCode python"><div class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb5-2" data-line-number="2">    <span class="kw">def</span> deleteAndEarn(<span class="va">self</span>, nums):</div>
+<div class="sourceLine" id="cb5-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">        :type nums: List[int]</span></div>
+<div class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb5-7" data-line-number="7">        <span class="im">import</span> collections</div>
+<div class="sourceLine" id="cb5-8" data-line-number="8">        numsMap <span class="op">=</span> collections.Counter(nums)</div>
+<div class="sourceLine" id="cb5-9" data-line-number="9">        max_num <span class="op">=</span> <span class="bu">max</span>(numsMap.keys())</div>
+<div class="sourceLine" id="cb5-10" data-line-number="10">        dp <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> (max_num <span class="op">+</span> <span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb5-11" data-line-number="11">        dp[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> numsMap[<span class="dv">1</span>]</div>
+<div class="sourceLine" id="cb5-12" data-line-number="12">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span> , max_num<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb5-13" data-line-number="13">            dp[i] <span class="op">=</span> <span class="bu">max</span>(dp[i <span class="op">-</span> <span class="dv">1</span>] , dp[i <span class="op">-</span> <span class="dv">2</span>] <span class="op">+</span> i <span class="op">*</span> numsMap[i])</div>
+<div class="sourceLine" id="cb5-14" data-line-number="14">        <span class="cf">return</span> dp[<span class="op">-</span><span class="dv">1</span>]</div></code></pre>
+<h4 id="矩阵">矩阵</h4>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/unique-paths/description/?envType=study-plan-v2&amp;envId=dynamic-programming">62. 不同路径</a></p>
+<p><strong>62. 不同路径</strong></p>
+<p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p><img src="https://github.com/ncbdd0/images/raw/main/python/7.png"></p>
+<p><strong>示例 1：</strong></p>
+<p>输入：m = 3, n = 7</p>
+<p>输出：28</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：m = 3, n = 2</p>
+<p>输出：3</p>
+<p>解释：</p>
+<p>从左上角开始，总共有 3 条路径可以到达右下角。</p>
+<ol type="1">
+<li>向右 -&gt; 向下 -&gt; 向下</li>
+<li>向下 -&gt; 向下 -&gt; 向右</li>
+<li>向下 -&gt; 向右 -&gt; 向下</li>
+</ol>
+<p><strong>示例 3：</strong></p>
+<p>输入：m = 7, n = 3</p>
+<p>输出：28</p>
+<p><strong>示例 4：</strong></p>
+<p>输入：m = 3, n = 3</p>
+<p>输出：6</p>
+<p><strong>思路：</strong> - 用 f(i,j) 表示从左上角走到 (i,j) 的路径数量，其中 i 和 j 的范围分别是 [0,m) 和 [0,n)。 - 由于我们每一步只能从向下或者向右移动一步，因此要想走到 (i,j)，如果向下走一步，那么会从 (i−1,j) 走过来；如果向右走一步，那么会从 (i,j−1) 走过来。因此我们可以写出动态规划转移方程：f(i,j)=f(i−1,j)+f(i,j−1) - 如果 i=0，那么 f(i−1,j) 并不是一个满足要求的状态，我们需要忽略这一项；同理，如果 j=0，那么 f(i,j−1) 并不是一个满足要求的状态，我们需要忽略这一项。 - 初始条件为 f(0,0)=1，即从左上角走到左上角有一种方法。 - 最终的答案即为 f(m−1,n−1)。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb6"><code class="sourceCode python"><div class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb6-2" data-line-number="2">    <span class="kw">def</span> uniquePaths(<span class="va">self</span>, m, n):</div>
+<div class="sourceLine" id="cb6-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">        :type m: int</span></div>
+<div class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">        :type n: int</span></div>
+<div class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb6-8" data-line-number="8">        dp <span class="op">=</span> [[<span class="dv">1</span>] <span class="op">*</span> n ] <span class="op">+</span> [[<span class="dv">1</span>] <span class="op">+</span> [<span class="dv">0</span>] <span class="op">*</span> (n<span class="dv">-1</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m<span class="dv">-1</span>)]</div>
+<div class="sourceLine" id="cb6-9" data-line-number="9">        dp[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb6-10" data-line-number="10">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,m):</div>
+<div class="sourceLine" id="cb6-11" data-line-number="11">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</div>
+<div class="sourceLine" id="cb6-12" data-line-number="12">                dp[i][j] <span class="op">=</span> dp[i<span class="dv">-1</span>][j] <span class="op">+</span> dp[i][j<span class="dv">-1</span>]</div>
+<div class="sourceLine" id="cb6-13" data-line-number="13">        <span class="cf">return</span> dp[m<span class="dv">-1</span>][n<span class="dv">-1</span>]</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-path-sum/description/?envType=study-plan-v2&amp;envId=dynamic-programming">64. 最小路径和</a></p>
+<p><strong>64. 最小路径和</strong></p>
+<p>给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。</p>
+<p>说明：每次只能向下或者向右移动一步。 <img src="https://github.com/ncbdd0/images/raw/main/python/8.png"></p>
+<p><strong>示例 1：</strong></p>
+<p>输入：grid = [[1,3,1],[1,5,1],[4,2,1]]</p>
+<p>输出：7</p>
+<p>解释：因为路径 1→3→1→1→1 的总和最小。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：grid = [[1,2,3],[4,5,6]]</p>
+<p>输出：12</p>
+<p><strong>思路：</strong> - 由于路径的方向只能是向下或向右，因此网格的第一行的每个元素只能从左上角元素开始向右移动到达，网格的第一列的每个元素只能从左上角元素开始向下移动到达，此时的路径是唯一的，因此每个元素对应的最小路径和即为对应的路径上的数字总和。 - 对于不在第一行和第一列的元素，可以从其上方相邻元素向下移动一步到达，或者从其左方相邻元素向右移动一步到达，元素对应的最小路径和等于其上方相邻元素与其左方相邻元素两者对应的最小路径和中的最小值加上当前元素的值。由于每个元素对应的最小路径和与其相邻元素对应的最小路径和有关，因此可以使用动态规划求解。 - 创建二维数组 dp，与原始网格的大小相同，dp[i][j] 表示从左上角出发到 (i,j) 位置的最小路径和。显然，dp[0][0]=grid[0][0]。对于 dp 中的其余元素，通过以下状态转移方程计算元素值。 - 当 i&gt;0 且 j=0 时，dp[i][0]=dp[i−1][0]+grid[i][0]。 - 当 i=0 且 j&gt;0 时，dp[0][j]=dp[0][j−1]+grid[0][j]。 - 当 i&gt;0 且 j&gt;0 时，dp[i][j]=min(dp[i−1][j],dp[i][j−1])+grid[i][j]。 - 最后得到 dp[m−1][n−1] 的值即为从网格左上角到网格右下角的最小路径和。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb7"><code class="sourceCode python"><div class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb7-2" data-line-number="2">    <span class="kw">def</span> minPathSum(<span class="va">self</span>, grid):</div>
+<div class="sourceLine" id="cb7-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">        :type grid: List[List[int]]</span></div>
+<div class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb7-7" data-line-number="7">        len_row <span class="op">=</span> <span class="bu">len</span>(grid)</div>
+<div class="sourceLine" id="cb7-8" data-line-number="8">        len_column <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</div>
+<div class="sourceLine" id="cb7-9" data-line-number="9">        dp <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> len_column] <span class="op">*</span> len_row</div>
+<div class="sourceLine" id="cb7-10" data-line-number="10">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(len_row):</div>
+<div class="sourceLine" id="cb7-11" data-line-number="11">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(len_column):</div>
+<div class="sourceLine" id="cb7-12" data-line-number="12">                <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> j <span class="op">==</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb7-13" data-line-number="13">                    dp[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> grid[<span class="dv">0</span>][<span class="dv">0</span>]</div>
+<div class="sourceLine" id="cb7-14" data-line-number="14">                <span class="cf">elif</span> i <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> j <span class="op">!=</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb7-15" data-line-number="15">                    dp[<span class="dv">0</span>][j] <span class="op">=</span> dp[<span class="dv">0</span>][j<span class="dv">-1</span>] <span class="op">+</span> grid[<span class="dv">0</span>][j]</div>
+<div class="sourceLine" id="cb7-16" data-line-number="16">                <span class="cf">elif</span> j <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> i <span class="op">!=</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb7-17" data-line-number="17">                    dp[i][<span class="dv">0</span>] <span class="op">=</span> dp[i<span class="dv">-1</span>][<span class="dv">0</span>] <span class="op">+</span> grid[i][<span class="dv">0</span>]</div>
+<div class="sourceLine" id="cb7-18" data-line-number="18">                <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb7-19" data-line-number="19">                    dp[i][j] <span class="op">=</span> <span class="bu">min</span>(dp[i<span class="dv">-1</span>][j] , dp[i][j<span class="dv">-1</span>]) <span class="op">+</span> grid[i][j]</div>
+<div class="sourceLine" id="cb7-20" data-line-number="20">        <span class="cf">return</span> dp[len_row<span class="dv">-1</span>][len_column<span class="dv">-1</span>]</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/unique-paths-ii/description/?envType=study-plan-v2&amp;envId=dynamic-programming">63. 不同路径 II</a></p>
+<p><strong>63. 不同路径 II</strong></p>
+<p>给定一个 m x n 的整数数组 grid。一个机器人初始位于 左上角（即 grid[0][0]）。机器人尝试移动到 右下角（即 grid[m - 1][n - 1]）。机器人每次只能向下或者向右移动一步。</p>
+<p>网格中的障碍物和空位置分别用 1 和 0 来表示。机器人的移动路径中不能包含 任何 有障碍物的方格。</p>
+<p>返回机器人能够到达右下角的不同路径数量。</p>
+<p>测试用例保证答案小于等于 2 * 109。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]</p>
+<p>输出：2</p>
+<p>解释：</p>
+<p>3x3 网格的正中间有一个障碍物。</p>
+<p>从左上角到右下角一共有 2 条不同的路径：</p>
+<ol type="1">
+<li><p>向右 -&gt; 向右 -&gt; 向下 -&gt; 向下</p></li>
+<li><p>向下 -&gt; 向下 -&gt; 向右 -&gt; 向右</p></li>
+</ol>
+<p><strong>示例 2：</strong></p>
+<p>输入：obstacleGrid = [[0,1],[0,0]]</p>
+<p>输出：1</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li>dp[i][j]：表示从起点走到 (i,j) 位置的不同路径总数</li>
+<li>状态转移方程：如果当前格子是障碍物：dp[i][j] = 0（没有任何路径能到这里）</li>
+<li>如果当前格子是空的：dp[i][j] = dp[i-1][j] + dp[i][j-1]（路径只能从上方或左方过来，总数相加）</li>
+<li>边界初始化：</li>
+<li>第一行：只能从左边走过来，遇到障碍物后，后面所有格子都走不通</li>
+<li>第一列：只能从上方走过来，遇到障碍物后，下面所有格子都走不通</li>
+<li>起点 (0,0)：如果是障碍物，直接返回 0</li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb8"><code class="sourceCode python"><div class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb8-2" data-line-number="2">    <span class="kw">def</span> uniquePathsWithObstacles(<span class="va">self</span>, obstacleGrid):</div>
+<div class="sourceLine" id="cb8-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">        :type obstacleGrid: List[List[int]]</span></div>
+<div class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb8-7" data-line-number="7">        len_row <span class="op">=</span> <span class="bu">len</span>(obstacleGrid)</div>
+<div class="sourceLine" id="cb8-8" data-line-number="8">        len_column <span class="op">=</span> <span class="bu">len</span>(obstacleGrid[<span class="dv">0</span>])</div>
+<div class="sourceLine" id="cb8-9" data-line-number="9">        <span class="cf">if</span> obstacleGrid[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">==</span> <span class="dv">1</span>:</div>
+<div class="sourceLine" id="cb8-10" data-line-number="10">            <span class="cf">return</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb8-11" data-line-number="11">        dp <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> len_column <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(len_row)]</div>
+<div class="sourceLine" id="cb8-12" data-line-number="12">        dp[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb8-13" data-line-number="13">        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,len_column):</div>
+<div class="sourceLine" id="cb8-14" data-line-number="14">            <span class="cf">if</span> obstacleGrid[<span class="dv">0</span>][j] <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> dp[<span class="dv">0</span>][j<span class="dv">-1</span>] <span class="op">==</span> <span class="dv">1</span>:</div>
+<div class="sourceLine" id="cb8-15" data-line-number="15">                dp[<span class="dv">0</span>][j] <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb8-16" data-line-number="16">            <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb8-17" data-line-number="17">                dp[<span class="dv">0</span>][j] <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb8-18" data-line-number="18">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,len_row):</div>
+<div class="sourceLine" id="cb8-19" data-line-number="19">            <span class="cf">if</span> obstacleGrid[i][<span class="dv">0</span>] <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> dp[i<span class="dv">-1</span>][<span class="dv">0</span>] <span class="op">==</span> <span class="dv">1</span>:</div>
+<div class="sourceLine" id="cb8-20" data-line-number="20">                dp[i][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb8-21" data-line-number="21">            <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb8-22" data-line-number="22">                dp[i][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb8-23" data-line-number="23">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,len_row):</div>
+<div class="sourceLine" id="cb8-24" data-line-number="24">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,len_column):</div>
+<div class="sourceLine" id="cb8-25" data-line-number="25">                <span class="cf">if</span> obstacleGrid[i][j] <span class="op">==</span> <span class="dv">1</span> :</div>
+<div class="sourceLine" id="cb8-26" data-line-number="26">                    dp[i][j] <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb8-27" data-line-number="27">                <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb8-28" data-line-number="28">                    dp[i][j] <span class="op">=</span> dp[i <span class="op">-</span> <span class="dv">1</span>][j] <span class="op">+</span> dp[i][j <span class="op">-</span> <span class="dv">1</span>]</div>
+<div class="sourceLine" id="cb8-29" data-line-number="29">        <span class="cf">return</span> dp[len_row <span class="op">-</span> <span class="dv">1</span>][len_column <span class="op">-</span> <span class="dv">1</span>]</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/triangle/description/?envType=study-plan-v2&amp;envId=dynamic-programming">120. 三角形最小路径和</a></p>
+<p><strong>120. 三角形最小路径和</strong></p>
+<p>给定一个三角形 triangle ，找出自顶向下的最小路径和。</p>
+<p>每一步只能移动到下一行中相邻的结点上。相邻的结点 在这里指的是 下标 与 上一层结点下标 相同或者等于 上一层结点下标 + 1 的两个结点。也就是说，如果正位于当前行的下标 i ，那么下一步可以移动到下一行的下标 i 或 i + 1 。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]</p>
+<p>输出：11</p>
+<p>解释：如下面简图所示：</p>
+<pre><code>   2
+  3 4
+ 6 5 7
+4 1 8 3</code></pre>
+<p>自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：triangle = [[-10]]</p>
+<p>输出：-10</p>
+<p><strong>思路：</strong> - dp[i][j]：从顶部走到第 i 行第 j 列位置时，路径的最小总和 - 状态转移（核心公式）： - 最左侧元素（j=0）：只能从正上方来 - dp[i][0] = 当前值 + dp[i-1][0] - 最右侧元素（i=j）：只能从右上方来 - dp[i][i] = 当前值 + dp[i-1][i-1] - 中间元素：从上方和右上方选更小的那个 - dp[i][j] = 当前值 + min(正上方, 右上方) - 最终答案：最后一行所有 dp 值里的最小值（因为可以停在最后一行任意位置）</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb10"><code class="sourceCode python"><div class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb10-2" data-line-number="2">    <span class="kw">def</span> minimumTotal(<span class="va">self</span>, triangle):</div>
+<div class="sourceLine" id="cb10-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">        :type triangle: List[List[int]]</span></div>
+<div class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb10-7" data-line-number="7">        len_row <span class="op">=</span> <span class="bu">len</span>(triangle)</div>
+<div class="sourceLine" id="cb10-8" data-line-number="8">        len_column <span class="op">=</span> <span class="bu">len</span>(triangle[<span class="op">-</span><span class="dv">1</span>])</div>
+<div class="sourceLine" id="cb10-9" data-line-number="9">        dp <span class="op">=</span> [[<span class="dv">0</span>]<span class="op">*</span>len_column <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(len_row)]</div>
+<div class="sourceLine" id="cb10-10" data-line-number="10">        dp[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> triangle[<span class="dv">0</span>][<span class="dv">0</span>]</div>
+<div class="sourceLine" id="cb10-11" data-line-number="11">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,len_row):</div>
+<div class="sourceLine" id="cb10-12" data-line-number="12">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb10-13" data-line-number="13">                <span class="cf">if</span> j <span class="op">==</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb10-14" data-line-number="14">                    dp[i][j] <span class="op">=</span> triangle[i][j] <span class="op">+</span> dp[i<span class="dv">-1</span>][<span class="dv">0</span>]</div>
+<div class="sourceLine" id="cb10-15" data-line-number="15">                <span class="cf">elif</span> i <span class="op">==</span> j:</div>
+<div class="sourceLine" id="cb10-16" data-line-number="16">                    dp[i][j] <span class="op">=</span> triangle[i][j] <span class="op">+</span> dp[i<span class="dv">-1</span>][j<span class="dv">-1</span>]</div>
+<div class="sourceLine" id="cb10-17" data-line-number="17">                <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb10-18" data-line-number="18">                    dp[i][j] <span class="op">=</span> triangle[i][j] <span class="op">+</span> <span class="bu">min</span>(dp[i<span class="dv">-1</span>][j] , dp[i<span class="dv">-1</span>][j<span class="dv">-1</span>])</div>
+<div class="sourceLine" id="cb10-19" data-line-number="19">        <span class="cf">return</span> <span class="bu">min</span>(dp[<span class="op">-</span><span class="dv">1</span>])</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-falling-path-sum/description/?envType=study-plan-v2&amp;envId=dynamic-programming">931. 下降路径最小和</a></p>
+<p><strong>931. 下降路径最小和</strong></p>
+<p>给你一个 n x n 的 方形 整数数组 matrix ，请你找出并返回通过 matrix 的下降路径 的 最小和 。</p>
+<p>下降路径 可以从第一行中的任何元素开始，并从每一行中选择一个元素。在下一行选择的元素和当前行所选元素最多相隔一列（即位于正下方或者沿对角线向左或者向右的第一个元素）。具体来说，位置 (row, col) 的下一个元素应当是 (row + 1, col - 1)、(row + 1, col) 或者 (row + 1, col + 1) 。</p>
+<p><strong>示例 1：</strong> <img src="https://github.com/ncbdd0/images/raw/main/python/9.png"> 输入：matrix = [[2,1,3],[6,5,4],[7,8,9]]</p>
+<p>输出：13</p>
+<p>解释：如图所示，为和最小的两条下降路径</p>
+<p><strong>示例 2：</strong> <img src="https://github.com/ncbdd0/images/raw/main/python/10.png"> 输入：matrix = [[-19,57],[-40,-5]]</p>
+<p>输出：-59</p>
+<p>解释：如图所示，为和最小的下降路径</p>
+<p><strong>思路：</strong> - dp[i][j]：从第一行走到 (i,j) 这个位置时，路径的最小总和 - 状态转移（核心公式）： - 最左列 j=0：只能从 正上 + 右上 来 - 最右列 j=n-1：只能从 左上 + 正上 来 - 中间列：可以从 左上 + 正上 + 右上 三个方向来，选最小的 - 每一步都要 加上当前格子的值 - 最终答案：最后一行 dp 值里的最小值</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb11"><code class="sourceCode python"><div class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb11-2" data-line-number="2">    <span class="kw">def</span> minFallingPathSum(<span class="va">self</span>, matrix):</div>
+<div class="sourceLine" id="cb11-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">        :type matrix: List[List[int]]</span></div>
+<div class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb11-7" data-line-number="7">        n <span class="op">=</span> <span class="bu">len</span>(matrix)</div>
+<div class="sourceLine" id="cb11-8" data-line-number="8">        dp <span class="op">=</span> [matrix[<span class="dv">0</span>]] <span class="op">+</span> [[<span class="dv">0</span>] <span class="op">*</span> n <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n) ]</div>
+<div class="sourceLine" id="cb11-9" data-line-number="9">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</div>
+<div class="sourceLine" id="cb11-10" data-line-number="10">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb11-11" data-line-number="11">                <span class="cf">if</span> j <span class="op">==</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb11-12" data-line-number="12">                    dp[i][j] <span class="op">=</span> <span class="bu">min</span>(dp[i<span class="dv">-1</span>][j] , dp[i<span class="dv">-1</span>][j<span class="op">+</span><span class="dv">1</span>]) <span class="op">+</span> matrix[i][j]</div>
+<div class="sourceLine" id="cb11-13" data-line-number="13">                <span class="cf">elif</span> j <span class="op">==</span> n<span class="dv">-1</span>:</div>
+<div class="sourceLine" id="cb11-14" data-line-number="14">                    dp[i][j] <span class="op">=</span> <span class="bu">min</span>(dp[i<span class="dv">-1</span>][j<span class="dv">-1</span>] , dp[i<span class="dv">-1</span>][j]) <span class="op">+</span> matrix[i][j]</div>
+<div class="sourceLine" id="cb11-15" data-line-number="15">                <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb11-16" data-line-number="16">                    dp[i][j] <span class="op">=</span> <span class="bu">min</span>(dp[i<span class="dv">-1</span>][j<span class="dv">-1</span>] , dp[i<span class="dv">-1</span>][j] , dp[i<span class="dv">-1</span>][j<span class="op">+</span><span class="dv">1</span>]) <span class="op">+</span> matrix[i][j]</div>
+<div class="sourceLine" id="cb11-17" data-line-number="17">        <span class="cf">return</span> <span class="bu">min</span>(dp[<span class="op">-</span><span class="dv">1</span>])</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximal-square/description/?envType=study-plan-v2&amp;envId=dynamic-programming">221. 最大正方形</a></p>
+<p><strong>221. 最大正方形</strong></p>
+<p>在一个由 ‘0’ 和 ‘1’ 组成的二维矩阵内，找到只包含 ‘1’ 的最大正方形，并返回其面积。</p>
+<p><strong>示例 1：</strong> <img src="https://github.com/ncbdd0/images/raw/main/python/11.png"> 输入：matrix = [[“1”,“0”,“1”,“0”,“0”],[“1”,“0”,“1”,“1”,“1”],[“1”,“1”,“1”,“1”,“1”],[“1”,“0”,“0”,“1”,“0”]]</p>
+<p>输出：4</p>
+<p><strong>示例 2：</strong> <img src="https://github.com/ncbdd0/images/raw/main/python/12.png"> 输入：matrix = [[“0”,“1”],[“1”,“0”]]</p>
+<p>输出：1</p>
+<p><strong>示例 3：</strong></p>
+<p>输入：matrix = [[“0”]]</p>
+<p>输出：0</p>
+<p><strong>思路：</strong> - dp[i][j]：表示以 (i,j) 作为右下角的最大正方形的边长 - 状态转移公式（核心） - 如果当前格子是 ‘0’：dp[i][j] = 0（不可能构成正方形） - 如果当前格子是 ‘1’： - 第一行 / 第一列：dp[i][j] = 1（只能形成边长为 1 的正方形） - 其他位置：dp[i][j] = min(左上角, 正上方, 左方) + 1（取三个方向的最小值，代表能继承的最大正方形边长，+1 是加上当前格） - 最终答案：记录遍历过程中最大边长，面积 = 最大边长 × 最大边长</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb12"><code class="sourceCode python"><div class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb12-2" data-line-number="2">    <span class="kw">def</span> maximalSquare(<span class="va">self</span>, matrix):</div>
+<div class="sourceLine" id="cb12-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">        :type matrix: List[List[str]]</span></div>
+<div class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">        :rtype: int</span></div>
+<div class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb12-7" data-line-number="7">        <span class="cf">if</span> <span class="bu">len</span>(matrix) <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> <span class="bu">len</span>(matrix[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb12-8" data-line-number="8">            <span class="cf">return</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb12-9" data-line-number="9">        </div>
+<div class="sourceLine" id="cb12-10" data-line-number="10">        maxSide <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb12-11" data-line-number="11">        rows, columns <span class="op">=</span> <span class="bu">len</span>(matrix), <span class="bu">len</span>(matrix[<span class="dv">0</span>])</div>
+<div class="sourceLine" id="cb12-12" data-line-number="12">        dp <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> columns <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(rows)]</div>
+<div class="sourceLine" id="cb12-13" data-line-number="13">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(rows):</div>
+<div class="sourceLine" id="cb12-14" data-line-number="14">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(columns):</div>
+<div class="sourceLine" id="cb12-15" data-line-number="15">                <span class="cf">if</span> matrix[i][j] <span class="op">==</span> <span class="st">'1'</span>:</div>
+<div class="sourceLine" id="cb12-16" data-line-number="16">                    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> j <span class="op">==</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb12-17" data-line-number="17">                        dp[i][j] <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb12-18" data-line-number="18">                    <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb12-19" data-line-number="19">                        dp[i][j] <span class="op">=</span> <span class="bu">min</span>(dp[i <span class="op">-</span> <span class="dv">1</span>][j], dp[i][j <span class="op">-</span> <span class="dv">1</span>], dp[i <span class="op">-</span> <span class="dv">1</span>][j <span class="op">-</span> <span class="dv">1</span>]) <span class="op">+</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb12-20" data-line-number="20">                    maxSide <span class="op">=</span> <span class="bu">max</span>(maxSide, dp[i][j])</div>
+<div class="sourceLine" id="cb12-21" data-line-number="21">        </div>
+<div class="sourceLine" id="cb12-22" data-line-number="22">        maxSquare <span class="op">=</span> maxSide <span class="op">*</span> maxSide</div>
+<div class="sourceLine" id="cb12-23" data-line-number="23">        <span class="cf">return</span> maxSquare</div></code></pre>
+<h4 id="动态规划在字符串的应用">动态规划在字符串的应用</h4>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-palindromic-substring/description/?envType=study-plan-v2&amp;envId=dynamic-programming">5. 最长回文子串</a></p>
+<p><strong>5. 最长回文子串</strong></p>
+<p>给你一个字符串 s，找到 s 中最长的 。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：s = “babad”</p>
+<p>输出：“bab”</p>
+<p>解释：“aba” 同样是符合题意的答案。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：s = “cbbd”</p>
+<p>输出：“bb”</p>
+<p><strong>思路：</strong> - dp[i][j]表示：子串 s 从下标 i 到 j（包含 i、j）是否是回文串 - True = 是回文 - False = 不是回文 - 回文判断规则： - 单个字符一定是回文：dp[i][i] = True - 两个字符相等就是回文：s[i]==s[j] → True - 三个及以上：首尾相等 + 中间也是回文 - s[i]==s[j] 且 dp[i+1][j-1] 为 True</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb13"><code class="sourceCode python"><div class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb13-2" data-line-number="2">    <span class="kw">def</span> longestPalindrome(<span class="va">self</span>, s):</div>
+<div class="sourceLine" id="cb13-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">        :type s: str</span></div>
+<div class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">        :rtype: str</span></div>
+<div class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb13-7" data-line-number="7">        n <span class="op">=</span> <span class="bu">len</span>(s)</div>
+<div class="sourceLine" id="cb13-8" data-line-number="8">        dp <span class="op">=</span> [[<span class="va">False</span>] <span class="op">*</span> n <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)]</div>
+<div class="sourceLine" id="cb13-9" data-line-number="9">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb13-10" data-line-number="10">            dp[i][i] <span class="op">=</span> <span class="va">True</span></div>
+<div class="sourceLine" id="cb13-11" data-line-number="11">        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">2</span>:</div>
+<div class="sourceLine" id="cb13-12" data-line-number="12">            <span class="cf">return</span> s</div>
+<div class="sourceLine" id="cb13-13" data-line-number="13">        max_len <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb13-14" data-line-number="14">        max_num <span class="op">=</span> s[<span class="dv">0</span>]</div>
+<div class="sourceLine" id="cb13-15" data-line-number="15">        <span class="cf">for</span> length <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span> , n<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb13-16" data-line-number="16">            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb13-17" data-line-number="17">                right <span class="op">=</span> length <span class="op">+</span> i <span class="op">-</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb13-18" data-line-number="18">                <span class="cf">if</span> right <span class="op">&gt;=</span> n:</div>
+<div class="sourceLine" id="cb13-19" data-line-number="19">                    <span class="cf">break</span></div>
+<div class="sourceLine" id="cb13-20" data-line-number="20">                <span class="cf">if</span> s[i] <span class="op">!=</span> s[right]:</div>
+<div class="sourceLine" id="cb13-21" data-line-number="21">                    dp[i][right] <span class="op">=</span> <span class="va">False</span></div>
+<div class="sourceLine" id="cb13-22" data-line-number="22">                <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb13-23" data-line-number="23">                    <span class="cf">if</span> right <span class="op">-</span> i <span class="op">&lt;</span> <span class="dv">3</span>:</div>
+<div class="sourceLine" id="cb13-24" data-line-number="24">                        dp[i][right] <span class="op">=</span> <span class="va">True</span></div>
+<div class="sourceLine" id="cb13-25" data-line-number="25">                    <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb13-26" data-line-number="26">                        dp[i][right] <span class="op">=</span> dp[i<span class="op">+</span><span class="dv">1</span>][right<span class="dv">-1</span>]</div>
+<div class="sourceLine" id="cb13-27" data-line-number="27">                <span class="cf">if</span> dp[i][right] <span class="kw">and</span> right <span class="op">-</span> i <span class="op">+</span> <span class="dv">1</span> <span class="op">&gt;</span> max_len:</div>
+<div class="sourceLine" id="cb13-28" data-line-number="28">                    max_len <span class="op">=</span> right <span class="op">-</span> i <span class="op">+</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb13-29" data-line-number="29">                    max_num <span class="op">=</span> s[i:right<span class="op">+</span><span class="dv">1</span>]</div>
+<div class="sourceLine" id="cb13-30" data-line-number="30">        <span class="cf">return</span> max_num</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/word-break/description/?envType=study-plan-v2&amp;envId=dynamic-programming">139. 单词拆分</a></p>
+<p><strong>139. 单词拆分</strong></p>
+<p>给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s 则返回 true。</p>
+<p>注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入: s = “leetcode”, wordDict = [“leet”, “code”]</p>
+<p>输出: true</p>
+<p>解释: 返回 true 因为 “leetcode” 可以由 “leet” 和 “code” 拼接成。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入: s = “applepenapple”, wordDict = [“apple”, “pen”]</p>
+<p>输出: true</p>
+<p>解释: 返回 true 因为 “applepenapple” 可以由 “apple” “pen” “apple” 拼接成。</p>
+<p>注意，你可以重复使用字典中的单词。</p>
+<p><strong>示例 3：</strong></p>
+<p>输入: s = “catsandog”, wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]</p>
+<p>输出: false</p>
+<p><strong>思路：</strong> - dp[i]：字符串 s 的前 i 个字符（s [0:i]）能否被成功拆分 - True = 可以拆分 - False = 不可以拆分 - 从前往后看：如果前 i 个字符能拆分，且 i ~ j 这段是字典里的单词，那么前 j 个字符也能拆分 - 最后看 dp[n]（n 是字符串长度），就是答案</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb14"><code class="sourceCode python"><div class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">class</span> Solution(<span class="bu">object</span>):</div>
+<div class="sourceLine" id="cb14-2" data-line-number="2">    <span class="kw">def</span> wordBreak(<span class="va">self</span>, s, wordDict):</div>
+<div class="sourceLine" id="cb14-3" data-line-number="3">        <span class="co">"""</span></div>
+<div class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">        :type s: str</span></div>
+<div class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">        :type wordDict: List[str]</span></div>
+<div class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">        :rtype: bool</span></div>
+<div class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">        """</span></div>
+<div class="sourceLine" id="cb14-8" data-line-number="8">        n <span class="op">=</span> <span class="bu">len</span>(s)</div>
+<div class="sourceLine" id="cb14-9" data-line-number="9">        dp <span class="op">=</span> [<span class="va">False</span>] <span class="op">*</span> (n<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb14-10" data-line-number="10">        dp[<span class="dv">0</span>] <span class="op">=</span> <span class="va">True</span></div>
+<div class="sourceLine" id="cb14-11" data-line-number="11">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb14-12" data-line-number="12">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>,n<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb14-13" data-line-number="13">                <span class="cf">if</span> dp[i] <span class="kw">and</span> s[i:j] <span class="kw">in</span> wordDict:</div>
+<div class="sourceLine" id="cb14-14" data-line-number="14">                    dp[j] <span class="op">=</span> <span class="va">True</span></div>
+<div class="sourceLine" id="cb14-15" data-line-number="15">        <span class="cf">return</span> dp[<span class="op">-</span><span class="dv">1</span>]</div></code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/<file>"></script>
+    <link rel="stylesheet" href="/css/<file>" />
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
+    <meta charset="utf-8" />
+    <title>python算法学习--回溯/递归/分治 | OvO</title>
+    <meta name="author" content="你猜不到的" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/kkk.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>OVO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;OVO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>python算法学习--回溯/递归/分治</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/7/6
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #ff7d73">
+                    python
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>回溯/递归/分治</p>
+<span id="more"></span>
+<h3 id="回溯-递归-分治">回溯 / 递归 / 分治</h3>
+<h4 id="子集型回溯">子集型回溯</h4>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets/?envType=featured-list&amp;envId=L2JxWeVS?envType=featured-list&amp;envId=L2JxWeVS">78. 子集 - 力扣（LeetCode）</a></p>
+<p><strong>78. 子集 - 力扣（LeetCode）</strong></p>
+<p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的（幂集）。</p>
+<p>解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：nums = [1,2,3]</p>
+<p>输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：nums = [0]</p>
+<p>输出：[[],[0]]</p>
+<p><strong>方法一：</strong></p>
+<p><strong>思路：</strong> - 集合的每个元素，都有可以选或不选</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb1"><code class="sourceCode python"><div class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb1-2" data-line-number="2">    <span class="kw">def</span> subsets(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> List[List[<span class="bu">int</span>]]:</div>
+<div class="sourceLine" id="cb1-3" data-line-number="3">        n <span class="op">=</span> <span class="bu">len</span>(nums)</div>
+<div class="sourceLine" id="cb1-4" data-line-number="4">        res , path <span class="op">=</span> [] , []</div>
+<div class="sourceLine" id="cb1-5" data-line-number="5">        <span class="kw">def</span> dfs(i):</div>
+<div class="sourceLine" id="cb1-6" data-line-number="6">            <span class="cf">if</span> i <span class="op">&gt;=</span>n:</div>
+<div class="sourceLine" id="cb1-7" data-line-number="7">                res.append(path.copy())</div>
+<div class="sourceLine" id="cb1-8" data-line-number="8">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb1-9" data-line-number="9">            path.append(nums[i])</div>
+<div class="sourceLine" id="cb1-10" data-line-number="10">            dfs(i<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb1-11" data-line-number="11">            path.pop()</div>
+<div class="sourceLine" id="cb1-12" data-line-number="12">            dfs(i<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb1-13" data-line-number="13">        dfs(<span class="dv">0</span>)</div>
+<div class="sourceLine" id="cb1-14" data-line-number="14">        <span class="cf">return</span> res</div></code></pre>
+<p><strong>方法二：</strong></p>
+<p><strong>思路：</strong> - 枚举选哪个数 + 记录可以选的范围 - dfs(i) 表示当前已经有选择了 pathpath 后，pathpath 下一个元素可以从 ii 及其往后选。每一个 dfsdfs 状态都是合法状态，需要记录。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb2"><code class="sourceCode python"><div class="sourceLine" id="cb2-1" data-line-number="1">    <span class="kw">def</span> subsets(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> List[List[<span class="bu">int</span>]]:</div>
+<div class="sourceLine" id="cb2-2" data-line-number="2">        res, path <span class="op">=</span> [], []</div>
+<div class="sourceLine" id="cb2-3" data-line-number="3">        n <span class="op">=</span> <span class="bu">len</span>(nums)</div>
+<div class="sourceLine" id="cb2-4" data-line-number="4">        <span class="kw">def</span> dfs(i):</div>
+<div class="sourceLine" id="cb2-5" data-line-number="5">            res.append(path.copy())</div>
+<div class="sourceLine" id="cb2-6" data-line-number="6">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i, n):</div>
+<div class="sourceLine" id="cb2-7" data-line-number="7">                path.append(nums[j])</div>
+<div class="sourceLine" id="cb2-8" data-line-number="8">                dfs(j <span class="op">+</span> <span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb2-9" data-line-number="9">                path.pop()</div>
+<div class="sourceLine" id="cb2-10" data-line-number="10">        dfs(<span class="dv">0</span>)</div>
+<div class="sourceLine" id="cb2-11" data-line-number="11">        <span class="cf">return</span> res</div></code></pre>
+<h4 id="组合型回溯">组合型回溯</h4>
+<p><strong>1. 枚举所有长度为 kk 的组合</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combinations/description/?envType=featured-list&amp;envId=L2JxWeVS?envType=featured-list&amp;envId=L2JxWeVS">77. 组合 - 力扣（LeetCode）</a></p>
+<p><strong>77. 组合 - 力扣（LeetCode）</strong></p>
+<p>给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。</p>
+<p>你可以按 任何顺序 返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：n = 4, k = 2</p>
+<p>输出： [ [2,4], [3,4], [2,3], [1,2], [1,3], [1,4],]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：n = 1, k = 1</p>
+<p>输出：[[1]]</p>
+<p><strong>思路：</strong> - 依旧选或不选</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb3"><code class="sourceCode python"><div class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb3-2" data-line-number="2">    <span class="kw">def</span> combine(<span class="va">self</span>, n: <span class="bu">int</span>, k: <span class="bu">int</span>) <span class="op">-&gt;</span> List[List[<span class="bu">int</span>]]:</div>
+<div class="sourceLine" id="cb3-3" data-line-number="3">        res , path <span class="op">=</span> [] , []</div>
+<div class="sourceLine" id="cb3-4" data-line-number="4">        <span class="kw">def</span> dfs(i):</div>
+<div class="sourceLine" id="cb3-5" data-line-number="5">            <span class="cf">if</span> <span class="bu">len</span>(path) <span class="op">==</span> k:</div>
+<div class="sourceLine" id="cb3-6" data-line-number="6">                res.append(path.copy())</div>
+<div class="sourceLine" id="cb3-7" data-line-number="7">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb3-8" data-line-number="8">            <span class="cf">elif</span> i <span class="op">&gt;</span> n:</div>
+<div class="sourceLine" id="cb3-9" data-line-number="9">                <span class="cf">return</span> </div>
+<div class="sourceLine" id="cb3-10" data-line-number="10">            path.append(i)</div>
+<div class="sourceLine" id="cb3-11" data-line-number="11">            dfs(i<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb3-12" data-line-number="12">            path.pop()</div>
+<div class="sourceLine" id="cb3-13" data-line-number="13">            dfs(i<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb3-14" data-line-number="14">        dfs(<span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb3-15" data-line-number="15">        <span class="cf">return</span> res</div></code></pre>
+<p><strong>2. 完全背包型组合</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum/description/?envType=daily-question&amp;envId=2024-04-20">39. 组合总和 - 力扣（LeetCode）</a></p>
+<p><strong>39. 组合总和 - 力扣（LeetCode）</strong></p>
+<p>给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，找出 candidates 中可以使数字和为目标数 target 的 所有 不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合。</p>
+<p>candidates 中的 同一个 数字可以 无限制重复被选取 。如果至少一个数字的被选数量不同，则两种组合是不同的。</p>
+<p>对于给定的输入，保证和为 target 的不同组合数少于 150 个。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：candidates = [2,3,6,7], target = 7</p>
+<p>输出：[[2,2,3],[7]]</p>
+<p>解释：</p>
+<p>2 和 3 可以形成一组候选，2 + 2 + 3 = 7 。注意 2 可以使用多次。7 也是一个候选， 7 = 7 。仅有这两种组合。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入: candidates = [2,3,5], target = 8</p>
+<p>输出: [[2,2,2,2],[2,3,3],[3,5]]</p>
+<p><strong>示例 3：</strong></p>
+<p>输入: candidates = [2], target = 1</p>
+<p>输出: []</p>
+<p><strong>思路：</strong> - 每个元素可以无限重复选择，需要找出目标值等于 target （或小于等于 target ）的所有可行组合。 - 先排序，利于提前剪枝优化跳出循环。枚举当前选哪个 + 记录可以选择的范围型回溯，记录当前的和。由于可以重复选择，所以当前选择 j 以后，下一次的可以选择范围仍然是 j。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb4"><code class="sourceCode python"><div class="sourceLine" id="cb4-1" data-line-number="1">    <span class="kw">def</span> combinationSum(<span class="va">self</span>, candidates: List[<span class="bu">int</span>], target: <span class="bu">int</span>) <span class="op">-&gt;</span> List[List[<span class="bu">int</span>]]:</div>
+<div class="sourceLine" id="cb4-2" data-line-number="2">        candidates.sort()</div>
+<div class="sourceLine" id="cb4-3" data-line-number="3">        n, res, path <span class="op">=</span> <span class="bu">len</span>(candidates), [], []</div>
+<div class="sourceLine" id="cb4-4" data-line-number="4">        <span class="co"># 枚举当前选哪个，以及记录可以选择的范围；以及当前的和</span></div>
+<div class="sourceLine" id="cb4-5" data-line-number="5">        <span class="kw">def</span> dfs(i, s):</div>
+<div class="sourceLine" id="cb4-6" data-line-number="6">            <span class="cf">if</span> s <span class="op">==</span> target:</div>
+<div class="sourceLine" id="cb4-7" data-line-number="7">                res.append(path.copy())</div>
+<div class="sourceLine" id="cb4-8" data-line-number="8">                <span class="cf">return</span> </div>
+<div class="sourceLine" id="cb4-9" data-line-number="9">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i, n):</div>
+<div class="sourceLine" id="cb4-10" data-line-number="10">                x <span class="op">=</span> candidates[j]</div>
+<div class="sourceLine" id="cb4-11" data-line-number="11">                <span class="cf">if</span> x <span class="op">+</span> s <span class="op">&lt;=</span> target:</div>
+<div class="sourceLine" id="cb4-12" data-line-number="12">                    path.append(x)</div>
+<div class="sourceLine" id="cb4-13" data-line-number="13">                    dfs(j, s <span class="op">+</span> x)   <span class="co"># 体现可重复选择</span></div>
+<div class="sourceLine" id="cb4-14" data-line-number="14">                    path.pop()</div>
+<div class="sourceLine" id="cb4-15" data-line-number="15">                <span class="cf">else</span>: <span class="cf">break</span></div>
+<div class="sourceLine" id="cb4-16" data-line-number="16">        dfs(<span class="dv">0</span>, <span class="dv">0</span>)</div>
+<div class="sourceLine" id="cb4-17" data-line-number="17">        <span class="cf">return</span> res</div></code></pre>
+<p><strong>3. 括号生成问题：带限制组合型回溯</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/generate-parentheses/description/?envType=featured-list&amp;envId=L2JxWeVS?envType=featured-list&amp;envId=L2JxWeVS">22. 括号生成 - 力扣（LeetCode）</a></p>
+<ol start="22" type="1">
+<li>括号生成 - 力扣（LeetCode）</li>
+</ol>
+<p>数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：n = 3</p>
+<p>输出：[“((()))”,“(()())”,“(())()”,“()(())”,“()()()”]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：n = 1</p>
+<p>输出：[“()”]</p>
+<p><strong>提示：</strong></p>
+<p>1 &lt;= n &lt;= 8</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li><p>选 / 不选型回溯：枚举当前左 / 右括号，记录当前左括号的个数。记 lc 表示左括号个数， rc 表示右括号个数。</p></li>
+<li><p>限制 1：lc 不能小于 rc。</p></li>
+<li><p>限制 2：lc 不能超过 n/2。</p></li>
+<li><p>限制 3：当 lc=rc，只能回溯左括号。</p></li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb5"><code class="sourceCode python"><div class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb5-2" data-line-number="2">    <span class="kw">def</span> generateParenthesis(<span class="va">self</span>, n: <span class="bu">int</span>) <span class="op">-&gt;</span> List[<span class="bu">str</span>]:</div>
+<div class="sourceLine" id="cb5-3" data-line-number="3">        res <span class="op">=</span> []</div>
+<div class="sourceLine" id="cb5-4" data-line-number="4">        n <span class="op">=</span> n <span class="op">*</span> <span class="dv">2</span></div>
+<div class="sourceLine" id="cb5-5" data-line-number="5">        path <span class="op">=</span> [<span class="va">None</span>] <span class="op">*</span> n</div>
+<div class="sourceLine" id="cb5-6" data-line-number="6">        <span class="kw">def</span> dfs(i , lc):</div>
+<div class="sourceLine" id="cb5-7" data-line-number="7">            rc <span class="op">=</span> i <span class="op">-</span> lc</div>
+<div class="sourceLine" id="cb5-8" data-line-number="8">            <span class="cf">if</span> i <span class="op">==</span> n <span class="kw">and</span> lc <span class="op">==</span> rc:</div>
+<div class="sourceLine" id="cb5-9" data-line-number="9">                res.append(<span class="st">''</span>.join(path))</div>
+<div class="sourceLine" id="cb5-10" data-line-number="10">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb5-11" data-line-number="11">            <span class="cf">if</span> rc <span class="op">&gt;</span> lc <span class="kw">or</span> lc <span class="op">&gt;</span> n <span class="op">//</span> <span class="dv">2</span>:</div>
+<div class="sourceLine" id="cb5-12" data-line-number="12">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb5-13" data-line-number="13">            path[i] <span class="op">=</span> <span class="st">'('</span></div>
+<div class="sourceLine" id="cb5-14" data-line-number="14">            dfs(i<span class="op">+</span><span class="dv">1</span> , lc<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb5-15" data-line-number="15">            <span class="cf">if</span> rc <span class="op">&lt;</span> lc:</div>
+<div class="sourceLine" id="cb5-16" data-line-number="16">                path[i] <span class="op">=</span> <span class="st">')'</span></div>
+<div class="sourceLine" id="cb5-17" data-line-number="17">                dfs(i<span class="op">+</span><span class="dv">1</span> , lc)</div>
+<div class="sourceLine" id="cb5-18" data-line-number="18">        dfs(<span class="dv">0</span> , <span class="dv">0</span>)</div>
+<div class="sourceLine" id="cb5-19" data-line-number="19">        <span class="cf">return</span> res</div></code></pre>
+<h4 id="排列型回溯">排列型回溯</h4>
+<p><strong>1. 全排列：排列元素无重复</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/description/">46. 全排列 - 力扣（LeetCode）</a></p>
+<ol start="46" type="1">
+<li>全排列 - 力扣（LeetCode）</li>
+</ol>
+<p>给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：nums = [1,2,3]</p>
+<p>输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：nums = [0,1]</p>
+<p>输出：[[0,1],[1,0]]</p>
+<p><strong>示例 3：</strong></p>
+<p>输入：nums = [1]</p>
+<p>输出：[[1]]</p>
+<p><strong>提示：</strong></p>
+<p>1 &lt;= nums.length &lt;= 6</p>
+<p>-10 &lt;= nums[i] &lt;= 10</p>
+<p>nums 中的所有整数 互不相同</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li><p>选择每次从剩下没选的数字里挑一个加入排列。</p></li>
+<li><p>结束当排列长度等于数字总数时，说明生成了一个完整排列，保存下来。</p></li>
+<li><p>回溯（撤销）回到上一步，把最后选的数字删掉，尝试其他选择。</p></li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb6"><code class="sourceCode python"><div class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb6-2" data-line-number="2">    <span class="kw">def</span> permute(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> List[List[<span class="bu">int</span>]]:</div>
+<div class="sourceLine" id="cb6-3" data-line-number="3">        n <span class="op">=</span> <span class="bu">len</span>(nums)</div>
+<div class="sourceLine" id="cb6-4" data-line-number="4">        res , path <span class="op">=</span> [] , []</div>
+<div class="sourceLine" id="cb6-5" data-line-number="5">        <span class="kw">def</span> dfs(s):</div>
+<div class="sourceLine" id="cb6-6" data-line-number="6">            <span class="cf">if</span> s <span class="op">==</span> n:</div>
+<div class="sourceLine" id="cb6-7" data-line-number="7">                res.append(path.copy())</div>
+<div class="sourceLine" id="cb6-8" data-line-number="8">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb6-9" data-line-number="9">            <span class="cf">for</span> x <span class="kw">in</span> nums:</div>
+<div class="sourceLine" id="cb6-10" data-line-number="10">                <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> path:</div>
+<div class="sourceLine" id="cb6-11" data-line-number="11">                    path.append(x)</div>
+<div class="sourceLine" id="cb6-12" data-line-number="12">                    dfs(s<span class="op">+</span><span class="dv">1</span>)</div>
+<div class="sourceLine" id="cb6-13" data-line-number="13">                    path.pop()</div>
+<div class="sourceLine" id="cb6-14" data-line-number="14">        dfs(<span class="dv">0</span>)</div>
+<div class="sourceLine" id="cb6-15" data-line-number="15">        <span class="cf">return</span> res</div></code></pre>
+<p><strong>2. 全排列：排列元素有重复：只能用 on_pathon_path 回溯 / 位运算压缩</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations-ii/description/">47. 全排列 II - 力扣（LeetCode）</a></p>
+<p><strong>47. 全排列 II - 力扣（LeetCode）</strong></p>
+<p>给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：nums = [1,1,2]</p>
+<p>输出：[[1,1,2],[1,2,1], [2,1,1]]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：nums = [1,2,3]</p>
+<p>输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li>和上题思路差不多，多定义了一个count数组用以存储下标防重复。</li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb7"><code class="sourceCode python"><div class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb7-2" data-line-number="2">    <span class="kw">def</span> permuteUnique(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> List[List[<span class="bu">int</span>]]:</div>
+<div class="sourceLine" id="cb7-3" data-line-number="3">        n <span class="op">=</span> <span class="bu">len</span>(nums)</div>
+<div class="sourceLine" id="cb7-4" data-line-number="4">        res , path <span class="op">=</span> [] , []</div>
+<div class="sourceLine" id="cb7-5" data-line-number="5">        count <span class="op">=</span> []</div>
+<div class="sourceLine" id="cb7-6" data-line-number="6">        <span class="kw">def</span> dfs(s , count):</div>
+<div class="sourceLine" id="cb7-7" data-line-number="7">            <span class="cf">if</span> s <span class="op">==</span> n <span class="kw">and</span> path <span class="kw">not</span> <span class="kw">in</span> res:</div>
+<div class="sourceLine" id="cb7-8" data-line-number="8">                res.append(path.copy())</div>
+<div class="sourceLine" id="cb7-9" data-line-number="9">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb7-10" data-line-number="10">            <span class="cf">if</span> s <span class="op">&gt;=</span> n:</div>
+<div class="sourceLine" id="cb7-11" data-line-number="11">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb7-12" data-line-number="12">            <span class="cf">for</span> i , j <span class="kw">in</span> <span class="bu">enumerate</span>(nums):</div>
+<div class="sourceLine" id="cb7-13" data-line-number="13">                <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> count:</div>
+<div class="sourceLine" id="cb7-14" data-line-number="14">                    path.append(j)</div>
+<div class="sourceLine" id="cb7-15" data-line-number="15">                    count.append(i)</div>
+<div class="sourceLine" id="cb7-16" data-line-number="16">                    dfs(s<span class="op">+</span><span class="dv">1</span> , count)</div>
+<div class="sourceLine" id="cb7-17" data-line-number="17">                    path.pop()</div>
+<div class="sourceLine" id="cb7-18" data-line-number="18">                    count.pop()</div>
+<div class="sourceLine" id="cb7-19" data-line-number="19">        dfs(<span class="dv">0</span> , count)</div>
+<div class="sourceLine" id="cb7-20" data-line-number="20">        <span class="cf">return</span> res</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-moves-to-spread-stones-over-grid/description/">2850. 将石头分散到网格图的最少移动次数 - 力扣（LeetCode）</a></p>
+<p><strong>2850. 将石头分散到网格图的最少移动次数 - 力扣（LeetCode）</strong></p>
+<p>给你一个大小为 3 * 3 ，下标从 0 开始的二维整数矩阵 grid ，分别表示每一个格子里石头的数目。网格图中总共恰好有 9 个石头，一个格子里可能会有 多个 石头。</p>
+<p>每一次操作中，你可以将一个石头从它当前所在格子移动到一个至少有一条公共边的相邻格子。</p>
+<p>请你返回每个格子恰好有一个石头的 最少移动次数 。</p>
+<p><strong>示例 1：</strong> <img src="https://github.com/ncbdd0/images/raw/main/python/5.png"> 输入：grid = [[1,1,0],[1,1,1],[1,2,1]]</p>
+<p>输出：3</p>
+<p>解释：让每个格子都有一个石头的一个操作序列为：</p>
+<p>1 - 将一个石头从格子 (2,1) 移动到 (2,2) 。</p>
+<p>2 - 将一个石头从格子 (2,2) 移动到 (1,2) 。</p>
+<p>3 - 将一个石头从格子 (1,2) 移动到 (0,2) 。</p>
+<p>总共需要 3 次操作让每个格子都有一个石头。</p>
+<p>让每个格子都有一个石头的最少操作次数为 3 。</p>
+<p><strong>示例 2：</strong> <img src="https://github.com/ncbdd0/images/raw/main/python/6.png"> 输入：grid = [[1,3,0],[1,0,0],[1,0,3]]</p>
+<p>输出：4</p>
+<p>解释：让每个格子都有一个石头的一个操作序列为：</p>
+<p>1 - 将一个石头从格子 (0,1) 移动到 (0,2) 。</p>
+<p>2 - 将一个石头从格子 (0,1) 移动到 (1,1) 。</p>
+<p>3 - 将一个石头从格子 (2,2) 移动到 (1,2) 。</p>
+<p>4 - 将一个石头从格子 (2,2) 移动到 (2,1) 。</p>
+<p>总共需要 4 次操作让每个格子都有一个石头。</p>
+<p>让每个格子都有一个石头的最少操作次数为 4 。</p>
+<p><strong>提示：</strong></p>
+<p>grid.length == grid[i].length == 3</p>
+<p>0 &lt;= grid[i][j] &lt;= 9</p>
+<p>grid 中元素之和为 9 。</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li>找出所有要挪走的棋子</li>
+<li>找出所有空缺的位置</li>
+<li>用 DFS 尝试所有可能的配对方式</li>
+<li>计算每种配对的移动步数和</li>
+<li>返回最小的那个和</li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb8"><code class="sourceCode python"><div class="sourceLine" id="cb8-1" data-line-number="1"><span class="im">from</span> math <span class="im">import</span> <span class="op">*</span></div>
+<div class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb8-3" data-line-number="3">    <span class="kw">def</span> minimumMoves(<span class="va">self</span>, grid: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</div>
+<div class="sourceLine" id="cb8-4" data-line-number="4">        pre , las <span class="op">=</span> [] , [] <span class="co">#起点和终点</span></div>
+<div class="sourceLine" id="cb8-5" data-line-number="5">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</div>
+<div class="sourceLine" id="cb8-6" data-line-number="6">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</div>
+<div class="sourceLine" id="cb8-7" data-line-number="7">                <span class="cf">if</span> grid[i][j] <span class="op">==</span> <span class="dv">0</span>:</div>
+<div class="sourceLine" id="cb8-8" data-line-number="8">                    las.append([i , j])</div>
+<div class="sourceLine" id="cb8-9" data-line-number="9">                <span class="cf">elif</span> grid[i][j] <span class="op">&gt;</span> <span class="dv">1</span>:</div>
+<div class="sourceLine" id="cb8-10" data-line-number="10">                    count <span class="op">=</span> grid[i][j] <span class="op">-</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb8-11" data-line-number="11">                    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(count):</div>
+<div class="sourceLine" id="cb8-12" data-line-number="12">                        pre.append([i , j])</div>
+<div class="sourceLine" id="cb8-13" data-line-number="13">        n <span class="op">=</span> <span class="bu">len</span>(las)</div>
+<div class="sourceLine" id="cb8-14" data-line-number="14">        dis <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> n</div>
+<div class="sourceLine" id="cb8-15" data-line-number="15">        vis <span class="op">=</span> [<span class="va">False</span>] <span class="op">*</span> n</div>
+<div class="sourceLine" id="cb8-16" data-line-number="16">        <span class="kw">def</span> dfs(i , min_cur):</div>
+<div class="sourceLine" id="cb8-17" data-line-number="17">            <span class="cf">if</span> i <span class="op">==</span> n:</div>
+<div class="sourceLine" id="cb8-18" data-line-number="18">                total <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb8-19" data-line-number="19">                <span class="cf">for</span> x , y <span class="kw">in</span> <span class="bu">enumerate</span>(dis):</div>
+<div class="sourceLine" id="cb8-20" data-line-number="20">                    x1 , y1 <span class="op">=</span> pre[x]</div>
+<div class="sourceLine" id="cb8-21" data-line-number="21">                    x2 , y2 <span class="op">=</span> las[y]</div>
+<div class="sourceLine" id="cb8-22" data-line-number="22">                    total <span class="op">+=</span> <span class="bu">abs</span>(x1 <span class="op">-</span> x2) <span class="op">+</span> <span class="bu">abs</span>(y1 <span class="op">-</span> y2)</div>
+<div class="sourceLine" id="cb8-23" data-line-number="23">                <span class="cf">return</span> <span class="bu">min</span>(total , min_cur)</div>
+<div class="sourceLine" id="cb8-24" data-line-number="24">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb8-25" data-line-number="25">                <span class="cf">if</span> <span class="kw">not</span> vis[j]:</div>
+<div class="sourceLine" id="cb8-26" data-line-number="26">                    vis[j] <span class="op">=</span> <span class="va">True</span></div>
+<div class="sourceLine" id="cb8-27" data-line-number="27">                    dis[i] <span class="op">=</span> j</div>
+<div class="sourceLine" id="cb8-28" data-line-number="28">                    min_cur <span class="op">=</span> dfs(i<span class="op">+</span><span class="dv">1</span> , min_cur)</div>
+<div class="sourceLine" id="cb8-29" data-line-number="29">                    vis[j] <span class="op">=</span> <span class="va">False</span> </div>
+<div class="sourceLine" id="cb8-30" data-line-number="30">            <span class="cf">return</span> min_cur</div>
+<div class="sourceLine" id="cb8-31" data-line-number="31">        cur_min <span class="op">=</span> dfs(<span class="dv">0</span> , inf)</div>
+<div class="sourceLine" id="cb8-32" data-line-number="32">        <span class="cf">return</span> cur_min</div></code></pre>
+<h4 id="回溯分割字符串">回溯分割字符串</h4>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/M99OJA/description/">LCR 086. 分割回文串 - 力扣（LeetCode）</a></p>
+<p><strong>LCR 086. 分割回文串 - 力扣（LeetCode）</strong></p>
+<p>给定一个字符串 s ，请将 s 分割成一些子串，使每个子串都是 回文串 ，返回 s 所有可能的分割方案。</p>
+<p>回文串 是正着读和反着读都一样的字符串。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：s = “google”</p>
+<p>输出：[[“g”,“o”,“o”,“g”,“l”,“e”],[“g”,“oo”,“g”,“l”,“e”],[“goog”,“l”,“e”]]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：s = “aab”</p>
+<p>输出：[[“a”,“a”,“b”],[“aa”,“b”]]</p>
+<p><strong>示例 3：</strong></p>
+<p>输入：s = “a”</p>
+<p>输出：[[“a”]]</p>
+<p><strong>提示：</strong></p>
+<p>1 &lt;= s.length &lt;= 16</p>
+<p>s 仅由小写英文字母组成</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li>记录当前切割到的位置，枚举下一个切割位置，判断切割合法性。</li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb9"><code class="sourceCode python"><div class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb9-2" data-line-number="2">    <span class="kw">def</span> partition(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> List[List[<span class="bu">str</span>]]:</div>
+<div class="sourceLine" id="cb9-3" data-line-number="3">        res , path <span class="op">=</span> [] , []</div>
+<div class="sourceLine" id="cb9-4" data-line-number="4">        n <span class="op">=</span> <span class="bu">len</span>(s)</div>
+<div class="sourceLine" id="cb9-5" data-line-number="5">        <span class="kw">def</span> dfs(i):</div>
+<div class="sourceLine" id="cb9-6" data-line-number="6">            <span class="cf">if</span> i <span class="op">==</span> n:</div>
+<div class="sourceLine" id="cb9-7" data-line-number="7">                res.append(path.copy())</div>
+<div class="sourceLine" id="cb9-8" data-line-number="8">                <span class="cf">return</span></div>
+<div class="sourceLine" id="cb9-9" data-line-number="9">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>,n<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb9-10" data-line-number="10">                t <span class="op">=</span> s[i:j]</div>
+<div class="sourceLine" id="cb9-11" data-line-number="11">                <span class="cf">if</span> t <span class="op">==</span> t[::<span class="op">-</span><span class="dv">1</span>]:</div>
+<div class="sourceLine" id="cb9-12" data-line-number="12">                    path.append(t)</div>
+<div class="sourceLine" id="cb9-13" data-line-number="13">                    dfs(j)</div>
+<div class="sourceLine" id="cb9-14" data-line-number="14">                    path.pop()</div>
+<div class="sourceLine" id="cb9-15" data-line-number="15">        dfs(<span class="dv">0</span>)</div>
+<div class="sourceLine" id="cb9-16" data-line-number="16">        <span class="cf">return</span> res</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/restore-ip-addresses/description/?envType=featured-list&amp;envId=L2JxWeVS?envType=featured-list&amp;envId=L2JxWeVS">93. 复原 IP 地址 - 力扣（LeetCode）</a></p>
+<p><strong>93. 复原 IP 地址 - 力扣（LeetCode）</strong></p>
+<p>有效 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0），整数之间用 ‘.’ 分隔。</p>
+<p>例如：“0.1.2.201” 和 “192.168.1.1” 是 有效 IP 地址，但是 “0.011.255.245”、“192.168.1.312” 和 “192.168@1.1” 是 无效 IP 地址。</p>
+<p>给定一个只包含数字的字符串 s ，用以表示一个 IP 地址，返回所有可能的有效 IP 地址，这些地址可以通过在 s 中插入 ‘.’ 来形成。你 不能 重新排序或删除 s 中的任何数字。你可以按 任何 顺序返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：s = “25525511135”</p>
+<p>输出：[“255.255.11.135”,“255.255.111.35”]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：s = “0000”</p>
+<p>输出：[“0.0.0.0”]</p>
+<p><strong>示例 3：</strong></p>
+<p>输入：s = “101023”</p>
+<p>输出：[“1.0.10.23”,“1.0.102.3”,“10.1.0.23”,“10.10.2.3”,“101.0.2.3”]</p>
+<p><strong>提示：</strong></p>
+<p>1 &lt;= s.length &lt;= 20</p>
+<p>s 仅由数字组成</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li>增加了字符串段数限制：恰好等于 4。</li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb10"><code class="sourceCode python"><div class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb10-2" data-line-number="2">    <span class="kw">def</span> restoreIpAddresses(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> List[<span class="bu">str</span>]:</div>
+<div class="sourceLine" id="cb10-3" data-line-number="3">        res , path <span class="op">=</span> [] , []</div>
+<div class="sourceLine" id="cb10-4" data-line-number="4">        n <span class="op">=</span> <span class="bu">len</span>(s)</div>
+<div class="sourceLine" id="cb10-5" data-line-number="5">        <span class="kw">def</span> dfs(i):</div>
+<div class="sourceLine" id="cb10-6" data-line-number="6">            <span class="cf">if</span> <span class="bu">len</span>(path) <span class="op">==</span> <span class="dv">4</span>:</div>
+<div class="sourceLine" id="cb10-7" data-line-number="7">                <span class="cf">if</span> i <span class="op">==</span> n:</div>
+<div class="sourceLine" id="cb10-8" data-line-number="8">                    res.append(<span class="st">'.'</span>.join(path))</div>
+<div class="sourceLine" id="cb10-9" data-line-number="9">                    <span class="cf">return</span></div>
+<div class="sourceLine" id="cb10-10" data-line-number="10">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span> , n<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb10-11" data-line-number="11">                t <span class="op">=</span> s[i:j]</div>
+<div class="sourceLine" id="cb10-12" data-line-number="12">                <span class="cf">if</span> (t <span class="op">==</span> <span class="st">'0'</span> <span class="kw">or</span> <span class="st">'0'</span> <span class="kw">not</span> <span class="kw">in</span> t[<span class="dv">0</span>]) <span class="kw">and</span> <span class="bu">int</span>(t) <span class="op">&lt;=</span> <span class="dv">255</span>:</div>
+<div class="sourceLine" id="cb10-13" data-line-number="13">                    path.append(t)</div>
+<div class="sourceLine" id="cb10-14" data-line-number="14">                    dfs(j)</div>
+<div class="sourceLine" id="cb10-15" data-line-number="15">                    path.pop()</div>
+<div class="sourceLine" id="cb10-16" data-line-number="16">        dfs(<span class="dv">0</span>)</div>
+<div class="sourceLine" id="cb10-17" data-line-number="17">        <span class="cf">return</span> res</div></code></pre>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-punishment-number-of-an-integer/description/?envType=featured-list&amp;envId=L2JxWeVS?envType=featured-list&amp;envId=L2JxWeVS">2698. 求一个整数的惩罚数 - 力扣（LeetCode）</a></p>
+<p><strong>2698. 求一个整数的惩罚数 - 力扣（LeetCode）</strong></p>
+<p>给你一个正整数 n ，请你返回 n 的 惩罚数 。</p>
+<p>n 的 惩罚数 定义为所有满足以下条件 i 的数的平方和：</p>
+<p>1 &lt;= i &lt;= n</p>
+<p>i * i 的十进制表示的字符串可以分割成若干连续子字符串，且这些子字符串对应的整数值之和等于 i 。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：n = 10</p>
+<p>输出：182</p>
+<p>解释：总共有 3 个范围在 [1, 10] 的整数 i 满足要求：</p>
+<ul>
+<li>1 ，因为 1 * 1 = 1</li>
+<li>9 ，因为 9 * 9 = 81 ，且 81 可以分割成 8 + 1 。</li>
+<li>10 ，因为 10 * 10 = 100 ，且 100 可以分割成 10 + 0 。</li>
+</ul>
+<p>因此，10 的惩罚数为 1 + 81 + 100 = 182</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：n = 37</p>
+<p>输出：1478</p>
+<p>解释：总共有 4 个范围在 [1, 37] 的整数 i 满足要求：</p>
+<ul>
+<li>1 ，因为 1 * 1 = 1</li>
+<li>9 ，因为 9 * 9 = 81 ，且 81 可以分割成 8 + 1 。</li>
+<li>10 ，因为 10 * 10 = 100 ，且 100 可以分割成 10 + 0 。</li>
+<li>36 ，因为 36 * 36 = 1296 ，且 1296 可以分割成 1 + 29 + 6 。</li>
+</ul>
+<p>因此，37 的惩罚数为 1 + 81 + 100 + 1296 = 1478</p>
+<p><strong>提示：</strong></p>
+<p>1 &lt;= n &lt;= 1000</p>
+<p><strong>思路：</strong></p>
+<p>对于每个数字 i，首先需要将 i*i 转换为字符串 s，然后依次将字符串 s 进行枚举分割子串，分别枚举第一个子串 s[0⋯i]、第二个子串 s[i+1⋯j]，依次枚举剩余的子串，同时累加这些子串对应的十进制整数值之和为 tot，如果存在分割方案使得数值之和 tot=i，则说明 i 符合要求，如果当前的 tot 大于 i 时则中止当前的搜索。依次检测在区间 [1,n] 中有多少满足要求的数字 i，并返回这些数字 i 的平方和。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb11"><code class="sourceCode python"><div class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb11-2" data-line-number="2">    <span class="kw">def</span> punishmentNumber(<span class="va">self</span>, n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</div>
+<div class="sourceLine" id="cb11-3" data-line-number="3">        sum_num <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb11-4" data-line-number="4">        <span class="kw">def</span> dfs(i , s , x):</div>
+<div class="sourceLine" id="cb11-5" data-line-number="5">            <span class="cf">if</span> i <span class="op">==</span> m:</div>
+<div class="sourceLine" id="cb11-6" data-line-number="6">                <span class="cf">return</span> s <span class="op">==</span> x</div>
+<div class="sourceLine" id="cb11-7" data-line-number="7">            t <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb11-8" data-line-number="8">            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span> , m<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb11-9" data-line-number="9">                t <span class="op">=</span> t <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> <span class="bu">int</span>(sx[j<span class="dv">-1</span>])</div>
+<div class="sourceLine" id="cb11-10" data-line-number="10">                <span class="cf">if</span> s <span class="op">+</span> t <span class="op">&lt;=</span> x <span class="kw">and</span> dfs(j , s<span class="op">+</span>t , x):</div>
+<div class="sourceLine" id="cb11-11" data-line-number="11">                    <span class="cf">return</span> <span class="va">True</span></div>
+<div class="sourceLine" id="cb11-12" data-line-number="12">            <span class="cf">return</span> <span class="va">False</span></div>
+<div class="sourceLine" id="cb11-13" data-line-number="13">        <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb11-14" data-line-number="14">            sx <span class="op">=</span> <span class="bu">str</span>(x <span class="op">*</span> x)</div>
+<div class="sourceLine" id="cb11-15" data-line-number="15">            m <span class="op">=</span> <span class="bu">len</span>(sx)</div>
+<div class="sourceLine" id="cb11-16" data-line-number="16">            <span class="cf">if</span> dfs(<span class="dv">0</span> , <span class="dv">0</span> , x):</div>
+<div class="sourceLine" id="cb11-17" data-line-number="17">                sum_num <span class="op">+=</span> x <span class="op">*</span> x</div>
+<div class="sourceLine" id="cb11-18" data-line-number="18">        <span class="cf">return</span> sum_num</div></code></pre>
+<h4 id="分治">分治</h4>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/description/">395. 至少有 K 个重复字符的最长子串 - 力扣（LeetCode）</a></p>
+<p><strong>395. 至少有 K 个重复字符的最长子串 - 力扣（LeetCode）</strong></p>
+<p>给你一个字符串 s 和一个整数 k ，请你找出 s 中的最长子串， 要求该子串中的每一字符出现次数都不少于 k 。返回这一子串的长度。</p>
+<p>如果不存在这样的子字符串，则返回 0。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：s = “aaabb”, k = 3</p>
+<p>输出：3</p>
+<p>解释：最长子串为 “aaa” ，其中 ‘a’ 重复了 3 次。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：s = “ababbc”, k = 2</p>
+<p>输出：5</p>
+<p>解释：最长子串为 “ababb” ，其中 ‘a’ 重复了 2 次， ‘b’ 重复了 3 次。</p>
+<p><strong>思路：</strong></p>
+<p>check(s) 表示字符串 s 中所有字符不少于 k 个的子串中的最大长度。考察所有在当前 s 串中出现次数少于 k 的字符（记作分割字符），最终最大串肯定不包含之。因此，每一层递归，以找到的第一个分割字符作为隔板，将 s 分成 若干个小的子串，取其中最大值即可。</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb12"><code class="sourceCode python"><div class="sourceLine" id="cb12-1" data-line-number="1"><span class="im">from</span> collections <span class="im">import</span> <span class="op">*</span></div>
+<div class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb12-3" data-line-number="3">    <span class="kw">def</span> longestSubstring(<span class="va">self</span>, s: <span class="bu">str</span>, k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</div>
+<div class="sourceLine" id="cb12-4" data-line-number="4">        <span class="kw">def</span> check(s):</div>
+<div class="sourceLine" id="cb12-5" data-line-number="5">            cnt <span class="op">=</span> Counter(s)</div>
+<div class="sourceLine" id="cb12-6" data-line-number="6">            <span class="cf">for</span> c , ch <span class="kw">in</span> cnt.items():</div>
+<div class="sourceLine" id="cb12-7" data-line-number="7">                <span class="cf">if</span> ch <span class="op">&lt;</span> k:</div>
+<div class="sourceLine" id="cb12-8" data-line-number="8">                    <span class="cf">return</span> <span class="bu">max</span>(check(sub) <span class="cf">for</span> sub <span class="kw">in</span> s.split(c))</div>
+<div class="sourceLine" id="cb12-9" data-line-number="9">            <span class="cf">return</span> <span class="bu">len</span>(s)</div>
+<div class="sourceLine" id="cb12-10" data-line-number="10">        <span class="cf">return</span> check(s)</div></code></pre>
+<p><a href="">1763. 最长的美好子字符串 - 力扣（LeetCode）</a></p>
+<p><strong>1763. 最长的美好子字符串 - 力扣（LeetCode）</strong></p>
+<p>当一个字符串 s 包含的每一种字母的大写和小写形式 同时 出现在 s 中，就称这个字符串 s 是 美好 字符串。比方说，“abABB” 是美好字符串，因为 ‘A’ 和 ‘a’ 同时出现了，且 ‘B’ 和 ‘b’ 也同时出现了。然而，“abA” 不是美好字符串因为 ‘b’ 出现了，而 ‘B’ 没有出现。</p>
+<p>给你一个字符串 s ，请你返回 s 最长的 美好子字符串 。如果有多个答案，请你返回 最早 出现的一个。如果不存在美好子字符串，请你返回一个空字符串。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：s = “YazaAay”</p>
+<p>输出：“aAa”</p>
+<p>解释：</p>
+<p>“aAa” 是一个美好字符串，因为这个子串中仅含一种字母，其小写形式 ‘a’ 和大写形式 ‘A’ 也同时出现了。</p>
+<p>“aAa” 是最长的美好子字符串。</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：s = “Bb”</p>
+<p>输出：“Bb”</p>
+<p>解释：“Bb” 是美好字符串，因为 ‘B’ 和 ‘b’ 都出现了。整个字符串也是原字符串的子字符串。</p>
+<p><strong>示例 3：</strong></p>
+<p>输入：s = “c”</p>
+<p>输出：“”</p>
+<p>解释：没有美好子字符串。</p>
+<p><strong>示例 4：</strong></p>
+<p>输入：s = “dDzeE”</p>
+<p>输出：“dD”</p>
+<p>解释：</p>
+<p>“dD” 和 “eE” 都是最长美好子字符串。</p>
+<p>由于有多个美好子字符串，返回 “dD” ，因为它出现得最早。</p>
+<p><strong>提示：</strong></p>
+<p>1 &lt;= s.length &lt;= 100</p>
+<p>s 只包含大写和小写英文字母。</p>
+<p><strong>思路：</strong></p>
+<p>暴力算法</p>
+<p><strong>代码：</strong></p>
+<pre class="sourceCode python" id="cb13"><code class="sourceCode python"><div class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">class</span> Solution:</div>
+<div class="sourceLine" id="cb13-2" data-line-number="2">    <span class="kw">def</span> longestNiceSubstring(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</div>
+<div class="sourceLine" id="cb13-3" data-line-number="3">        n <span class="op">=</span> <span class="bu">len</span>(s)</div>
+<div class="sourceLine" id="cb13-4" data-line-number="4">        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">2</span>:</div>
+<div class="sourceLine" id="cb13-5" data-line-number="5">            <span class="cf">return</span> <span class="st">''</span></div>
+<div class="sourceLine" id="cb13-6" data-line-number="6">        max_len <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb13-7" data-line-number="7">        max_num <span class="op">=</span> <span class="st">''</span></div>
+<div class="sourceLine" id="cb13-8" data-line-number="8">        <span class="cf">for</span> L <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span> , n<span class="op">+</span><span class="dv">1</span>):</div>
+<div class="sourceLine" id="cb13-9" data-line-number="9">            <span class="cf">for</span> lc <span class="kw">in</span> <span class="bu">range</span>(n):</div>
+<div class="sourceLine" id="cb13-10" data-line-number="10">                rc <span class="op">=</span> L <span class="op">+</span> lc</div>
+<div class="sourceLine" id="cb13-11" data-line-number="11">                <span class="cf">if</span> rc <span class="op">&gt;</span> n:</div>
+<div class="sourceLine" id="cb13-12" data-line-number="12">                    <span class="cf">break</span></div>
+<div class="sourceLine" id="cb13-13" data-line-number="13">                num <span class="op">=</span> s[lc:rc]</div>
+<div class="sourceLine" id="cb13-14" data-line-number="14">                flag <span class="op">=</span> <span class="dv">0</span></div>
+<div class="sourceLine" id="cb13-15" data-line-number="15">                <span class="cf">for</span> char <span class="kw">in</span> num:</div>
+<div class="sourceLine" id="cb13-16" data-line-number="16">                    <span class="cf">if</span> <span class="st">'a'</span> <span class="op">&lt;=</span> char <span class="op">&lt;=</span> <span class="st">'z'</span> <span class="kw">and</span> <span class="bu">chr</span>(<span class="bu">ord</span>(char) <span class="op">-</span> <span class="dv">32</span>) <span class="kw">in</span> num:</div>
+<div class="sourceLine" id="cb13-17" data-line-number="17">                        <span class="cf">continue</span></div>
+<div class="sourceLine" id="cb13-18" data-line-number="18">                    <span class="cf">elif</span> <span class="st">'A'</span> <span class="op">&lt;=</span> char <span class="op">&lt;=</span> <span class="st">'Z'</span> <span class="kw">and</span> <span class="bu">chr</span>(<span class="bu">ord</span>(char) <span class="op">+</span> <span class="dv">32</span>) <span class="kw">in</span> num:</div>
+<div class="sourceLine" id="cb13-19" data-line-number="19">                        <span class="cf">continue</span></div>
+<div class="sourceLine" id="cb13-20" data-line-number="20">                    <span class="cf">else</span>:</div>
+<div class="sourceLine" id="cb13-21" data-line-number="21">                        flag <span class="op">=</span> <span class="dv">1</span></div>
+<div class="sourceLine" id="cb13-22" data-line-number="22">                        <span class="cf">break</span></div>
+<div class="sourceLine" id="cb13-23" data-line-number="23">                <span class="cf">if</span> flag <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> <span class="bu">len</span>(num) <span class="op">&gt;</span> max_len:</div>
+<div class="sourceLine" id="cb13-24" data-line-number="24">                    max_len <span class="op">=</span> <span class="bu">len</span>(num)</div>
+<div class="sourceLine" id="cb13-25" data-line-number="25">                    max_num <span class="op">=</span> num</div>
+<div class="sourceLine" id="cb13-26" data-line-number="26">        <span class="cf">return</span> max_num</div></code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 OvO
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;你猜不到的
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
